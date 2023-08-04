@@ -8,17 +8,18 @@
 { config, pkgs, ... }:
 
 {
-   nix = {
-  package = pkgs.nixFlakes;
-  extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
-};
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
 
 
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -101,16 +102,15 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       nil
-neofetch
-dotnet-sdk_8
-libgccjit
+      nixpkgs-fmt
+      neofetch
+      dotnet-sdk_8
+      libgccjit
     ];
   };
 
   # Allow unfree packages
-nixpkgs.config.allowUnfree = true;
-
-
+  nixpkgs.config.allowUnfree = true;
 
 
   # List packages installed in system profile. To search, run:
@@ -119,8 +119,8 @@ nixpkgs.config.allowUnfree = true;
 
 
 
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -155,45 +155,57 @@ nixpkgs.config.allowUnfree = true;
 
 
   home-manager.users.louis.programs = {
-      vscode = {
-        enable = true;
-        package = pkgs.vscodium;
+    vscode = {
+      enable = true;
+      package = pkgs.vscodium;
 
-        enableExtensionUpdateCheck = false;
-        enableUpdateCheck = false;
-        mutableExtensionsDir = false;
-        
 
-        extensions = with pkgs.vscode-extensions; [
-          matklad.rust-analyzer
-    ms-dotnettools.csharp
-    rust-lang.rust-analyzer
-          ms-vscode.cpptools
-          jnoortheen.nix-ide
-        ]; #++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [ 
-          #{
-          #  name = "nunjucks-template";
-          #  publisher = "eseom";
-          #  version = "0.5.1";
-          #  sha256 = "CkHPyLZMtyLmqEzRMBqjxHV51R3AYrt8RJ5JQN1egWI=";
-          #}
-        #];
+      enableExtensionUpdateCheck = false;
+      enableUpdateCheck = false;
+      mutableExtensionsDir = false;
 
-        userSettings = {
-          "workbench.colorTheme" = "Default Light+";
-          "workbench.iconTheme" = "ayu";
 
-          "nix.enableLanguageServer" = true;
-          "nix.serverPath" = "nil";
-          "nix.formatterPath" = "nixpkgs-fmt";
-          "nix.serverSettings" = {
-            "nil" = {
-              "formatting" = { "command" = [ "nixpkgs-fmt" ]; };
-            };
+
+      extensions = with pkgs.vscode-extensions; [
+        matklad.rust-analyzer
+        ms-dotnettools.csharp
+        rust-lang.rust-analyzer
+        ms-vscode.cpptools
+        jnoortheen.nix-ide
+      ]; #++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [ 
+      #{
+      #  name = "nunjucks-template";
+      #  publisher = "eseom";
+      #  version = "0.5.1";
+      #  sha256 = "CkHPyLZMtyLmqEzRMBqjxHV51R3AYrt8RJ5JQN1egWI=";
+      #}
+      #];
+
+      userSettings = {
+
+        "editor.formatOnSave" = true;
+
+        "editor.indent_style" = "space";
+        "editor.indentSize" = 4;
+        "editor.tabSize" = 4;
+
+        "editor.insertSpaces" = true;
+        "editor.detectIndentation" = false;
+
+        "workbench.colorTheme" = "Default Light+";
+        "workbench.iconTheme" = "ayu";
+
+        "nix.enableLanguageServer" = true;
+        "nix.serverPath" = "nil";
+        "nix.formatterPath" = "nixpkgs-fmt";
+        "nix.serverSettings" = {
+          "nil" = {
+            "formatting" = { "command" = [ "nixpkgs-fmt" ]; };
           };
-          "git.enableCommitSigning" = true;
         };
+        "git.enableCommitSigning" = true;
       };
+    };
   };
 
 }
