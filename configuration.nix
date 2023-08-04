@@ -172,6 +172,7 @@ home-manager.users.louis.programs = {
 	ms-dotnettools.csharp
 	rust-lang.rust-analyzer
         ms-vscode.cpptools
+        #jnoortheen.nix-ide
       ]; #++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [ 
         #{
         #  name = "nunjucks-template";
