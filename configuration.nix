@@ -100,6 +100,7 @@
     description = "louis thevenet";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
+      nil
 neofetch
 dotnet-sdk_8
 libgccjit
@@ -149,55 +150,50 @@ nixpkgs.config.allowUnfree = true;
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 
 
+  home-manager.users.louis.programs = {
+      vscode = {
+        enable = true;
+        package = pkgs.vscodium;
 
+        enableExtensionUpdateCheck = false;
+        enableUpdateCheck = false;
+        mutableExtensionsDir = false;
+        
 
-nix.settings.experimental-features = [ "nix-command" "flakes" ];
+        extensions = with pkgs.vscode-extensions; [
+          matklad.rust-analyzer
+    ms-dotnettools.csharp
+    rust-lang.rust-analyzer
+          ms-vscode.cpptools
+          jnoortheen.nix-ide
+        ]; #++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [ 
+          #{
+          #  name = "nunjucks-template";
+          #  publisher = "eseom";
+          #  version = "0.5.1";
+          #  sha256 = "CkHPyLZMtyLmqEzRMBqjxHV51R3AYrt8RJ5JQN1egWI=";
+          #}
+        #];
 
+        userSettings = {
+          "workbench.colorTheme" = "Default Light+";
+          "workbench.iconTheme" = "ayu";
 
-
-home-manager.users.louis.programs = {
-    vscode = {
-      enable = true;
-      package = pkgs.vscodium;
-
-      enableExtensionUpdateCheck = false;
-      enableUpdateCheck = false;
-      mutableExtensionsDir = false;
-
-      extensions = with pkgs.vscode-extensions; [
-        matklad.rust-analyzer
-	ms-dotnettools.csharp
-	rust-lang.rust-analyzer
-        ms-vscode.cpptools
-        jnoortheen.nix-ide
-      ]; #++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [ 
-        #{
-        #  name = "nunjucks-template";
-        #  publisher = "eseom";
-        #  version = "0.5.1";
-        #  sha256 = "CkHPyLZMtyLmqEzRMBqjxHV51R3AYrt8RJ5JQN1egWI=";
-        #}
-      #];
-
-      userSettings = {
-        "workbench.colorTheme" = "Default Light+";
-        "workbench.iconTheme" = "ayu";
-
-        "nix.enableLanguageServer" = true;
-        "nix.serverPath" = "nil";
-        "nix.formatterPath" = "nixpkgs-fmt";
-        "nix.serverSettings" = {
-          "nil" = {
-            "formatting" = { "command" = [ "nixpkgs-fmt" ]; };
+          "nix.enableLanguageServer" = true;
+          "nix.serverPath" = "nil";
+          "nix.formatterPath" = "nixpkgs-fmt";
+          "nix.serverSettings" = {
+            "nil" = {
+              "formatting" = { "command" = [ "nixpkgs-fmt" ]; };
+            };
           };
+          "git.enableCommitSigning" = true;
         };
-
-        "git.enableCommitSigning" = true;
       };
-    };
-};
+  };
 
 }
