@@ -1,5 +1,5 @@
-{ pkgs, ... }: {
-  vscode = {
+{ config, pkgs, ... }: {
+  home-manager.users.louis.programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
     enableExtensionUpdateCheck = false;

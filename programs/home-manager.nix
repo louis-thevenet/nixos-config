@@ -1,19 +1,17 @@
 { config, pkgs, ... }: {
+  imports = [
+    ./vscode.nix
+  ];
   home-manager = {
     useGlobalPkgs = true;
+    home = {
+      stateVersion = "23.05";
+      username = "louis";
+    };
     users.louis = {
-      programs = import ./vscode.nix
-        {
-          pkgs = pkgs;
-        };
-
-      home.packages = with pkgs; [
-      ];
-
-      home = {
-        stateVersion = "23.05";
-        username = "louis";
-      };
+      home.packages = with pkgs;
+        [
+        ];
     };
   };
 }
