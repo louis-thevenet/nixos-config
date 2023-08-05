@@ -16,4 +16,8 @@
     description = "louis thevenet";
     extraGroups = [ "networkmanager" "wheel" ];
   };
+
+
+  programs.zsh.enable = true;
+  users.users.louis.shell = pkgs.zsh;
 }
