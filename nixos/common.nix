@@ -1,9 +1,4 @@
 { inputs, lib, config, pkgs, ... }: {
-  imports = [
-
-    ./hardware-configuration.nix
-  ];
-
   nixpkgs = {
     overlays = [ ];
     config = {
@@ -94,7 +89,6 @@
     vim
     git
     kitty
-    gparted
   ];
 
   users.users.louis.packages = with pkgs; [
@@ -103,6 +97,7 @@
     nixpkgs-fmt
     neofetch
     #dotnet-sdk_8
+    whatsapp-for-linux
     dotnet-sdk_7
     libgccjit
     spotify

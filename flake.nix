@@ -9,9 +9,14 @@
 
   outputs = { nixpkgs, home-manager, ... }@inputs: {
     nixosConfigurations = {
-      louis = nixpkgs.lib.nixosSystem {
+      louisdesktop = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
-        modules = [ ./nixos/configuration.nix ];
+        modules = [ ./nixos/configuration-desktop.nix ];
+      };
+
+      louislaptop = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [ ./nixos/configuration-laptop.nix ];
       };
     };
 
