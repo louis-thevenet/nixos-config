@@ -1,5 +1,5 @@
 { config, pkgs, ... }: {
-  home-manager.users.louis.programs.vscode = {
+  programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
     enableExtensionUpdateCheck = false;
@@ -34,5 +34,3 @@
     };
   };
 }
-
-
