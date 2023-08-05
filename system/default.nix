@@ -1,6 +1,5 @@
 { config, pkgs, ... }: {
 
-
   system.stateVersion = "23.05";
 
   imports =
@@ -17,9 +16,4 @@
     description = "louis thevenet";
     extraGroups = [ "networkmanager" "wheel" ];
   };
-
-
-
-
-
 }
