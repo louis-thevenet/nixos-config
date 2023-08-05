@@ -89,22 +89,10 @@
     vim
     git
     kitty
+    firefox
   ];
 
   users.users.louis.packages = with pkgs; [
-    blueman
-    nil
-    nixpkgs-fmt
-    neofetch
-    #dotnet-sdk_8
-    whatsapp-for-linux
-    dotnet-sdk_7
-    libgccjit
-    spotify
-    discord
-    firefox
-    flameshot
-    python311Packages.nix-prefetch-github
-    libnotify
+
   ];
 }
