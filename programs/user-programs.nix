@@ -11,5 +11,6 @@
     firefox
     flameshot
     python311Packages.nix-prefetch-github
+    libnotify
   ];
 }

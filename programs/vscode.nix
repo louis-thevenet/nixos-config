@@ -11,14 +11,8 @@
       rust-lang.rust-analyzer
       ms-vscode.cpptools
       jnoortheen.nix-ide
-    ]; #++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [ 
-    #{
-    #  name = "nunjucks-template";
-    #  publisher = "eseom";
-    #  version = "0.5.1";
-    #  sha256 = "CkHPyLZMtyLmqEzRMBqjxHV51R3AYrt8RJ5JQN1egWI=";
-    #}
-    #];
+    ];
+
     userSettings = {
       "editor.formatOnSave" = true;
       "editor.indent_style" = "space";
