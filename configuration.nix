@@ -94,6 +94,7 @@
     vim
     git
     kitty
+    gparted
   ];
 
   users.users.louis.packages = with pkgs; [
