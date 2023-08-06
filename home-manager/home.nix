@@ -2,6 +2,7 @@
   imports = [
     ./vscode.nix
     ./oh-my-zsh.nix
+    ./gnome.nix
   ];
 
   nixpkgs = {
