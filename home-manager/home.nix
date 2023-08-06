@@ -3,6 +3,7 @@
     ./vscode.nix
     ./oh-my-zsh.nix
     ./gnome.nix
+    ./firefox.nix
   ];
 
   nixpkgs = {

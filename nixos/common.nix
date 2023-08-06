@@ -89,7 +89,6 @@
     vim
     git
     kitty
-    firefox
   ];
 
   users.users.louis.packages = with pkgs; [
