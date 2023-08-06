@@ -35,6 +35,7 @@
         "pop-launcher-super-key@ManeLippert"
         "pop-shell@system76.com"
         "caffeine@patapon.info"
+        "just-perfection-desktop@just-perfection"
       ];
 
 
@@ -48,6 +49,15 @@
       button-layout = "appmenu:minimize,maximize,close";
     };
 
+
+    # Just-perfection settings
+    "org/gnome/shell/extensions/just-perfection" = {
+      activities-button = false;
+      app-menu = false;
+      calendar = false;
+      events-button = false;
+    };
+
   };
 
   home.packages = with pkgs; [
@@ -55,5 +65,6 @@
     gnomeExtensions.pop-shell
     gnomeExtensions.pop-launcher-super-key
     gnomeExtensions.caffeine
+    gnomeExtensions.just-perfection
   ];
 }
