@@ -111,6 +111,8 @@
     kitty
   ];
 
+  services.blueman.enable = true;
+
   users.users.louis.packages = with pkgs; [
 
   ];
