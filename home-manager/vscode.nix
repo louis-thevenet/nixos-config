@@ -11,6 +11,7 @@
       rust-lang.rust-analyzer
       ms-vscode.cpptools
       jnoortheen.nix-ide
+      arrterian.nix-env-selector
     ];
 
     userSettings = {
