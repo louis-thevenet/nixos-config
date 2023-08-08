@@ -19,11 +19,12 @@
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "default";
+      enable-hot-corners =
+        false;
     };
 
-    "org/gnome/desktop/wm/keybindings" = {
-      toggle-tiled-left = "disabled";
-      toggle-tiled-right = "disabled";
+    "org/gnome/desktop/wm/preferences" = {
+      button-layout = "appmenu:minimize,maximize,close";
     };
 
     "org/gnome/desktop/wm/keybindings" = {
@@ -37,8 +38,9 @@
       move-to-workspace-down = "disabled";
       move-to-workspace-up = "disabled";
       unmaximize = "disabled";
+      toggle-tiled-left = "disabled";
+      toggle-tiled-right = "disabled";
     };
-
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
@@ -58,20 +60,11 @@
       binding = "<Super>t";
     };
 
-    "org/gnome/shell/extensions/pop-shell" = {
-      focus-right = "disabled";
-      tile-by-default = true;
-      tile-enter = "disabled";
-    };
 
     "org/gnome/shell" = {
-
       disabled-extensions = [
         "native-window-placement@gnome-shell-extensions.gcampax.github.com"
       ];
-
-
-
 
       enabled-extensions = [
         "pop-launcher-super-key@ManeLippert"
@@ -87,15 +80,12 @@
 
 
     };
-    "org/gnome/desktop/interface" = {
-      enable-hot-corners =
-        false;
-    };
 
-    "org/gnome/desktop/wm/preferences" = {
-      button-layout = "appmenu:minimize,maximize,close";
+    "org/gnome/shell/extensions/pop-shell" = {
+      focus-right = "disabled";
+      tile-by-default = true;
+      tile-enter = "disabled";
     };
-
 
     "org/gnome/shell/extensions/just-perfection" = {
       activities-button = false;
@@ -111,7 +101,6 @@
       "disable-hover-select" = true;
       "remove-delay" = true;
     };
-
   };
 
   home.packages = with pkgs; [
