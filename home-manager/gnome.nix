@@ -18,8 +18,8 @@
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "default";
-      enable-hot-corners =
-        false;
+      enable-hot-corners = false;
+      show-battery-percentage = true;
     };
 
     "org/gnome/desktop/wm/preferences" = {
@@ -73,6 +73,8 @@
         "Vitals@CoreCoding.com"
         "workspace-indicator@gnome-shell-extensions.gcampax.github.com"
         "alttab-mod@leleat-on-github"
+        "upower-battery@codilia.com"
+        "batterytime@typeof.pw"
       ];
     };
 
@@ -110,6 +112,8 @@
     gnomeExtensions.vitals
     gnomeExtensions.workspace-indicator
     gnomeExtensions.alttab-mod
+    gnomeExtensions.upower-battery
+    gnomeExtensions.battery-time-2
   ];
 }
 
