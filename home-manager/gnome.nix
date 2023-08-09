@@ -11,10 +11,9 @@
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
-
   };
-  home.sessionVariables.GTK_THEME = "marwaita-pop_os";
 
+  home.sessionVariables.GTK_THEME = "marwaita-pop_os";
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
@@ -25,27 +24,26 @@
 
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "appmenu:minimize,maximize,close";
+      num-workspaces = 3;
     };
 
     "org/gnome/desktop/wm/keybindings" = {
-      activate-window-menu = "disabled";
-      maximize = "disabled";
+      maximize = [ "<Super>semicolon" ];
       minimize = [ "<Super>comma" ];
-      move-to-monitor-down = "disabled";
-      move-to-monitor-left = "disabled";
-      move-to-monitor-right = "disabled";
-      move-to-monitor-up = "disabled";
-      move-to-workspace-down = "disabled";
-      move-to-workspace-up = "disabled";
-      unmaximize = "disabled";
-      toggle-tiled-left = "disabled";
-      toggle-tiled-right = "disabled";
-    };
+      unmaximise = [ ];
+      toggle-fullscreen = [ "F11" ];
+      move-to-workspace-left = [ "<Control><Super>Left" ];
+      move-to-workspace-right = [ "<Control><Super>Right" ];
 
+    };
+    "org/gnome/mutter/keybindings" = {
+      "toggle-tiled-left" = [ ];
+      "toggle-tiled-right" = [ ];
+    };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
       ];
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
@@ -59,7 +57,6 @@
       command = "kitty";
       binding = "<Super>t";
     };
-
 
     "org/gnome/shell" = {
       disabled-extensions = [
@@ -77,8 +74,6 @@
         "workspace-indicator@gnome-shell-extensions.gcampax.github.com"
         "alttab-mod@leleat-on-github"
       ];
-
-
     };
 
     "org/gnome/shell/extensions/pop-shell" = {
@@ -93,6 +88,7 @@
       calendar = false;
       events-button = false;
     };
+
     "org/gnome/shell/extensions/clipboard-indicator" = { history-size = 100; };
 
     "org/gnome/shell/extensions/vitals" = { hot-sensors = "['_memory_usage_', '__network-rx_max__', '_processor_usage_']"; };
@@ -114,6 +110,6 @@
     gnomeExtensions.vitals
     gnomeExtensions.workspace-indicator
     gnomeExtensions.alttab-mod
-
   ];
 }
+
