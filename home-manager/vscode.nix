@@ -21,6 +21,8 @@
       "editor.tabSize" = 4;
       "editor.insertSpaces" = true;
       "editor.detectIndentation" = false;
+      "editor.fontLigatures" = true;
+      "editor.fontFamily" = "Fira Code";
       "workbench.colorTheme" = "Default Light+";
       "workbench.iconTheme" = "ayu";
       "nix.enableLanguageServer" = true;
