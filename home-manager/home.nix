@@ -32,6 +32,7 @@
       flameshot
       python311Packages.nix-prefetch-github
       libnotify
+      direnv
     ];
   };
   programs.home-manager.enable = true;
