@@ -6,6 +6,7 @@
     ./firefox.nix
     ./direnv.nix
     ./git.nix
+    ./kitty.nix
   ];
 
   nixpkgs = {
@@ -29,6 +30,7 @@
       discord
       python311Packages.nix-prefetch-github
       exa
+      bat
     ];
   };
   programs.home-manager.enable = true;

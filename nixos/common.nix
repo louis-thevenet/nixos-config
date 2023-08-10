@@ -102,7 +102,6 @@
   system.stateVersion = "23.05";
 
   environment.systemPackages = with pkgs; [
-    kitty
     vim
   ];
 
