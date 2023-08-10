@@ -8,9 +8,12 @@
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs: {
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
     nixosConfigurations = {
       louisdesktop = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+        specialArgs = {
+          inherit inputs;
+        };
         modules = [ ./nixos/configuration-desktop.nix ];
       };
 

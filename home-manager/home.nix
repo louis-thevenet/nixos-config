@@ -24,11 +24,8 @@
       nixpkgs-fmt
       neofetch
       whatsapp-for-linux
-      dotnet-sdk_7
-      libgccjit
       spotify
       discord
-      flameshot
       python311Packages.nix-prefetch-github
     ];
   };
