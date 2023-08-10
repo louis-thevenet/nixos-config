@@ -58,6 +58,8 @@
       binding = "<Super>t";
     };
 
+    "org/gnome/settings-daemon/plugins/power" = { idle-dim = false; };
+
     "org/gnome/shell" = {
       disabled-extensions = [
         "native-window-placement@gnome-shell-extensions.gcampax.github.com"
