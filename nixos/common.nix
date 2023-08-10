@@ -38,8 +38,6 @@
   programs.zsh.enable = true;
   users.users.louis.shell = pkgs.zsh;
 
-
-
   time.timeZone = "Europe/Paris";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
@@ -103,12 +101,9 @@
 
   system.stateVersion = "23.05";
 
-
   environment.systemPackages = with pkgs; [
-    tree
-    vim
-    git
     kitty
+    vim
   ];
 
   services.blueman.enable = true;

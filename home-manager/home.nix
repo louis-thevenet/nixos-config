@@ -5,6 +5,7 @@
     ./gnome.nix
     ./firefox.nix
     ./direnv.nix
+    ./git.nix
   ];
 
   nixpkgs = {
@@ -27,6 +28,7 @@
       spotify
       discord
       python311Packages.nix-prefetch-github
+      exa
     ];
   };
   programs.home-manager.enable = true;
