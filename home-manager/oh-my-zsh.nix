@@ -1,6 +1,9 @@
 { config, pkgs, ... }: {
   programs.zsh = {
     enable = true;
+
+    completionInit = "eval $\"(direnv hook zsh)\"";
+
     shellAliases = {
       update = "sudo nixos-rebuild --flake .#louis switch";
     };
