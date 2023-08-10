@@ -4,6 +4,7 @@
     ./oh-my-zsh.nix
     ./gnome.nix
     ./firefox.nix
+    ./direnv.nix
   ];
 
   nixpkgs = {
@@ -29,8 +30,6 @@
       discord
       flameshot
       python311Packages.nix-prefetch-github
-
-      direnv
     ];
   };
   programs.home-manager.enable = true;
