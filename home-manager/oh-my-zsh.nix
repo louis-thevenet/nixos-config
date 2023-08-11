@@ -2,7 +2,12 @@
   programs.zsh = {
     enable = true;
     shellAliases = {
-      update = "sudo nixos-rebuild --flake .#louis switch";
+      update-d = "sudo nixos-rebuild --flake .#louisdesktop switch";
+      update-l = "sudo nixos-rebuild --flake .#louislaptop switch";
+
+      exa-l = "exa -l --header -b";
+
+
     };
     enableAutosuggestions = true;
     enableCompletion = true;
