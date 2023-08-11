@@ -6,9 +6,6 @@
     enableUpdateCheck = false;
     mutableExtensionsDir = false;
     extensions = with pkgs.vscode-extensions; [
-      matklad.rust-analyzer
-      ms-dotnettools.csharp
-      rust-lang.rust-analyzer
       ms-vscode.cpptools
       jnoortheen.nix-ide
       arrterian.nix-env-selector
