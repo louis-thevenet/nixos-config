@@ -31,6 +31,12 @@
       python311Packages.nix-prefetch-github
       exa
       bat
+      du-dust
+      git-open
+      jrnl
+      navi
+      noti
+      tokei
     ];
   };
   programs.home-manager.enable = true;
