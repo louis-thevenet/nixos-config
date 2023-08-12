@@ -30,6 +30,7 @@
           "formatting" = { "command" = [ "nixpkgs-fmt" ]; };
         };
       };
+      "git.confirmSync" = false;
     };
   };
 }
