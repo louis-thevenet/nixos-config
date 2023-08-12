@@ -30,7 +30,6 @@
           "formatting" = { "command" = [ "nixpkgs-fmt" ]; };
         };
       };
-      "git.enableCommitSigning" = true;
     };
   };
 }
