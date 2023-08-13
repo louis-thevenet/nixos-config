@@ -22,13 +22,10 @@
     username = "louis";
     homeDirectory = "/home/louis";
     packages = with pkgs; [
-      nil
-      nixpkgs-fmt
       neofetch
       whatsapp-for-linux
       spotify
       discord
-      python311Packages.nix-prefetch-github
       exa
       bat
       du-dust
