@@ -2,8 +2,8 @@
   programs.zsh = {
     enable = true;
     shellAliases = {
-      n-update-d = "sudo nixos-rebuild --flake .#louisdesktop switch";
-      n-update-l = "sudo nixos-rebuild --flake .#louislaptop switch";
+      update-desktop = "sudo nixos-rebuild --flake .#louisdesktop switch";
+      update-laptop = "sudo nixos-rebuild --flake .#louislaptop switch";
       home-update = "home-manager --flake .#louis@nixos switch";
 
       exa-l = "exa -l --header -b";
