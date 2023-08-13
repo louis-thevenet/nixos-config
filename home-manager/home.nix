@@ -37,6 +37,7 @@
       navi
       noti
       tokei
+      obsidian
     ];
   };
   programs.home-manager.enable = true;
