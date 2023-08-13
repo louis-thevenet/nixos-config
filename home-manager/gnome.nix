@@ -91,6 +91,7 @@
       app-menu = false;
       calendar = false;
       events-button = false;
+      startup-status = 0;
     };
 
     "org/gnome/shell/extensions/clipboard-indicator" = { history-size = 100; };
