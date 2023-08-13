@@ -4,11 +4,11 @@
     package = pkgs.vscodium;
     enableExtensionUpdateCheck = false;
     enableUpdateCheck = false;
-    mutableExtensionsDir = false;
     extensions = with pkgs.vscode-extensions; [
-      ms-vscode.cpptools
-      jnoortheen.nix-ide
       arrterian.nix-env-selector
+      jnoortheen.nix-ide
+      ms-vscode.cpptools
+      ms-dotnettools.csharp
     ];
 
     userSettings = {
@@ -22,6 +22,9 @@
       "editor.fontFamily" = "Fira Code";
       "workbench.colorTheme" = "Default Light+";
       "workbench.iconTheme" = "ayu";
+
+      "git.confirmSync" = false;
+
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";
       "nix.formatterPath" = "nixpkgs-fmt";
@@ -30,7 +33,6 @@
           "formatting" = { "command" = [ "nixpkgs-fmt" ]; };
         };
       };
-      "git.confirmSync" = false;
     };
   };
 }

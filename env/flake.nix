@@ -15,7 +15,6 @@
         default = pkgs.mkShell {
           packages = with pkgs; [
             nixpkgs-fmt
-            nil
             python311Packages.nix-prefetch-github
           ];
         };

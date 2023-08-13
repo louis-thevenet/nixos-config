@@ -35,6 +35,8 @@
       noti
       tokei
       obsidian
+
+      nil # nix lsp
     ];
   };
   programs.home-manager.enable = true;
