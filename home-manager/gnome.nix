@@ -30,7 +30,7 @@
     "org/gnome/desktop/wm/keybindings" = {
       maximize = [ "<Super>semicolon" ];
       minimize = [ "<Super>comma" ];
-      unmaximise = [ ];
+      unmaximize = [ ];
       toggle-fullscreen = [ "F11" ];
       move-to-workspace-left = [ "<Control><Super>Left" ];
       move-to-workspace-right = [ "<Control><Super>Right" ];
