@@ -84,6 +84,7 @@
       focus-right = "disabled";
       tile-by-default = true;
       tile-enter = "disabled";
+      active-hint = true;
     };
 
     "org/gnome/shell/extensions/just-perfection" = {
