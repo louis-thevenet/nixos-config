@@ -22,6 +22,8 @@
       show-battery-percentage = true;
     };
 
+    "org/gnome/desktop/peripherals/mouse" = { accel-profile = "flat"; };
+
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "appmenu:minimize,maximize,close";
       num-workspaces = 3;
