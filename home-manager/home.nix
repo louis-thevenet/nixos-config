@@ -34,9 +34,8 @@
       navi
       noti
       tokei
-      obsidian
-
-      nil # nix lsp
+      anytype
+      nil
     ];
   };
   programs.home-manager.enable = true;
