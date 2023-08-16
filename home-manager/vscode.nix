@@ -9,7 +9,9 @@
       jnoortheen.nix-ide
       ms-vscode.cpptools
       ms-dotnettools.csharp
+      ms-python.python
       ms-vscode.cmake-tools
+      sumneko.lua
     ];
 
     userSettings = {
@@ -25,7 +27,7 @@
       "workbench.iconTheme" = "ayu";
 
       "git.confirmSync" = false;
-"cmake.configureOnOpen"= true;
+      "cmake.configureOnOpen" = true;
 
 
       "nix.enableLanguageServer" = true;
