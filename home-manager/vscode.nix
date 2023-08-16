@@ -9,6 +9,7 @@
       jnoortheen.nix-ide
       ms-vscode.cpptools
       ms-dotnettools.csharp
+      ms-vscode.cmake-tools
     ];
 
     userSettings = {
@@ -24,6 +25,8 @@
       "workbench.iconTheme" = "ayu";
 
       "git.confirmSync" = false;
+"cmake.configureOnOpen"= true;
+
 
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";
