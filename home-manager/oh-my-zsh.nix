@@ -6,7 +6,7 @@
       update-laptop = "sudo nixos-rebuild --flake .#louislaptop switch";
       home-update = "home-manager --flake .#louis@nixos switch";
 
-      exa-l = "exa -l --header -b";
+      lx = "exa -l --header -b";
 
 
     };
