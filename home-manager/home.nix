@@ -22,20 +22,34 @@
     username = "louis";
     homeDirectory = "/home/louis";
     packages = with pkgs; [
-      neofetch
       whatsapp-for-linux
-      spotify
       discord
+      spotify
+
+      neofetch
       exa
       bat
+      trash-cli
       du-dust
       git-open
-      jrnl
-      navi
+
       noti
       tokei
       anytype
+
+      cmake
+
+      # nix
       nil
+      nixpkgs-fmt
+      python311Packages.nix-prefetch-github
+
+      # C
+      gcc
+      clang-tools
+      valgrind
+      gdb
+      hyperfine
     ];
   };
   programs.home-manager.enable = true;
