@@ -26,17 +26,17 @@
         file = "command-time.plugin.zsh";
       }
 
-      # {
-      #   name = "zsh-notify";
-      #   src = pkgs.fetchFromGitHub
-      #     {
-      #       owner = "marzocchi";
-      #       repo = "zsh-notify";
-      #       rev = "9c1dac81a48ec85d742ebf236172b4d92aab2f3f";
-      #       hash = "sha256-ovmnl+V1B7J/yav0ep4qVqlZOD3Ex8sfrkC92dXPLFI=";
-      #     };
-      #   file = "notify.plugin.zsh";
-      # }
+      {
+        name = "zsh-airpods-battery";
+        src = pkgs.fetchFromGitHub
+          {
+            owner = "A-delta";
+            repo = "zsh-airpods-battery";
+            rev = "351458cbe2f85302b7917b71083f299c5de123a9";
+            sha256 = "GCosmN1HE8f/D6/Vh4Ritq8NcQ4Uetf5qRxzyO3l8W0=";
+          };
+        file = "airpods-battery.plugin.zsh";
+      }
     ];
 
     oh-my-zsh = {
