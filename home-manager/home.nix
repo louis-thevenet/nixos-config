@@ -50,12 +50,6 @@
       valgrind
       gdb
       hyperfine
-
-      # python
-
-      (python310.withPackages (ps: with ps; [ bleak pybluez]))
-
-	lua
     ];
   };
   programs.home-manager.enable = true;
