@@ -1,4 +1,5 @@
 { inputs, lib, config, pkgs, ... }: {
+  imports = [ ./services/airpods-battery-fetcher.nix ];
   nixpkgs = {
     overlays = [ ];
     config = {
@@ -96,18 +97,14 @@
 
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
 
   system.stateVersion = "23.05";
 
-  environment.systemPackages = with pkgs; [
-    vim
-  ];
+  environment.systemPackages = with pkgs; [ vim ];
 
   services.blueman.enable = true;
 
-  users.users.louis.packages = with pkgs; [
+  users.users.louis.packages = with pkgs; [ ];
 
-  ];
 }
