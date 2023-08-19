@@ -22,22 +22,23 @@
     username = "louis";
     homeDirectory = "/home/louis";
     packages = with pkgs; [
+      # GUI
       whatsapp-for-linux
       discord
       spotify
+      anytype
 
+      # CLI
       neofetch
       exa
       bat
       trash-cli
       du-dust
       git-open
+      neovim
 
       noti
       tokei
-      anytype
-
-      cmake
 
       # nix
       nil
@@ -45,11 +46,15 @@
       python311Packages.nix-prefetch-github
 
       # C
+      cmake
       gcc
       clang-tools
       valgrind
       gdb
       hyperfine
+
+      # python
+      (python310.withPackages (ps: with ps; [ bleak pyusb ]))
     ];
   };
   programs.home-manager.enable = true;

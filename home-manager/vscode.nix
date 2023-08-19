@@ -7,11 +7,13 @@
     extensions = with pkgs.vscode-extensions; [
       arrterian.nix-env-selector
       jnoortheen.nix-ide
+
       ms-vscode.cpptools
       ms-dotnettools.csharp
       ms-python.python
       ms-vscode.cmake-tools
-      sumneko.lua
+
+      asvetliakov.vscode-neovim
     ];
 
     userSettings = {
@@ -28,7 +30,6 @@
 
       "git.confirmSync" = false;
       "cmake.configureOnOpen" = true;
-
 
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";
