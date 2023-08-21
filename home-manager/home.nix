@@ -27,6 +27,7 @@
       discord
       spotify
       anytype
+      bitwarden
 
       # CLI
       neofetch
@@ -35,7 +36,6 @@
       trash-cli
       du-dust
       git-open
-      neovim
 
       noti
       tokei
