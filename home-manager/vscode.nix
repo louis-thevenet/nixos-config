@@ -12,8 +12,6 @@
       ms-dotnettools.csharp
       ms-python.python
       ms-vscode.cmake-tools
-
-      asvetliakov.vscode-neovim
     ];
 
     userSettings = {
@@ -25,7 +23,8 @@
       "editor.detectIndentation" = false;
       "editor.fontLigatures" = true;
       "editor.fontFamily" = "Fira Code";
-      "workbench.colorTheme" = "Default Light+";
+      "workbench.colorTheme" = "Solarized Light";
+
       "workbench.iconTheme" = "ayu";
 
       "git.confirmSync" = false;
