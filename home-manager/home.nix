@@ -1,6 +1,7 @@
 { inputs, lib, config, pkgs, ... }: {
   imports = [
     ./vscode.nix
+    ./neovim.nix
     ./oh-my-zsh.nix
     ./gnome.nix
     ./firefox.nix
@@ -24,11 +25,12 @@
     packages = with pkgs; [
       # GUI
       whatsapp-for-linux
-      discord
       spotify
       anytype
       bitwarden
 
+      discord
+      betterdiscordctl
       # CLI
       neofetch
       exa
@@ -36,6 +38,7 @@
       trash-cli
       du-dust
       git-open
+      screen
 
       noti
       tokei
