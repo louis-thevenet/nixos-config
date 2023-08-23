@@ -32,8 +32,8 @@
           {
             owner = "A-delta";
             repo = "zsh-airpods-battery";
-            rev = "351458cbe2f85302b7917b71083f299c5de123a9";
-            sha256 = "GCosmN1HE8f/D6/Vh4Ritq8NcQ4Uetf5qRxzyO3l8W0=";
+            rev = "46edc4b782d9b5a2a29f30a64aa22e2da1305f5e";
+            sha256 = "TORbJOSFGk2/9Fj798E+eGnkucfr/btuellFhkzpf/8=";
           };
         file = "airpods-battery.plugin.zsh";
       }
