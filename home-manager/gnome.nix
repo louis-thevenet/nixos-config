@@ -73,12 +73,13 @@
         "caffeine@patapon.info"
         "just-perfection-desktop@just-perfection"
         "clipboard-indicator@tudmotu.com"
-        "mediacontrols@cliffniff.github.com"
-        "Vitals@CoreCoding.com"
+        #"mediacontrols@cliffniff.github.com"
+        #"Vitals@CoreCoding.com"
         "workspace-indicator@gnome-shell-extensions.gcampax.github.com"
         "alttab-mod@leleat-on-github"
         "upower-battery@codilia.com"
         "batterytime@typeof.pw"
+        "hidetopbar@mathieu.bidon.ca"
       ];
     };
 
@@ -97,6 +98,9 @@
       startup-status = 0;
     };
 
+    "org/gnome/shell/extensions/hidetopbar" = { mouse-sensitive = true; };
+
+
     "org/gnome/shell/extensions/clipboard-indicator" = { history-size = 100; };
 
     "org/gnome/shell/extensions/vitals" = { hot-sensors = "['_memory_usage_', '__network-rx_max__', '_processor_usage_']"; };
@@ -114,12 +118,13 @@
     gnomeExtensions.caffeine
     gnomeExtensions.just-perfection
     gnomeExtensions.clipboard-indicator
-    gnomeExtensions.media-controls
-    gnomeExtensions.vitals
+    #gnomeExtensions.media-controls
+    #gnomeExtensions.vitals
     gnomeExtensions.workspace-indicator
     gnomeExtensions.alttab-mod
     gnomeExtensions.upower-battery
     gnomeExtensions.battery-time-2
+    gnomeExtensions.hide-top-bar
   ];
 }
 
