@@ -42,7 +42,7 @@
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" "history" "vscode" ];
-      theme = "robbyrussell";
+      theme = "amuse";
     };
   };
 }
