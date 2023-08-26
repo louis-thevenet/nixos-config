@@ -74,7 +74,7 @@
         "just-perfection-desktop@just-perfection"
         "clipboard-indicator@tudmotu.com"
         #"mediacontrols@cliffniff.github.com"
-        #"Vitals@CoreCoding.com"
+        "Vitals@CoreCoding.com"
         "workspace-indicator@gnome-shell-extensions.gcampax.github.com"
         "alttab-mod@leleat-on-github"
         "upower-battery@codilia.com"
@@ -119,7 +119,7 @@
     gnomeExtensions.just-perfection
     gnomeExtensions.clipboard-indicator
     #gnomeExtensions.media-controls
-    #gnomeExtensions.vitals
+    gnomeExtensions.vitals
     gnomeExtensions.workspace-indicator
     gnomeExtensions.alttab-mod
     gnomeExtensions.upower-battery
