@@ -1,4 +1,10 @@
-{ inputs, lib, config, pkgs, ... }: {
+{
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./vscode.nix
     ./neovim.nix
@@ -11,11 +17,11 @@
   ];
 
   nixpkgs = {
-    overlays = [ ];
+    overlays = [];
 
     config = {
       allowUnfree = true;
-      allowUnfreePredicate = (_: true);
+      allowUnfreePredicate = _: true;
     };
   };
 
@@ -45,7 +51,7 @@
 
       # nix
       nil
-      nixpkgs-fmt
+      alejandra
       python311Packages.nix-prefetch-github
 
       # C
@@ -57,12 +63,11 @@
       hyperfine
 
       # python
-      (python310.withPackages (ps: with ps; [ bleak pyusb ]))
+      (python310.withPackages (ps: with ps; [bleak pyusb]))
     ];
   };
   programs.home-manager.enable = true;
   programs.git.enable = true;
-
 
   home.stateVersion = "23.05";
 }
