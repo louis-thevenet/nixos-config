@@ -34,8 +34,9 @@
       spotify
       anytype
       bitwarden
-
+      tor-browser-bundle-bin
       discord
+      libsForQt5.okular
       betterdiscordctl
       # CLI
       neofetch
