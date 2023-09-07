@@ -1,4 +1,8 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
@@ -7,35 +11,65 @@
     extensions = with pkgs.vscode-extensions; [
       arrterian.nix-env-selector
       jnoortheen.nix-ide
-
       ms-vscode.cpptools
       ms-dotnettools.csharp
       ms-python.python
       ms-vscode.cmake-tools
     ];
+    keybindings = [
+      {
+        key = "";
+        command = "workbench.view.extensions";
+      }
 
+      {
+        key = "ctrl+shift+x";
+        command = "workbench.action.terminal.toggleTerminal";
+      }
+    ];
     userSettings = {
-      "editor.formatOnSave" = true;
-      "editor.indent_style" = "space";
-      "editor.indentSize" = 4;
-      "editor.tabSize" = 4;
-      "editor.insertSpaces" = true;
-      "editor.detectIndentation" = false;
-      "editor.fontLigatures" = true;
-      "editor.fontFamily" = "Fira Code";
-      "workbench.colorTheme" = "Solarized Light";
+      cmake = {
+        configureOnOpen = true;
+      };
+      editor = {
+        formatOnSave = true;
 
-      "workbench.iconTheme" = "ayu";
+        # Indent
+        detectIndentation = false;
+        indent_style = "space";
+        indentSize = 4;
+        insertSpaces = true;
+        tabSize = 4;
 
-      "git.confirmSync" = false;
-      "cmake.configureOnOpen" = true;
+        inlineSuggest.enabled = true;
 
-      "nix.enableLanguageServer" = true;
-      "nix.serverPath" = "nil";
-      "nix.formatterPath" = "nixpkgs-fmt";
-      "nix.serverSettings" = {
-        "nil" = {
-          "formatting" = { "command" = [ "nixpkgs-fmt" ]; };
+        # Font
+        fontLigatures = true;
+        fontFamily = "Fira Code";
+      };
+      explorer = {
+        confirmDragAndDrop = false;
+      };
+      files = {
+        insertFinalNewLine = true;
+        trimTrailingWhitespace = true;
+      };
+      git = {
+        autofetch = true;
+        confirmSync = false;
+      };
+      workbench = {
+        colorTheme = "Solarized Light";
+        iconTheme = "ayu";
+      };
+      nix = {
+        enableLanguageServer = true;
+        serverPath = "${pkgs.nil}/bin/nil";
+        formatterPath = "${pkgs.alejandra}/bin/alejandra";
+        serverSettings = {
+          nil = {
+            formatting = {command = ["alejandra"];};
+          };
         };
       };
     };
