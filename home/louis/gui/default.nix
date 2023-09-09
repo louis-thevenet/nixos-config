@@ -7,7 +7,6 @@
 }: {
   imports = [
     ./vscode.nix
-    ./gnome.nix
     ./firefox.nix
     ./kitty.nix
   ];

@@ -8,6 +8,7 @@
 
     ../common/global
     ../common/users/louis
+    ../optional/gnome.nix
   ];
 
   networking.hostName = "magnus";

@@ -10,5 +10,6 @@
     ./gui
     ./cli
     ./dev
+    ./optional/gnome.nix
   ];
 }
