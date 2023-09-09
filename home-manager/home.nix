@@ -57,7 +57,7 @@
 
       # C
       cmake
-      gcc
+      gnat13
       clang-tools
       valgrind
       gdb
