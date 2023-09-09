@@ -5,19 +5,6 @@
   pkgs,
   ...
 }: {
-  services = {
-    xserver = {
-      enable = true;
-      layout = "fr";
-      desktopManager.gnome = {
-        enable = true;
-      };
-      displayManager.gdm = {
-        enable = true;
-      };
-    };
-  };
-
   environment.gnome.excludePackages =
     (with pkgs; [
       gnome-photos
