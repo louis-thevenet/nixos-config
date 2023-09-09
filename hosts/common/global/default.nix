@@ -5,7 +5,11 @@
   pkgs,
   ...
 }: {
-  imports = [./services/airpods-battery-fetcher.nix];
+  imports = [
+    ./locale.nix
+    ./nix.nix
+    ./services/airpods-battery-fetcher.nix
+  ];
   nixpkgs = {
     overlays = [];
     config = {
@@ -13,43 +17,11 @@
     };
   };
 
-  nix = {
-    registry = lib.mapAttrs (_: value: {flake = value;}) inputs;
-
-    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
-
-    settings = {
-      experimental-features = "nix-command flakes";
-      auto-optimise-store = true;
-    };
-  };
-
-  # Automatic Garbage Collection
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
-  };
-
   networking.networkmanager.enable = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   programs.zsh.enable = true;
-
-  time.timeZone = "Europe/Paris";
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "fr_FR.UTF-8";
-    LC_IDENTIFICATION = "fr_FR.UTF-8";
-    LC_MEASUREMENT = "fr_FR.UTF-8";
-    LC_MONETARY = "fr_FR.UTF-8";
-    LC_NAME = "fr_FR.UTF-8";
-    LC_NUMERIC = "fr_FR.UTF-8";
-    LC_PAPER = "fr_FR.UTF-8";
-    LC_TELEPHONE = "fr_FR.UTF-8";
-    LC_TIME = "fr_FR.UTF-8";
-  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -85,6 +57,7 @@
   };
   console.keyMap = "fr";
   services.printing.enable = true;
+
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -97,9 +70,8 @@
 
   services.xserver.libinput.enable = true;
 
-  system.stateVersion = "23.05";
-
   environment.systemPackages = with pkgs; [vim];
-
   services.blueman.enable = true;
+
+  system.stateVersion = "23.05";
 }

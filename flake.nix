@@ -22,7 +22,6 @@
         };
         modules = [./hosts/magnus];
       };
-
       hircine = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [./hosts/hircine];
