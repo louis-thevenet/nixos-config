@@ -9,6 +9,5 @@
     ./global
     ./gui
     ./cli
-    ./dev
   ];
 }
