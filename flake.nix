@@ -3,31 +3,42 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs: {
+  outputs = {
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
     nixosConfigurations = {
-      louisdesktop = nixpkgs.lib.nixosSystem {
+      magnus = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
         };
-        modules = [ ./nixos/configuration-desktop.nix ];
+        modules = [./hosts/magnus];
       };
 
-      louislaptop = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [ ./nixos/configuration-laptop.nix ];
+      hircine = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [./hosts/hircine];
       };
     };
 
     homeConfigurations = {
-      "louis@nixos" = home-manager.lib.homeManagerConfiguration {
+      "louis@magnus" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = { inherit inputs; };
-        modules = [ ./home-manager/home.nix ];
+        extraSpecialArgs = {inherit inputs;};
+        modules = [./home/louis/magnus.nix];
+      };
+      "louis@hircine" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = {inherit inputs;};
+        modules = [./home/louis/hircine.nix];
       };
     };
   };

@@ -6,14 +6,14 @@
   ...
 }: {
   imports = [
-    ./vscode.nix
-    ./neovim.nix
-    ./oh-my-zsh.nix
-    ./gnome.nix
-    ./firefox.nix
-    ./direnv.nix
-    ./git.nix
-    ./kitty.nix
+    ./features/vscode.nix
+    ./features/neovim.nix
+    ./features/oh-my-zsh.nix
+    ./features/gnome.nix
+    ./features/firefox.nix
+    ./features/direnv.nix
+    ./features/git.nix
+    ./features/kitty.nix
   ];
 
   nixpkgs = {

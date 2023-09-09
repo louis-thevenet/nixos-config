@@ -1,14 +1,20 @@
-{ inputs, lib, config, pkgs, ... }: {
-  imports = [ ./services/airpods-battery-fetcher.nix ];
+{
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [./services/airpods-battery-fetcher.nix];
   nixpkgs = {
-    overlays = [ ];
+    overlays = [];
     config = {
       allowUnfree = true;
     };
   };
 
   nix = {
-    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+    registry = lib.mapAttrs (_: value: {flake = value;}) inputs;
 
     nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
 
@@ -25,19 +31,11 @@
     options = "--delete-older-than 7d";
   };
 
-  networking.hostName = "nixos";
   networking.networkmanager.enable = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  users.users.louis = {
-    isNormalUser = true;
-    description = "louis thevenet";
-    extraGroups = [ "networkmanager" "wheel" ];
-  };
-
   programs.zsh.enable = true;
-  users.users.louis.shell = pkgs.zsh;
 
   time.timeZone = "Europe/Paris";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -60,25 +58,26 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-photos
-    gnome-tour
-  ]) ++ (with pkgs.gnome; [
-    cheese # webcam tool
-    gnome-music
-    gedit # text editor
-    epiphany # web browser
-    geary # email reader
-    gnome-characters
-    tali # poker game
-    iagno # go game
-    hitori # sudoku game
-    atomix # puzzle game
-    yelp # Help view
-    gnome-contacts
-    gnome-initial-setup
-  ]);
-
+  environment.gnome.excludePackages =
+    (with pkgs; [
+      gnome-photos
+      gnome-tour
+    ])
+    ++ (with pkgs.gnome; [
+      cheese # webcam tool
+      gnome-music
+      gedit # text editor
+      epiphany # web browser
+      geary # email reader
+      gnome-characters
+      tali # poker game
+      iagno # go game
+      hitori # sudoku game
+      atomix # puzzle game
+      yelp # Help view
+      gnome-contacts
+      gnome-initial-setup
+    ]);
 
   services.xserver = {
     layout = "fr";
@@ -94,17 +93,13 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-
   };
 
   services.xserver.libinput.enable = true;
 
   system.stateVersion = "23.05";
 
-  environment.systemPackages = with pkgs; [ vim ];
+  environment.systemPackages = with pkgs; [vim];
 
   services.blueman.enable = true;
-
-  users.users.louis.packages = with pkgs; [ ];
-
 }
