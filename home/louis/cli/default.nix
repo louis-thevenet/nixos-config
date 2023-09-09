@@ -16,5 +16,6 @@
     tmux
     noti
     tokei
+    vpnc
   ];
 }

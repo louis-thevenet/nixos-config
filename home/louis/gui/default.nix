@@ -20,5 +20,6 @@
     tor-browser-bundle-bin
     libsForQt5.okular
     betterdiscordctl
+    x2goclient
   ];
 }
