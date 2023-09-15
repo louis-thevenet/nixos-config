@@ -43,8 +43,7 @@
       desktopManager.gnome = {
         enable = true;
       };
-      displayManager.sddm = {
-        # old=gdm
+      displayManager.gdm = {
         enable = true;
       };
     };

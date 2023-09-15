@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{pkgs, ...}: {
   programs.zsh = {
     enable = true;
     shellAliases = {
@@ -7,8 +7,6 @@
       home-update = "home-manager --flake .#louis@nixos switch";
 
       lx = "exa -l --header -b";
-
-
     };
     enableAutosuggestions = true;
     enableCompletion = true;
@@ -16,7 +14,8 @@
     plugins = [
       {
         name = "zsh-command-time";
-        src = pkgs.fetchFromGitHub
+        src =
+          pkgs.fetchFromGitHub
           {
             owner = "popstas";
             repo = "zsh-command-time";
@@ -28,7 +27,8 @@
 
       {
         name = "zsh-airpods-battery";
-        src = pkgs.fetchFromGitHub
+        src =
+          pkgs.fetchFromGitHub
           {
             owner = "A-delta";
             repo = "zsh-airpods-battery";
@@ -41,10 +41,8 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "history" "vscode" ];
+      plugins = ["git" "history" "vscode"];
       theme = "amuse";
     };
   };
 }
-
-
