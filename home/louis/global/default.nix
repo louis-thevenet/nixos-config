@@ -6,8 +6,6 @@
   ...
 }: {
   imports = [
-    ./config.nix
-
     ./direnv.nix
     ./git.nix
     ./neovim.nix

@@ -6,6 +6,8 @@
   ...
 }: {
   imports = [
+    ./home-manager.nix
+
     ./global
     ./gui
     ./cli
