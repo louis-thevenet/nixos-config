@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     neofetch
-    exa
+    eza
     bat
     trash-cli
     du-dust
