@@ -8,14 +8,24 @@
     package = pkgs.vscodium;
     enableExtensionUpdateCheck = false;
     enableUpdateCheck = false;
-    extensions = with pkgs.vscode-extensions; [
-      arrterian.nix-env-selector
-      jnoortheen.nix-ide
-      ms-vscode.cpptools
-      ms-dotnettools.csharp
-      ms-python.python
-      ms-vscode.cmake-tools
-    ];
+    extensions = with pkgs.vscode-extensions;
+      [
+        arrterian.nix-env-selector
+        jnoortheen.nix-ide
+        ms-vscode.cpptools
+        ms-dotnettools.csharp
+        ms-python.python
+        ms-vscode.cmake-tools
+      ]
+      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "ada";
+          publisher = "AdaCore";
+          version = "23.0.21";
+          sha256 = "4vEBF183X+w2zidSrnQlmUcDlXsUayhxCp1h+GikWIU=";
+        }
+      ];
+
     keybindings = [
       {
         key = "";
@@ -27,6 +37,7 @@
         command = "workbench.action.terminal.toggleTerminal";
       }
     ];
+
     userSettings = {
       cmake = {
         configureOnOpen = true;
