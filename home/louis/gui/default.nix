@@ -4,7 +4,6 @@
     ./kitty.nix
     ./social.nix
     ./utils.nix
-    ./vscode.nix
-    ./N7.nix
+    ./vscode.nixd
   ];
 }
