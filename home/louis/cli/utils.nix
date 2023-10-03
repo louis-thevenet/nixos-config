@@ -6,6 +6,7 @@
     trash-cli
     du-dust
     git-open
+    magic-wormhole
     screen
     tmux
     noti
