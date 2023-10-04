@@ -2,9 +2,10 @@
   programs.zsh = {
     enable = true;
     shellAliases = {
-      update-desktop = "sudo nixos-rebuild --flake .#louisdesktop switch";
-      update-laptop = "sudo nixos-rebuild --flake .#louislaptop switch";
-      home-update = "home-manager --flake .#louis@nixos switch";
+      sys-update-l = "sudo nixos-rebuild --flake .#hircine switch";
+      sys-update-d = "sudo nixos-rebuild --flake .#magnus switch";
+      home-update-d = "home-manager --flake .#louis@magnus switch";
+      home-update-l = "home-manager --flake .#louis@hircine switch";
 
       lx = "eza -l --header -b";
     };
