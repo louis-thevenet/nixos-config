@@ -7,7 +7,7 @@
       home-update-d = "home-manager --flake .#louis@magnus switch";
       home-update-l = "home-manager --flake .#louis@hircine switch";
 
-      lx = "eza -l --header -b";
+      lx = "eza --long --header --binary --git --no-permissions --no-user";
     };
     enableAutosuggestions = true;
     enableCompletion = true;
