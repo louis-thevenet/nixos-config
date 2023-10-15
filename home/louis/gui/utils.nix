@@ -6,5 +6,7 @@
     libsForQt5.okular
     tigervnc
     tor-browser-bundle-bin
+    onlyoffice-bin
+    filezilla
   ];
 }
