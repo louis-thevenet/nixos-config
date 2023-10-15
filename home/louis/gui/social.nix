@@ -4,5 +4,6 @@
     spotify
     discord
     betterdiscordctl
+    steam
   ];
 }
