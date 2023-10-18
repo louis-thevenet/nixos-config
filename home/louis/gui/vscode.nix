@@ -10,13 +10,14 @@
     enableUpdateCheck = false;
     extensions = with pkgs.vscode-extensions;
       [
-        arrterian.nix-env-selector
+        mkhl.direnv
         jnoortheen.nix-ide
         ms-vscode.cpptools
         ms-dotnettools.csharp
         ms-python.python
         ms-vscode.cmake-tools
         nvarner.typst-lsp
+        tomoki1207.pdf
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
@@ -84,6 +85,7 @@
           };
         };
       };
+      typst-lsp = {exportPdf = "onType";};
     };
   };
 }
