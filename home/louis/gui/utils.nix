@@ -8,6 +8,5 @@
     tor-browser-bundle-bin
     onlyoffice-bin
     filezilla
-    typst
   ];
 }
