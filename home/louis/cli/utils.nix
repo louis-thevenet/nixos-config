@@ -10,6 +10,7 @@
     screen
     tmux
     noti
+    todoist
     tokei
   ];
 }

@@ -16,6 +16,7 @@
         ms-dotnettools.csharp
         ms-python.python
         ms-vscode.cmake-tools
+        nvarner.typst-lsp
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
