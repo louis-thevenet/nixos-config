@@ -4,5 +4,6 @@
     ./nix.nix
     ./python.nix
     ./jetbrains.nix
+    ./typst.nix
   ];
 }
