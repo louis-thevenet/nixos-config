@@ -85,7 +85,10 @@
           };
         };
       };
-      typst-lsp = {exportPdf = "onType";};
+      typst-lsp = {
+        exportPdf = "onType";
+        experimentalFormatterMode = "on";
+      };
     };
   };
 }
