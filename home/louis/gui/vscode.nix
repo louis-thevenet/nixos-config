@@ -87,7 +87,6 @@
       };
       typst-lsp = {
         exportPdf = "onType";
-        experimentalFormatterMode = "on";
       };
     };
   };
