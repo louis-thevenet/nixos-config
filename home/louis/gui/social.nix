@@ -3,7 +3,7 @@
     whatsapp-for-linux
     spotify
     discord
-    betterdiscordctl
+    element-desktop
     steam
   ];
 }
