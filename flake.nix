@@ -7,14 +7,19 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    raspberry-pi-nix.url = "github:tstat/raspberry-pi-nix";
   };
 
   outputs = {
     nixpkgs,
     home-manager,
+    raspberry-pi-nix,
     ...
   } @ inputs: {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+    formatter.aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.nixpkgs-fmt;
+
     nixosConfigurations = {
       magnus = nixpkgs.lib.nixosSystem {
         specialArgs = {
@@ -27,9 +32,13 @@
         modules = [./hosts/hircine];
       };
 
-      raspi = nixpkgs.lib.nixosSystem {
+      raspberrypi = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
-        modules = [./hosts/raspi];
+        system = "aarch64-linux";
+        modules = [
+          raspberry-pi-nix.nixosModules.raspberry-pi
+          (import ./hosts/raspberrypi)
+        ];
       };
     };
 
@@ -45,10 +54,12 @@
         modules = [./home/louis/hircine.nix];
       };
 
-      "louis@raspi" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      "louis@raspberrypi" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.aarch64-linux;
         extraSpecialArgs = {inherit inputs;};
-        modules = [./home/louis/raspi.nix];
+        modules = [
+          ./home/louis/raspberrypi.nix
+        ];
       };
     };
   };
