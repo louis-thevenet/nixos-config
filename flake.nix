@@ -26,6 +26,11 @@
         specialArgs = {inherit inputs;};
         modules = [./hosts/hircine];
       };
+
+      raspi = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [./hosts/raspi];
+      };
     };
 
     homeConfigurations = {
@@ -38,6 +43,12 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs;};
         modules = [./home/louis/hircine.nix];
+      };
+
+      "louis@raspi" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = {inherit inputs;};
+        modules = [./home/louis/raspi.nix];
       };
     };
   };
