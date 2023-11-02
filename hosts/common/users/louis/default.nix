@@ -7,7 +7,6 @@
     isNormalUser = true;
     description = "louis thevenet";
     extraGroups = ["networkmanager" "wheel"];
+    shell = pkgs.zsh;
   };
-  users.users.louis.shell = pkgs.zsh;
-  users.users.louis.packages = with pkgs; [];
 }
