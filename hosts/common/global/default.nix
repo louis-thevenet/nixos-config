@@ -8,7 +8,6 @@
   imports = [
     ./locale.nix
     ./nix.nix
-    ./services/airpods-battery-fetcher.nix
   ];
   nixpkgs = {
     overlays = [];
