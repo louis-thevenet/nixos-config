@@ -12,6 +12,8 @@
   ];
 
   home.packages = with pkgs; [
-    matrix-synapse
+    docker-compose
+    docker
+    nginx
   ];
 }
