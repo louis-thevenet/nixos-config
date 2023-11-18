@@ -72,7 +72,7 @@
         confirmSync = false;
       };
       workbench = {
-        colorTheme = "Solarized Light";
+        colorTheme = "Github";
         iconTheme = "ayu";
       };
       nix = {
