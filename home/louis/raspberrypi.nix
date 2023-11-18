@@ -10,4 +10,8 @@
     ./global
     ./cli/utils.nix
   ];
+
+  home.packages = with pkgs; [
+    docker-compose
+  ];
 }
