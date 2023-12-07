@@ -18,6 +18,7 @@
         ms-vscode.cmake-tools
         nvarner.typst-lsp
         tomoki1207.pdf
+        github.copilot
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
