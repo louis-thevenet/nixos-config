@@ -80,9 +80,9 @@
         "Vitals@CoreCoding.com"
         "workspace-indicator@gnome-shell-extensions.gcampax.github.com"
         "alttab-mod@leleat-on-github"
-        "upower-battery@codilia.com"
         "batterytime@typeof.pw"
         "hidetopbar@mathieu.bidon.ca"
+        "no-titlebar-when-maximized@alec.ninja"
       ];
     };
 
@@ -91,6 +91,9 @@
       tile-by-default = true;
       tile-enter = "disabled";
       active-hint = true;
+      fullscreen-launcher = true;
+      gap-outer = 1;
+      gap-inner = 1;
     };
 
     "org/gnome/shell/extensions/just-perfection" = {
@@ -127,5 +130,6 @@
     gnomeExtensions.upower-battery
     gnomeExtensions.battery-time-2
     gnomeExtensions.hide-top-bar
+    gnomeExtensions.no-titlebar-when-maximized
   ];
 }
