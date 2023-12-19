@@ -81,8 +81,7 @@
         "workspace-indicator@gnome-shell-extensions.gcampax.github.com"
         "alttab-mod@leleat-on-github"
         "batterytime@typeof.pw"
-        "hidetopbar@mathieu.bidon.ca"
-        "no-titlebar-when-maximized@alec.ninja"
+        "gtktitlebar@velitasali.github.io"
       ];
     };
 
@@ -130,6 +129,6 @@
     gnomeExtensions.upower-battery
     gnomeExtensions.battery-time-2
     gnomeExtensions.hide-top-bar
-    gnomeExtensions.no-titlebar-when-maximized
+    gnomeExtensions.gtk-title-bar
   ];
 }
