@@ -12,5 +12,6 @@
     noti
     todoist
     tokei
+    ollama
   ];
 }
