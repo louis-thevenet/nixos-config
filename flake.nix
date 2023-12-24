@@ -7,6 +7,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     raspberry-pi-nix.url = "github:tstat/raspberry-pi-nix";
   };
@@ -14,6 +15,7 @@
   outputs = {
     nixpkgs,
     home-manager,
+    nixos-hardware,
     raspberry-pi-nix,
     ...
   } @ inputs: {
@@ -29,7 +31,11 @@
       };
       hircine = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
-        modules = [./hosts/hircine];
+        modules = [
+          ./hosts/hircine
+          nixos-hardware.nixosModules.lenovo-ideapad-15arh05
+          nixos-hardware.nixosModules.common-cpu-amd-pstate
+        ];
       };
 
       raspberrypi = nixpkgs.lib.nixosSystem {
