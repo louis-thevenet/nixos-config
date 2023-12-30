@@ -4,7 +4,8 @@
   ...
 }: {
   home.packages = with pkgs; [
-    jetbrains.clion
-    jetbrains.pycharm-professional
+    jetbrains.rust-rover
+    #jetbrains.clion
+    #jetbrains.pycharm-professional
   ];
 }
