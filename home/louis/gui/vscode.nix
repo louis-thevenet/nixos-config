@@ -24,6 +24,7 @@
         #ms-dotnettools.csharp
         #ms-python.python
         #ms-vscode.cmake-tools
+        rust-lang.rust-analyzer
         nvarner.typst-lsp
         tomoki1207.pdf
         github.copilot
