@@ -25,6 +25,7 @@
         #ms-python.python
         #ms-vscode.cmake-tools
         rust-lang.rust-analyzer
+        vadimcn.vscode-lldb
         nvarner.typst-lsp
         tomoki1207.pdf
         github.copilot

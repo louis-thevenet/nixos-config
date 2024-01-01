@@ -5,5 +5,6 @@
     ./python.nix
     ./jetbrains.nix
     ./typst.nix
+    ./rust.nix
   ];
 }
