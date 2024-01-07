@@ -8,6 +8,7 @@
       home-update-l = "home-manager --flake .#louis@hircine switch";
 
       lx = "eza --long --header --binary --git --no-permissions --no-user";
+      bat = "bat --theme=\"Solarized (light)\"";
     };
     enableAutosuggestions = true;
     enableCompletion = true;
