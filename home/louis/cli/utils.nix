@@ -13,5 +13,6 @@
     todoist
     tokei
     ollama
+    linuxKernel.packages.linux_6_1.perf
   ];
 }
