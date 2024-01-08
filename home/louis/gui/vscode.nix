@@ -5,7 +5,7 @@
 }: {
   programs.vscode = {
     enable = true;
-    package = (pkgs.vscode.override {isInsiders = true;}).overrideAttrs (oldAttrs: rec {
+    package = (pkgs.vscode.override {isInsiders = true;}).overrideAttrs (oldAttrs: {
       src = builtins.fetchTarball {
         url = "https://vscode.download.prss.microsoft.com/dbazure/download/insider/9621add46007f7a1ab37d1fce9bcdcecca62aeb0/code-insider-x64-1703050604.tar.gz";
         sha256 = "017630xgr64qjva73imb56fcqr858xfcsbdgq97akawlxf1ydm5a";
@@ -52,54 +52,38 @@
       }
     ];
 
-    userSettings = {
-      cmake = {
-        configureOnOpen = true;
-      };
-      editor = {
-        formatOnSave = true;
+    userSettings.cmake.configureOnOpen = true;
+    userSettings.editor.formatOnSave = true;
 
-        # Indent
-        detectIndentation = false;
-        indent_style = "space";
-        indentSize = 4;
-        insertSpaces = true;
-        tabSize = 4;
+    # Indent
+    userSettings.editor.detectIndentation = false;
+    userSettings.editor.indent_style = "space";
+    userSettings.editor.indentSize = 4;
+    userSettings.editor.insertSpaces = true;
+    userSettings.editor.tabSize = 4;
 
-        inlineSuggest.enabled = true;
+    userSettings.editor.inlineSuggest.enabled = true;
 
-        # Font
-        fontLigatures = true;
-        fontFamily = "Fira Code";
-      };
-      explorer = {
-        confirmDragAndDrop = false;
-      };
-      files = {
-        insertFinalNewLine = true;
-        trimTrailingWhitespace = true;
-      };
-      git = {
-        autofetch = true;
-        confirmSync = false;
-      };
-      workbench = {
-        colorTheme = "Github";
-        iconTheme = "ayu";
-      };
-      nix = {
-        enableLanguageServer = true;
-        serverPath = "${pkgs.nil}/bin/nil";
-        formatterPath = "${pkgs.alejandra}/bin/alejandra";
-        serverSettings = {
-          nil = {
-            formatting = {command = ["alejandra"];};
-          };
-        };
-      };
-      typst-lsp = {
-        exportPdf = "onType";
-      };
-    };
+    # Font
+    userSettings.editor.fontLigatures = true;
+    userSettings.editor.fontFamily = "Fira Code";
+
+    userSettings.explorer.confirmDragAndDrop = false;
+
+    userSettings.files.insertFinalNewLine = true;
+    userSettings.files.trimTrailingWhitespace = true;
+
+    userSettings.git.autofetch = true;
+    userSettings.git.confirmSync = false;
+
+    userSettings.workbench.colorTheme = "Github";
+    userSettings.workbench.iconTheme = "ayu";
+
+    userSettings.nix.enableLanguageServer = true;
+    userSettings.nix.serverPath = "${pkgs.nil}/bin/nil";
+    userSettings.nix.formatterPath = "${pkgs.alejandra}/bin/alejandra";
+    userSettings.nix.serverSettings.nil.formatting.command = ["alejandra"];
+
+    userSettings.typst-lsp.exportPdf = "onType";
   };
 }
