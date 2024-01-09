@@ -85,5 +85,6 @@
     userSettings.nix.serverSettings.nil.formatting.command = ["alejandra"];
 
     userSettings.typst-lsp.exportPdf = "onType";
+    userSettings.typst-lsp.experimentalFormatterMode = "on";
   };
 }
