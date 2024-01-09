@@ -17,6 +17,9 @@
     devShells = forEachSupportedSystem ({pkgs}: {
       default = pkgs.mkShell {
         packages = with pkgs; [
+          nil
+          alejandra
+          python311Packages.nix-prefetch-github
           home-manager
           nixos-generators
         ];
