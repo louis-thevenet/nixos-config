@@ -5,15 +5,7 @@
 }: {
   programs.vscode = {
     enable = true;
-    package = (pkgs.vscode.override {isInsiders = true;}).overrideAttrs (oldAttrs: {
-      src = builtins.fetchTarball {
-        url = "https://vscode.download.prss.microsoft.com/dbazure/download/insider/9621add46007f7a1ab37d1fce9bcdcecca62aeb0/code-insider-x64-1703050604.tar.gz";
-        sha256 = "017630xgr64qjva73imb56fcqr858xfcsbdgq97akawlxf1ydm5a";
-      };
-      version = "latest";
 
-      buildInputs = oldAttrs.buildInputs ++ [pkgs.krb5];
-    });
     enableExtensionUpdateCheck = false;
     enableUpdateCheck = false;
     extensions = with pkgs.vscode-extensions;
