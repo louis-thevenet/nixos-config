@@ -7,7 +7,7 @@
 }: {
   imports = [
     ./home-manager.nix
-
+    ./dev
     ./global
     ./gui
     ./cli
