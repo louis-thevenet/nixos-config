@@ -36,6 +36,14 @@
   # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;
 
+  hardware.nvidia = {
+    powerManagement = {
+      enable = true;
+      finegrained = true;
+    };
+    prime.reverseSync.enable = true;
+  };
+
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
