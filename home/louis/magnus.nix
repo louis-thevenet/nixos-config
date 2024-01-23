@@ -12,5 +12,6 @@
     ./cli
     ./dev
     ./optional/gnome.nix
+    ./optional/hyprland
   ];
 }
