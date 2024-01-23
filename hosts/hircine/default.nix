@@ -13,8 +13,8 @@
     xserver = {
       enable = true;
       layout = "fr";
-       desktopManager.gnome = {
-         enable = true;
+      desktopManager.gnome = {
+        enable = true;
       };
       displayManager.gdm = {
         enable = true;
@@ -24,7 +24,6 @@
 
   networking.hostName = "hircine";
 
-  # XDG Portals
   programs.hyprland = {
     enable = true;
   };
