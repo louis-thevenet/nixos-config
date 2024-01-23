@@ -6,6 +6,7 @@
   imports = [
     ./window-binds.nix
     ./binds.nix
+    ./decoration.nix
   ];
   wayland.windowManager.hyprland = {
     # Whether to enable Hyprland wayland compositor
