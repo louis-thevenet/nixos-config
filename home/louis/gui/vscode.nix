@@ -51,6 +51,11 @@
         key = "ctrl+shift+x";
         command = "workbench.action.terminal.toggleTerminal";
       }
+
+      {
+	key = "ctrl+u";
+	command= "typst-lsp.showPdf";
+      }
     ];
 
     userSettings.cmake.configureOnOpen = true;
@@ -77,7 +82,7 @@
     userSettings.git.autofetch = true;
     userSettings.git.confirmSync = false;
 
-    userSettings.workbench.colorTheme = "Github";
+    #userSettings.workbench.colorTheme = "Github";
     userSettings.workbench.iconTheme = "ayu";
 
     userSettings.nix.enableLanguageServer = true;
