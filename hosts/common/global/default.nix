@@ -35,19 +35,6 @@
     pulse.enable = true;
   };
 
-  services = {
-    xserver = {
-      enable = true;
-      layout = "fr";
-      desktopManager.gnome = {
-        enable = true;
-      };
-      displayManager.gdm = {
-        enable = true;
-      };
-    };
-  };
-
   services.xserver.libinput.enable = true;
 
   environment.systemPackages = with pkgs; [vim];

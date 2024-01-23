@@ -20,4 +20,17 @@
     driSupport = true;
     driSupport32Bit = true;
   };
+
+  services = {
+    xserver = {
+      enable = true;
+      layout = "fr";
+      desktopManager.gnome = {
+        enable = true;
+      };
+      displayManager.gdm = {
+        enable = true;
+      };
+    };
+  };
 }

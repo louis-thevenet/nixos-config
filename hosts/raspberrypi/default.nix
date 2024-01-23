@@ -16,6 +16,18 @@
     interfaces = {wlan0.useDHCP = true;};
   };
 
+  services = {
+    xserver = {
+      enable = true;
+      layout = "fr";
+      desktopManager.gnome = {
+        enable = true;
+      };
+      displayManager.gdm = {
+        enable = true;
+      };
+    };
+  };
   services.openssh = {
     enable = true;
     #passwordAuthentication = false;
