@@ -1,4 +1,14 @@
-{config, ...}: {
+{
+  config,
+  nix-colors,
+  ...
+}: {
+  imports = [
+    nix-colors.homeManagerModules.default
+  ];
+
+  colorScheme = nix-colors.colorSchemes.dracula;
+
   home = {
     username = "louis";
     homeDirectory = "/home/louis";

@@ -10,6 +10,8 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     raspberry-pi-nix.url = "github:tstat/raspberry-pi-nix";
+
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = {
@@ -17,6 +19,7 @@
     home-manager,
     nixos-hardware,
     raspberry-pi-nix,
+    nix-colors,
     ...
   } @ inputs: {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
@@ -51,7 +54,10 @@
     homeConfigurations = {
       "louis@magnus" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs;};
+        extraSpecialArgs = {
+          inherit nix-colors;
+          inherit inputs;
+        };
         modules = [./home/louis/magnus.nix];
       };
       "louis@hircine" = home-manager.lib.homeManagerConfiguration {
