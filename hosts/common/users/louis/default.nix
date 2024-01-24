@@ -9,4 +9,5 @@
     extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.zsh;
   };
+  security.pam.services.swaylock = {};
 }
