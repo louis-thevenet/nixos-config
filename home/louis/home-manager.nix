@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    ./options
     nix-colors.homeManagerModules.default
   ];
 
