@@ -9,72 +9,52 @@
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    raspberry-pi-nix.url = "github:tstat/raspberry-pi-nix";
-
     nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = {
+    self,
     nixpkgs,
     home-manager,
-    nixos-hardware,
-    raspberry-pi-nix,
     nix-colors,
     ...
-  } @ inputs: {
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
-    formatter.aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.nixpkgs-fmt;
-    nixosConfigurations = {
-      magnus = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
-        };
-        modules = [./hosts/magnus];
-      };
-      hircine = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+  }: let
+    forEachSystem = nixpkgs.lib.genAttrs ["aarch64-linux" "x86_64-linux"];
+    forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
+
+    mkNixos = host: system:
+      nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit (self) inputs outputs;};
         modules = [
-          ./hosts/hircine
-          nixos-hardware.nixosModules.lenovo-ideapad-15arh05
-          nixos-hardware.nixosModules.common-cpu-amd-pstate
+          ./hosts/${host}
         ];
       };
 
-      raspberrypi = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        system = "aarch64-linux";
+    mkHome = host: system:
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        extraSpecialArgs = {
+          inherit (self) inputs outputs;
+          inherit nix-colors;
+        };
         modules = [
-          raspberry-pi-nix.nixosModules.raspberry-pi
-          (import ./hosts/raspberrypi)
+          ./home/louis/${host}.nix
         ];
       };
+  in {
+    formatter = forEachPkgs (pkgs: pkgs.alejandra);
+
+    nixosConfigurations = {
+      raspberrypi = mkNixos "raspberrypi" "aarch64-linux";
+      magnus = mkNixos "magnus" "x86_64-linux";
+      hircine = mkNixos "hircine" "x86_64-linux";
     };
 
     homeConfigurations = {
-      "louis@magnus" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {
-          inherit nix-colors;
-          inherit inputs;
-        };
-        modules = [./home/louis/magnus.nix];
-      };
-      "louis@hircine" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {
-          inherit inputs;
-          inherit nix-colors;
-        };
-        modules = [./home/louis/hircine.nix];
-      };
-
-      "louis@raspberrypi" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.aarch64-linux;
-        extraSpecialArgs = {inherit inputs;};
-        modules = [
-          ./home/louis/raspberrypi.nix
-        ];
-      };
+      "louis@magnus" = mkHome "magnus" "x86_64-linux";
+      "louis@hircine" = mkHome "hircine" "x86_64-linux";
+      "louis@raspberrypi" = mkHome "raspberrypi" "aarch64-linux";
     };
   };
 }

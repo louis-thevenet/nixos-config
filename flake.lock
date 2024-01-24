@@ -36,23 +36,6 @@
         "type": "github"
       }
     },
-    "libcamera-apps-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1677660281,
-        "narHash": "sha256-A6UriYk8bHRL6wp6ehXOnUnbJH2/mNDkxwGemD/UYpw=",
-        "owner": "raspberrypi",
-        "repo": "libcamera-apps",
-        "rev": "54a781dffdd101954dcfa6acd0bd80006f67da83",
-        "type": "github"
-      },
-      "original": {
-        "owner": "raspberrypi",
-        "ref": "v1.1.2",
-        "repo": "libcamera-apps",
-        "type": "github"
-      }
-    },
     "nix-colors": {
       "inputs": {
         "base16-schemes": "base16-schemes",
@@ -119,114 +102,12 @@
         "type": "github"
       }
     },
-    "raspberry-pi-nix": {
-      "inputs": {
-        "libcamera-apps-src": "libcamera-apps-src",
-        "rpi-bluez-firmware-src": "rpi-bluez-firmware-src",
-        "rpi-firmware-nonfree-src": "rpi-firmware-nonfree-src",
-        "rpi-firmware-src": "rpi-firmware-src",
-        "rpi-linux-6_1-src": "rpi-linux-6_1-src",
-        "u-boot-src": "u-boot-src"
-      },
-      "locked": {
-        "lastModified": 1694697055,
-        "narHash": "sha256-rsNgy5ORlGqRbBuQUMTHpKOv81FBw6sc6+XTyslLphc=",
-        "owner": "tstat",
-        "repo": "raspberry-pi-nix",
-        "rev": "409f6368c679b5902ec21f7d7d7721fa03d3e21e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tstat",
-        "repo": "raspberry-pi-nix",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nix-colors": "nix-colors",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs",
-        "raspberry-pi-nix": "raspberry-pi-nix"
-      }
-    },
-    "rpi-bluez-firmware-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1672928175,
-        "narHash": "sha256-gKGK0XzNrws5REkKg/JP6SZx3KsJduu53SfH3Dichkc=",
-        "owner": "RPi-Distro",
-        "repo": "bluez-firmware",
-        "rev": "9556b08ace2a1735127894642cc8ea6529c04c90",
-        "type": "github"
-      },
-      "original": {
-        "owner": "RPi-Distro",
-        "repo": "bluez-firmware",
-        "type": "github"
-      }
-    },
-    "rpi-firmware-nonfree-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1683107406,
-        "narHash": "sha256-9UgB8f2AaxG7S5Px46jOP9wUeO1VXKB0uJiPWh32oDI=",
-        "owner": "RPi-Distro",
-        "repo": "firmware-nonfree",
-        "rev": "2b465a10b04555b7f45b3acb85959c594922a3ce",
-        "type": "github"
-      },
-      "original": {
-        "owner": "RPi-Distro",
-        "repo": "firmware-nonfree",
-        "type": "github"
-      }
-    },
-    "rpi-firmware-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1680694337,
-        "narHash": "sha256-UtUd1MbsrDFxd/1C3eOAMDKPZMx+kSMFYOJP+Kc6IU8=",
-        "owner": "raspberrypi",
-        "repo": "firmware",
-        "rev": "055e044d5359ded1aacc5a17a8e35365373d0b8b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "raspberrypi",
-        "ref": "1.20230405",
-        "repo": "firmware",
-        "type": "github"
-      }
-    },
-    "rpi-linux-6_1-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1680464256,
-        "narHash": "sha256-ILwecHZ1BN6GhZAUB6/UwiN/rZ8gHndKON6DUhidtxI=",
-        "owner": "raspberrypi",
-        "repo": "linux",
-        "rev": "0afb5e98488aed7017b9bf321b575d0177feb7ed",
-        "type": "github"
-      },
-      "original": {
-        "owner": "raspberrypi",
-        "ref": "1.20230405",
-        "repo": "linux",
-        "type": "github"
-      }
-    },
-    "u-boot-src": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-30fe8klLHRsEtEQ1VpYh4S+AflG5yCQYWlGmpWyFL8w=",
-        "type": "tarball",
-        "url": "https://ftp.denx.de/pub/u-boot/u-boot-2023.01.tar.bz2"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://ftp.denx.de/pub/u-boot/u-boot-2023.01.tar.bz2"
+        "nixpkgs": "nixpkgs"
       }
     }
   },
