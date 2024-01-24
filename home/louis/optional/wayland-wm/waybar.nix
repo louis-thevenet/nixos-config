@@ -76,26 +76,15 @@ in {
           ++ (lib.optionals config.wayland.windowManager.hyprland.enable [
             "hyprland/workspaces"
             "hyprland/submap"
-          ])
-          ++ [
-            "custom/events"
-          ];
+          ]);
         modules-center = [
           "cpu"
-          "custom/gpu"
           "memory"
           "clock"
           "pulseaudio"
-          # TODO: check if the following modules are useful to me
-          # "custom/unread-mail"
-          # "custom/gammastep"
-          # "custom/gpg-agent"
         ];
         modules-right = [
           "network"
-          # TODO: check if the following modules are useful to me
-          # "custom/tailscale-ping"
-          # "custom/gamemode"
           "battery"
           "tray"
           "custom/hostname"
@@ -109,15 +98,6 @@ in {
         };
         cpu = {
           format = "   {usage}%";
-        };
-        "custom/gpu" = {
-          interval = 5;
-          return-type = "json";
-          exec = jsonOutput "gpu" {
-            text = "$(${cat} /sys/class/drm/card0/device/gpu_busy_percent)";
-            tooltip = "GPU Usage";
-          };
-          format = "󰒋  {}%";
         };
         memory = {
           format = "󰍛  {}%";
@@ -164,32 +144,7 @@ in {
             Down: {bandwidthDownBits}'';
           on-click = "";
         };
-        "custom/tailscale-ping" = {
-          interval = 10;
-          return-type = "json";
-          exec = let
-            inherit (builtins) concatStringsSep attrNames;
-            hosts = attrNames outputs.nixosConfigurations;
-            homeMachine = "hestia";
-            remoteMachine = "horus";
-          in
-            jsonOutput "tailscale-ping" {
-              # Build variables for each host
-              pre = ''
-                set -o pipefail
-                ${concatStringsSep "\n" (map (host: ''
-                    ping_${host}="$(${timeout} 2 ${ping} -c 1 -q ${host} 2>/dev/null | ${tail} -1 | ${cut} -d '/' -f5 | ${cut} -d '.' -f1)ms" || ping_${host}="Disconnected"
-                  '')
-                  hosts)}
-              '';
-              # Access a remote machine's and a home machine's ping
-              text = "  $ping_${remoteMachine} /  $ping_${homeMachine}";
-              # Show pings from all machines
-              tooltip = concatStringsSep "\n" (map (host: "${host}: $ping_${host}") hosts);
-            };
-          format = "{}";
-          on-click = "";
-        };
+
         "custom/menu" = {
           return-type = "json";
           exec = jsonOutput "menu" {
@@ -201,97 +156,7 @@ in {
         "custom/hostname" = {
           exec = "echo $USER@$HOSTNAME";
         };
-        "custom/unread-mail" = {
-          interval = 5;
-          return-type = "json";
-          exec = jsonOutput "unread-mail" {
-            pre = ''
-              count=$(${find} ~/Mail/*/Inbox/new -type f | ${wc} -l)
-              if [ "$count" == "0" ]; then
-                subjects="No new mail"
-                status="read"
-              else
-                subjects=$(\
-                  ${grep} -h "Subject: " -r ~/Mail/*/Inbox/new | ${cut} -d ':' -f2- | \
-                  ${perl} -CS -MEncode -ne 'print decode("MIME-Header", $_)' | ${xml} esc | ${sed} -e 's/^/\-/'\
-                )
-                status="unread"
-              fi
-              if ${pgrep} mbsync &>/dev/null; then
-                status="syncing"
-              fi
-            '';
-            text = "$count";
-            tooltip = "$subjects";
-            alt = "$status";
-          };
-          format = "{icon}  ({})";
-          format-icons = {
-            "read" = "󰇯";
-            "unread" = "󰇮";
-            "syncing" = "󰁪";
-          };
-        };
-        /*
-        TODO
-            "custom/gpg-agent" = {
-              interval = 2;
-              return-type = "json";
-              exec =
-                let gpgCmds = import ../../../cli/gpg-commands.nix { inherit pkgs; };
-                in
-                jsonOutput "gpg-agent" {
-                  pre = ''status=$(${gpgCmds.isUnlocked} && echo "unlocked" || echo "locked")'';
-                  alt = "$status";
-                  tooltip = "GPG is $status";
-                };
-              format = "{icon}";
-              format-icons = {
-                "locked" = "";
-                "unlocked" = "";
-              };
-              on-click = "";
-            };
-        */
-        "custom/gamemode" = {
-          exec-if = "${gamemoded} --status | ${grep} 'is active' -q";
-          interval = 2;
-          return-type = "json";
-          exec = jsonOutput "gamemode" {
-            tooltip = "Gamemode is active";
-          };
-          format = " ";
-        };
-        "custom/gammastep" = {
-          interval = 5;
-          return-type = "json";
-          exec = jsonOutput "gammastep" {
-            pre = ''
-              if unit_status="$(${systemctl} --user is-active gammastep)"; then
-                status="$unit_status ($(${journalctl} --user -u gammastep.service -g 'Period: ' | ${tail} -1 | ${cut} -d ':' -f6 | ${xargs}))"
-              else
-                status="$unit_status"
-              fi
-            '';
-            alt = "\${status:-inactive}";
-            tooltip = "Gammastep is $status";
-          };
-          format = "{icon}";
-          format-icons = {
-            "activating" = "󰁪 ";
-            "deactivating" = "󰁪 ";
-            "inactive" = "? ";
-            "active (Night)" = " ";
-            "active (Nighttime)" = " ";
-            "active (Transition (Night)" = " ";
-            "active (Transition (Nighttime)" = " ";
-            "active (Day)" = " ";
-            "active (Daytime)" = " ";
-            "active (Transition (Day)" = " ";
-            "active (Transition (Daytime)" = " ";
-          };
-          on-click = "${systemctl} --user is-active gammastep && ${systemctl} --user stop gammastep || ${systemctl} --user start gammastep";
-        };
+
         "custom/currentplayer" = {
           interval = 2;
           return-type = "json";
@@ -337,36 +202,6 @@ in {
             "Stopped" = "󰓛";
           };
           on-click = "${playerctl} play-pause";
-        };
-        "custom/events" = {
-          tooltip = true;
-          interval = 60;
-          format = "{icon} {}";
-          format-icons.default = "";
-          exec = let
-            script =
-              pkgs.writeText "script.py"
-              ''
-                import json
-                import subprocess
-                data = {}
-                output = subprocess.check_output("${khal} list now 7days --format \"{start-end-time-style} {title}\"", shell=True).decode("utf-8")
-                lines = output.split("\n")
-                new_lines = []
-                for line in lines:
-                    if len(line) and line[0].isalpha():
-                        line = "\n<b>"+line+"</b>"
-                    new_lines.append(line)
-                output = "\n".join(new_lines).strip()
-                if "Today" in output:
-                    data['text'] = output.split('\n')[1]
-                else:
-                    data['text'] = "No event today"
-                data['tooltip'] = output
-                print(json.dumps(data))
-              '';
-          in "${python} ${script}";
-          return-type = "json";
         };
       };
     };
