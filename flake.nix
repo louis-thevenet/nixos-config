@@ -24,7 +24,6 @@
   } @ inputs: {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
     formatter.aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.nixpkgs-fmt;
-
     nixosConfigurations = {
       magnus = nixpkgs.lib.nixosSystem {
         specialArgs = {
@@ -62,7 +61,10 @@
       };
       "louis@hircine" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs;};
+        extraSpecialArgs = {
+          inherit inputs;
+          inherit nix-colors;
+        };
         modules = [./home/louis/hircine.nix];
       };
 
