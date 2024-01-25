@@ -8,5 +8,6 @@
   imports = [
     ./optional/vpnc.nix
     ./utils.nix
+    ./bottom.nix
   ];
 }
