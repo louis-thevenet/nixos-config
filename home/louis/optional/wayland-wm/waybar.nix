@@ -218,7 +218,7 @@ in {
 
         * {
           font-family: ${config.fontProfiles.regular.family}, ${config.fontProfiles.monospace.family};
-          font-size: 12pt;
+          font-size: 10pt;
           padding: 0 8px;
         }
         .modules-right {
