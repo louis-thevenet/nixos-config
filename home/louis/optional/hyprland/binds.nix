@@ -4,8 +4,22 @@
   pkgs,
   ...
 }: {
-  wayland.windowManager.hyprland.settings.bind = let
+  wayland.windowManager.hyprland.settings.binde = let
     brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
+    pactl = "${pkgs.pulseaudio}/bin/pactl";
+  in [
+    # Brightness
+    ",XF86MonBrightnessUp,exec,${brightnessctl} set +5%"
+    ",XF86MonBrightnessDown,exec,${brightnessctl} set 5%-"
+    # Volume
+    ",XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
+    ",XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
+    ",XF86AudioMute,exec,${pactl} set-sink-mute @DEFAULT_SINK@ toggle"
+    "SHIFT,XF86AudioMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
+    ",XF86AudioMicMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
+  ];
+
+  wayland.windowManager.hyprland.settings.bind = let
     swaylock = "${config.programs.swaylock.package}/bin/swaylock";
     playerctl = "${config.services.playerctld.package}/bin/playerctl";
     playerctld = "${config.services.playerctld.package}/bin/playerctld";
@@ -16,7 +30,6 @@
     }}/bin/pass-wofi";
 
     grimblast = "${pkgs.grimblast}/bin/grimblast";
-    pactl = "${pkgs.pulseaudio}/bin/pactl";
     # TODO tly = "${pkgs.tly}/bin/tly";
     # gtk-play = "${pkgs.libcanberra-gtk3}/bin/canberra-gtk-play";
     # notify-send = "${pkgs.libnotify}/bin/notify-send";
@@ -32,15 +45,6 @@
     [
       "SUPER,T,exec,kitty"
 
-      # Brightness
-      ",XF86MonBrightnessUp,exec,${brightnessctl} set +5%"
-      ",XF86MonBrightnessDown,exec,${brightnessctl} set 5%-"
-      # Volume
-      ",XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
-      ",XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
-      ",XF86AudioMute,exec,${pactl} set-sink-mute @DEFAULT_SINK@ toggle"
-      "SHIFT,XF86AudioMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
-      ",XF86AudioMicMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
       # Screenshotting
       ",Print,exec,${grimblast} --notify copy area"
       "SHIFT,Print,exec,${grimblast} --notify copy active"
