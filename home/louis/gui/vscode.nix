@@ -53,8 +53,8 @@
       }
 
       {
-	key = "ctrl+u";
-	command= "typst-lsp.showPdf";
+        key = "ctrl+u";
+        command = "typst-lsp.showPdf";
       }
     ];
 
@@ -82,7 +82,7 @@
     userSettings.git.autofetch = true;
     userSettings.git.confirmSync = false;
 
-    #userSettings.workbench.colorTheme = "Github";
+    userSettings.workbench.colorTheme = "Solarized Light";
     userSettings.workbench.iconTheme = "ayu";
 
     userSettings.nix.enableLanguageServer = true;
