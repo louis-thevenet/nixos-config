@@ -52,8 +52,21 @@
       "SUPER,Print,exec,${grimblast} --notify copy window"
       "ALT,Print,exec,${grimblast} --notify copy output"
     ]
+    # Launcher
     ++ lib.optionals config.programs.wofi.enable [
       "SUPER,x,exec,${wofi} -S drun -x 10 -y 10 -W 25% -H 60%"
       "SUPER,space,exec,${wofi} -S run"
-    ];
+    ]
+    ++
+    # Screen lock
+    (lib.optionals config.programs.swaylock.enable [
+      ",XF86Launch5,exec,${swaylock}"
+      ",XF86Launch4,exec,${swaylock}"
+      "SUPER,backspace,exec,${swaylock}"
+    ])
+    ++
+    # Notification manager
+    (lib.optionals config.services.mako.enable [
+      "SUPER,w,exec,${makoctl} dismiss"
+    ]);
 }
