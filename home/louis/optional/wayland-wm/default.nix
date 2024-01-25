@@ -16,5 +16,6 @@
     wayland-utils
     wl-clipboard
     wlroots
+    swww
   ];
 }

@@ -15,7 +15,10 @@
     package = pkgs.hyprland;
     # Whether to enable XWayland
     xwayland.enable = true;
-
+    extraConfig = ''
+      exec-once = swww init
+      exec-once = swww img ~/bg.png
+    '';
     settings = {
       input = {
         kb_layout = "fr,us";
