@@ -17,5 +17,6 @@
     wl-clipboard
     wlroots
     swww
+    copyq
   ];
 }

@@ -45,6 +45,9 @@
     [
       "SUPER,T,exec,kitty"
 
+      "SUPER, C, exec, copyq show" # Clipboard manager
+      "SUPER, V, exec, copyq select 1" # Copy last clipboard entry
+
       # Screenshotting
       ",Print,exec,${grimblast} --notify copy area"
       "SHIFT,Print,exec,${grimblast} --notify copy active"
