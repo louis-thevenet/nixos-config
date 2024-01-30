@@ -96,5 +96,8 @@
 
     userSettings.rust-analyzer.checkOnSave = true;
     userSettings.rust-analyzer.check.command = "clippy";
+
+    # Temp fix since vscode is broken under wayland
+    userSettings.window.titleBarStyle = "custom";
   };
 }
