@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
@@ -12,7 +13,8 @@
     # Whether to enable Hyprland wayland compositor
     enable = true;
     # The hyprland package to use
-    package = pkgs.hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+
     # Whether to enable XWayland
     xwayland.enable = true;
     extraConfig = ''

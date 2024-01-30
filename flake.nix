@@ -10,6 +10,11 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     nix-colors.url = "github:misterio77/nix-colors";
+
+    hyprland = {
+      url = "github:hyprwm/Hyprland/v0.34.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
