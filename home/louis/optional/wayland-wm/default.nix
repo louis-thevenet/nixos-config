@@ -9,6 +9,7 @@
     ./swayidle.nix
     ./swaylock.nix
     ./wofi.nix
+    ./copyq.nix
   ];
   home.packages = with pkgs; [
     meson
@@ -17,6 +18,5 @@
     wl-clipboard
     wlroots
     swww
-    copyq
   ];
 }
