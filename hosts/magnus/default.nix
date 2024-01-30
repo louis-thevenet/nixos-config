@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  inputs,
   config,
   ...
 }: {
@@ -17,7 +16,7 @@
   services = {
     xserver = {
       enable = true;
-      layout = "fr";
+      xkb.layout = "fr";
       desktopManager.gnome = {
         enable = true;
       };
@@ -25,6 +24,12 @@
         enable = true;
       };
     };
+  };
+
+  programs.hyprland = {
+    # or wayland.windowManager.hyprland
+    enable = true;
+    xwayland.enable = true;
   };
 
   # Enable OpenGL
@@ -59,12 +64,6 @@
     # package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  programs.hyprland = {
-    # or wayland.windowManager.hyprland
-    enable = true;
-    xwayland.enable = true;
-  };
-
   # XDG Portals
   xdg = {
     portal = {
@@ -75,13 +74,4 @@
   environment.systemPackages = [
     pkgs.xdg-utils # xdg-open
   ];
-  # Mostly from <https://www.reddit.com/r/NixOS/comments/137j18j/comment/ju6h25k/>
-  environment.sessionVariables = {
-    # NIXOS_OZONE_WL = "1"; disable for now since vs code is broken
-    SDL_VIDEODRIVER = "wayland";
-    _JAVA_AWT_WM_NONREPARENTING = "1";
-    CLUTTER_BACKEND = "wayland";
-    WLR_RENDERER = "vulkan";
-    QT_QPA_PLATFORM = "wayland";
-  };
 }
