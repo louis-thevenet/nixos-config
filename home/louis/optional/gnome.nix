@@ -3,22 +3,6 @@
   pkgs,
   ...
 }: {
-  gtk = {
-    enable = true;
-
-    theme = {
-      name = "marwaita-pop_os";
-      package = pkgs.marwaita-pop_os;
-    };
-
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-  };
-
-  home.sessionVariables.GTK_THEME = "marwaita-pop_os";
-
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "default";
