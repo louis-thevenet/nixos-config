@@ -24,10 +24,7 @@
     playerctl = "${config.services.playerctld.package}/bin/playerctl";
     playerctld = "${config.services.playerctld.package}/bin/playerctld";
     makoctl = "${config.services.mako.package}/bin/makoctl";
-    wofi = "${config.programs.wofi.package}/bin/wofi";
-    pass-wofi = "${pkgs.pass-wofi.override {
-      pass = config.programs.password-store.package;
-    }}/bin/pass-wofi";
+    rofi = "${config.programs.rofi.package}/bin/rofi";
 
     grimblast = "${pkgs.grimblast}/bin/grimblast";
     # TODO tly = "${pkgs.tly}/bin/tly";
@@ -56,9 +53,9 @@
       "ALT,Print,exec,${grimblast} --notify copy output"
     ]
     # Launcher
-    ++ lib.optionals config.programs.wofi.enable [
-      "SUPER,x,exec,${wofi} -S drun -x 10 -y 10 -W 25% -H 60%"
-      "SUPER,space,exec,${wofi} -S run"
+    ++ [
+      "SUPER,x,exec,rofi -show drun -sidebar-mode"
+      "SUPER,tab,exec,rofi -show window"
     ]
     ++
     # Screen lock
