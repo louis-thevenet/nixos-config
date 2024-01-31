@@ -150,9 +150,9 @@
       "inputValidation.warningBorder" = "#${colors.base0A}";
 
       "scrollbar.shadow" = "#${colors.base01}";
-      "scrollbarSlider.activeBackground" = "#${colors.base04}6f";
-      "scrollbarSlider.background" = "#${colors.base02}6f";
-      "scrollbarSlider.hoverBackground" = "#${colors.base03}6f";
+      "scrollbarSlider.activeBackground" = "#${colors.base04}";
+      "scrollbarSlider.background" = "#${colors.base02}";
+      "scrollbarSlider.hoverBackground" = "#${colors.base03}";
 
       "badge.background" = "#${colors.base00}";
       "badge.foreground" = "#${colors.base05}";
@@ -194,13 +194,13 @@
       "sideBar.background" = "#${colors.base01}";
       "sideBar.foreground" = "#${colors.base05}";
 
-      "sideBar.dropBackground" = "#${colors.base02}6f";
+      "sideBar.dropBackground" = "#${colors.base02}";
       "sideBarTitle.foreground" = "#${colors.base05}";
       "sideBarSectionHeader.background" = "#${colors.base03}";
       "sideBarSectionHeader.foreground" = "#${colors.base05}";
 
-      "minimap.findMatchHighlight" = "#${colors.base0A}6f";
-      "minimap.selectionHighlight" = "#${colors.base02}6f";
+      "minimap.findMatchHighlight" = "#${colors.base0A}";
+      "minimap.selectionHighlight" = "#${colors.base02}";
       "minimap.errorHighlight" = "#${colors.base08}";
       "minimap.warningHighlight" = "#${colors.base0A}";
       "minimap.background" = "#${colors.base00}";
@@ -211,7 +211,7 @@
 
       "editorGroup.background" = "#${colors.base00}";
 
-      "editorGroup.dropBackground" = "#${colors.base02}6f";
+      "editorGroup.dropBackground" = "#${colors.base02}";
       "editorGroupHeader.noTabsBackground" = "#${colors.base01}";
       "editorGroupHeader.tabsBackground" = "#${colors.base01}";
 
@@ -236,31 +236,31 @@
       "tab.unfocusedInactiveModifiedBorder" = "#${colors.base0D}";
       "editorPane.background" = "#${colors.base00}";
 
-      # IMPROTANT
       "editor.background" = "#${colors.base00}";
       "editor.foreground" = "#${colors.base05}";
       "editorLineNumber.foreground" = "#${colors.base03}";
       "editorLineNumber.activeForeground" = "#${colors.base04}";
 
       "editorCursor.foreground" = "#${colors.base05}";
-      "editor.selectionBackground" = "#${colors.base02}";
+      "editor.selectionBackground" = "#${colors.base05}";
+      "editor.selectionForeground" = "#${colors.base00}";
 
       "editor.inactiveSelectionBackground" = "#${colors.base02}";
       "editor.selectionHighlightBackground" = "#${colors.base01}";
 
-      "editor.wordHighlightBackground" = "#${colors.base02}6f";
+      "editor.wordHighlightBackground" = "#${colors.base02}";
 
-      "editor.wordHighlightStrongBackground" = "#${colors.base03}6f";
+      "editor.wordHighlightStrongBackground" = "#${colors.base03}";
 
-      "editor.findMatchBackground" = "#${colors.base0A}6f";
-      "editor.findMatchHighlightBackground" = "#${colors.base09}6f";
-      "editor.findRangeHighlightBackground" = "#${colors.base01}6f";
+      "editor.findMatchBackground" = "#${colors.base0A}";
+      "editor.findMatchHighlightBackground" = "#${colors.base09}";
+      "editor.findRangeHighlightBackground" = "#${colors.base01}";
 
-      "editor.hoverHighlightBackground" = "#${colors.base02}6f";
+      "editor.hoverHighlightBackground" = "#${colors.base02}";
       "editor.lineHighlightBackground" = "#${colors.base01}";
 
       "editorLink.activeForeground" = "#${colors.base0D}";
-      "editor.rangeHighlightBackground" = "#${colors.base01}6f";
+      "editor.rangeHighlightBackground" = "#${colors.base01}";
 
       "editorWhitespace.foreground" = "#${colors.base03}";
       "editorIndentGuide.background" = "#${colors.base03}";
@@ -273,11 +273,11 @@
       "editorLightBulbAutoFix.foreground" = "#${colors.base0D}";
       "editorBracketMatch.background" = "#${colors.base02}";
 
-      "editorOverviewRuler.findMatchForeground" = "#${colors.base0A}6f";
-      "editorOverviewRuler.rangeHighlightForeground" = "#${colors.base03}6f";
-      "editorOverviewRuler.selectionHighlightForeground" = "#${colors.base02}6f";
-      "editorOverviewRuler.wordHighlightForeground" = "#${colors.base07}6f";
-      "editorOverviewRuler.wordHighlightStrongForeground" = "#${colors.base0D}6f";
+      "editorOverviewRuler.findMatchForeground" = "#${colors.base0A}";
+      "editorOverviewRuler.rangeHighlightForeground" = "#${colors.base03}";
+      "editorOverviewRuler.selectionHighlightForeground" = "#${colors.base02}";
+      "editorOverviewRuler.wordHighlightForeground" = "#${colors.base07}";
+      "editorOverviewRuler.wordHighlightStrongForeground" = "#${colors.base0D}";
       "editorOverviewRuler.modifiedForeground" = "#${colors.base0E}";
       "editorOverviewRuler.addedForeground" = "#${colors.base0B}";
       "editorOverviewRuler.deletedForeground" = "#${colors.base08}";
@@ -305,9 +305,9 @@
       "editorGutter.commentRangeForeground" = "#${colors.base04}";
       "editorGutter.foldingControlForeground" = "#${colors.base05}";
 
-      "diffEditor.insertedTextBackground" = "#${colors.base0B}20";
+      "diffEditor.insertedTextBackground" = "#${colors.base0B}";
 
-      "diffEditor.removedTextBackground" = "#${colors.base08}20";
+      "diffEditor.removedTextBackground" = "#${colors.base08}";
 
       "diffEditor.diagonalFill" = "#${colors.base02}";
 
@@ -331,22 +331,22 @@
 
       "peekViewEditor.background" = "#${colors.base01}";
       "peekViewEditorGutter.background" = "#${colors.base01}";
-      "peekViewEditor.matchHighlightBackground" = "#${colors.base09}6f";
+      "peekViewEditor.matchHighlightBackground" = "#${colors.base09}";
 
       "peekViewResult.background" = "#${colors.base00}";
       "peekViewResult.fileForeground" = "#${colors.base05}";
       "peekViewResult.lineForeground" = "#${colors.base03}";
-      "peekViewResult.matchHighlightBackground" = "#${colors.base09}6f";
+      "peekViewResult.matchHighlightBackground" = "#${colors.base09}";
       "peekViewResult.selectionBackground" = "#${colors.base02}";
       "peekViewResult.selectionForeground" = "#${colors.base05}";
       "peekViewTitle.background" = "#${colors.base02}";
       "peekViewTitleDescription.foreground" = "#${colors.base03}";
       "peekViewTitleLabel.foreground" = "#${colors.base05}";
 
-      "merge.currentContentBackground" = "#${colors.base0D}40";
-      "merge.currentHeaderBackground" = "#${colors.base0D}40";
-      "merge.incomingContentBackground" = "#${colors.base0B}60";
-      "merge.incomingHeaderBackground" = "#${colors.base0B}60";
+      "merge.currentContentBackground" = "#${colors.base0D}";
+      "merge.currentHeaderBackground" = "#${colors.base0D}";
+      "merge.incomingContentBackground" = "#${colors.base0B}";
+      "merge.incomingHeaderBackground" = "#${colors.base0B}";
 
       "editorOverviewRuler.currentContentForeground" = "#${colors.base0D}";
       "editorOverviewRuler.incomingContentForeground" = "#${colors.base0B}";
@@ -354,7 +354,7 @@
 
       "panel.background" = "#${colors.base00}";
 
-      "panel.dropBackground" = "#${colors.base01}6f";
+      "panel.dropBackground" = "#${colors.base01}";
 
       "panelTitle.activeForeground" = "#${colors.base05}";
       "panelTitle.inactiveForeground" = "#${colors.base03}";
@@ -506,7 +506,7 @@
       "symbolIcon.arrayForeground" = "#${colors.base05}";
       "symbolIcon.booleanForeground" = "#${colors.base09}";
       "symbolIcon.classForeground" = "#${colors.base0A}";
-      "symbolIcon.colorForeground" = "#f0f";
+      "symbolIcon.colorForeground" = "#${colors.base05}";
       "symbolIcon.constantForeground" = "#${colors.base09}";
       "symbolIcon.constructorForeground" = "#${colors.base0D}";
       "symbolIcon.enumeratorForeground" = "#${colors.base09}";
@@ -517,24 +517,24 @@
       "symbolIcon.folderForeground" = "#${colors.base05}";
       "symbolIcon.functionForeground" = "#${colors.base0D}";
       "symbolIcon.interfaceForeground" = "#${colors.base0D}";
-      "symbolIcon.keyForeground" = "#f0f";
+      "symbolIcon.keyForeground" = "#${colors.base0B}";
       "symbolIcon.keywordForeground" = "#${colors.base0E}";
       "symbolIcon.methodForeground" = "#${colors.base0D}";
       "symbolIcon.moduleForeground" = "#${colors.base05}";
       "symbolIcon.namespaceForeground" = "#${colors.base05}";
       "symbolIcon.nullForeground" = "#${colors.base0F}";
       "symbolIcon.numberForeground" = "#${colors.base09}";
-      "symbolIcon.objectForeground" = "#f0f";
-      "symbolIcon.operatorForeground" = "#f0f";
-      "symbolIcon.packageForeground" = "#f0f";
+      "symbolIcon.objectForeground" = "#${colors.base0A}";
+      "symbolIcon.operatorForeground" = "#${colors.base0A}";
+      "symbolIcon.packageForeground" = "#${colors.base0A}";
       "symbolIcon.propertyForeground" = "#${colors.base05}";
-      "symbolIcon.referenceForeground" = "#f0f";
+      "symbolIcon.referenceForeground" = "#${colors.base08}";
       "symbolIcon.snippetForeground" = "#${colors.base05}";
       "symbolIcon.stringForeground" = "#${colors.base0B}";
       "symbolIcon.structForeground" = "#${colors.base0A}";
       "symbolIcon.textForeground" = "#${colors.base05}";
-      "symbolIcon.typeParameterForeground" = "#f0f";
-      "symbolIcon.unitForeground" = "#f0f";
+      "symbolIcon.typeParameterForeground" = "#${colors.base0E}";
+      "symbolIcon.unitForeground" = "#${colors.base05}";
       "symbolIcon.variableForeground" = "#${colors.base08}";
 
       "debugIcon.breakpointForeground" = "#${colors.base08}";
