@@ -24,6 +24,8 @@
     };
   };
 
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+
   programs.hyprland = {
     enable = true;
   };

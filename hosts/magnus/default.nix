@@ -8,7 +8,6 @@
     ./hardware-configuration.nix
     ../common/global
     ../common/users/louis
-    ../optional/gnome.nix
   ];
   networking.hostName = "magnus";
   boot.binfmt.emulatedSystems = ["aarch64-linux"]; # allows building iso for arm devices
@@ -17,14 +16,17 @@
     xserver = {
       enable = true;
       xkb.layout = "fr";
-      desktopManager.gnome = {
-        enable = true;
-      };
+      # desktopManager.gnome = {
+      #   enable = true;
+      # };
       displayManager.gdm = {
         enable = true;
       };
     };
   };
+
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   programs.hyprland = {
     enable = true;
