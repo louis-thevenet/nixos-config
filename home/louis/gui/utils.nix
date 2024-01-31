@@ -8,5 +8,6 @@
     tor-browser-bundle-bin
     onlyoffice-bin
     filezilla
+    obs-studio
   ];
 }
