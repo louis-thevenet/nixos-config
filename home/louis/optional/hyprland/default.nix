@@ -17,8 +17,17 @@
 
     # Whether to enable XWayland
     xwayland.enable = true;
-    extraConfig = ''
-      exec-once = swww init
+
+    extraConfig = let
+      swww-script = pkgs.writeShellScript "swww-script" ''
+        # have pre-start here itself
+        ${pkgs.swww}/bin/swww init &
+
+        # Start Service here
+        ${pkgs.swww}/bin/swww clear 000000
+      '';
+    in ''
+      exec-once = ${swww-script}
     '';
     settings = {
       env = [
