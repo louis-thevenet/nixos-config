@@ -21,23 +21,10 @@
 
   wayland.windowManager.hyprland.settings.bind = let
     swaylock = "${config.programs.swaylock.package}/bin/swaylock";
-    playerctl = "${config.services.playerctld.package}/bin/playerctl";
-    playerctld = "${config.services.playerctld.package}/bin/playerctld";
     makoctl = "${config.services.mako.package}/bin/makoctl";
-    rofi = "${config.programs.rofi.package}/bin/rofi";
-
     grimblast = "${pkgs.grimblast}/bin/grimblast";
-    # TODO tly = "${pkgs.tly}/bin/tly";
-    # gtk-play = "${pkgs.libcanberra-gtk3}/bin/canberra-gtk-play";
-    # notify-send = "${pkgs.libnotify}/bin/notify-send";
-
-    gtk-launch = "${pkgs.gtk3}/bin/gtk-launch";
-    xdg-mime = "${pkgs.xdg-utils}/bin/xdg-mime";
-    defaultApp = type: "${gtk-launch} $(${xdg-mime} query default ${type})";
-
     terminal = config.home.sessionVariables.TERMINAL;
-    browser = defaultApp "x-scheme-handler/https";
-    editor = defaultApp "text/plain";
+    killall = "${pkgs.killall}/bin/killall";
   in
     [
       "SUPER,T,exec,${terminal}"
@@ -56,6 +43,10 @@
     ++ [
       "SUPER,x,exec,rofi -show drun -sidebar-mode"
       "SUPER,tab,exec,rofi -show window"
+    ]
+    # Waybar
+    ++ [
+      "SUPERSHIFT,w,exec,${killall} -SIGUSR1 .waybar-wrapped"
     ]
     ++
     # Screen lock
