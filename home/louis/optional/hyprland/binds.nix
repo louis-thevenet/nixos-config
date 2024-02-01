@@ -40,7 +40,7 @@
     editor = defaultApp "text/plain";
   in
     [
-      "SUPER,T,exec,kitty"
+      "SUPER,T,exec,${terminal}"
 
       "SUPER, C, exec, copyq show" # Clipboard manager
       "SUPER, V, exec, copyq select 1" # Copy last clipboard entry

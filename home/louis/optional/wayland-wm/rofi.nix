@@ -12,7 +12,7 @@
       pkgs.rofi-calc
       pkgs.rofi-emoji
     ];
-
+    terminal = config.home.sessionVariables.TERMINAL;
     extraConfig = {
       modi = "drun,filebrowser,window,ssh,emoji,calc";
 
