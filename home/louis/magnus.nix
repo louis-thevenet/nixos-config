@@ -9,6 +9,7 @@
     ./home-manager.nix
     ./global
     ./gui
+    ./gaming
     ./cli
     ./dev
     ./optional/hyprland
