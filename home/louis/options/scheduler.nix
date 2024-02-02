@@ -48,13 +48,32 @@ with lib; {
           name = "${config.scheduler.name}";
           value = {
             Unit = {
-              description = "Change version of ${config.scheduler.filePath} at ${version.start}";
+              Description = "Change version of ${config.scheduler.filePath} at ${version.start}";
             };
             Install = {
-              wantedBy = ["default.target"];
+              WantedBy = ["default.target"];
             };
+
             Service = {
-              ExecStart = "touch ${config.scheduler.filePath}/test";
+              #ExecStart = "${pkgs.coreutils}/bin/cp ${config.scheduler.filePath} ${config.scheduler.filePath}.bak";
+              ExecStart = "${pkgs.noti}/bin/noti";
+            };
+          };
+        })
+        config.scheduler.versions);
+
+    systemd.user.timers =
+      listToAttrs
+      (map
+        (version: {
+          name = "${config.scheduler.name}";
+          value = {
+            Install.WantedBy = ["timers.target"];
+            Timer = {
+              Unit = "${config.scheduler.name}";
+              OnCalendar = "${version.start}";
+              AccuracySec = "12h";
+              Persistent = true;
             };
           };
         })
