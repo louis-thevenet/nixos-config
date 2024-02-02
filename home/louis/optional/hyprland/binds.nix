@@ -42,6 +42,7 @@
     # Launcher
     ++ [
       "SUPER,x,exec,rofi -show drun -sidebar-mode"
+      "SUPERSHIFT,x,exec,rofi -show run"
       "SUPER,tab,exec,rofi -show window"
     ]
     # Waybar
