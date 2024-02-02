@@ -11,7 +11,7 @@
   ];
   networking.hostName = "magnus";
   boot.binfmt.emulatedSystems = ["aarch64-linux"]; # allows building iso for arm devices
-
+  services.udisks2.enable = true;
   services = {
     xserver = {
       enable = true;

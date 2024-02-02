@@ -4,6 +4,5 @@
     spotify
     discord
     element-desktop
-    steam
   ];
 }
