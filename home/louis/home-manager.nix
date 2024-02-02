@@ -11,17 +11,13 @@
 
   colorScheme = nix-colors.colorSchemes.solarized-light;
 
-  scheduler = {
-    enable = true;
-    name = "test_scheduler";
-    filePath = "${config.home.homeDirectory}/test_scheduler";
-    versions = [
-      {
-        content = "blablabla";
-        start = "11:50:00";
-      }
-    ];
-  };
+  scheduler.enable = true;
+  scheduler.versions."14:41:00" = [
+    {
+      file = "test";
+      content = "It's 14:41:00";
+    }
+  ];
 
   home = {
     username = "louis";

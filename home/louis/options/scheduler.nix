@@ -9,74 +9,86 @@ with lib; {
     type = types.submodule {
       options = {
         enable = lib.mkEnableOption "Scheduler service";
-        name = mkOption {
-          type = types.str;
-          description = "Name of the instance";
-          default = "scheduler";
-        };
-        filePath = lib.mkOption {
-          type = with lib.types; either path str;
-          description = "Path to the target file.";
-        };
 
-        versions = mkOption {
-          type = types.listOf (types.submodule {
+        versions = let
+          t = types.listOf (types.submodule {
             options = {
+              file = mkOption {
+                type = types.str;
+                description = "Path to the file to change";
+              };
+
               content = mkOption {
                 type = types.str;
                 description = "Content to add";
-                default = [];
-              };
-
-              start = mkOption {
-                type = types.str;
-                description = "Time at which the scheduler inserts this content";
                 default = "";
               };
             };
           });
-        };
+        in
+          mkOption {
+            type = types.attrsOf t;
+            default = {};
+          };
       };
     };
   };
 
   config = lib.mkIf config.scheduler.enable {
-    systemd.user.services =
-      listToAttrs
-      (map
-        (version: {
-          name = "${config.scheduler.name}";
-          value = {
-            Unit = {
-              Description = "Change version of ${config.scheduler.filePath} at ${version.start}";
-            };
-            Install = {
-              WantedBy = ["default.target"];
-            };
+    systemd.user.services = listToAttrs (
+      elemAt
+      (
+        attrValues
+        (
+          mapAttrs (
+            time: files:
+              map (entry: {
+                name = "scheduler-${time}-${entry.file}";
+                value = {
+                  Unit = {
+                    Description = "Change version of ${entry.file} at ${time}";
+                  };
+                  Install = {
+                    WantedBy = ["default.target"];
+                  };
+                  Service = {
+                    #ExecStart = "${pkgs.coreutils}/bin/cp ${config.scheduler.filePath} ${config.scheduler.filePath}.bak";
+                    ExecStart = ''${pkgs.noti}/bin/noti "${entry.content}"'';
+                  };
+                };
+              })
+              files
+          )
+          config.scheduler.versions
+        )
+      )
+      0
+    );
 
-            Service = {
-              #ExecStart = "${pkgs.coreutils}/bin/cp ${config.scheduler.filePath} ${config.scheduler.filePath}.bak";
-              ExecStart = "${pkgs.noti}/bin/noti";
-            };
-          };
-        })
-        config.scheduler.versions);
-
-    systemd.user.timers =
-      listToAttrs
-      (map
-        (version: {
-          name = "${config.scheduler.name}";
-          value = {
-            Install.WantedBy = ["timers.target"];
-            Timer = {
-              Unit = "${config.scheduler.name}";
-              OnCalendar = "${version.start}";
-              AccuracySec = "12h";
-              Persistent = true;
-            };
-          };
-        })
-        config.scheduler.versions);
+    systemd.user.timers = listToAttrs (
+      elemAt
+      (
+        attrValues
+        (
+          mapAttrs (
+            time: files:
+              map (entry: {
+                name = "scheduler-${time}-${entry.file}";
+                value = {
+                  Install.WantedBy = ["timers.target"];
+                  Timer = {
+                    Unit = "scheduler-${time}-${entry.file}";
+                    OnCalendar = "${time}";
+                    Persistent = true;
+                  };
+                };
+              })
+              files
+          )
+          config.scheduler.versions
+        )
+      )
+      0
+    );
   };
 }
