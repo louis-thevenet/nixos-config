@@ -9,5 +9,6 @@
     onlyoffice-bin
     filezilla
     obs-studio
+    cinnamon.nemo
   ];
 }
