@@ -8,5 +8,8 @@
     steam
     wine
     heroic
+    prismlauncher
+    goverlay
+    mangohud
   ];
 }
