@@ -34,10 +34,10 @@
 
       # Screenshotting
       ",Print,exec,${grimblast} --notify copy area"
+      "ALT,Print,exec,${grimblast} --notify save area"
       "SHIFT,Print,exec,${grimblast} --notify copy active"
       "CONTROL,Print,exec,${grimblast} --notify copy screen"
       "SUPER,Print,exec,${grimblast} --notify copy window"
-      "ALT,Print,exec,${grimblast} --notify copy output"
     ]
     # Launcher
     ++ [
