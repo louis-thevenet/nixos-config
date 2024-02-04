@@ -9,6 +9,7 @@
     ../common/global
     ../common/users/louis
     ../optional/droidcam.nix
+    ../optional/virt.nix
   ];
   networking.hostName = "magnus";
   boot.binfmt.emulatedSystems = ["aarch64-linux"]; # allows building iso for arm devices

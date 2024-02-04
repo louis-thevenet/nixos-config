@@ -5,5 +5,6 @@
     ./social.nix
     ./utils.nix
     ./vscode.nix
+    ./virt.nix
   ];
 }
