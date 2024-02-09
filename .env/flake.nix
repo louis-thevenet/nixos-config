@@ -22,6 +22,8 @@
           python311Packages.nix-prefetch-github
           home-manager
           nixos-generators
+          nix-du
+          graphviz
         ];
       };
     });
