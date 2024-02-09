@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    anytype
     bitwarden
     calibre
     libsForQt5.okular
