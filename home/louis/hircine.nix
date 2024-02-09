@@ -7,13 +7,12 @@
 }: {
   imports = [
     ./home-manager.nix
-    ./dev
     ./global
     ./gui
     ./cli
-    ./optional/gnome.nix
     ./optional/hyprland
     ./optional/wayland-wm
+    ./gaming
   ];
   monitors = [
     {
