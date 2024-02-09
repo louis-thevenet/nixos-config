@@ -15,6 +15,8 @@
       url = "github:hyprwm/Hyprland/v0.34.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    schizofox.url = "github:schizofox/schizofox/main";
   };
 
   outputs = {

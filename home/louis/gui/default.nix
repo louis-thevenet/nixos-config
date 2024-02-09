@@ -6,5 +6,6 @@
     ./utils.nix
     ./vscode.nix
     ./virt.nix
+    ./schizofox.nix
   ];
 }
