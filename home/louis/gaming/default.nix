@@ -4,11 +4,11 @@
   ...
 }: {
   home.packages = with pkgs; [
-    lutris
+    #lutris
     steam
-    wine
-    heroic
-    prismlauncher
+    #wine
+    #heroic
+    #prismlauncher
     goverlay
     mangohud
   ];
