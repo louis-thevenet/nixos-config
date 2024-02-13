@@ -10,5 +10,6 @@
     ./git.nix
     ./neovim.nix
     ./oh-my-zsh.nix
+    ./mime.nix
   ];
 }
