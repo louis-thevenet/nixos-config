@@ -9,9 +9,9 @@
     ./home-manager.nix
     ./global
     ./gui
+    ./gui/schizofox.nix
     ./gaming
     ./cli
-    ./dev
     ./optional/hyprland
     ./optional/wayland-wm
   ];
