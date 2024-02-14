@@ -14,6 +14,8 @@
     # Volume
     ",XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
     ",XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
+    "SHIFT,XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +1%"
+    "SHIFT,XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -1%"
     ",XF86AudioMute,exec,${pactl} set-sink-mute @DEFAULT_SINK@ toggle"
     "SHIFT,XF86AudioMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
     ",XF86AudioMicMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
