@@ -72,7 +72,7 @@
 
     # Font
     userSettings.editor.fontLigatures = true;
-    userSettings.editor.fontFamily = "Fira Code";
+    userSettings.editor.fontFamily = config.fontProfiles.monospace.family;
 
     userSettings.explorer.confirmDragAndDrop = false;
 
