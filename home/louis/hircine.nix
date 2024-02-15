@@ -12,6 +12,7 @@
     ./cli
     ./optional/hyprland
     ./optional/wayland-wm
+    ./optional/virt.nix
     ./gaming
   ];
   monitors = [
