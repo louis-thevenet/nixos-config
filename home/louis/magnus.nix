@@ -9,7 +9,8 @@
     ./home-manager.nix
     ./global
     ./gui
-    ./gui/schizofox.nix
+    #./gui/schizofox.nix
+    ./optional/virt.nix
     ./gaming
     ./cli
     ./optional/hyprland
