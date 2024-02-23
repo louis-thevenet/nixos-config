@@ -10,6 +10,7 @@
     ./global
     ./gui
     #./gui/schizofox.nix
+    ./dev/jetbrains.nix
     ./optional/virt.nix
     ./gaming
     ./cli
