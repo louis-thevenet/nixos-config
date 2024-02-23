@@ -56,12 +56,14 @@
       raspberrypi = mkNixos "raspberrypi" "aarch64-linux";
       magnus = mkNixos "magnus" "x86_64-linux";
       hircine = mkNixos "hircine" "x86_64-linux";
+      iso = mkNixos "iso" "x86_64-linux";
     };
 
     homeConfigurations = {
       "louis@magnus" = mkHome "magnus" "x86_64-linux";
       "louis@hircine" = mkHome "hircine" "x86_64-linux";
       "louis@raspberrypi" = mkHome "raspberrypi" "aarch64-linux";
+      "louis@iso" = mkHome "iso" "x86_64-linux";
     };
   };
 }
