@@ -1,0 +1,13 @@
+keys:
+  - &magnus age17wcwvfhtx5f2wkvgsnzs3yttfqm2f2x03ky90jcv5rmydfl0kyaq4rwgd7
+
+creation_rules:
+  - path_regex: hosts/magnus/secrets.yaml$
+    key_groups:
+      - age:
+          - *magnus
+
+  - path_regex: hosts/common/secrets.yaml$
+    key_groups:
+      - age:
+          - *magnus
