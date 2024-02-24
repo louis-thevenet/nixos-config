@@ -3,8 +3,10 @@
   pkgs,
   ...
 }: {
+  # magnus
+  # hircine
   xdg.configFile."git/allowed_signers".text = ''
-    louis.tvnt@gmail.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILaZo9ouDAWxdQnmqU3fi5OeaggjB0+gBEizITVviimc louis.tvnt@gmail.com
+    louis.tvnt@gmail.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF0w5CDimW+k9ic7fOJ3aNjFA9Bhe1LT4Bb0bczrheKr louis.tvnt@gmail.com
     louis.tvnt@gmail.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHzcuekFCsXm/zYTn78Xb3+g22OqFib+YaMRFsvRkBYi louis.tvnt@gmail.com
   '';
   services.ssh-agent = {
