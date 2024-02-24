@@ -24,6 +24,8 @@
           nixos-generators
           nix-du
           graphviz
+          sops
+          age
         ];
       };
     });
