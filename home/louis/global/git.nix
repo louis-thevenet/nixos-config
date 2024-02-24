@@ -4,7 +4,7 @@
   ...
 }: {
   xdg.configFile."git/allowed_signers".text = ''
-    louis.tvnt@gmail.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHm46BX+FYHorkhOMmoUaL/BEczeg8vxedK7tzXUw6bV louis.tvnt@gmail.com
+    louis.tvnt@gmail.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILaZo9ouDAWxdQnmqU3fi5OeaggjB0+gBEizITVviimc louis.tvnt@gmail.com
   '';
   services.ssh-agent = {
     enable = true;
