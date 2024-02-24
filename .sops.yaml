@@ -1,5 +1,5 @@
 keys:
-  - &magnus age19y9xe22j8c7x5j2mxthpeunuxl3zye496m3f4lpc5pq55v08vugssykll2
+  - &magnus age19z67whhzncpz5je07svxfvucvnj2gsl7w68a9a96x5e4sjlkncpqn83ak6
   - &hircine age16jawa4xtsyyj4r4szwf9nsame6dsxk90pvqz7gz5s3pxl8jmygss87qndt
 creation_rules:
   - path_regex: hosts/magnus/secrets.yaml$
