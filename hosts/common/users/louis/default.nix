@@ -23,7 +23,7 @@ in {
     if [ ! -f ${passwordFile} ]; then
       echo -e "\e[31m${passwordFile} doesn't exist, creating it. Password is \"tmp\" \e[0m"
 
-      mkdir -p ''${dirname ${passwordFile}} && touch ${passwordFile}
+      mkdir -p $(dirname ${passwordFile}) && touch ${passwordFile}
       echo "$y$j9T$fRcgMeFa9VRjBE0yitrh70$DR1AoWRerynpYpLpW5Ncmi8KYFFPlJfqRgUzDbVgnT1" > ${passwordFile}
 
       # what if the update users script runs before this one? Let's change the password in case
