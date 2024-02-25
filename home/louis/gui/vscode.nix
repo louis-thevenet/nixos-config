@@ -5,41 +5,26 @@
 }: {
   programs.vscode = {
     enable = true;
-
+    package = pkgs.vscode-fhs;
     enableExtensionUpdateCheck = false;
     enableUpdateCheck = false;
-    extensions = with pkgs.vscode-extensions;
-      [
-        mkhl.direnv
-        jnoortheen.nix-ide
-        ms-vscode.cpptools
-        #ms-dotnettools.csharp
-        #ms-python.python
-        #ms-vscode.cmake-tools
-        rust-lang.rust-analyzer
-        vadimcn.vscode-lldb
-        nvarner.typst-lsp
-        tomoki1207.pdf
-        github.copilot
-        github.copilot-chat
-        redhat.java
-      ]
-      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        {
-          name = "ada";
-          publisher = "AdaCore";
-          version = "23.0.21";
-          sha256 = "4vEBF183X+w2zidSrnQlmUcDlXsUayhxCp1h+GikWIU=";
-        }
-      ]
-      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        {
-          name = "wgsl";
-          publisher = "polymeilex";
-          version = "0.1.16";
-          sha256 = "sha256-0EcV80N8u3eQB74TNedjM5xbQFY7avUu3A8HWi7eZLk=";
-        }
-      ];
+    extensions = with pkgs.vscode-extensions; [
+      mkhl.direnv
+      jnoortheen.nix-ide
+      #ms-vscode.cpptools
+      #ms-dotnettools.csharp
+      #ms-python.python
+      #ms-vscode.cmake-tools
+      rust-lang.rust-analyzer
+      #vadimcn.vscode-lldb
+      nvarner.typst-lsp
+      tomoki1207.pdf
+      github.copilot
+      github.copilot-chat
+      redhat.java
+      vscjava.vscode-gradle
+      vscjava.vscode-java-debug
+    ];
 
     keybindings = [
       {
