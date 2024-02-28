@@ -7,8 +7,8 @@
       home-update-d = "home-manager --flake .#louis@magnus switch";
       home-update-l = "home-manager --flake .#louis@hircine switch";
 
-      lx = "eza --long --header --binary --git --no-permissions --no-user";
-      bat = "bat --theme=\"Solarized (light)\"";
+      ls = "eza --long --header --binary --git --no-permissions --no-user";
+      cat = "bat --theme=\"Solarized (light)\"";
     };
     enableAutosuggestions = true;
     enableCompletion = true;
@@ -44,7 +44,7 @@
     oh-my-zsh = {
       enable = true;
       plugins = ["git" "history" "vscode"];
-      theme = "amuse";
+      theme = "candy";
     };
   };
 }
