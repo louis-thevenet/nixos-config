@@ -62,5 +62,10 @@
     # Notification manager
     [
       "SUPER,w,exec,${swaync-client} -t" # cp closes
+    ]
+    ++
+    # Bluetooth
+    [
+      "SUPER,b,exec,blueman-manager"
     ];
 }

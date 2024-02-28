@@ -57,7 +57,7 @@ in {
 
         "SUPER,g,togglegroup"
         "SUPER,b,changegroupactive,f"
-        "SUPERSHIFT,b,changegroupactive,b"
+        "SUPERSHIFT,r,changegroupactive,r"
 
         "SUPER,u,togglespecialworkspace, one"
         "SUPERSHIFT,u,movetoworkspace,special:one"
