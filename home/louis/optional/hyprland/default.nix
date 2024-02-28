@@ -69,6 +69,10 @@
         vfr = "on";
         focus_on_activate = true;
       };
+
+      windowrule = [
+        "tile,Warp"
+      ];
     };
   };
 }

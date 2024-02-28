@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,11 +26,12 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-master,
     sops-nix,
     home-manager,
     nix-colors,
     ...
-  }: let
+  } @ inputs: let
     forEachSystem = nixpkgs.lib.genAttrs ["aarch64-linux" "x86_64-linux"];
     forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
 
@@ -49,13 +51,25 @@
           inherit (self) inputs outputs;
           inherit nix-colors;
         };
-        modules = [
+        modules = let
+          overlay-master = final: prev: {
+            master = import nixpkgs-master {
+              system = final.system;
+              config.allowUnfree = true;
+            };
+          };
+        in [
+          ({
+            config,
+            pkgs,
+            ...
+          }: {nixpkgs.overlays = [overlay-master];})
+
           ./home/louis/${host}.nix
         ];
       };
   in {
     formatter = forEachPkgs (pkgs: pkgs.alejandra);
-
     nixosConfigurations = {
       raspberrypi = mkNixos "raspberrypi" "aarch64-linux";
       magnus = mkNixos "magnus" "x86_64-linux";
