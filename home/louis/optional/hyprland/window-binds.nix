@@ -49,18 +49,21 @@ in {
         "SUPERSHIFT,f,fullscreen,0"
         "SUPERSHIFT,space,togglefloating"
 
-        "SUPER,minus,splitratio,-0.25"
-        "SUPERSHIFT,minus,splitratio,-0.3333333"
+        "SUPER,KP_Subtract,splitratio,-0.25"
+        "SUPERSHIFT,KP_Subtract,splitratio,-0.3333333"
 
-        "SUPER,equal,splitratio,0.25"
-        "SUPERSHIFT,equal,splitratio,0.3333333"
+        "SUPER,KP_Add,splitratio,0.25"
+        "SUPERSHIFT,KP_Add,splitratio,0.3333333"
 
         "SUPER,g,togglegroup"
-        "SUPER,apostrophe,changegroupactive,f"
-        "SUPERSHIFT,apostrophe,changegroupactive,b"
+        "SUPER,b,changegroupactive,f"
+        "SUPERSHIFT,b,changegroupactive,b"
 
-        "SUPER,u,togglespecialworkspace"
-        "SUPERSHIFT,u,movetoworkspace,special"
+        "SUPER,u,togglespecialworkspace, one"
+        "SUPERSHIFT,u,movetoworkspace,special:one"
+
+        "SUPER,i,togglespecialworkspace, two"
+        "SUPERSHIFT,i,movetoworkspace,special:two"
       ]
       ++
       # Change workspace
