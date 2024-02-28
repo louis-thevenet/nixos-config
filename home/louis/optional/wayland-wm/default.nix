@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ./mako.nix
+    ./swaync.nix
     ./waybar.nix
     ./swayidle.nix
     ./swaylock.nix

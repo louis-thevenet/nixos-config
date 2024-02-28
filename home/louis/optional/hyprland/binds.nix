@@ -23,7 +23,7 @@
 
   wayland.windowManager.hyprland.settings.bind = let
     swaylock = "${config.programs.swaylock.package}/bin/swaylock";
-    makoctl = "${config.services.mako.package}/bin/makoctl";
+    swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
     grimblast = "${pkgs.grimblast}/bin/grimblast";
     terminal = config.home.sessionVariables.TERMINAL;
     killall = "${pkgs.killall}/bin/killall";
@@ -60,7 +60,7 @@
     ])
     ++
     # Notification manager
-    (lib.optionals config.services.mako.enable [
-      "SUPER,w,exec,${makoctl} dismiss"
-    ]);
+     [
+      "SUPER,w,exec,${swaync-client} -op" # cp closes
+    ];
 }
