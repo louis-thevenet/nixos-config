@@ -60,7 +60,7 @@
     ])
     ++
     # Notification manager
-     [
-      "SUPER,w,exec,${swaync-client} -op" # cp closes
+    [
+      "SUPER,w,exec,${swaync-client} -t" # cp closes
     ];
 }
