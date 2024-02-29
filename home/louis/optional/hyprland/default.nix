@@ -30,7 +30,7 @@
       swaync = "${pkgs.swaynotificationcenter}/bin/swaync";
     in ''
       exec-once = ${swww-script}
-      exec-once ${swaync}
+      exec-once = ${swaync}
     '';
     settings = {
       env = [
