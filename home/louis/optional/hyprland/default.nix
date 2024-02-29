@@ -26,8 +26,11 @@
         # Start Service here
         ${pkgs.swww}/bin/swww clear 000000
       '';
+
+      swaync = "${pkgs.swaynotificationcenter}/bin/swaync";
     in ''
       exec-once = ${swww-script}
+      exec-once ${swaync}
     '';
     settings = {
       env = [

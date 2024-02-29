@@ -5,23 +5,28 @@
   stylix,
   ...
 }:
-
 with config.colorscheme.colors; let
   background = "#" + base00;
-  altBackground = "#"+base01;
-  selBackground = "#"+base03;
-  text ="#"+ base05;
-  altText = "#"+base04;
-  warning = "#"+base0A;
-  urgent = "#"+base09;
-  error = "#"+base08;
-  focused = "#"+base0A;
-  unfocused = "#"+base03;
-  boarder = "#"+base0D;
+  altBackground = "#" + base01;
+  selBackground = "#" + base03;
+  text = "#" + base05;
+  altText = "#" + base04;
+  warning = "#" + base0A;
+  urgent = "#" + base09;
+  error = "#" + base08;
+  focused = "#" + base0A;
+  unfocused = "#" + base03;
+  boarder = "#" + base0D;
 
   fonts = {
     names = [config.fontProfiles.monospace.family];
-    size = config.stylix.fonts.sizes.desktop + 0.0;
+    size =
+      config
+      .stylix
+      .fonts
+      .sizes
+      .desktop
+      + 0.0;
   };
   #colors = config.lib.stylix.colors.withHashtag;
   opacity = lib.toHexString (((builtins.ceil (config.stylix.opacity.popups * 100)) * 255) / 100);
@@ -85,12 +90,12 @@ in {
           "clear-all-button": true
         },
         "title": {
-          "text": "Notifications",
+          "text": "",
           "clear-all-button": true,
           "button-text": "󰆴 Clear All"
         },
         "dnd": {
-          "text": "Do Not Disturb"
+          "text": ""
         },
         "volume": {
           "show-per-app": true
@@ -124,8 +129,8 @@ in {
   '';
 
   home.file.".config/swaync/style.css".text = let
-      inherit (config.colorscheme) colors;
-    in ''
+    inherit (config.colorscheme) colors;
+  in ''
     @define-color ${background};
 
     @define-color noti-border-color ${boarder};
@@ -153,8 +158,7 @@ in {
     .notification {
       border-radius: 12px;
       margin: 6px 12px;
-      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.7),
-        0 2px 6px 2px rgba(0, 0, 0, 0.3);
+
       padding: 0;
     }
 
@@ -309,7 +313,7 @@ in {
     }
 
     .control-center {
-      background: @cc-bg;
+      background: transparent;
     }
 
     .control-center-list {
