@@ -82,6 +82,7 @@ in {
           "memory"
           "clock"
           "pulseaudio"
+          "custom/notifications"
         ];
         modules-right = [
           "network"
@@ -114,6 +115,28 @@ in {
           };
           on-click = pavucontrol;
         };
+
+        "custom/notifications"= {
+            tooltip= false;
+            format= "{icon}";
+            format-icons= {
+            notification= "<span foreground='red'><sup></sup></span>";
+            none= "";
+            dnd-notification= "<span foreground='red'><sup></sup></span>";
+            dnd-none= "";
+            inhibited-notification= "<span foreground='red'><sup></sup></span>";
+            inhibited-none="";
+            dnd-inhibited-notification= "<span foreground='red'><sup></sup></span>";
+            dnd-inhibited-none= "";
+            };
+            return-type= "json";
+            exec-if= "which swaync-client";
+            exec= "swaync-client -swb";
+            on-click= "swaync-client -t -sw";
+            on-click-right= "swaync-client -d -sw";
+            escape= true;
+        };
+
         idle_inhibitor = {
           format = "{icon}";
           format-icons = {
