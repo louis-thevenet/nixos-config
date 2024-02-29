@@ -30,6 +30,8 @@
   wofi = "${pkgs.wofi}/bin/wofi";
   khal = "${pkgs.khal}/bin/khal";
   python = "${pkgs.python3}/bin/python3";
+  btm-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.bottom}/bin/btm";
+  nmtui-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.networkmanager}/bin/nmtui";
 
   # Function to simplify making waybar outputs
   jsonOutput = name: {
@@ -99,9 +101,11 @@ in {
         };
         cpu = {
           format = "   {usage}%";
+          on-click = btm-kitty;
         };
         memory = {
           format = "󰍛  {}%";
+          on-click = btm-kitty;
           interval = 5;
         };
         pulseaudio = {
@@ -116,25 +120,25 @@ in {
           on-click = pavucontrol;
         };
 
-        "custom/notifications"= {
-            tooltip= false;
-            format= "{} {icon}";
-            format-icons= {
-            notification= "<span foreground='red'><sup></sup></span>";
-            none= "";
-            dnd-notification= "<span foreground='red'><sup></sup></span>";
-            dnd-none= "";
-            inhibited-notification= "<span foreground='red'><sup></sup></span>";
-            inhibited-none="";
-            dnd-inhibited-notification= "<span foreground='red'><sup></sup></span>";
-            dnd-inhibited-none= "";
-            };
-            return-type= "json";
-            exec-if= "which swaync-client";
-            exec= "swaync-client -swb";
-            on-click= "swaync-client -t -sw";
-            on-click-right= "swaync-client -d -sw";
-            escape= true;
+        "custom/notifications" = {
+          tooltip = false;
+          format = "{} {icon}";
+          format-icons = {
+            notification = "<span foreground='red'><sup></sup></span>";
+            none = "";
+            dnd-notification = "<span foreground='red'><sup></sup></span>";
+            dnd-none = "";
+            inhibited-notification = "<span foreground='red'><sup></sup></span>";
+            inhibited-none = "";
+            dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
+            dnd-inhibited-none = "";
+          };
+          return-type = "json";
+          exec-if = "which swaync-client";
+          exec = "swaync-client -swb";
+          on-click = "swaync-client -t -sw";
+          on-click-right = "swaync-client -d -sw";
+          escape = true;
         };
 
         idle_inhibitor = {
@@ -165,7 +169,7 @@ in {
             {ipaddr}/{cidr}
             Up: {bandwidthUpBits}
             Down: {bandwidthDownBits}'';
-          on-click = "";
+          on-click = nmtui-kitty;
         };
 
         "custom/menu" = {
