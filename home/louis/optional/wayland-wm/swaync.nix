@@ -98,7 +98,8 @@ in {
           "text": ""
         },
         "volume": {
-          "show-per-app": true
+            "show-per-app": true,
+            "show-per-app-label": true
         },
         "buttons-grid": {
           "actions": [
