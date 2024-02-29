@@ -63,7 +63,7 @@ in {
       primary = {
         layer = "top";
         height = 40;
-        margin = "6";
+        margin = "2";
         position = "top";
         modules-left =
           [
