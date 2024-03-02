@@ -6,6 +6,6 @@
     tor-browser-bundle-bin
     onlyoffice-bin
     gnome.nautilus
-    master.warp-terminal
+    warp-terminal
   ];
 }
