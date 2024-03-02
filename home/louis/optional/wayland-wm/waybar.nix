@@ -13,6 +13,7 @@
   jq = "${pkgs.jq}/bin/jq";
   rofi = "${pkgs.rofi}/bin/rofi";
   playerctl = "${pkgs.playerctl}/bin/playerctl";
+  swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
   playerctld = "${pkgs.playerctl}/bin/playerctld";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   btm-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.bottom}/bin/btm";
@@ -120,10 +121,10 @@ in {
             dnd-inhibited-none = "";
           };
           return-type = "json";
-          # exec-if = "which swaync-client";
-          exec = "swaync-client -swb";
-          on-click = "swaync-client -t -sw";
-          on-click-right = "swaync-client -d -sw";
+          exec-if = "which ${swaync-client}";
+          exec = "${swaync-client} -swb";
+          on-click = "${swaync-client} -t -sw";
+          on-click-right = "${swaync-client} -d -sw";
           escape = true;
         };
 
