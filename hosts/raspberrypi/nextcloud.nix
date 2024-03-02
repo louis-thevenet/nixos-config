@@ -44,7 +44,7 @@
         defaultPhoneRegion = "FR";
         dbtype = "pgsql";
         adminuser = "admin";
-        adminpassFile = "/path/to/nextcloud-admin-pass";
+        adminpassFile = config.sops.secrets."nextcloud-admin-password".path;
       };
     };
   };
