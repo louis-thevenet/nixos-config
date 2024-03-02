@@ -19,4 +19,5 @@
     wlroots
     swww
   ];
+  services.playerctld.enable = true;
 }
