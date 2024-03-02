@@ -8,28 +8,13 @@
   # Dependencies
   cat = "${pkgs.coreutils}/bin/cat";
   cut = "${pkgs.coreutils}/bin/cut";
-  find = "${pkgs.findutils}/bin/find";
   grep = "${pkgs.gnugrep}/bin/grep";
-  perl = "${pkgs.perl}/bin/perl";
-  pgrep = "${pkgs.procps}/bin/pgrep";
-  sed = "${pkgs.gnused}/bin/sed";
-  tail = "${pkgs.coreutils}/bin/tail";
   wc = "${pkgs.coreutils}/bin/wc";
-  xargs = "${pkgs.findutils}/bin/xargs";
-  timeout = "${pkgs.coreutils}/bin/timeout";
-  ping = "${pkgs.iputils}/bin/ping";
-
   jq = "${pkgs.jq}/bin/jq";
-  xml = "${pkgs.xmlstarlet}/bin/xml";
-  gamemoded = "${pkgs.gamemode}/bin/gamemoded";
-  systemctl = "${pkgs.systemd}/bin/systemctl";
-  journalctl = "${pkgs.systemd}/bin/journalctl";
+  rofi = "${pkgs.rofi}/bin/rofi";
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   playerctld = "${pkgs.playerctl}/bin/playerctld";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
-  wofi = "${pkgs.wofi}/bin/wofi";
-  khal = "${pkgs.khal}/bin/khal";
-  python = "${pkgs.python3}/bin/python3";
   btm-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.bottom}/bin/btm";
   nmtui-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.networkmanager}/bin/nmtui";
 
@@ -65,9 +50,10 @@ in {
         height = 40;
         margin = "2";
         position = "top";
+        exclusive = true;
+        start_hidden = true;
         modules-left =
           [
-            "custom/menu"
             "custom/currentplayer"
             "custom/player"
           ]
@@ -134,18 +120,28 @@ in {
             dnd-inhibited-none = "";
           };
           return-type = "json";
-          exec-if = "which swaync-client";
+          # exec-if = "which swaync-client";
           exec = "swaync-client -swb";
           on-click = "swaync-client -t -sw";
           on-click-right = "swaync-client -d -sw";
           escape = true;
         };
 
-        idle_inhibitor = {
-          format = "{icon}";
-          format-icons = {
-            activated = "󰒳";
-            deactivated = "󰒲";
+        "hyprland/workspaces" = {
+          format-window-separator = " ";
+          active-only = false;
+          all-outputs = false;
+          show-special = true;
+          format = "{name} {windows}";
+          "window-rewrite" = {
+            "title<.*youtube.*>" = "";
+            "class<firefox>" = "";
+            "class<firefox> title<.*github.*>" = "";
+            "warp" = "";
+            "code" = "󰨞";
+            "Discord" = "󰙯";
+            "Spotify" = "󰓇";
+            "matlab" = "󰆧";
           };
         };
         battery = {
@@ -172,14 +168,6 @@ in {
           on-click = nmtui-kitty;
         };
 
-        "custom/menu" = {
-          return-type = "json";
-          exec = jsonOutput "menu" {
-            text = "";
-            tooltip = ''$(${cat} /etc/os-release | ${grep} PRETTY_NAME | ${cut} -d '"' -f2)'';
-          };
-          #on-click = "${wofi} -S drun -x 10 -y 10 -W 25% -H 60%";
-        };
         "custom/hostname" = {
           exec = "echo $USER@$HOSTNAME";
         };
@@ -279,6 +267,12 @@ in {
           color: #${colors.base05};
           margin: 4px;
         }
+
+        #workspaces button.special {
+          background-color: #${colors.base02};
+          color: #${colors.base00};
+        }
+
         #workspaces button.hidden {
           background-color: #${colors.base00};
           color: #${colors.base04};
