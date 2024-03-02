@@ -59,11 +59,11 @@ in {
         "SUPER,b,changegroupactive,f"
         "SUPERSHIFT,r,changegroupactive,r"
 
-        "SUPER,u,togglespecialworkspace, one"
-        "SUPERSHIFT,u,movetoworkspace,special:one"
+        "SUPER,u,togglespecialworkspace, U"
+        "SUPERSHIFT,u,movetoworkspace,special:U"
 
-        "SUPER,i,togglespecialworkspace, two"
-        "SUPERSHIFT,i,movetoworkspace,special:two"
+        "SUPER,i,togglespecialworkspace, I"
+        "SUPERSHIFT,i,movetoworkspace,special:I"
       ]
       ++
       # Change workspace
