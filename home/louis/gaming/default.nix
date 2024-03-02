@@ -8,7 +8,7 @@
     steam
     #wine
     #heroic
-    #prismlauncher
+    prismlauncher
     goverlay
     mangohud
   ];
