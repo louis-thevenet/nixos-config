@@ -4,45 +4,13 @@
   ...
 }: {
   imports = [
-    #./hardware-configuration.nix
-    ../common/global
+    ./nextcloud.nix
+    inputs.sops-nix.nixosModules.sops
   ];
-
-  # use the default configuration later
-  users = {
-    mutableUsers = false;
-    users = {
-      louis = {
-        isNormalUser = true;
-        description = "louis thevenet";
-        extraGroups = ["networkmanager" "wheel"];
-        shell = pkgs.zsh;
-        home = "/home/louis";
-        initialPassword = "tmp";
-      };
+  sops = {
+    defaultSopsFile = ./secrets.yaml;
+    age.keyFile = "/home/louis/.config/sops/age/keys.txt";
+    secrets."nextcloud-admin-password" = {
     };
-  };
-
-  networking = {
-    hostName = "rasberrypi";
-  };
-
-  hardware = {
-    raspberry-pi."4".apply-overlays-dtmerge.enable = true;
-    deviceTree = {
-      enable = true;
-      filter = "*rpi-4-*.dtb";
-    };
-  };
-  console.enable = false;
-  environment.systemPackages = with pkgs; [
-    libraspberrypi
-    raspberrypi-eeprom
-  ];
-
-  services.openssh = {
-    enable = true;
-    permitRootLogin = true;
-    #passwordAuthentication = false;
   };
 }

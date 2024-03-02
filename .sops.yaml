@@ -1,6 +1,7 @@
 keys:
   - &magnus age19z67whhzncpz5je07svxfvucvnj2gsl7w68a9a96x5e4sjlkncpqn83ak6
   - &hircine age16jawa4xtsyyj4r4szwf9nsame6dsxk90pvqz7gz5s3pxl8jmygss87qndt
+  - &raspberrypi age1kq4d65jesjgng6mpytlrw3eegm84a6cf2z52vqmsla473fhx6e4svlp9dr
 creation_rules:
   - path_regex: hosts/magnus/secrets.yaml$
     key_groups:
@@ -12,3 +13,8 @@ creation_rules:
       - age:
           - *magnus
           - *hircine
+
+  - path_regex: hosts/raspberrypi/secrets.yaml$
+    key_groups:
+      - age:
+          - *raspberrypi
