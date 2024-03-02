@@ -66,6 +66,6 @@
     ++
     # Bluetooth
     [
-      "SUPER,b,exec,blueman-manager"
+      "SUPER,p,exec,blueman-manager"
     ];
 }
