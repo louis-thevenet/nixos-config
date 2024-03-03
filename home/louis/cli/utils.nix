@@ -16,5 +16,7 @@
     linuxKernel.packages.linux_6_1.perf
     nm-tray
     killall
+    calcurse
+    wget
   ];
 }
