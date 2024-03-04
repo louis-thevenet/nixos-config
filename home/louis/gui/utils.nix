@@ -7,5 +7,6 @@
     onlyoffice-bin
     gnome.nautilus
     warp-terminal
+    super-productivity
   ];
 }
