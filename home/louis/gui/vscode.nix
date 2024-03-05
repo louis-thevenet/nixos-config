@@ -8,23 +8,27 @@
     package = pkgs.vscode-fhs;
     enableExtensionUpdateCheck = false;
     enableUpdateCheck = false;
-    extensions = with pkgs.vscode-extensions; [
-      mkhl.direnv
-      jnoortheen.nix-ide
-      #ms-vscode.cpptools
-      #ms-dotnettools.csharp
-      #ms-python.python
-      #ms-vscode.cmake-tools
-      rust-lang.rust-analyzer
-      #vadimcn.vscode-lldb
-      nvarner.typst-lsp
-      tomoki1207.pdf
-      github.copilot
-      github.copilot-chat
-      redhat.java
-      vscjava.vscode-gradle
-      vscjava.vscode-java-debug
-    ];
+    extensions = with pkgs.vscode-extensions;
+      [
+        mkhl.direnv
+        jnoortheen.nix-ide
+        rust-lang.rust-analyzer
+        nvarner.typst-lsp
+        tomoki1207.pdf
+        github.copilot
+        github.copilot-chat
+        redhat.java
+        vscjava.vscode-gradle
+        vscjava.vscode-java-debug
+      ]
+      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "continue";
+          publisher = "Continue";
+          version = "0.9.79";
+          sha256 = "sZLtY30eWO7Tflxd9BazSBNl/d5w/k+Esodu3Qthzos=";
+        }
+      ];
 
     keybindings = [
       {
