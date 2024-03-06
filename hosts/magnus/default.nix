@@ -10,6 +10,7 @@
     ../common/users/louis
     ../optional/droidcam.nix
     ../optional/virt.nix
+    ../optional/ollama.nix
   ];
   networking.hostName = "magnus";
   boot.binfmt.emulatedSystems = ["aarch64-linux"]; # allows building iso for arm devices
@@ -64,7 +65,7 @@
     #   };
     # });
 
-     package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
   };
 
   # XDG Portals
