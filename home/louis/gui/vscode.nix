@@ -15,11 +15,12 @@
         rust-lang.rust-analyzer
         nvarner.typst-lsp
         tomoki1207.pdf
-        github.copilot
-        github.copilot-chat
+        # github.copilot
+        # github.copilot-chat
         redhat.java
         vscjava.vscode-gradle
         vscjava.vscode-java-debug
+        ms-toolsai.jupyter
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
