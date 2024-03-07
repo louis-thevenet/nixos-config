@@ -47,16 +47,31 @@
         {
           Name = "nixpkgs";
           Description = "Nixpkgs query";
-          Alias = "!nix";
+          Alias = "!pkg";
           Method = "GET";
           URLTemplate = "https://search.nixos.org/packages?&query={searchTerms}";
         }
+        {
+          Name = "mynixos";
+          Description = "MyNixOS query";
+          Alias = "!nix";
+          Method = "GET";
+          URLTemplate = "https://mynixos.com/search?q={searchTerms}";
+        }
+
         {
           Name = "GitHub Repos";
           Description = "Search GitHub repositories";
           Alias = "!gh";
           Method = "GET";
           URLTemplate = "https://github.com/search?q={searchTerms}&type=repositories";
+        }
+        {
+          Name = "Moodle N7";
+          Description = "Search ENSEEIHT's moodle";
+          Alias = "!n7";
+          Method = "GET";
+          URLTemplate = "https://moodle-n7.inp-toulouse.fr/course/search.php?context=1&q={searchTerms}";
         }
       ];
     };
@@ -68,13 +83,12 @@
     };
 
     extensions = {
-      simplefox = {
-        enable = true;
-      };
+      darkreader.enable = false;
+      simplefox.enable = true;
       extraExtensions = {
-        "{446900e4-71c2-419f-a6a7-df9c091e268b}".install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
         "cb-remover@search.mozilla.org".install_url = "https://addons.mozilla.org/firefox/downloads/latest/clickbait-remover-for-youtube/latest.xpi";
         "treestyletab@piro.sakura.ne.jp".install_url = "https://addons.mozilla.org/firefox/downloads/latest/tree-style-tab/latest.xpi";
+        "ncpasswords@mdns.eu".install_url = "https://addons.mozilla.org/firefox/downloads/latest/nextcloud-passwords/latest.xpi";
       };
     };
 
@@ -82,11 +96,6 @@
       drmFix = true;
       disableWebgl = false;
       bookmarks = [
-        {
-          Title = "Todoist";
-          URL = "https://app.todoist.com/app/today";
-          Placement = "toolbar";
-        }
         {
           Title = "GitHub";
           URL = "https://github.com/dashboard";
@@ -129,16 +138,48 @@
           Folder = "N7";
         }
         {
-            Title = "Hudson";
-            URL = "https://hudson.inp-toulouse.fr/";
-            Placement = "toolbar";
-            Folder = "N7";
+          Title = "Hudson";
+          URL = "https://hudson.inp-toulouse.fr/";
+          Placement = "toolbar";
+          Folder = "N7";
         }
         {
           Title = "Churros";
           URL = "https://churros.inpt.fr/";
           Placement = "toolbar";
           Folder = "N7";
+        }
+
+        # NextCloud
+        {
+          Title = "Dashboard";
+          URL = "https://louis-thevenet.fr/nextcloud/index.php/apps/dashboard/#/";
+          Folder = "NC";
+          Placement = "toolbar";
+        }
+        {
+          Title = "Passwords";
+          URL = "https://louis-thevenet.fr/nextcloud/index.php/apps/passwords/";
+          Folder = "NC";
+          Placement = "toolbar";
+        }
+        {
+          Title = "Mail";
+          URL = "https://louis-thevenet.fr/nextcloud/index.php/apps/mail/";
+          Folder = "NC";
+          Placement = "toolbar";
+        }
+        {
+          Title = "News";
+          URL = "https://louis-thevenet.fr/nextcloud/index.php/apps/news/";
+          Folder = "NC";
+          Placement = "toolbar";
+        }
+        {
+          Title = "Files";
+          URL = "https://louis-thevenet.fr/nextcloud/index.php/apps/files/files";
+          Folder = "NC";
+          Placement = "toolbar";
         }
 
         # Nix
@@ -188,13 +229,6 @@
           Placement = "toolbar";
           Folder = "DnD";
         }
-        # {
-        #   Title = "Example";
-        #   URL = "https://example.com";
-        #   Favicon = "https://example.com/favicon.ico";
-        #   Placement = "toolbar";
-        #   Folder = "FolderName";
-        # }
       ];
     };
   };
