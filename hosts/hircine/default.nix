@@ -10,6 +10,7 @@
     ../common/users/louis
     ../optional/gnome.nix
     ../optional/virt.nix
+    ../optional/ollama.nix
   ];
   networking.hostName = "hircine";
 
