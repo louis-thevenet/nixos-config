@@ -17,5 +17,6 @@
     killall
     calcurse
     wget
+    nvtop
   ];
 }

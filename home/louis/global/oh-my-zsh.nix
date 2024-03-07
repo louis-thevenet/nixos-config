@@ -27,18 +27,18 @@
         file = "command-time.plugin.zsh";
       }
 
-      # {
-      #   name = "zsh-airpods-battery";
-      #   src =
-      #     pkgs.fetchFromGitHub
-      #     {
-      #       owner = "A-delta";
-      #       repo = "zsh-airpods-battery";
-      #       rev = "46edc4b782d9b5a2a29f30a64aa22e2da1305f5e";
-      #       sha256 = "TORbJOSFGk2/9Fj798E+eGnkucfr/btuellFhkzpf/8=";
-      #     };
-      #   file = "airpods-battery.plugin.zsh";
-      # }
+      {
+        name = "zsh-airpods-battery";
+        src =
+          pkgs.fetchFromGitHub
+          {
+            owner = "A-delta";
+            repo = "zsh-airpods-battery";
+            rev = "46edc4b782d9b5a2a29f30a64aa22e2da1305f5e";
+            sha256 = "TORbJOSFGk2/9Fj798E+eGnkucfr/btuellFhkzpf/8=";
+          };
+        file = "airpods-battery.plugin.zsh";
+      }
     ];
 
     oh-my-zsh = {

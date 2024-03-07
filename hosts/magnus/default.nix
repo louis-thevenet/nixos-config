@@ -8,6 +8,7 @@
     ./hardware-configuration.nix
     ../common/global
     ../common/users/louis
+    ../common/global/services/airpods-battery-fetcher.nix
     ../optional/droidcam.nix
     ../optional/virt.nix
     ../optional/ollama.nix
