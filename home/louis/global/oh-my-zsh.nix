@@ -8,6 +8,7 @@
       home-update-l = "home-manager --flake .#louis@hircine switch";
 
       ls = "eza --long --header --binary --git --no-permissions --no-user";
+      lss = "ls --total-size";
       cat = "bat --theme=\"Solarized (light)\"";
     };
     enableAutosuggestions = true;
