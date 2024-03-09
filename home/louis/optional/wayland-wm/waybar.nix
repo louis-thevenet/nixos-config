@@ -258,14 +258,7 @@ in {
         }
 
         window#waybar.top {
-          opacity: 0.95;
           padding: 0;
-          background-color: #${colors.base00};
-          border: 2px solid #${colors.base0C};
-          border-radius: 10px;
-        }
-        window#waybar.bottom {
-          opacity: 0.90;
           background-color: #${colors.base00};
           border: 2px solid #${colors.base0C};
           border-radius: 10px;
@@ -279,10 +272,11 @@ in {
           background-color: #${colors.base01};
           color: #${colors.base05};
           margin: 4px;
+          border-radius: 10px;
         }
 
         #workspaces button.special {
-          background-color: #${colors.base02};
+          background-color: #${colors.base0B};
           color: #${colors.base00};
         }
 
