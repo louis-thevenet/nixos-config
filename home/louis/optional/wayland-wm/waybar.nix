@@ -145,6 +145,7 @@ in {
           active-only = false;
           all-outputs = false;
           show-special = true;
+          window-rewrite-default = "";
           format = "{name} {windows}";
           "window-rewrite" = {
             "title<.*youtube.*>" = "";
@@ -153,8 +154,9 @@ in {
             "warp" = "";
             "code" = "󰨞";
             "Discord" = "󰙯";
-            "Spotify" = "󰓇";
+            "class<Spotify>" = "󰓇";
             "matlab" = "󰆧";
+            "Super Productivity" = "󰨟";
           };
         };
         battery = {
