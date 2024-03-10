@@ -20,7 +20,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    schizofox.url = "github:schizofox/schizofox/main";
+    schizofox.url = "github:louis-thevenet/schizofox/personal-fixes-2";
   };
 
   outputs = {

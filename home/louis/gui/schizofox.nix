@@ -80,6 +80,7 @@
       sanitizeOnShutdown = false;
       sandbox = true;
       userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:106.0) Gecko/20100101 Firefox/106.0";
+      enableCaptivePortal = true;
     };
 
     extensions = {
@@ -89,10 +90,12 @@
         "cb-remover@search.mozilla.org".install_url = "https://addons.mozilla.org/firefox/downloads/latest/clickbait-remover-for-youtube/latest.xpi";
         "treestyletab@piro.sakura.ne.jp".install_url = "https://addons.mozilla.org/firefox/downloads/latest/tree-style-tab/latest.xpi";
         "ncpasswords@mdns.eu".install_url = "https://addons.mozilla.org/firefox/downloads/latest/nextcloud-passwords/latest.xpi";
+        "{446900e4-71c2-419f-a6a7-df9c091e268b}".install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
       };
     };
 
     misc = {
+      displayBookmarksToolbar = true;
       drmFix = true;
       disableWebgl = false;
       bookmarks = [
