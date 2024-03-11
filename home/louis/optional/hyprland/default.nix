@@ -75,7 +75,7 @@
 
       windowrule = [
         "tile,Warp"
-        "tile, MATLAB"
+        # "tile, MATLAB"
       ];
     };
   };
