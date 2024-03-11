@@ -77,7 +77,7 @@
 
     userSettings.nix.enableLanguageServer = true;
     userSettings.nix.serverPath = "${pkgs.nil}/bin/nil";
-    userSettings.nix.formatterPath = "${pkgs.alejandra}/bin/alejandra";
+    userSettings.nix.formatterPath = "${pkgs.nixfmt}/bin/nixfmt";
     userSettings.nix.serverSettings.nil.formatting.command = ["alejandra"];
 
     userSettings.typst-lsp.exportPdf = "onType";
