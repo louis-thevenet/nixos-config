@@ -14,7 +14,7 @@
     ];
     terminal = config.home.sessionVariables.TERMINAL;
     extraConfig = {
-      modi = "drun,filebrowser,window,ssh,emoji,calc";
+      modi = "drun,filebrowser,window,ssh"; #,emoji,calc";
 
       show-icons = true;
       display-drun = "🔍 Apps";
