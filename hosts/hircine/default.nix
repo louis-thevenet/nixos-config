@@ -8,9 +8,8 @@
     ./hardware-configuration.nix
     ../common/global
     ../common/users/louis
-    ../optional/gnome.nix
-    ../optional/virt.nix
-    ../optional/ollama.nix
+    ../common/optional/virt.nix
+    ../common/optional/ollama.nix
   ];
   networking.hostName = "hircine";
 
