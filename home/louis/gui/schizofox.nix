@@ -95,7 +95,7 @@
     };
 
     misc = {
-      displayBookmarksToolbar = true;
+      displayBookmarksInToolbar = "always";
       drmFix = true;
       disableWebgl = false;
       bookmarks = [
