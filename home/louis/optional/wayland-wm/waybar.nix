@@ -152,6 +152,7 @@ in {
             "class<firefox>" = "";
             "class<firefox> title<.*github.*>" = "";
             "warp" = "";
+            "kitty" = "";
             "code" = "󰨞";
             "Discord" = "󰙯";
             "class<Spotify>" = "󰓇";
