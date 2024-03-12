@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }: {
@@ -14,16 +13,19 @@
       (pkgs.callPackage
         ./rofi-ollama
         {})
+      pkgs.rofi-top
+      pkgs.rofi-emoji
     ];
     terminal = config.home.sessionVariables.TERMINAL;
     extraConfig = {
-      modi = "drun,filebrowser,window,ssh"; #,calc";
+      modi = "drun,filebrowser,window,ssh,ollama"; #,calc";
       show-icons = true;
       display-drun = "🔍 Apps";
       display-run = "🔧 Run";
       display-filebrowser = "📂 Files";
       display-window = "🪟 Windows";
       display-ssh = "🔑 SSH";
+      display-ollama = "🧠 Ollama";
       #display-calc = "🟰 Calc";
       dpi = 1;
     };

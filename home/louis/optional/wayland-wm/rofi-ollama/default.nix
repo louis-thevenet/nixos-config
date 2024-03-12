@@ -26,12 +26,16 @@ rustPlatform.buildRustPackage rec {
     gobject-introspection
     cairo
   ];
+  postInstall = ''
+    mkdir $out/lib/rofi
+    mv $out/lib/librofi_ollama.so $out/lib/rofi/
+  '';
 
   buildInputs = [pango openssl];
   meta = {
     description = "A rofi plugin to fetch and run available ollama models";
     homepage = "https://github.com/louis-thevenet/rofi-ollama";
-    license = lib.licenses.unlicense;
+    license = lib.licenses.mpl20;
     maintainers = [];
   };
 }
