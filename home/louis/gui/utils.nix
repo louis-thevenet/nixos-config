@@ -6,7 +6,6 @@
     tor-browser-bundle-bin
     onlyoffice-bin
     gnome.nautilus
-    warp-terminal
     super-productivity
   ];
 }
