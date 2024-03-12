@@ -9,21 +9,22 @@
     package = pkgs.rofi-wayland;
 
     plugins = [
-      pkgs.rofi-calc
-      pkgs.rofi-emoji
+      # pkgs.rofi-calc
+      # pkgs.rofi-emoji
+      (pkgs.callPackage
+        ./rofi-ollama
+        {})
     ];
     terminal = config.home.sessionVariables.TERMINAL;
     extraConfig = {
-      modi = "drun,filebrowser,window,ssh,emoji,calc";
-
+      modi = "drun,filebrowser,window,ssh"; #,calc";
       show-icons = true;
       display-drun = "🔍 Apps";
       display-run = "🔧 Run";
       display-filebrowser = "📂 Files";
       display-window = "🪟 Windows";
       display-ssh = "🔑 SSH";
-      display-emoji = "😀 Emojis";
-      display-calc = "🟰 Calc";
+      #display-calc = "🟰 Calc";
       dpi = 1;
     };
 
