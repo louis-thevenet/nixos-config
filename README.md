@@ -1,5 +1,5 @@
 # My *always changing* NixOS Hyprland config
-![2024-03-13T19:55:43,570563663+01:00](https://github.com/louis-thevenet/nixos-config/assets/55986107/389b6451-79cc-4e33-b10e-a8380edd36dc)
+![2024-03-13T20:21:19,836929133+01:00](https://github.com/louis-thevenet/nixos-config/assets/55986107/aef574b6-a910-47ae-998c-aeb8e4ffffd3)
 *Unfocused windows are grayed out*
 ## NixOS Config
 ```
