@@ -7,7 +7,7 @@
   inherit (lib) mkIf;
   cfg = config.home-config.dev;
 in {
-  home.packages = mkIf cfg.enableDevTools (with pkgs; [
+  home.packages = mkIf cfg.DevTools.enable (with pkgs; [
     screen
     tmux
     tokei

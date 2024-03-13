@@ -6,7 +6,7 @@
   inherit (lib) mkIf;
   cfg = config.home-config.cli;
 in {
-  programs.bottom = mkIf cfg.enableCommonTools {
+  programs.bottom = mkIf cfg.CommonTools.enable {
     enable = true;
     settings = {
       # from <https://github.com/guifuentes8/nix-config/blob/main/home/global/interfaces/WM/shared/pkgs/bottom/default.nix>

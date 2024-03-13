@@ -7,7 +7,7 @@
   inherit (lib) mkIf;
   cfg = config.home-config.dev;
 in {
-  programs.vscode = mkIf cfg.enableVsCode {
+  programs.vscode = mkIf cfg.VsCode.enable {
     enable = true;
     package = pkgs.vscode-fhs;
     enableExtensionUpdateCheck = false;

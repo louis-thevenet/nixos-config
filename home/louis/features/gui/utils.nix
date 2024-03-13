@@ -7,7 +7,7 @@
   inherit (lib) mkIf;
   cfg = config.home-config.gui;
 in {
-  home.packages = mkIf cfg.enableUtils (with pkgs; [
+  home.packages = mkIf cfg.Utils.enable (with pkgs; [
     calibre
     libsForQt5.okular
     tor-browser-bundle-bin
