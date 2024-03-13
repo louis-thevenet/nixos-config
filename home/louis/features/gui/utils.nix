@@ -7,11 +7,11 @@
   inherit (lib) mkIf;
   cfg = config.home-config.gui;
 in {
-  home.packages = mkIf cfg.Utils.enable (with pkgs; [
+  home.packages = mkIf cfg.utils.enable (with pkgs; [
     calibre
     libsForQt5.okular
     tor-browser-bundle-bin
     gnome.nautilus
-    spotify
+    spotifywm
   ]);
 }

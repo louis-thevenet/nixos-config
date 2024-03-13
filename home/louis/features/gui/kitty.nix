@@ -6,7 +6,7 @@
   inherit (lib) mkIf;
   cfg = config.home-config.gui;
 in {
-  programs.kitty = mkIf cfg.Kitty.enable {
+  programs.kitty = mkIf cfg.kitty.enable {
     enable = true;
     theme = "Solarized Light";
     font = {

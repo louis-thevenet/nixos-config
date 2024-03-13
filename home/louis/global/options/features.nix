@@ -7,7 +7,7 @@
 in {
   options.home-config = {
     cli = {
-      CommonTools.enable = mkEnableOption ''
+      commonTools.enable = mkEnableOption ''
         Enable common CLI Tools
       '';
       VPNC.enable = mkEnableOption ''
@@ -16,57 +16,53 @@ in {
     };
 
     gui = {
-      Kitty.enable = mkEnableOption ''
+      kitty.enable = mkEnableOption ''
         Enable Kitty
       '';
 
-      Schizofox.enable = mkEnableOption ''
+      schizofox.enable = mkEnableOption ''
         Enable Schizofox
       '';
 
-      Social.enable = mkEnableOption ''
+      social.enable = mkEnableOption ''
         Enable Social
       '';
 
-      Utils.enable = mkEnableOption ''
+      utils.enable = mkEnableOption ''
         Enable common GUI Tools
       '';
     };
 
     dev = {
-      VsCode.enable = mkEnableOption ''
+      vscode.enable = mkEnableOption ''
         Enabe VsCode
       '';
 
-      JetBrains.enable = mkEnableOption ''
+      jetbrains.enable = mkEnableOption ''
         Enable Jetbrains
       '';
 
-      DevTools.enable = mkEnableOption ''
+      devTools.enable = mkEnableOption ''
         Enable common Dev Tools
       '';
     };
 
     desktop = {
-      Hyprland.enable = mkEnableOption ''
+      hyprland.enable = mkEnableOption ''
         Enable Hyprland
       '';
 
-      Gnome.enable = mkEnableOption ''
+      gnome.enable = mkEnableOption ''
         Enable Gnome
       '';
     };
 
-    gaming = {
-      Gaming.enable = mkEnableOption ''
-        Enable Gaming
-      '';
-    };
+    gaming.enable = mkEnableOption ''
+      Enable Gaming
+    '';
 
-    virtualization = {
-      Virtualization.enable = mkEnableOption ''
-        Enable Virtualization
-      '';
-    };
+    virtualization.enable = mkEnableOption ''
+      Enable Virtualization
+    '';
   };
 }

@@ -7,7 +7,7 @@
   inherit (lib) mkIf;
   cfg = config.home-config.dev;
 in {
-  home.packages = mkIf cfg.JetBrains.enable (with pkgs; [
+  home.packages = mkIf cfg.jetbrains.enable (with pkgs; [
     jetbrains.rust-rover
     jetbrains.idea-ultimate
     #jetbrains.clion

@@ -7,7 +7,7 @@
   inherit (lib) mkIf;
   cfg = config.home-config.cli;
 in {
-  home.packages = mkIf cfg.CommonTools.enable (with pkgs; [
+  home.packages = mkIf cfg.commonTools.enable (with pkgs; [
     neofetch
     eza
     bat

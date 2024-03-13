@@ -8,7 +8,7 @@
 
   cfg = config.home-config.desktop;
 in {
-  dconf.settings = mkIf cfg.Gnome.enable {
+  dconf.settings = mkIf cfg.gnome.enable {
     "org/gnome/desktop/interface" = {
       color-scheme = "default";
       enable-hot-corners = false;
@@ -104,7 +104,7 @@ in {
     };
   };
 
-  home.packages = mkIf cfg.Gnome.enable (with pkgs; [
+  home.packages = mkIf cfg.gnome.enable (with pkgs; [
     pop-launcher
     gnomeExtensions.pop-shell
     gnomeExtensions.pop-launcher-super-key

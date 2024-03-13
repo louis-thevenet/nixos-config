@@ -5,9 +5,9 @@
   ...
 }: let
   inherit (lib) mkIf;
-  cfg = config.home-config.gaming;
+  cfg = config.home-config;
 in {
-  home.packages = mkIf cfg.Gaming.enable (with pkgs; [
+  home.packages = mkIf cfg.gaming.enable (with pkgs; [
     steam
     prismlauncher
     # lutris

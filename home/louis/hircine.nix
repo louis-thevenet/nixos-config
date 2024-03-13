@@ -12,21 +12,21 @@
 
   home-config = {
     cli = {
-      CommonTools.enable = true;
+      commonTools.enable = true;
       VPNC.enable = true;
     };
     gui = {
-      Kitty.enable = true;
-      Schizofox.enable = true;
-      Social.enable = true;
-      Utils.enable = true;
+      kitty.enable = true;
+      schizofox.enable = true;
+      social.enable = true;
+      utils.enable = true;
     };
     dev = {
-      VsCode.enable = true;
-      DevTools.enable = true;
+      vscode.enable = true;
+      devTools.enable = true;
     };
-    desktop.Hyprland.enable = true;
-    virtualization.Virtualization.enable = true;
+    desktop.hyprland.enable = true;
+    virtualization.enable = true;
   };
 
   monitors = [

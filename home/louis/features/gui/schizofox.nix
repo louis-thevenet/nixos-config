@@ -12,7 +12,7 @@ in {
   programs.schizofox = let
     inherit (config.colorscheme) colors;
   in
-    mkIf cfg.Schizofox.enable {
+    mkIf cfg.schizofox.enable {
       enable = true;
 
       theme = {
