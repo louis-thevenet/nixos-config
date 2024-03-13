@@ -1,7 +1,15 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  inherit (lib) mkIf;
+  cfg = config.home-config.dev;
+in {
+  home.packages = mkIf cfg.enableDevTools (with pkgs; [
     screen
     tmux
     tokei
-  ];
+  ]);
 }

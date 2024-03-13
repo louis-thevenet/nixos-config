@@ -7,13 +7,28 @@
 }: {
   imports = [
     ./global
-    ./features/cli
-    ./features/gui
-    ./features/dev
-    ./features/virtualization
-    ./features/desktop/hyprland
-    ./features/desktop/wayland-wm
+    ./features
   ];
+
+  home-config = {
+    cli = {
+      enableCommonTools = true;
+      enableVPNC = true;
+    };
+    gui = {
+      enableKitty = true;
+      enableSchizofox = true;
+      enableSocial = true;
+      enableUtils = true;
+    };
+    dev = {
+      enableVsCode = true;
+      enableDevTools = true;
+    };
+    desktop.enableHyprland = true;
+    virtualization.enableVirtualization = true;
+  };
+
   monitors = [
     {
       name = "eDP-1";

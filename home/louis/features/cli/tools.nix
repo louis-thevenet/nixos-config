@@ -1,5 +1,13 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  inherit (lib) mkIf;
+  cfg = config.home-config.cli;
+in {
+  home.packages = mkIf cfg.enableCommonTools (with pkgs; [
     neofetch
     eza
     bat
@@ -12,5 +20,5 @@
     killall
     wget
     nvtop
-  ];
+  ]);
 }

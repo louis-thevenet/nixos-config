@@ -1,9 +1,14 @@
 {
   config,
+  lib,
   pkgs,
   ...
-}: {
-  dconf.settings = {
+}: let
+  inherit (lib) mkIf;
+
+  cfg = config.home-config.desktop;
+in {
+  dconf.settings = mkIf cfg.enableGnome {
     "org/gnome/desktop/interface" = {
       color-scheme = "default";
       enable-hot-corners = false;
@@ -99,7 +104,7 @@
     };
   };
 
-  home.packages = with pkgs; [
+  home.packages = mkIf cfg.enableGnome (with pkgs; [
     pop-launcher
     gnomeExtensions.pop-shell
     gnomeExtensions.pop-launcher-super-key
@@ -114,5 +119,5 @@
     gnomeExtensions.battery-time-2
     gnomeExtensions.hide-top-bar
     gnomeExtensions.gtk-title-bar
-  ];
+  ]);
 }

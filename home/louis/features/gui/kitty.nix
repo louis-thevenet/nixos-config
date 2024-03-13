@@ -1,5 +1,12 @@
-{config, ...}: {
-  programs.kitty = {
+{
+  config,
+  lib,
+  ...
+}: let
+  inherit (lib) mkIf;
+  cfg = config.home-config.gui;
+in {
+  programs.kitty = mkIf cfg.enableKitty {
     enable = true;
     theme = "Solarized Light";
     font = {
