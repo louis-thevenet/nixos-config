@@ -1,4 +1,4 @@
-# My *always changing* NixOS + Hyprland config
+# My *always changing* NixOS Hyprland config
 ![2024-03-13T19:55:43,570563663+01:00](https://github.com/louis-thevenet/nixos-config/assets/55986107/389b6451-79cc-4e33-b10e-a8380edd36dc)
 *Unfocused windows are grayed out*
 ## NixOS Config
