@@ -7,10 +7,7 @@
     du-dust
     git-open
     magic-wormhole
-    screen
-    tmux
     noti
-    tokei
     nm-tray
     killall
     wget

@@ -6,14 +6,13 @@
   ...
 }: {
   imports = [
-    ./home-manager.nix
     ./global
-    ./gui
-    ./cli
-    ./optional/hyprland
-    ./optional/wayland-wm
-    ./optional/virt.nix
-    ./gaming
+    ./features/cli
+    ./features/gui
+    ./features/dev
+    ./features/virtualization
+    ./features/desktop/hyprland
+    ./features/desktop/wayland-wm
   ];
   monitors = [
     {

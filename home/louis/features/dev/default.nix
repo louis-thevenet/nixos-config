@@ -1,5 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./jetbrains.nix
+    ./devtools.nix
   ];
 }

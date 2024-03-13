@@ -1,15 +1,7 @@
-{
-  inputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{...}: {
   imports = [
-    ./direnv.nix
-    ./git.nix
-    ./neovim.nix
-    ./oh-my-zsh.nix
-    ./mime.nix
+    ./options
+    ./tools
+    ./home-manager.nix
   ];
 }
