@@ -7,14 +7,29 @@
 }: {
   imports = [
     ./global
-    ./features/cli
-    ./features/gui
-    ./features/dev
-    ./features/gaming
-    ./features/virtualization
-    ./features/desktop/hyprland
-    ./features/desktop/wayland-wm
+    ./features
   ];
+
+  home-config = {
+    cli = {
+      CommonTools.enable = true;
+      VPNC.enable = true;
+    };
+    gui = {
+      Kitty.enable = true;
+      Schizofox.enable = true;
+      Social.enable = true;
+      Utils.enable = true;
+    };
+    dev = {
+      VsCode.enable = true;
+      DevTools.enable = true;
+      JetBrains.enable = true;
+    };
+    desktop.Hyprland.enable = true;
+    virtualization.Virtualization.enable = true;
+    gaming.Gaming.enable = true;
+  };
 
   monitors = [
     {
