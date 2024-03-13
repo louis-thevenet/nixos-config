@@ -1,9 +1,13 @@
 {
   config,
   pkgs,
+  lib,
   ...
-}: {
-  programs.rofi = {
+}: let
+  inherit (lib) mkIf;
+  cfg = config.home-config.desktop;
+in {
+  programs.rofi = mkIf cfg.hyprland.enable {
     enable = true;
     package = pkgs.rofi-wayland;
 

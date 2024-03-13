@@ -1,9 +1,12 @@
 {
   config,
-  pkgs,
+  lib,
   ...
-}: {
-  wayland.windowManager.hyprland.settings = {
+}: let
+  inherit (lib) mkIf;
+  cfg = config.home-config.desktop;
+in {
+  wayland.windowManager.hyprland.settings = mkIf cfg.hyprland.enable {
     general = {
       gaps_in = 2;
       gaps_out = 2;

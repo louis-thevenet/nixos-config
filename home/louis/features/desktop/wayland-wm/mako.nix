@@ -1,7 +1,14 @@
-{config, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (config.colorScheme) colors kind;
+
+  inherit (lib) mkIf;
+  cfg = config.home-config.desktop;
 in {
-  services.mako = {
+  services.mako = mkIf cfg.hyprland.enable {
     enable = true;
 
     iconPath =

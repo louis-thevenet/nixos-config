@@ -2,14 +2,18 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
-}: {
+}: let
+  inherit (lib) mkIf;
+  cfg = config.home-config.desktop;
+in {
   imports = [
     ./window-binds.nix
     ./binds.nix
     ./decoration.nix
   ];
-  wayland.windowManager.hyprland = {
+  wayland.windowManager.hyprland = mkIf cfg.hyprland.enable {
     # Whether to enable Hyprland wayland compositor
     enable = true;
     # The hyprland package to use

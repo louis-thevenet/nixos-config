@@ -4,6 +4,9 @@
   config,
   ...
 }: let
+  inherit (lib) mkIf;
+  cfg = config.home-config.desktop;
+
   swaylock = "${config.programs.swaylock.package}/bin/swaylock";
   pgrep = "${pkgs.procps}/bin/pgrep";
   pactl = "${pkgs.pulseaudio}/bin/pactl";
@@ -29,7 +32,7 @@
     }
   ];
 in {
-  services.swayidle = {
+  services.swayidle = mkIf cfg.hyprland.enable {
     enable = true;
     systemdTarget = "graphical-session.target";
     timeouts =

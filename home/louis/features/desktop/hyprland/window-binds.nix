@@ -1,4 +1,11 @@
-{lib, ...}: let
+{
+  lib,
+  config,
+  ...
+}: let
+  inherit (lib) mkIf;
+  cfg = config.home-config.desktop;
+
   workspaces =
     (map toString (lib.range 0 9))
     ++ (map (n: "F${toString n}") (lib.range 1 12));
@@ -33,7 +40,7 @@
     then azerty.${n}
     else n;
 in {
-  wayland.windowManager.hyprland.settings = {
+  wayland.windowManager.hyprland.settings = mkIf cfg.hyprland.enable {
     bindm = [
       "SUPER,mouse:272,movewindow"
       "SUPER,mouse:273,resizewindow"

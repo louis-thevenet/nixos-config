@@ -1,11 +1,15 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   inherit (config.colorscheme) colors;
+
+  inherit (lib) mkIf;
+  cfg = config.home-config.desktop;
 in {
-  programs.swaylock = {
+  programs.swaylock = mkIf cfg.hyprland.enable {
     enable = true;
     package = pkgs.swaylock-effects;
     settings = {

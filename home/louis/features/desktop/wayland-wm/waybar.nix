@@ -5,6 +5,9 @@
   pkgs,
   ...
 }: let
+  inherit (lib) mkIf;
+  cfg = config.home-config.desktop;
+
   # Dependencies
   cat = "${pkgs.coreutils}/bin/cat";
   cut = "${pkgs.coreutils}/bin/cut";
@@ -40,7 +43,7 @@
       '{text:$text,tooltip:$tooltip,alt:$alt,class:$class,percentage:$percentage}'
   ''}/bin/waybar-${name}";
 in {
-  programs.waybar = {
+  programs.waybar = mkIf cfg.hyprland.enable {
     enable = true;
     package = pkgs.waybar.overrideAttrs (oa: {
       mesonFlags = (oa.mesonFlags or []) ++ ["-Dexperimental=true"];
