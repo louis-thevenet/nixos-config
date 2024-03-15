@@ -101,7 +101,7 @@ in {
       };
 
       misc = {
-        displayBookmarksInToolbar = "always";
+        displayBookmarksInToolbar = "newtab";
         drmFix = true;
         disableWebgl = false;
         bookmarks = [
@@ -118,6 +118,11 @@ in {
           {
             Title = "Proton";
             URL = "https://mail.proton.me/u/0/inbox";
+          }
+
+          {
+            Title = "DailyDev";
+            URL = "daily.dev/";
           }
 
           # N7
