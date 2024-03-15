@@ -10,16 +10,16 @@ in {
   # imports = optionals cfg.enableSchizofox [inputs.schizofox.homeManagerModule];
   imports = [inputs.schizofox.homeManagerModule];
   programs.schizofox = let
-    inherit (config.colorscheme) colors;
+    inherit (config.colorscheme) palette;
   in
     mkIf cfg.schizofox.enable {
       enable = true;
 
       theme = {
         colors = {
-          background-darker = "${colors.base01}";
-          background = "${colors.base00}";
-          foreground = "${colors.base05}";
+          background-darker = "${palette.base01}";
+          background = "${palette.base00}";
+          foreground = "${palette.base05}";
         };
 
         font = "Lexend";

@@ -42,13 +42,13 @@ in {
       #   bar = mkLiteral "abc"; =&gt; bar: abc;
       # };
       inherit (config.lib.formats.rasi) mkLiteral;
-      inherit (config.colorscheme) colors;
+      inherit (config.colorscheme) palette;
     in {
       "*" = {
-        bg0 = mkLiteral "#${colors.base00}";
-        bg1 = mkLiteral "#${colors.base02}";
-        fg0 = mkLiteral "#${colors.base05}";
-        fg1 = mkLiteral "#${colors.base04}";
+        bg0 = mkLiteral "#${palette.base00}";
+        bg1 = mkLiteral "#${palette.base02}";
+        fg0 = mkLiteral "#${palette.base05}";
+        fg1 = mkLiteral "#${palette.base04}";
 
         background-color = mkLiteral "transparent";
         text-color = mkLiteral "@fg0";

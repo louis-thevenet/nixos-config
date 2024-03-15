@@ -11,7 +11,7 @@
       lss = "ls --total-size";
       cat = "bat --theme=\"Solarized (light)\"";
     };
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     enableCompletion = true;
 
     plugins = [

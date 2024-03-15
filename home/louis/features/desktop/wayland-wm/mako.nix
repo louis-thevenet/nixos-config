@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  inherit (config.colorScheme) colors kind;
+  inherit (config.colorScheme) palette kind;
 
   inherit (lib) mkIf;
   cfg = config.home-config.desktop;
@@ -22,9 +22,9 @@ in {
     height = 150;
     borderSize = 2;
     defaultTimeout = 12000;
-    backgroundColor = "#${colors.base00}dd";
-    borderColor = "#${colors.base03}dd";
-    textColor = "#${colors.base05}dd";
+    backgroundColor = "#${palette.base00}dd";
+    borderColor = "#${palette.palettebase03}dd";
+    textColor = "#${palette.base05}dd";
     layer = "overlay";
   };
 }

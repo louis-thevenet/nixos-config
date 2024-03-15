@@ -8,7 +8,7 @@
   inherit (lib) mkIf;
   cfg = config.home-config.desktop;
 in
-  with config.colorscheme.colors; let
+  with config.colorscheme.palette; let
     background = "#" + base00;
     altBackground = "#" + base01;
     selBackground = "#" + base03;
