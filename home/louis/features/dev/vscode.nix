@@ -21,6 +21,7 @@ in {
         tomoki1207.pdf
         # github.copilot
         # github.copilot-chat
+        vadimcn.vscode-lldb
         redhat.java
         vscjava.vscode-gradle
         vscjava.vscode-java-debug
