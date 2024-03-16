@@ -21,7 +21,11 @@
     };
 
     schizofox.url = "github:schizofox/schizofox/main";
-    schizofox.url = "github:louis-thevenet/schizofox/personal-fixes-2";
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -31,6 +35,7 @@
     sops-nix,
     home-manager,
     nix-colors,
+    nixvim,
     ...
   } @ inputs: let
     forEachSystem = nixpkgs.lib.genAttrs ["aarch64-linux" "x86_64-linux"];

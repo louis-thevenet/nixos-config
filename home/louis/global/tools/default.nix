@@ -8,7 +8,7 @@
   imports = [
     ./direnv.nix
     ./git.nix
-    ./neovim.nix
+    ./nixvim
     ./oh-my-zsh.nix
     ./mime.nix
   ];
