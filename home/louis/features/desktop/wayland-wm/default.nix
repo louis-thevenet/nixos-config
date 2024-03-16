@@ -10,10 +10,10 @@ in {
   imports = [
     ./swaync.nix
     ./waybar.nix
-    ./swayidle.nix
-    ./swaylock.nix
     ./rofi.nix
     ./copyq.nix
+    ./hyprlock.nix
+    ./hypridle.nix
   ];
   home.packages = mkIf cfg.hyprland.enable (with pkgs; [
     meson
@@ -22,6 +22,8 @@ in {
     wl-clipboard
     wlroots
     swww
+    hypridle
   ]);
+
   services.playerctld.enable = cfg.hyprland.enable;
 }

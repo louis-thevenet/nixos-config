@@ -26,7 +26,7 @@ in {
     ];
 
     windowManager.hyprland.settings.bind = let
-      swaylock = "${config.programs.swaylock.package}/bin/swaylock";
+      hyprlock = "${pkgs.hyprlock}/bin/hyprlock";
       swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
       grimblast = "${pkgs.grimblast}/bin/grimblast";
       terminal = config.home.sessionVariables.TERMINAL;
@@ -57,11 +57,11 @@ in {
       ]
       ++
       # Screen lock
-      (lib.optionals config.programs.swaylock.enable [
-        ",XF86Launch5,exec,${swaylock}"
-        ",XF86Launch4,exec,${swaylock}"
-        "SUPER,backspace,exec,${swaylock}"
-      ])
+      [
+        ",XF86Launch5,exec,${hyprlock}"
+        ",XF86Launch4,exec,${hyprlock}"
+        "SUPER,backspace,exec,${hyprlock}"
+      ]
       ++
       # Notification manager
       [
