@@ -26,6 +26,9 @@ in {
         vscjava.vscode-gradle
         vscjava.vscode-java-debug
         ms-toolsai.jupyter
+        streetsidesoftware.code-spell-checker
+        alefragnani.bookmarks
+        vscodevim.vim
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
@@ -50,6 +53,10 @@ in {
       {
         key = "ctrl+u";
         command = "typst-lsp.showPdf";
+      }
+      {
+        "key" = "ctrl+shift+[KeyM]";
+        "command" = "toggleVim";
       }
     ];
 
@@ -92,8 +99,8 @@ in {
     userSettings.rust-analyzer.checkOnSave = true;
     userSettings.rust-analyzer.check.command = "clippy";
 
-    # Temp fix since vscode is broken under wayland
-    userSettings.window.titleBarStyle = "custom";
+    userSettings.vim.leader = ",";
+    userSettings.cSpell.language = "en,fr";
 
     # userSettings.workbench.colorCustomizations = let
     #   inherit (config.colorscheme) colors;
