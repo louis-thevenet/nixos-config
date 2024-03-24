@@ -28,7 +28,10 @@ in {
         ms-toolsai.jupyter
         streetsidesoftware.code-spell-checker
         alefragnani.bookmarks
-        vscodevim.vim
+        ms-vscode.cpptools
+        oderwat.indent-rainbow
+        pkief.material-icon-theme
+        christian-kohler.path-intellisense
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
@@ -85,7 +88,7 @@ in {
     userSettings.git.confirmSync = false;
 
     userSettings.workbench.colorTheme = "Solarized Light";
-    userSettings.workbench.iconTheme = "ayu";
+    userSettings.workbench.iconTheme = "material-icon-theme";
 
     userSettings.nix.enableLanguageServer = true;
     userSettings.nix.serverPath = "${pkgs.nil}/bin/nil";
@@ -100,7 +103,7 @@ in {
     userSettings.rust-analyzer.check.command = "clippy";
 
     userSettings.vim.leader = ",";
-    userSettings.cSpell.language = "en,fr";
+    userSettings.cSpell.language = "fr,en";
 
     # userSettings.workbench.colorCustomizations = let
     #   inherit (config.colorscheme) colors;
