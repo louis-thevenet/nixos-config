@@ -30,7 +30,7 @@
   };
 
   home.sessionVariables.GTK_THEME = "marwaita-pop_os";
-  home.sessionVariables.TERMINAL = "kitty";
+  home.sessionVariables.TERMINAL = "warp-terminal";
   nixpkgs = {
     config = {
       allowUnfree = true;

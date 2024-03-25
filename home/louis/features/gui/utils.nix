@@ -13,5 +13,6 @@ in {
     tor-browser-bundle-bin
     gnome.nautilus
     spotifywm
+    warp-terminal
   ]);
 }
