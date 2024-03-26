@@ -17,19 +17,24 @@ in {
       (pkgs.callPackage
         ./rofi-ollama
         {})
+
+      (pkgs.callPackage
+        ./rofi-vscode-mode
+        {})
+
       pkgs.rofi-top
       pkgs.rofi-emoji
     ];
     terminal = config.home.sessionVariables.TERMINAL;
     extraConfig = {
-      modi = "drun,filebrowser,window,ssh,ollama"; #,calc";
+      modi = "drun,filebrowser,ssh,ollama,vscode-recent"; #,calc";
       show-icons = true;
       display-drun = "🔍 Apps";
       display-run = "🔧 Run";
       display-filebrowser = "📂 Files";
-      display-window = "🪟 Windows";
       display-ssh = "🔑 SSH";
       display-ollama = "🧠 Ollama";
+      display-vscode = "📂 VSCode Recent";
       #display-calc = "🟰 Calc";
       dpi = 1;
     };
