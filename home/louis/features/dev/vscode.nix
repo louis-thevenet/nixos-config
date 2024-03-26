@@ -19,19 +19,16 @@ in {
         rust-lang.rust-analyzer
         nvarner.typst-lsp
         tomoki1207.pdf
-        # github.copilot
-        # github.copilot-chat
         vadimcn.vscode-lldb
         redhat.java
         vscjava.vscode-gradle
         vscjava.vscode-java-debug
         ms-toolsai.jupyter
-        streetsidesoftware.code-spell-checker
         alefragnani.bookmarks
-        ms-vscode.cpptools
         oderwat.indent-rainbow
         pkief.material-icon-theme
         christian-kohler.path-intellisense
+        llvm-vs-code-extensions.vscode-clangd
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
@@ -71,7 +68,7 @@ in {
     userSettings.editor.indent_style = "space";
     userSettings.editor.indentSize = 4;
     userSettings.editor.insertSpaces = true;
-    userSettings.editor.tabSize = 4;
+    userSettings.editor.tabSize = 2;
 
     userSettings.editor.inlineSuggest.enabled = true;
 
@@ -102,8 +99,7 @@ in {
     userSettings.rust-analyzer.checkOnSave = true;
     userSettings.rust-analyzer.check.command = "clippy";
 
-    userSettings.vim.leader = ",";
-    userSettings.cSpell.language = "fr,en";
+    userSettings."[c]".editor.defaultFormatter = "llvm-vs-code-extensions.vscode-clangd";
 
     # userSettings.workbench.colorCustomizations = let
     #   inherit (config.colorscheme) colors;
