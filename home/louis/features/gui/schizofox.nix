@@ -95,7 +95,6 @@ in {
         extraExtensions = {
           "cb-remover@search.mozilla.org".install_url = "https://addons.mozilla.org/firefox/downloads/latest/clickbait-remover-for-youtube/latest.xpi";
           "treestyletab@piro.sakura.ne.jp".install_url = "https://addons.mozilla.org/firefox/downloads/latest/tree-style-tab/latest.xpi";
-          "ncpasswords@mdns.eu".install_url = "https://addons.mozilla.org/firefox/downloads/latest/nextcloud-passwords/latest.xpi";
           "{446900e4-71c2-419f-a6a7-df9c091e268b}".install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
         };
       };
