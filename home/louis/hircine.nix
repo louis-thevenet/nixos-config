@@ -21,6 +21,7 @@
     };
     desktop.hyprland.enable = true;
     virtualization.enable = true;
+    gaming.enable = true;
   };
 
   monitors = [
