@@ -12,8 +12,6 @@ in {
     package = pkgs.rofi-wayland;
 
     plugins = [
-      # pkgs.rofi-calc
-      # pkgs.rofi-emoji
       (pkgs.callPackage
         ./rofi-ollama
         {})
@@ -21,13 +19,10 @@ in {
       (pkgs.callPackage
         ./rofi-vscode-mode
         {})
-
-      pkgs.rofi-top
-      pkgs.rofi-emoji
     ];
     terminal = config.home.sessionVariables.TERMINAL;
     extraConfig = {
-      modi = "drun,filebrowser,ssh,ollama,vscode-recent"; #,calc";
+      modi = "drun,filebrowser,ssh,ollama,vscode-recent";
       show-icons = true;
       display-drun = "🔍 Apps";
       display-run = "🔧 Run";
@@ -35,7 +30,6 @@ in {
       display-ssh = "🔑 SSH";
       display-ollama = "🧠 Ollama";
       display-vscode = "📂 VSCode Recent";
-      #display-calc = "🟰 Calc";
       dpi = 1;
     };
 

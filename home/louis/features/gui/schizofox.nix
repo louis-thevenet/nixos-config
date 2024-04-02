@@ -48,7 +48,7 @@ in {
         removeEngines = ["Google" "Bing" "Amazon.com" "eBay" "Twitter" "Wikipedia"];
 
         searxUrl = "searx.be";
-        searxQuery = "https://searx.ox2.fr/search?q={searchTerms}&categories=general";
+        searxQuery = "https://searxng.brihx.fr/search?q={searchTerms}&categories=general";
         addEngines = [
           {
             Name = "nixpkgs";

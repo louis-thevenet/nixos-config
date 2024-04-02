@@ -21,7 +21,7 @@
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   btm-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.bottom}/bin/btm";
   nmtui-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.networkmanager}/bin/nmtui";
-  nvtop-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.nvtop}/bin/nvtop";
+  nvtop-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.nvtopPackages.nvidia}/bin/nvtop";
 
   # Function to simplify making waybar outputs
   jsonOutput = name: {

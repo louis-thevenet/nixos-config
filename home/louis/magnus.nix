@@ -18,7 +18,6 @@
     dev = {
       vscode.enable = true;
       devTools.enable = true;
-      jetbrains.enable = true;
     };
     desktop.hyprland.enable = true;
     virtualization.enable = true;
