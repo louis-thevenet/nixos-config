@@ -3,5 +3,6 @@
     ./bottom.nix
     ./tools.nix
     ./vpnc.nix
+    ./nvtop.nix
   ];
 }

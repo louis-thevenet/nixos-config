@@ -19,6 +19,5 @@ in {
     nm-tray
     killall
     wget
-    nvtopPackages.nvidia
   ]);
 }

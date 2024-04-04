@@ -6,6 +6,10 @@ in {
       commonTools.enable = mkEnableOption ''
         Enable common CLI Tools
       '';
+      nvTop.enable = mkEnableOption ''
+        Enable nvTop
+      '';
+
       VPNC.enable = mkEnableOption ''
         Enable VPNC
       '';

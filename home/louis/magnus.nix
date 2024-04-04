@@ -8,6 +8,7 @@
     cli = {
       commonTools.enable = true;
       VPNC.enable = true;
+      nvTop.enable = true;
     };
     gui = {
       kitty.enable = true;
