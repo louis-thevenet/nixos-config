@@ -117,11 +117,13 @@ in {
           {
             Title = "Proton";
             URL = "https://mail.proton.me/u/0/inbox";
+            Placement = "toolbar";
           }
 
           {
             Title = "DailyDev";
-            URL = "daily.dev/";
+            URL = "https://app.daily.dev/";
+            Placement = "toolbar";
           }
 
           # N7
@@ -138,12 +140,6 @@ in {
             Folder = "N7";
           }
 
-          {
-            Title = "Todoist";
-            URL = "https://app.todoist.com/app/project/n7-2321454654";
-            Placement = "toolbar";
-            Folder = "N7";
-          }
           {
             Title = "GitHub N7";
             URL = "https://github.com/A-delta/N7";
@@ -166,31 +162,19 @@ in {
           # NextCloud
           {
             Title = "Dashboard";
-            URL = "https://louis-thevenet.fr/nextcloud/index.php/apps/dashboard/#/";
-            Folder = "NC";
-            Placement = "toolbar";
-          }
-          {
-            Title = "Passwords";
-            URL = "https://louis-thevenet.fr/nextcloud/index.php/apps/passwords/";
-            Folder = "NC";
-            Placement = "toolbar";
-          }
-          {
-            Title = "Mail";
-            URL = "https://louis-thevenet.fr/nextcloud/index.php/apps/mail/";
+            URL = "https://nextcloud.louis-thevenet.fr/index.php/apps/dashboard/#/";
             Folder = "NC";
             Placement = "toolbar";
           }
           {
             Title = "News";
-            URL = "https://louis-thevenet.fr/nextcloud/index.php/apps/news/";
+            URL = "https://nextcloud.louis-thevenet.fr/index.php/apps/news/";
             Folder = "NC";
             Placement = "toolbar";
           }
           {
             Title = "Files";
-            URL = "https://louis-thevenet.fr/nextcloud/index.php/apps/files/files";
+            URL = "https://nextcloud.louis-thevenet.fr/index.php/apps/files/files";
             Folder = "NC";
             Placement = "toolbar";
           }
