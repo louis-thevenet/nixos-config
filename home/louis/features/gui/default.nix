@@ -5,5 +5,6 @@
     ./social.nix
     ./utils.nix
     ./productivity.nix
+    ./lmstudio.nix
   ];
 }

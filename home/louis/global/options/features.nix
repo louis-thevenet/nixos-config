@@ -31,6 +31,10 @@ in {
       utils.enable = mkEnableOption ''
         Enable common GUI Tools
       '';
+
+      lmstudio.enable = mkEnableOption ''
+        Enable LMStudio
+      '';
     };
 
     dev = {
