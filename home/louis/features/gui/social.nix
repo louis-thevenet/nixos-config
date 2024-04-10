@@ -9,6 +9,7 @@
 in {
   home.packages = mkIf cfg.social.enable (with pkgs; [
     whatsapp-for-linux
+    beeper
     discord
   ]);
 }
