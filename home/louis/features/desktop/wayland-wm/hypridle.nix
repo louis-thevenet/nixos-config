@@ -11,24 +11,51 @@ in {
     hypridle
   ]);
 
-  # Suspend is broken
-  home.file.".config/hypr/hypridle.conf".text = ''
-    $lock_cmd = ${pkgs.hyprlock}/bin/hyprlock
+  home.file.".config/hypr/hypridle.conf".text = let
+    hyprlock = "${pkgs.hyprlock}/bin/hyprlock";
+    loginctl = "${pkgs.systemd}/bin/loginctl";
+    hyprctl = "${pkgs.hyprland}/bin/hyprctl";
+    systemctl = "${pkgs.systemd}/bin/systemctl";
+  in ''
+    $lock_cmd = ${hyprlock}
+    $before_sleep_cmd = ${loginctl} lock-session
+    $after_sleep_cmd = ${hyprctl}
 
     general {
         lock_cmd = $lock_cmd
+        before_sleep_cmd = $before_sleep_cmd
+        after_sleep_cmd = $after_sleep_cmd
     }
 
     listener {
         timeout = 120
-        on-timeout = $lock_cmd
+        on-timeout = ${hyprlock}
     }
 
     listener {
         timeout = 180
-        on-timeout = hyprctl dispatch dpms off
-        on-resume = hyprctl dispatch dpms on
+        on-timeout =  ${hyprctl} dispatch dpms off
+        on-resume =  ${hyprctl} dispatch dpms on
     }
 
+    listener {
+        timeout = 300
+        on-timeout = ${systemctl} suspend
+    }
   '';
+
+  systemd.user.services.hypridle = {
+    Unit = {
+      Description = "Hypridle";
+      After = ["graphical-session.target"];
+    };
+
+    Service = {
+      ExecStart = "${pkgs.hypridle}/bin/hypridle";
+      Restart = "always";
+      RestartSec = "10";
+    };
+
+    Install.WantedBy = ["default.target"];
+  };
 }

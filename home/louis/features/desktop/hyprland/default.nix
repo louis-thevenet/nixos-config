@@ -32,9 +32,11 @@ in {
       '';
 
       swaync = "${pkgs.swaynotificationcenter}/bin/swaync";
+      hypridle = "${pkgs.hypridle}/bin/hypridle";
     in ''
       exec-once = ${swww-script}
       exec-once = ${swaync}
+      exec-once = ${hypridle}
     '';
     settings = {
       env = [

@@ -19,10 +19,8 @@ in {
     meson
     wayland-protocols
     wayland-utils
-    wl-clipboard
     wlroots
     swww
-    hypridle
   ]);
 
   services.playerctld.enable = cfg.hyprland.enable;
