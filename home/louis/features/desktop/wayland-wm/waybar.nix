@@ -161,6 +161,8 @@ in {
             "class<Spotify>" = "󰓇";
             "matlab" = "󰆧";
             "Super Productivity" = "󰨟";
+            "Beeper" = "💬";
+            "LM Studio" = "";
           };
         };
         battery = {
