@@ -11,7 +11,7 @@ in {
     ./swaync.nix
     ./waybar.nix
     ./rofi.nix
-    ./copyq.nix
+    ./cliphist.nix
     ./hyprlock.nix
     ./hypridle.nix
   ];
@@ -21,6 +21,7 @@ in {
     wayland-utils
     wlroots
     swww
+    wl-clipboard
   ]);
 
   services.playerctld.enable = cfg.hyprland.enable;

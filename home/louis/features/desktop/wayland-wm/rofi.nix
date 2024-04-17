@@ -6,7 +6,35 @@
 }: let
   inherit (lib) mkIf;
   cfg = config.home-config.desktop;
+  cliphist-rofi-img = ".config/rofi/cliphist-rofi-img";
 in {
+  home.file.${cliphist-rofi-img} = {
+    text = ''
+        #!/usr/bin/env bash
+
+      tmp_dir="/tmp/cliphist"
+      rm -rf "$tmp_dir"
+
+      if [[ -n "$1" ]]; then
+          cliphist decode <<<"$1" | wl-copy
+          exit
+      fi
+
+      mkdir -p "$tmp_dir"
+
+      read -r -d \'\' prog <<EOF
+      /^[0-9]+\s<meta http-equiv=/ { next }
+      match(\$0, /^([0-9]+)\s(\[\[\s)?binary.*(jpg|jpeg|png|bmp)/, grp) {
+          system("echo " grp[1] "\\\\\t | cliphist decode >$tmp_dir/"grp[1]"."grp[3])
+          print \$0"\0icon\x1f$tmp_dir/"grp[1]"."grp[3]
+          next
+      }
+      1
+      EOF
+      cliphist list | gawk "$prog"
+    '';
+    executable = true;
+  };
   programs.rofi = mkIf cfg.hyprland.enable {
     enable = true;
     package = pkgs.rofi-wayland;
@@ -22,14 +50,15 @@ in {
     ];
     terminal = config.home.sessionVariables.TERMINAL;
     extraConfig = {
-      modi = "drun,filebrowser,ssh,ollama,vscode-recent";
+      modi = "drun,filebrowser,ssh,ollama,vscode-recent,clipboard:${cliphist-rofi-img}";
       show-icons = true;
       display-drun = "🔍 Apps";
       display-run = "🔧 Run";
       display-filebrowser = "📂 Files";
       display-ssh = "🔑 SSH";
       display-ollama = "🧠 Ollama";
-      display-vscode = "📂 VSCode Recent";
+      display-vscode-recent = "📂 VSCode Recent";
+      display-clipboard = "Clipboard";
       dpi = 1;
     };
 
@@ -63,8 +92,8 @@ in {
 
       "window" = {
         #location = mkLiteral "northwest";
-        width = mkLiteral "30%";
-        height = mkLiteral "30%";
+        width = mkLiteral "50%";
+        height = mkLiteral "50%";
         x-offset = mkLiteral "0px";
         y-offset = mkLiteral "0px";
         padding = mkLiteral "5px";

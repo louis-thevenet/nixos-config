@@ -32,11 +32,13 @@ in {
       '';
 
       swaync = "${pkgs.swaynotificationcenter}/bin/swaync";
-      hypridle = "${pkgs.hypridle}/bin/hypridle";
     in ''
       exec-once = ${swww-script}
       exec-once = ${swaync}
-      exec-once = ${hypridle}
+
+      exec-once = wl-paste --type text --watch cliphist store #Stores only text data
+
+      exec-once = wl-paste --type image --watch cliphist store #Stores only image data
     '';
     settings = {
       env = [
