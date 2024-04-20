@@ -28,18 +28,18 @@ in {
     }
 
     listener {
-        timeout = 120
+        timeout = ${builtins.toString cfg.hyprland.hypridleConfig.lockTime}
         on-timeout = ${hyprlock}
     }
 
     listener {
-        timeout = 180
+        timeout = ${builtins.toString cfg.hyprland.hypridleConfig.screenDimTime}
         on-timeout =  ${hyprctl} dispatch dpms off
         on-resume =  ${hyprctl} dispatch dpms on
     }
 
     listener {
-        timeout = 300
+        timeout = ${builtins.toString cfg.hyprland.hypridleConfig.suspendTime}
         on-timeout = ${systemctl} suspend
     }
   '';

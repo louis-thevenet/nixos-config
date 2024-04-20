@@ -21,7 +21,14 @@
       vscode.enable = true;
       devTools.enable = true;
     };
-    desktop.hyprland.enable = true;
+    desktop.hyprland = {
+      enable = true;
+      hypridleConfig = {
+        screenDimTime = 300;
+        lockTime = 400;
+        suspendTime = 99999; # currently broken on magnus
+      };
+    };
     virtualization.enable = true;
     gaming.enable = true;
   };

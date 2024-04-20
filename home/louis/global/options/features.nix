@@ -1,5 +1,5 @@
 {lib, ...}: let
-  inherit (lib) mkEnableOption;
+  inherit (lib) mkEnableOption mkOption;
 in {
   options.home-config = {
     cli = {
@@ -52,9 +52,30 @@ in {
     };
 
     desktop = {
-      hyprland.enable = mkEnableOption ''
-        Enable Hyprland
-      '';
+      hyprland = {
+        enable = mkEnableOption ''
+          Enable Hyprland
+        '';
+
+        hypridleConfig = {
+          screenDimTime = mkOption {
+            type = lib.types.ints.u32;
+            default = 90;
+            description = "Screen dim time in seconds";
+          };
+          lockTime = mkOption {
+            type = lib.types.ints.u32;
+            default = 120;
+            description = "Lock time in seconds";
+          };
+
+          suspendTime = mkOption {
+            type = lib.types.ints.u32;
+            default = 300;
+            description = "Suspend time in seconds";
+          };
+        };
+      };
 
       gnome.enable = mkEnableOption ''
         Enable Gnome
