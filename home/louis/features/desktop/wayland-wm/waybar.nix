@@ -146,7 +146,17 @@ in {
           pkill = "${pkgs.toybox}/bin/pkill";
           hypridle = "${pkgs.hypridle}/bin/hypridle";
         in {
-          format = "";
+          interval = 2;
+          # format = "";
+          exec = ''
+          if ${pgrep} "hypridle" > /dev/null
+            then
+                echo ""
+            else
+                echo ""
+            fi
+
+          '';
           tooltip = false;
 
           on-click = let

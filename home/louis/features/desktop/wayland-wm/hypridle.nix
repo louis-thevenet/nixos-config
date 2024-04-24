@@ -43,19 +43,4 @@ in {
         on-timeout = ${systemctl} suspend
     }
   '';
-
-  systemd.user.services.hypridle = {
-    Unit = {
-      Description = "Hypridle";
-      After = ["graphical-session.target"];
-    };
-
-    Service = {
-      ExecStart = "${pkgs.hypridle}/bin/hypridle";
-      Restart = "always";
-      RestartSec = "10";
-    };
-
-    Install.WantedBy = ["default.target"];
-  };
 }

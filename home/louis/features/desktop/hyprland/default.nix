@@ -35,6 +35,7 @@ in {
     in ''
       exec-once = ${swww-script}
       exec-once = ${swaync}
+      exec-once = hypridle
 
       exec-once = wl-paste --type text --watch cliphist store #Stores only text data
 
