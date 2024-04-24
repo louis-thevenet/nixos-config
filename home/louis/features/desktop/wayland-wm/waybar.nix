@@ -9,12 +9,9 @@
   cfg = config.home-config.desktop;
 
   # Dependencies
-  cat = "${pkgs.coreutils}/bin/cat";
   cut = "${pkgs.coreutils}/bin/cut";
-  grep = "${pkgs.gnugrep}/bin/grep";
   wc = "${pkgs.coreutils}/bin/wc";
   jq = "${pkgs.jq}/bin/jq";
-  rofi = "${pkgs.rofi}/bin/rofi";
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
   playerctld = "${pkgs.playerctl}/bin/playerctld";
@@ -76,6 +73,7 @@ in {
           "clock"
           "pulseaudio"
           "custom/notifications"
+          "custom/hypridle"
         ];
         modules-right = [
           "network"
@@ -141,6 +139,28 @@ in {
           on-click = "${swaync-client} -t -sw";
           on-click-right = "${swaync-client} -d -sw";
           escape = true;
+        };
+
+        "custom/hypridle" = let
+          pgrep = "${pkgs.toybox}/bin/pgrep";
+          pkill = "${pkgs.toybox}/bin/pkill";
+          hypridle = "${pkgs.hypridle}/bin/hypridle";
+        in {
+          format = "";
+          tooltip = false;
+
+          on-click = let
+            noti = "${pkgs.noti}/bin/noti";
+          in ''
+            if ${pgrep} "hypridle" > /dev/null
+            then
+                ${pkill} hypridle
+                ${noti} -t "   Hypridle Inactive"
+            else
+                ${hypridle} &
+                ${noti} -t "   Hypridle Active"
+            fi
+          '';
         };
 
         "hyprland/workspaces" = {
