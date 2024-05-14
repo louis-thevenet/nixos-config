@@ -2,7 +2,7 @@
   description = "NixOS config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -16,7 +16,7 @@
     nix-colors.url = "github:misterio77/nix-colors";
 
     hyprland = {
-      url = "github:hyprwm/Hyprland/v0.39.1";
+      url = "github:hyprwm/Hyprland/v0.40.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
