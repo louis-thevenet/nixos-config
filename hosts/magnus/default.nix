@@ -20,10 +20,10 @@
     xserver = {
       enable = true;
       xkb.layout = "fr";
-      # desktopManager.gnome = {
-      #   enable = true;
-      # };
-      displayManager.gdm = {
+      #   desktopManager.gnome = {
+      #     enable = true;
+      #   };
+      displayManager.sddm = {
         enable = true;
       };
     };
@@ -74,9 +74,7 @@
     portal = {
       enable = true;
       extraPortals = with pkgs; [
-        xdg-desktop-portal
         xdg-desktop-portal-gtk
-        xdg-desktop-portal-wlr
         xdg-desktop-portal-hyprland
       ];
     };
