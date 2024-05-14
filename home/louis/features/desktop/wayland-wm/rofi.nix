@@ -50,7 +50,7 @@ in {
     ];
     terminal = config.home.sessionVariables.TERMINAL;
     extraConfig = {
-      modi = "drun,filebrowser,ssh,ollama,vscode-recent,clipboard:${cliphist-rofi-img}";
+      modi = "drun,filebrowser,ssh,ollama,vscode-recent"; #,clipboard:${cliphist-rofi-img}";
       show-icons = true;
       display-drun = "🔍 Apps";
       display-run = "🔧 Run";
@@ -58,7 +58,7 @@ in {
       display-ssh = "🔑 SSH";
       display-ollama = "🧠 Ollama";
       display-vscode-recent = "📂 VSCode Recent";
-      display-clipboard = "Clipboard";
+      #display-clipboard = "Clipboard";
       dpi = 1;
     };
 
