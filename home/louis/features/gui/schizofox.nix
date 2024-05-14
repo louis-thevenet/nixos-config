@@ -101,7 +101,7 @@ in {
 
       misc = {
         displayBookmarksInToolbar = "newtab";
-        drmFix = true;
+        drm.enable = true;
         disableWebgl = false;
         bookmarks = [
           {

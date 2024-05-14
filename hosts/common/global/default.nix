@@ -36,7 +36,7 @@
     pulse.enable = true;
   };
 
-  services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
   environment.systemPackages = with pkgs; [vim];
   services.blueman.enable = true;

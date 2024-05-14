@@ -89,7 +89,7 @@ in {
 
     userSettings.nix.enableLanguageServer = true;
     userSettings.nix.serverPath = "${pkgs.nil}/bin/nil";
-    userSettings.nix.formatterPath = "${pkgs.nixfmt}/bin/nixfmt";
+    userSettings.nix.formatterPath = "${pkgs.nixfmt-rfc-style}/bin/nixfmt-rfc-style";
     userSettings.nix.serverSettings.nil.formatting.command = ["alejandra"];
 
     userSettings.typst-lsp.exportPdf = "onType";

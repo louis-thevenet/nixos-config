@@ -31,12 +31,13 @@
     plugins = {
       gitsigns = {
         enable = true;
-        signs = {
-          add.text = "+";
-          change.text = "~";
+        settings = {
+          signs = {
+            add.text = "+";
+            change.text = "~";
+          };
         };
       };
-
       nvim-autopairs.enable = true;
 
       nvim-colorizer = {
