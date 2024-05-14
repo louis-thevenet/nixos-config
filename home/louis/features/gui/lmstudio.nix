@@ -7,7 +7,9 @@
   inherit (lib) mkIf;
   cfg = config.home-config.gui;
 in {
-  home.packages = mkIf cfg.lmstudio.enable (with pkgs; [
-    lmstudio
-  ]);
+  home.packages = mkIf cfg.lmstudio.enable [
+    (pkgs.callPackage
+      ./lmstudio
+      {})
+  ];
 }
