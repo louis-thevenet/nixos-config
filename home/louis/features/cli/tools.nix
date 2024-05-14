@@ -14,7 +14,6 @@ in {
     trash-cli
     du-dust
     git-open
-    magic-wormhole
     noti
     nm-tray
     killall
