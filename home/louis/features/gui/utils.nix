@@ -14,5 +14,6 @@ in {
     gnome.nautilus
     spotifywm
     warp-terminal
+    obs-studio
   ]);
 }
