@@ -12,7 +12,7 @@
       cat = "bat --theme=\"Solarized (light)\"";
     };
     autosuggestion.enable = true;
-    enableCompletion = true;
+    enableCompletion = false;
 
     plugins = [
       {
@@ -33,12 +33,24 @@
         src =
           pkgs.fetchFromGitHub
           {
-            owner = "A-delta";
+            owner = "louis-thevenet";
             repo = "zsh-airpods-battery";
             rev = "46edc4b782d9b5a2a29f30a64aa22e2da1305f5e";
             sha256 = "TORbJOSFGk2/9Fj798E+eGnkucfr/btuellFhkzpf/8=";
           };
         file = "airpods-battery.plugin.zsh";
+      }
+      {
+        name = "zsh-autocomplete";
+        src =
+          pkgs.fetchFromGitHub
+          {
+            owner = "marlonrichert";
+            repo = "zsh-autocomplete";
+            rev = "23.07.13";
+            sha256 = "sha256-0NW0TI//qFpUA2Hdx6NaYdQIIUpRSd0Y4NhwBbdssCs=";
+          };
+        file = "zsh-autocomplete.plugin.zsh";
       }
     ];
 
