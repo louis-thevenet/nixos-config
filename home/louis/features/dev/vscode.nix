@@ -29,6 +29,7 @@ in {
         pkief.material-icon-theme
         christian-kohler.path-intellisense
         llvm-vs-code-extensions.vscode-clangd
+        eamodio.gitlens
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
