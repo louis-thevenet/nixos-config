@@ -6,5 +6,6 @@
     ./dev
     ./gaming
     ./virtualization
+    ./misc
   ];
 }
