@@ -35,9 +35,28 @@
     "0" = "agrave";
   };
 
-  toAzerty = n:
-    if (builtins.elem n (lib.attrNames azerty))
-    then azerty.${n}
+  # Map numbers to numpad keys
+  numpad = {
+    "1" = "KP_End";
+    "2" = "KP_Down";
+    "3" = "KP_Next";
+    "4" = "KP_Left";
+    "5" = "KP_Begin";
+    "6" = "KP_Right";
+    "7" = "KP_Home";
+    "8" = "KP_Up";
+    "9" = "KP_Prior";
+    "0" = "KP_Insert";
+  };
+
+  toAzerty = n: set:
+    if (builtins.elem n (lib.attrNames set))
+    then set.${n}
+    else n;
+
+  toNumpad = n: set:
+    if (builtins.elem n (lib.attrNames set))
+    then set.${n}
     else n;
 in {
   wayland.windowManager.hyprland.settings = mkIf cfg.hyprland.enable {
@@ -75,13 +94,24 @@ in {
       ++
       # Change workspace
       (map (
-          n: "SUPER,${toAzerty n},workspace,name:${n}"
+          n: "SUPER,${toAzerty n azerty},workspace,name:${n}"
         )
         workspaces)
       ++
       # Move window to workspace
       (map (
-          n: "SUPERSHIFT,${toAzerty n},movetoworkspacesilent,name:${n}"
+          n: "SUPERSHIFT,${toAzerty n azerty},movetoworkspacesilent,name:${n}"
+        )
+        workspaces)
+      ++ # Change workspace with numpad
+      (map (
+          n: "SUPER,${toNumpad n numpad},workspace,name:${n}"
+        )
+        workspaces)
+      ++
+      # Move window to workspace with numpad
+      (map (
+          n: "SUPERSHIFT,${toAzerty n numpad},movetoworkspacesilent,name:${n}"
         )
         workspaces)
       ++
