@@ -30,6 +30,7 @@ in {
         christian-kohler.path-intellisense
         llvm-vs-code-extensions.vscode-clangd
         eamodio.gitlens
+        ocamllabs.ocaml-platform
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
