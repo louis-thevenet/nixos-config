@@ -20,9 +20,19 @@ in {
         Enable Kitty
       '';
 
-      schizofox.enable = mkEnableOption ''
-        Enable Schizofox
-      '';
+      schizofox = {
+        enable = mkEnableOption ''
+          Enable Schizofox
+        '';
+
+        searxngInstance = mkOption {
+          type = lib.types.str;
+          default = "https://searxng.brihx.fr";
+          description = ''
+            URL for searxng instance
+          '';
+        };
+      };
 
       social.enable = mkEnableOption ''
         Enable Social

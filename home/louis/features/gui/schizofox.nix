@@ -47,8 +47,8 @@ in {
 
         removeEngines = ["Google" "Bing" "Amazon.com" "eBay" "Twitter" "Wikipedia"];
 
-        searxUrl = "searx.be";
-        searxQuery = "https://searxng.brihx.fr/search?q={searchTerms}&categories=general";
+        searxUrl = cfg.schizofox.searxngInstance;
+        searxQuery = cfg.schizofox.searxngInstance + "/search?q={searchTerms}&categories=general";
         addEngines = [
           {
             Name = "nixpkgs";

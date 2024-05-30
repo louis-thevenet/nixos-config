@@ -12,7 +12,10 @@
     };
     gui = {
       kitty.enable = true;
-      schizofox.enable = true;
+      schizofox = {
+        enable = true;
+        searxngInstance = "http://192.168.1.53:8080";
+      };
       social.enable = true;
       utils.enable = true;
       lmstudio.enable = true;
