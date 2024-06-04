@@ -49,7 +49,8 @@ in {
         "NIXOS_OZONE_WL,1"
       ];
       input = {
-        kb_layout = "fr,us";
+        kb_layout = "fr";
+        kb_variant = "azerty";
         numlock_by_default = true;
         touchpad = {
           disable_while_typing = false;
@@ -57,7 +58,8 @@ in {
         };
       };
       monitor =
-        map (
+        map
+        (
           m: let
             resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
             position = "${toString m.x}x${toString m.y}";
@@ -66,7 +68,8 @@ in {
             then "${resolution},${position},1"
             else "disable"
           }"
-        ) (config.monitors)
+        )
+        (config.monitors)
         ++ [",preferred,auto,1"];
 
       gestures = {

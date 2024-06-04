@@ -1,8 +1,8 @@
-{
-  lib,
-  config,
-  ...
-}: let
+{ lib
+, config
+, ...
+}:
+let
   inherit (lib) mkIf;
   cfg = config.home-config.desktop;
 
@@ -53,12 +53,8 @@
     if (builtins.elem n (lib.attrNames set))
     then set.${n}
     else n;
-
-  toNumpad = n: set:
-    if (builtins.elem n (lib.attrNames set))
-    then set.${n}
-    else n;
-in {
+in
+{
   wayland.windowManager.hyprland.settings = mkIf cfg.hyprland.enable {
     bindm = [
       "SUPER,mouse:272,movewindow"
@@ -93,54 +89,63 @@ in {
       ]
       ++
       # Change workspace
-      (map (
+      (map
+        (
           n: "SUPER,${toAzerty n azerty},workspace,name:${n}"
         )
         workspaces)
       ++
       # Move window to workspace
-      (map (
+      (map
+        (
           n: "SUPERSHIFT,${toAzerty n azerty},movetoworkspacesilent,name:${n}"
         )
         workspaces)
       ++ # Change workspace with numpad
-      (map (
-          n: "SUPER,${toNumpad n numpad},workspace,name:${n}"
+      (map
+        (
+          n: "SUPER,${toAzerty n numpad},workspace,name:${n}"
         )
         workspaces)
       ++
       # Move window to workspace with numpad
-      (map (
+      (map
+        (
           n: "SUPERSHIFT,${toAzerty n numpad},movetoworkspacesilent,name:${n}"
         )
         workspaces)
       ++
       # Move focus
-      (lib.mapAttrsToList (
+      (lib.mapAttrsToList
+        (
           key: direction: "SUPER,${key},movefocus,${direction}"
         )
         directions)
       ++
       # Swap windows
-      (lib.mapAttrsToList (
+      (lib.mapAttrsToList
+        (
           key: direction: "SUPERSHIFT,${key},swapwindow,${direction}"
         )
         directions)
       ++
       # Move monitor focus
-      (lib.mapAttrsToList (
+      (lib.mapAttrsToList
+        (
           key: direction: "SUPERCONTROL,${key},focusmonitor,${direction}"
         )
         directions)
       ++
       # Move window to other monitor
-      (lib.mapAttrsToList (
+      (lib.mapAttrsToList
+        (
           key: direction: "SUPERCONTROLSHIFT,${key},movewindow,mon:${direction}"
         )
         directions)
       ++
       # Move workspace to other monitor
-      (lib.mapAttrsToList (
+      (lib.mapAttrsToList
+        (
           key: direction: "SUPERALT,${key},movecurrentworkspacetomonitor,${direction}"
         )
         directions);
