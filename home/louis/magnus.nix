@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   imports = [
     ./global
     ./features
@@ -23,6 +23,7 @@
     dev = {
       vscode.enable = true;
       devTools.enable = true;
+      jetbrains.enable = true;
     };
     desktop.hyprland = {
       enable = true;
@@ -58,7 +59,7 @@
     enable = true;
     monospace = {
       family = "FiraCode Nerd Font";
-      package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
+      package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
     };
     regular = {
       family = "Fira Sans";
