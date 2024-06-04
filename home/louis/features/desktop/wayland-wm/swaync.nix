@@ -24,11 +24,7 @@ in
     fonts = {
       names = [config.fontProfiles.monospace.family];
       size =
-        config
-        .stylix
-        .fonts
-        .sizes
-        .desktop
+        config.stylix.fonts.sizes.desktop
         + 0.0;
     };
     #colors = config.lib.stylix.colors.withHashtag;

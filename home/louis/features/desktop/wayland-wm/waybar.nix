@@ -149,12 +149,12 @@ in {
           interval = 2;
           # format = "";
           exec = ''
-          if ${pgrep} "hypridle" > /dev/null
-            then
-                echo ""
-            else
-                echo ""
-            fi
+            if ${pgrep} "hypridle" > /dev/null
+              then
+                  echo ""
+              else
+                  echo ""
+              fi
 
           '';
           tooltip = false;

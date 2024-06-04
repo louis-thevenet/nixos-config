@@ -1,13 +1,12 @@
-{ config
-, pkgs
-, lib
-, ...
-}:
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   inherit (lib) mkIf;
   cfg = config.home-config.dev;
-in
-{
+in {
   programs.vscode = mkIf cfg.vscode.enable {
     enable = true;
     package = pkgs.vscode-fhs;
@@ -93,7 +92,7 @@ in
     userSettings.nix.enableLanguageServer = true;
     userSettings.nix.serverPath = "${pkgs.nil}/bin/nil";
     userSettings.nix.formatterPath = "${pkgs.alejandra}/bin/alejandra";
-    userSettings.nix.serverSettings.nil.formatting.command = [ "alejandra" ];
+    userSettings.nix.serverSettings.nil.formatting.command = ["alejandra"];
 
     userSettings.typst-lsp.exportPdf = "onType";
     userSettings.typst-lsp.experimentalFormatterMode = "on";

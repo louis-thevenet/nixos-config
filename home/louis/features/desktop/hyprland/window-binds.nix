@@ -1,8 +1,8 @@
-{ lib
-, config
-, ...
-}:
-let
+{
+  lib,
+  config,
+  ...
+}: let
   inherit (lib) mkIf;
   cfg = config.home-config.desktop;
 
@@ -53,8 +53,7 @@ let
     if (builtins.elem n (lib.attrNames set))
     then set.${n}
     else n;
-in
-{
+in {
   wayland.windowManager.hyprland.settings = mkIf cfg.hyprland.enable {
     bindm = [
       "SUPER,mouse:272,movewindow"
