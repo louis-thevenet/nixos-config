@@ -7,6 +7,8 @@
       home-update-d = "home-manager --flake .#louis@magnus switch";
       home-update-l = "home-manager --flake .#louis@hircine switch";
 
+      vim = "hx";
+
       ls = "eza --long --header --binary --git --no-permissions --no-user";
       lss = "ls --total-size";
       cat = "bat --theme=\"Solarized (light)\"";
