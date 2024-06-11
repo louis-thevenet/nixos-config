@@ -6,7 +6,6 @@ in {
     enable = true;
     defaultEditor = true;
     settings = {
-      theme = colorscheme.slug;
       editor = {
         color-modes = true;
         line-number = "relative";
@@ -18,6 +17,5 @@ in {
         };
       };
     };
-    themes = import ./theme.nix {inherit colorscheme;};
   };
 }

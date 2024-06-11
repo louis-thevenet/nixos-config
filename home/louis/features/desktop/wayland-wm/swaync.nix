@@ -2,13 +2,12 @@
   config,
   lib,
   pkgs,
-  stylix,
   ...
 }: let
   inherit (lib) mkIf;
   cfg = config.home-config.desktop;
 in
-  with config.colorscheme.palette; let
+  with config.lib.stylix.colors; let
     background = "#" + base00;
     altBackground = "#" + base01;
     selBackground = "#" + base03;
@@ -20,15 +19,6 @@ in
     focused = "#" + base0A;
     unfocused = "#" + base03;
     boarder = "#" + base0D;
-
-    fonts = {
-      names = [config.fontProfiles.monospace.family];
-      size =
-        config.stylix.fonts.sizes.desktop
-        + 0.0;
-    };
-    #colors = config.lib.stylix.colors.withHashtag;
-    opacity = lib.toHexString (((builtins.ceil (config.stylix.opacity.popups * 100)) * 255) / 100);
   in {
     home.packages = mkIf cfg.hyprland.enable (with pkgs; [
       swaynotificationcenter
@@ -128,9 +118,7 @@ in
       }
     '';
 
-    home.file.".config/swaync/style.css".text = let
-      inherit (config.colorscheme) colors;
-    in ''
+    home.file.".config/swaync/style.css".text = ''
       @define-color ${background};
 
       @define-color noti-border-color ${boarder};

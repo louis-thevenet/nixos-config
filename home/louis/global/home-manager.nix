@@ -1,15 +1,8 @@
 {
   config,
   pkgs,
-  nix-colors,
   ...
 }: {
-  imports = [
-    nix-colors.homeManagerModules.default
-  ];
-
-  colorScheme = nix-colors.colorSchemes.solarized-light;
-
   home = {
     username = "louis";
     homeDirectory = "/home/louis";
@@ -17,12 +10,6 @@
 
   gtk = {
     enable = true;
-
-    theme = {
-      name = "marwaita-pop_os";
-      package = pkgs.marwaita-pop_os;
-    };
-
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;

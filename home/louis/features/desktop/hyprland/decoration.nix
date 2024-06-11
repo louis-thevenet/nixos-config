@@ -12,14 +12,7 @@ in {
       gaps_out = 2;
       border_size = 2;
       cursor_inactive_timeout = 30;
-      "col.active_border" = "0xff${config.colorscheme.palette.base0C}";
-      "col.inactive_border" = "0xff${config.colorscheme.palette.base02}";
       layout = "dwindle";
-    };
-
-    group = {
-      "col.border_active" = "0xff${config.colorscheme.palette.base0B}";
-      "col.border_inactive" = "0xff${config.colorscheme.palette.base04}";
     };
 
     decoration = {
@@ -37,8 +30,6 @@ in {
       drop_shadow = true;
       shadow_range = 12;
       shadow_offset = "3 3";
-      "col.shadow" = "0x44000000";
-      "col.shadow_inactive" = "0x66000000";
     };
     animations = {
       enabled = true;

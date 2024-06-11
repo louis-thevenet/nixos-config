@@ -276,14 +276,11 @@ in {
     # x y -> vertical, horizontal
     # x y z -> top, horizontal, bottom
     # w x y z -> top, right, bottom, left
-    style = let
-      inherit (config.colorscheme) palette;
-    in
+    style =
       # css
       ''
 
         * {
-          font-family: ${config.fontProfiles.regular.family}, ${config.fontProfiles.monospace.family};
           font-size: 10pt;
           padding: 0 8px;
         }
@@ -297,40 +294,15 @@ in {
 
         window#waybar.top {
           padding: 0;
-          background-color: #${palette.base00};
-          border: 2px solid #${palette.base0C};
           border-radius: 10px;
         }
 
-        window#waybar {
-          color: #${palette.base05};
-        }
-
         #workspaces button {
-          background-color: #${palette.base01};
-          color: #${palette.base05};
           margin: 4px;
           border-radius: 10px;
         }
 
-        #workspaces button.special {
-          background-color: #${palette.base0B};
-          color: #${palette.base00};
-        }
-
-        #workspaces button.hidden {
-          background-color: #${palette.base00};
-          color: #${palette.base04};
-        }
-        #workspaces button.focused,
-        #workspaces button.active {
-          background-color: #${palette.base0A};
-          color: #${palette.base00};
-        }
-
         #clock {
-          background-color: #${palette.base0C};
-          color: #${palette.base00};
           padding-left: 15px;
           padding-right: 15px;
           margin-top: 0;
@@ -339,8 +311,6 @@ in {
         }
 
         #custom-menu {
-          background-color: #${palette.base0C};
-          color: #${palette.base00};
           padding-left: 15px;
           padding-right: 22px;
           margin-left: 0;
@@ -350,17 +320,12 @@ in {
           border-radius: 10px;
         }
         #custom-hostname {
-          background-color: #${palette.base0C};
-          color: #${palette.base00};
           padding-left: 15px;
           padding-right: 18px;
           margin-right: 0;
           margin-top: 0;
           margin-bottom: 0;
           border-radius: 10px;
-        }
-        #tray {
-          color: #${palette.base05};
         }
       '';
   };

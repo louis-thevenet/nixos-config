@@ -13,7 +13,7 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    nix-colors.url = "github:misterio77/nix-colors";
+    stylix.url = "github:danth/stylix";
 
     hyprland = {
       url = "github:hyprwm/Hyprland/v0.40.0";
@@ -34,7 +34,7 @@
     nixpkgs-master,
     sops-nix,
     home-manager,
-    nix-colors,
+    stylix,
     nixvim,
     ...
   } @ inputs: let
@@ -70,7 +70,6 @@
         pkgs = nixpkgs.legacyPackages.${system};
         extraSpecialArgs = {
           inherit (self) inputs outputs;
-          inherit nix-colors;
         };
         modules = let
           overlay-master = final: prev: {
@@ -83,10 +82,12 @@
           ({
             config,
             pkgs,
+            stylix,
             ...
           }: {nixpkgs.overlays = [overlay-master];})
 
           ./home/louis/${host}.nix
+          stylix.homeManagerModules.stylix
         ];
       };
   in {

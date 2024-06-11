@@ -6,17 +6,17 @@
 }: let
   inherit (lib) mkIf;
   cfg = config.home-config.desktop;
-  palette = config.colorscheme.palette;
+  colors = config.lib.stylix.colors;
 in {
   home.packages = mkIf cfg.hyprland.enable (with pkgs; [
     hyprlock
   ]);
   home.file.".config/hypr/hyprlock.conf".text = ''
 
-    $text_color = 0xff${palette.base05}
-    $entry_background_color = 0xff${palette.base00}
-    $entry_border_color = 0xff${palette.base03}
-    $entry_color = 0xff${palette.base05}
+    $text_color = 0xff${colors.base05}
+    $entry_background_color = 0xff${colors.base00}
+    $entry_border_color = 0xff${colors.base03}
+    $entry_color = 0xff${colors.base05}
     $font_family = Gabarito
     $font_family_clock = Gabarito
     $font_material_symbols = Material Symbols Rounded
@@ -38,7 +38,7 @@ in {
     }
 
     background {
-           # all these options are taken from hyprland, see https://wiki.hyprland.org/Configuring/Variables/#blur for explanations
+    # all these options are taken from hyprland, see https://wiki.hyprland.org/Configuring/Variables/#blur for explanations
     path = screenshot
     blur_passes = 3 # 0 disables blurring
     blur_size = 7

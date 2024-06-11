@@ -7,19 +7,18 @@
   inherit (lib) mkIf;
   cfg = config.home-config.gui;
 in {
-  # imports = optionals cfg.enableSchizofox [inputs.schizofox.homeManagerModule];
   imports = [inputs.schizofox.homeManagerModule];
   programs.schizofox = let
-    inherit (config.colorscheme) palette;
+    inherit (config.lib.stylix) colors;
   in
     mkIf cfg.schizofox.enable {
       enable = true;
 
       theme = {
         colors = {
-          background-darker = "${palette.base01}";
-          background = "${palette.base00}";
-          foreground = "${palette.base05}";
+          background-darker = "${colors.base01}";
+          background = "${colors.base00}";
+          foreground = "${colors.base05}";
         };
 
         font = "Lexend";
@@ -28,8 +27,6 @@ in {
           #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
               display: none;
           }
-
-
 
           body {
               color: red !important;
