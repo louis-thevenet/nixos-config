@@ -11,12 +11,11 @@ in {
       gaps_in = 2;
       gaps_out = 2;
       border_size = 2;
-      cursor_inactive_timeout = 30;
       layout = "dwindle";
     };
 
     decoration = {
-      active_opacity = 0.99;
+      active_opacity = 1.0;
       inactive_opacity = 0.9;
       fullscreen_opacity = 1.0;
       rounding = 5;

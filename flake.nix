@@ -16,28 +16,21 @@
     stylix.url = "github:danth/stylix";
 
     hyprland = {
-      url = "github:hyprwm/Hyprland/v0.40.0";
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     schizofox.url = "github:schizofox/schizofox/main";
-
-    # nixvim = {
-    #   url = "github:nix-community/nixvim";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
   outputs = {
     self,
     nixpkgs,
     nixpkgs-master,
-    sops-nix,
     home-manager,
     stylix,
-    nixvim,
     ...
-  } @ inputs: let
+  }: let
     forEachSystem = nixpkgs.lib.genAttrs ["aarch64-linux" "x86_64-linux"];
     forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
 
