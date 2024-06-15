@@ -20,6 +20,7 @@ in {
     wayland-protocols
     wayland-utils
     wlroots
+    copyq
     swww
     wl-clipboard
   ]);

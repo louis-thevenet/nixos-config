@@ -35,7 +35,8 @@ in {
       [
         "SUPER,T,exec,${terminal}"
 
-        "SUPER, C, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy" # Clipboard manager
+        #"SUPER, C, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy" # Clipboard manager
+        "SUPER, C, exec, copyq show" # Clipboard manager
 
         # Screenshotting
         ",Print,exec,${grimblast} --notify copy area"

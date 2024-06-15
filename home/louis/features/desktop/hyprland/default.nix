@@ -36,11 +36,12 @@ in {
       exec-once = ${swww-script}
       exec-once = ${swaync}
       exec-once = hypridle
-
-      exec-once = wl-paste --type text --watch cliphist store #Stores only text data
-
-      exec-once = wl-paste --type image --watch cliphist store #Stores only image data
+      exec-once = copyq &
     '';
+
+    #exec-once = wl-paste --type text --watch cliphist store #Stores only text data
+    #exec-once = wl-paste --type image --watch cliphist store #Stores only image data
+
     settings = {
       env = [
         "LIBVA_DRIVER_NAME,nvidia"
