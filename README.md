@@ -1,4 +1,5 @@
 # My *always changing* NixOS Hyprland config
+
 ![2024-03-13T20:21:19,836929133+01:00](https://github.com/louis-thevenet/nixos-config/assets/55986107/aef574b6-a910-47ae-998c-aeb8e4ffffd3)
 *Unfocused windows are grayed out*
 ## NixOS Config
@@ -24,7 +25,7 @@ The setup is rather classic, most of the system configuration is shared between 
 ## HomeManager Config
 
 ```
-home/louis
+/home/louis
 ├── features
 │  ├── cli
 │  ├── default.nix
@@ -32,11 +33,13 @@ home/louis
 │  ├── dev
 │  ├── gaming
 │  ├── gui
+│  ├── misc
 │  └── virtualization
 ├── global
 │  ├── default.nix
 │  ├── home-manager.nix
 │  ├── options
+│  ├── stylix.nix
 │  └── tools
 ├── hircine.nix
 └── magnus.nix
@@ -64,7 +67,33 @@ home-config = {
 };
 ```
 
-You also need to configure monitors (only for Hyprland) and fonts:
+Style is handled by `Stylix`:
+```nix
+stylix = {
+    enable = true;
+    image = pkgs.fetchurl {
+      url = "https://images.pexels.com/photos/167698/pexels-photo-167698.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+      sha256 = "sha256-/Pw6zZ41isjbUwsaFOt2YWhE7oD8D6kNdLsaGtUdBrI=";
+    };
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/selenized-light.yaml";
+    cursor = {
+      package = pkgs.numix-cursor-theme;
+      name = "Numix-Cursor-Light";
+      size = 22;
+    };
+    fonts = {
+      monospace = {
+        name = "FiraCode Nerd Font";
+        package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
+      };
+      serif = config.stylix.fonts.monospace;
+      sansSerif = config.stylix.fonts.monospace;
+      emoji = config.stylix.fonts.monospace;
+    };
+  };
+```
+
+You also need to configure monitors (only for Hyprland):
 ```nix
 monitors = [
     {
@@ -76,16 +105,31 @@ monitors = [
       primary = true;
     }
   ];
-
-  fontProfiles = {
-    enable = true;
-    monospace = {
-      family = "FiraCode Nerd Font";
-      package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
-    };
-    regular = {
-      family = "Fira Sans";
-      package = pkgs.fira;
-    };
-  };
 ```
+
+# What you would change to use this config
+## Delete what you wouldn't use
+Here are some random examples:
+- Schizofox
+- Nextcloud
+- Helix/NixVim
+- Some VSCode extensions
+- LMStudio
+- Git signing keys
+
+## What you need to do
+### NixOS
+- Enable experimental features in your initial configuration if it's not already done
+- Clone the repo
+- Replace all occurences of `louis` by your username
+- Replace all occurences of `magnus` by your hostname
+- Either remove secrets management through `sops` or replace them with your own secrets. A hashed password could be considered as being enough so don't bother with secrets if you don't have any. (that's in `./hosts/common/users/USERNAME/default.nix`)
+- Replace `hardware-config.nix` with your own file produced by `nixos-generate-config`.
+
+### Home Manager
+- you should already have changed `magnus`'s config to be yours
+- You should probably follow this algorithm:
+- Comment out all features in `./home/USERNAME/HOSTNAME.nix`
+- For each feature, see what it enables, remove what you don't want, then enable it
+
+- You should be good to rebuild : `sudo nixos-rebuild --flake .#HOSTNAME boot` then `reboot now`.
