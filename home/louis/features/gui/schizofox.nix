@@ -100,6 +100,7 @@ in {
         displayBookmarksInToolbar = "newtab";
         drm.enable = true;
         disableWebgl = false;
+        contextMenu.enable = true;
         bookmarks = [
           {
             Title = "GitHub";
