@@ -14,7 +14,7 @@
 
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci"];
   boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-amd" "nvidia" "nvidia-uvm"];
+  boot.kernelModules = ["kvm-amd" "nvidia" "nvidia-uvm" "kvm-intel" "nvidia_modeset" "nvidia_drm"];
   boot.extraModulePackages = [];
   boot.initrd.luks.devices."luks-81a60602-d096-4fa8-b103-2c94acb07eb0".device = "/dev/disk/by-uuid/81a60602-d096-4fa8-b103-2c94acb07eb0";
 
