@@ -55,18 +55,18 @@
   hardware.nvidia = {
     # Modesetting is needed for most wayland compositors
     modesetting.enable = true;
-    open = true;
+    #open = true;
     nvidiaSettings = true;
-    # package = config.boot.kernelPackages.nvidiaPackages.beta.overrideAttrs (old: let
-    #   version = "535.129.03";
-    # in {
-    #   src = pkgs.fetchurl {
-    #     url = "https://download.nvidia.com/XFree86/Linux-x86_64/${version}/NVIDIA-Linux-x86_64-${version}.run";
-    #     sha256 = "sha256-5tylYmomCMa7KgRs/LfBrzOLnpYafdkKwJu4oSb/AC4=";
-    #   };
-    # });
+    package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+      version = "535.129.03"; # --> older but working version
+      sha256_64bit = "sha256-5tylYmomCMa7KgRs/LfBrzOLnpYafdkKwJu4oSb/AC4=";
+      sha256_aarch64 = "sha256-i6jZYUV6JBvN+Rt21v4vNstHPIu9sC+2ZQpiLOLoWzM=";
+      openSha256 = "sha256-/Hxod/LQ4CGZN1B1GRpgE/xgoYlkPpMh+n8L7tmxwjs=";
+      settingsSha256 = "sha256-QKN/gLGlT+/hAdYKlkIjZTgvubzQTt4/ki5Y+2Zj3pk=";
+      persistencedSha256 = "sha256-FRMqY5uAJzq3o+YdM2Mdjj8Df6/cuUUAnh52Ne4koME=";
+    };
 
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    #package = config.boot.kernelPackages.nvidiaPackages.production;
   };
 
   # XDG Portals
