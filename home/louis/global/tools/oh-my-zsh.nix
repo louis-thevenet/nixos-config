@@ -14,7 +14,8 @@
       cat = "bat --theme=\"Solarized (light)\"";
     };
     autosuggestion.enable = true;
-    enableCompletion = false;
+    syntaxHighlighting.enable = true;
+    enableCompletion = true;
 
     plugins = [
       {
@@ -42,23 +43,24 @@
           };
         file = "airpods-battery.plugin.zsh";
       }
-      {
-        name = "zsh-autocomplete";
-        src =
-          pkgs.fetchFromGitHub
-          {
-            owner = "marlonrichert";
-            repo = "zsh-autocomplete";
-            rev = "23.07.13";
-            sha256 = "sha256-0NW0TI//qFpUA2Hdx6NaYdQIIUpRSd0Y4NhwBbdssCs=";
-          };
-        file = "zsh-autocomplete.plugin.zsh";
-      }
+
+      #   {
+      #     name = "zsh-autocomplete";
+      #     src =
+      #       pkgs.fetchFromGitHub
+      #       {
+      #         owner = "marlonrichert";
+      #         repo = "zsh-autocomplete";
+      #         rev = "23.07.13";
+      #         sha256 = "sha256-0NW0TI//qFpUA2Hdx6NaYdQIIUpRSd0Y4NhwBbdssCs=";
+      #       };
+      #     file = "zsh-autocomplete.plugin.zsh";
+      #   }
     ];
 
     oh-my-zsh = {
       enable = true;
-      plugins = ["git" "history" "vscode"];
+      plugins = ["git" "web-search" "history" "copypath" "copyfile" "vscode" "rust" "direnv"];
       theme = "candy";
     };
   };
