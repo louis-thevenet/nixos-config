@@ -9,7 +9,7 @@
 in {
   programs.vscode = mkIf cfg.vscode.enable {
     enable = true;
-    package = pkgs.vscode-fhs;
+    package = pkgs.vscodium;
     enableExtensionUpdateCheck = false;
     enableUpdateCheck = false;
     extensions = with pkgs.vscode-extensions;
