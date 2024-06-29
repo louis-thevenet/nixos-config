@@ -7,8 +7,8 @@
   home-config = {
     cli = {
       commonTools.enable = true;
-      VPNC.enable = true;
-      nvTop.enable = true;
+      VPNC.enable = false;
+      nvTop.enable = false;
     };
     gui = {
       kitty.enable = true;
@@ -33,7 +33,7 @@
         suspendTime = 99999; # currently broken on magnus
       };
     };
-    virtualization.enable = true;
+    virtualization.enable = false;
     gaming.enable = true;
   };
 
