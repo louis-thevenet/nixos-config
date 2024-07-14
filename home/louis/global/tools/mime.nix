@@ -4,7 +4,7 @@
     mimeApps = {
       enable = true;
       defaultApplications = let
-        browser = "schizofox.desktop";
+        browser = "Schizofox.desktop";
         editor = "code.desktop";
       in {
         "text/html" = browser;
