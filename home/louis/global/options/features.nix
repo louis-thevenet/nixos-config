@@ -92,6 +92,13 @@ in {
       '';
     };
 
+    misc = {
+      nextcloud = {
+        enable = mkEnableOption ''
+          Enable Nextcloud desktop client
+        '';
+      };
+    };
     gaming.enable = mkEnableOption ''
       Enable Gaming
     '';

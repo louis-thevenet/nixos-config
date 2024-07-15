@@ -33,6 +33,9 @@
         suspendTime = 99999; # currently broken on magnus
       };
     };
+    misc = {
+      nextcloud.enable = true;
+    };
     virtualization.enable = true;
     gaming.enable = true;
   };
