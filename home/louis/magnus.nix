@@ -49,12 +49,17 @@
       workspace = "2";
     }
     {
-      name = "DP-2";
+      name = "DP-3";
       width = 2560;
       height = 1440;
       x = 1920;
       workspace = "1";
       primary = true;
+    }
+    # get rid of the ghost monitor
+    {
+      name = "Unknown-1";
+      enabled = false;
     }
   ];
 }
