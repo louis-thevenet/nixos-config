@@ -11,7 +11,7 @@
     ../common/optional/airpods-battery-fetcher.nix
     ../common/optional/droidcam.nix
     ../common/optional/virt.nix
-    ../common/optional/ollama.nix
+    #../common/optional/ollama.nix
   ];
   networking.hostName = "magnus";
   boot.binfmt.emulatedSystems = ["aarch64-linux"]; # allows building iso for arm devices
