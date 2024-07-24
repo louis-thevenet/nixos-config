@@ -58,14 +58,15 @@ in {
             "custom/currentplayer"
             "custom/player"
           ]
-          ++ (lib.optionals config.wayland.windowManager.sway.enable [
-            "sway/workspaces"
-            "sway/mode"
-          ])
-          ++ (lib.optionals config.wayland.windowManager.hyprland.enable [
+          #   ++ (lib.optionals config.wayland.windowManager.sway.enable [
+          #     "sway/workspaces"
+          #     "sway/mode"
+          #   ])
+          ++ lib.optionals
+          config.wayland.windowManager.hyprland.enable [
             "hyprland/workspaces"
-            "hyprland/submap"
-          ]);
+            #"hyprland/submap"
+          ];
         modules-center = [
           "cpu"
           "custom/gpu"
@@ -195,6 +196,7 @@ in {
             "LM Studio" = "";
           };
         };
+
         battery = {
           bat = "BAT0";
           interval = 10;
@@ -277,7 +279,7 @@ in {
     # x y z -> top, horizontal, bottom
     # w x y z -> top, right, bottom, left
     style = with config.lib.stylix;
-      # css
+    # css
       ''
 
         * {
