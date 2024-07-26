@@ -40,6 +40,9 @@
       '{text:$text,tooltip:$tooltip,alt:$alt,class:$class,percentage:$percentage}'
   ''}/bin/waybar-${name}";
 in {
+  stylix.targets.waybar.enable = false;
+  stylix.targets.hyprland.enable = false;
+
   programs.waybar = mkIf cfg.hyprland.enable {
     enable = true;
     package = pkgs.waybar.overrideAttrs (oa: {
@@ -49,14 +52,12 @@ in {
     settings = {
       primary = {
         layer = "top";
-        height = 40;
-        margin = "2";
-        position = "top";
+        position = "bottom";
         exclusive = true;
         modules-left =
           [
-            "custom/currentplayer"
-            "custom/player"
+            #"custom/currentplayer"
+            #"custom/player"
           ]
           #   ++ (lib.optionals config.wayland.windowManager.sway.enable [
           #     "sway/workspaces"
@@ -68,19 +69,19 @@ in {
             #"hyprland/submap"
           ];
         modules-center = [
-          "cpu"
-          "custom/gpu"
-          "memory"
-          "clock"
-          "pulseaudio"
-          "custom/notifications"
-          "custom/hypridle"
+          #"cpu"
+          #"custom/gpu"
+          #"memory"
         ];
         modules-right = [
+          "tray"
+          #"custom/hostname"
           "network"
           "battery"
-          "tray"
-          "custom/hostname"
+          "custom/hypridle"
+          "pulseaudio"
+          "custom/notifications"
+          "clock"
         ];
 
         clock = {
@@ -90,7 +91,7 @@ in {
             <tt><small>{calendar}</small></tt>'';
         };
         cpu = {
-          format = "   {usage}%";
+          format = " {usage}%";
           on-click = btm-kitty;
         };
         "custom/gpu" = {
@@ -105,13 +106,13 @@ in {
           format = "{} %";
         };
         memory = {
-          format = "󰍛  {}%";
+          format = "󰍛 {}%";
           on-click = btm-kitty;
           interval = 5;
         };
         pulseaudio = {
-          format = "{icon}  {volume}%";
-          format-muted = "   0%";
+          format = "{icon} {volume}%";
+          format-muted = " 0%";
           format-icons = {
             headphone = "󰋋";
             headset = "󰋎";
@@ -152,9 +153,9 @@ in {
           exec = ''
             if ${pgrep} "hypridle" > /dev/null
               then
-                  echo ""
+                  echo " "
               else
-                  echo ""
+                  echo " "
               fi
 
           '';
@@ -175,25 +176,25 @@ in {
         };
 
         "hyprland/workspaces" = {
-          format-window-separator = " ";
+          format-window-separator = "";
           active-only = false;
           all-outputs = false;
           show-special = true;
           window-rewrite-default = "";
-          format = "{name} {windows}";
+          format = "{name}{windows}";
           "window-rewrite" = {
-            "title<.*youtube.*>" = "";
-            "class<firefox>" = "";
-            "class<firefox> title<.*github.*>" = "";
-            "warp" = "";
-            "kitty" = "";
-            "code" = "󰨞";
-            "Discord" = "󰙯";
-            "class<Spotify>" = "󰓇";
+            "title<.*youtube.*>" = " ";
+            "class<firefox>" = " ";
+            "class<firefox> title<.*github.*>" = " ";
+            "warp" = " ";
+            "kitty" = " ";
+            "codium-url-handler" = " 󰨞";
+            "Discord" = " 󰙯";
+            "class<Spotify>" = " 󰓇";
             "matlab" = "󰆧";
-            "Super Productivity" = "󰨟";
-            "Beeper" = "💬";
-            "LM Studio" = "";
+            "Super Productivity" = " 󰨟";
+            "Beeper" = " 💬";
+            "LM Studio" = " ";
           };
         };
 
@@ -210,8 +211,8 @@ in {
         };
         network = {
           interval = 3;
-          format-wifi = "   {essid}";
-          format-ethernet = "󰈁 Connected";
+          format-wifi = "  {essid}";
+          format-ethernet = "󰈁";
           format-disconnected = "";
           tooltip-format = ''
             {ifname}
@@ -278,88 +279,46 @@ in {
     # x y -> vertical, horizontal
     # x y z -> top, horizontal, bottom
     # w x y z -> top, right, bottom, left
+
     style = with config.lib.stylix;
     # css
       ''
 
         * {
-          font-size: 10pt;
-          padding: 0 8px;
-        }
-        .modules-right {
-          margin-right: -15px;
-        }
-
-        .modules-left {
-          margin-left: -15px;
-        }
-
-        window#waybar.top {
-          padding: 0;
-          background-color: #${colors.base00};
-          border: 2px solid #${colors.base0C};
-          border-radius: 10px;
+            font-size: 10pt;
         }
 
         window#waybar {
-          color: #${colors.base05};
+            background-color: transparent;
         }
+
+        #workspaces button,
+        #workspaces button.hidden,
+
+        #clock,
+        #custom-notifications,
+        #custom-hostname,
+        #battery,
+        #custom-hypridle,
+        #network,
+        #pulseaudio,
+        #tray {
+            background-color:  #${colors.base01};
+            color: #${colors.base05};
+            padding: 3px 10px;
+            border-radius: 10px;
+        }
+
 
         #workspaces button {
-          background-color: #${colors.base01};
-          color: #${colors.base05};
-          margin: 4px;
-          border-radius: 10px;
+            border-radius: 5;
+            padding: 0 10px
         }
 
-        #workspaces button.special {
-          background-color: #${colors.base0B};
-          color: #${colors.base00};
-        }
-
-        #workspaces button.hidden {
-          background-color: #${colors.base00};
-          color: #${colors.base04};
-        }
         #workspaces button.focused,
         #workspaces button.active {
-          background-color: #${colors.base0A};
-          color: #${colors.base00};
-        }
-
-        #clock {
-          background-color: #${colors.base0C};
-          color: #${colors.base00};
-          padding-left: 15px;
-          padding-right: 15px;
-          margin-top: 0;
-          margin-bottom: 0;
-          border-radius: 10px;
-        }
-
-        #custom-menu {
-          background-color: #${colors.base0C};
-          color: #${colors.base00};
-          padding-left: 15px;
-          padding-right: 22px;
-          margin-left: 0;
-          margin-right: 10px;
-          margin-top: 0;
-          margin-bottom: 0;
-          border-radius: 10px;
-        }
-        #custom-hostname {
-          background-color: #${colors.base0C};
-          color: #${colors.base00};
-          padding-left: 15px;
-          padding-right: 18px;
-          margin-right: 0;
-          margin-top: 0;
-          margin-bottom: 0;
-          border-radius: 10px;
-        }
-        #tray {
-          color: #${colors.base05};
+            background-color: #${colors.base0A};
+            color: #${colors.base00};
         }
       '';
   };
