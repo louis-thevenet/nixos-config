@@ -53,7 +53,7 @@ in {
       primary = {
         layer = "top";
         position = "bottom";
-        exclusive = true;
+        exclusive = false;
         modules-left =
           #   ++ (lib.optionals config.wayland.windowManager.sway.enable [
           #     "sway/workspaces"
@@ -304,10 +304,11 @@ in {
         #custom-currentplayer,
         #custom-player
         {
-            background-color:  #${colors.base01};
-            color: #${colors.base05};
-            padding: 3px 10px;
+            background-color:  #${colors.base05};
+            color: #${colors.base01};
+            padding: 0px 10px;
             border-radius: 10px;
+            margin: 4px;
         }
 
 
@@ -318,8 +319,8 @@ in {
 
         #workspaces button.focused,
         #workspaces button.active {
-            background-color: #${colors.base0A};
-            color: #${colors.base00};
+            background-color: #${colors.base02};
+            color: #${colors.base09};
         }
       '';
   };
