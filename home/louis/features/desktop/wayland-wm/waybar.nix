@@ -55,20 +55,17 @@ in {
         position = "bottom";
         exclusive = true;
         modules-left =
-          [
-            #"custom/currentplayer"
-            #"custom/player"
-          ]
           #   ++ (lib.optionals config.wayland.windowManager.sway.enable [
           #     "sway/workspaces"
           #     "sway/mode"
           #   ])
-          ++ lib.optionals
+          lib.optionals
           config.wayland.windowManager.hyprland.enable [
             "hyprland/workspaces"
             #"hyprland/submap"
           ];
         modules-center = [
+          "custom/player"
           #"cpu"
           #"custom/gpu"
           #"memory"
@@ -79,6 +76,7 @@ in {
           "network"
           "battery"
           "custom/hypridle"
+          "custom/currentplayer"
           "pulseaudio"
           "custom/notifications"
           "clock"
@@ -263,7 +261,7 @@ in {
           exec = ''${playerctl} metadata --format '{"text": "{{artist}} - {{title}}", "alt": "{{status}}", "tooltip": "{{title}} ({{artist}} - {{album}})"}' '';
           return-type = "json";
           interval = 2;
-          max-length = 30;
+          #max-length = 30;
           format = "{icon} {}";
           format-icons = {
             "Playing" = "󰐊";
@@ -302,7 +300,10 @@ in {
         #custom-hypridle,
         #network,
         #pulseaudio,
-        #tray {
+        #tray,
+        #custom-currentplayer,
+        #custom-player
+        {
             background-color:  #${colors.base01};
             color: #${colors.base05};
             padding: 3px 10px;
