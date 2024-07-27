@@ -31,12 +31,16 @@ in {
       grimblast = "${pkgs.grimblast}/bin/grimblast";
       terminal = config.home.sessionVariables.TERMINAL;
       killall = "${pkgs.killall}/bin/killall";
+      darkman = "${pkgs.darkman}/bin/darkman";
+      rofi = "${pkgs.rofi}/bin/rofi";
+      copyq = "${pkgs.copyq}/bin/copyq";
+      blueman-manager = "${pkgs.blueman}/bin/blueman-manager";
     in
       [
         "SUPER,T,exec,${terminal}"
 
         #"SUPER, C, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy" # Clipboard manager
-        "SUPER, C, exec, copyq show" # Clipboard manager
+        "SUPER,C,exec,${copyq} show" # Clipboard manager
 
         # Screenshotting
         ",Print,exec,${grimblast} --notify copy area"
@@ -47,9 +51,9 @@ in {
       ]
       # Launcher
       ++ [
-        "SUPER,x,exec,rofi -show drun -sidebar-mode"
-        "SUPERSHIFT,x,exec,rofi -show run"
-        "SUPER,tab,exec,rofi -show window"
+        "SUPER,x,exec,${rofi} -show drun -sidebar-mode"
+        "SUPERSHIFT,x,exec,${rofi} -show run"
+        "SUPER,tab,exec,${rofi} -show window"
       ]
       # Waybar
       ++ [
@@ -70,7 +74,12 @@ in {
       ++
       # Bluetooth
       [
-        "SUPER,p,exec,blueman-manager"
+        "SUPER,p,exec,${blueman-manager}"
+      ]
+      ++
+      # Darkman toggle
+      [
+        "SUPERSHIFT,T,exec,${darkman} toggle"
       ];
   };
 }
