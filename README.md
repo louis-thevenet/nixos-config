@@ -1,7 +1,8 @@
 # NixOS Hyprland flake setup
+![image](https://github.com/user-attachments/assets/babe7c25-b7e1-43b6-bba7-abe00aa80fbd)
+![image](https://github.com/user-attachments/assets/1dc4faea-9f66-4a4a-82c6-782b56627114)
 
-![2024-03-13T20:21:19,836929133+01:00](https://github.com/louis-thevenet/nixos-config/assets/55986107/aef574b6-a910-47ae-998c-aeb8e4ffffd3)
-*Unfocused windows are grayed out*
+*Unfocused windows are grayed out* 
 ## NixOS Config
 ```
 hosts
