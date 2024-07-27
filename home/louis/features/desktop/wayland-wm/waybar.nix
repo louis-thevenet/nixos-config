@@ -304,11 +304,12 @@ in {
         #custom-currentplayer,
         #custom-player
         {
-            background-color:  #${colors.base05}; /* 01 */
-            color: #${colors.base01}; /* 05 */
+            background-color:  #${colors.base01}; /* 01 */
+            color: #${colors.base06}; /* 05 */
             padding: 0px 10px;
             border-radius: 10px;
             margin: 4px;
+            border: 1px solid #${colors.base06};
         }
 
 
@@ -319,8 +320,8 @@ in {
 
         #workspaces button.focused,
         #workspaces button.active {
-            background-color: #${colors.base02}; /* 0A */
-            color: #${colors.base09}; /* 00 */
+            background-color: #${colors.base01}; /* 0A */
+            color: #${colors.base05}; /* 00 */
         }
       '';
   };
