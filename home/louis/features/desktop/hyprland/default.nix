@@ -83,7 +83,7 @@ in {
 
       windowrule = [
         "tile,Warp"
-        # "tile, MATLAB"
+        "float,^(Rofi)$"
       ];
     };
   };
