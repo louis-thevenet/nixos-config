@@ -9,18 +9,25 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    sops-nix.url = "github:Mic92/sops-nix";
-
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
-    stylix.url = "github:danth/stylix";
-
-    hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    sops-nix = {
+      url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    schizofox.url = "github:schizofox/schizofox/main";
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    schizofox = {
+      url = "github:schizofox/schizofox/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {

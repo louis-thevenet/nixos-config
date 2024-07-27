@@ -9,11 +9,11 @@
 in {
   programs.vscode = mkIf cfg.vscode.enable {
     enable = true;
-    package = pkgs.vscodium;
+    package = pkgs.master.vscodium;
     enableExtensionUpdateCheck = false;
     enableUpdateCheck = false;
-    extensions = with pkgs.vscode-extensions;
-      [
+    extensions =
+      with pkgs.vscode-extensions; [
         mkhl.direnv
         jnoortheen.nix-ide
         rust-lang.rust-analyzer
@@ -32,14 +32,15 @@ in {
         eamodio.gitlens
         ocamllabs.ocaml-platform
       ]
-      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        {
-          name = "continue";
-          publisher = "Continue";
-          version = "0.9.79";
-          sha256 = "sZLtY30eWO7Tflxd9BazSBNl/d5w/k+Esodu3Qthzos=";
-        }
-      ];
+      #   ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      #     {
+      #       name = "continue";
+      #       publisher = "Continue";
+      #       version = "0.9.79";
+      #       sha256 = "sZLtY30eWO7Tflxd9BazSBNl/d5w/k+Esodu3Qthzos=";
+      #     }
+      #   ]
+      ;
 
     keybindings = [
       {

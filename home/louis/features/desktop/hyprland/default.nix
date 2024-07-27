@@ -16,8 +16,6 @@ in {
   wayland.windowManager.hyprland = mkIf cfg.hyprland.enable {
     # Whether to enable Hyprland wayland compositor
     enable = true;
-    # The hyprland package to use
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
     # Whether to enable XWayland
     xwayland.enable = true;
@@ -38,9 +36,6 @@ in {
       exec-once = hypridle
       exec-once = copyq &
     '';
-
-    #exec-once = wl-paste --type text --watch cliphist store #Stores only text data
-    #exec-once = wl-paste --type image --watch cliphist store #Stores only image data
 
     settings = {
       env = [
