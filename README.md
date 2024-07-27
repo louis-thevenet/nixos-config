@@ -68,6 +68,9 @@ home-config = {
 ```
 
 Style is handled by `Stylix`:
+
+(Theme auto switches from light to dark on sunset using darkman and nix specialisations)
+
 ```nix
 stylix = {
     enable = true;
@@ -75,7 +78,7 @@ stylix = {
       url = "https://images.pexels.com/photos/167698/pexels-photo-167698.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
       sha256 = "sha256-/Pw6zZ41isjbUwsaFOt2YWhE7oD8D6kNdLsaGtUdBrI=";
     };
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/selenized-light.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
     cursor = {
       package = pkgs.numix-cursor-theme;
       name = "Numix-Cursor-Light";
@@ -89,6 +92,16 @@ stylix = {
       serif = config.stylix.fonts.monospace;
       sansSerif = config.stylix.fonts.monospace;
       emoji = config.stylix.fonts.monospace;
+    };
+  };
+
+  specialisation = {
+    light.configuration = {
+      stylix.base16Scheme = lib.mkForce "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
+    };
+
+    dark.configuration = {
+      stylix.base16Scheme = lib.mkForce "${pkgs.base16-schemes}/share/themes/solarized-dark.yaml";
     };
   };
 ```
