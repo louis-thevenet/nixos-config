@@ -11,6 +11,7 @@
     ../common/optional/airpods-battery-fetcher.nix
     ../common/optional/droidcam.nix
     ../common/optional/virt.nix
+    ../common/optional/stylix.nix
     #../common/optional/ollama.nix
   ];
   networking.hostName = "magnus";

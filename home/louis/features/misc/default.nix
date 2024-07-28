@@ -1,3 +1,6 @@
 {...}: {
-  imports = [./nextcloud.nix];
+  imports = [
+    ./nextcloud.nix
+    ./darkman.nix
+  ];
 }
