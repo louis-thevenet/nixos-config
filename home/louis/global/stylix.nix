@@ -34,6 +34,7 @@
       head = "${pkgs.toybox}/bin/head";
       find = "${pkgs.toybox}/bin/find";
     in ''
+
       for line in $(${home-manager} generations | ${grep} -o '/.*')
       do
         res=$(${find} $line | ${grep} specialisation | ${head} -1)
@@ -47,10 +48,16 @@
   in {
     enable = true;
     darkModeScripts = {
-      activate = "$(${find-hm-generation})/dark/activate";
+      activate = ''
+        $(${find-hm-generation})/dark/activate
+        swaync-client -rs # reload CSS for swaync (notification center)
+      '';
     };
     lightModeScripts = {
-      activate = "$(${find-hm-generation})/light/activate";
+      activate = ''
+        $(${find-hm-generation})/light/activate
+        swaync-client -rs # reload CSS for swaync (notification center)
+      '';
     };
     settings = {
       lat = 48.86;
