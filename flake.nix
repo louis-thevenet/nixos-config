@@ -56,21 +56,10 @@
         ];
       };
 
-    mkNixos = host: system:
+    mkNixos = user: host: system:
       nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {inherit (self) inputs outputs;};
-        modules = [
-          ./hosts/${host}
-        ];
-      };
-
-    mkHome = host: system:
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        extraSpecialArgs = {
-          inherit (self) inputs outputs;
-        };
         modules = let
           overlay-master = final: prev: {
             master = import nixpkgs-master {
@@ -79,15 +68,22 @@
             };
           };
         in [
+          ./hosts/${host}
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.users.${user} = import ./home/${user}/${host}.nix;
+            home-manager.extraSpecialArgs = {
+              inherit (self) inputs outputs;
+            };
+          }
+          stylix.nixosModules.stylix
           ({
             config,
             pkgs,
             stylix,
             ...
           }: {nixpkgs.overlays = [overlay-master];})
-
-          ./home/louis/${host}.nix
-          stylix.homeManagerModules.stylix
         ];
       };
   in {
@@ -95,17 +91,8 @@
     devShells."x86_64-linux".default = mkShell "x86_64-linux";
 
     nixosConfigurations = {
-      raspberrypi = mkNixos "raspberrypi" "aarch64-linux";
-      magnus = mkNixos "magnus" "x86_64-linux";
-      hircine = mkNixos "hircine" "x86_64-linux";
-      iso = mkNixos "iso" "x86_64-linux";
-    };
-
-    homeConfigurations = {
-      "louis@magnus" = mkHome "magnus" "x86_64-linux";
-      "louis@hircine" = mkHome "hircine" "x86_64-linux";
-      "louis@raspberrypi" = mkHome "raspberrypi" "aarch64-linux";
-      "louis@iso" = mkHome "iso" "x86_64-linux";
+      magnus = mkNixos "louis" "magnus" "x86_64-linux";
+      hircine = mkNixos "louis" "hircine" "x86_64-linux";
     };
   };
 }
