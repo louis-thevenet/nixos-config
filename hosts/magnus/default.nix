@@ -10,6 +10,7 @@
     ../common/users/louis
     ../common/optional/airpods-battery-fetcher.nix
     ../common/optional/stylix.nix
+    ../common/optional/darkman.nix
   ];
   networking.hostName = "magnus";
   boot.binfmt.emulatedSystems = ["aarch64-linux"]; # allows building iso for arm devices
@@ -76,4 +77,20 @@
   environment.systemPackages = [
     pkgs.xdg-utils # xdg-open
   ];
+  services.darkman = {
+    enable = true;
+    darkModeScript = ''
+      sudo /run/booted-system/specialisation/dark/bin/switch-to-configuration switch
+      swaync-client -rs # reload CSS for swaync (notification center)
+    '';
+    lightModeScript = ''
+      sudo /run/booted-system/specialisation/light/bin/switch-to-configuration switch
+      swaync-client -rs # reload CSS for swaync (notification center)
+    '';
+    settings = {
+      lat = 48.86;
+      lng = 2.35;
+      dbusserver = true;
+    };
+  };
 }
