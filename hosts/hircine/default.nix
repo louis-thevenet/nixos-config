@@ -8,8 +8,7 @@
     ./hardware-configuration.nix
     ../common/global
     ../common/users/louis
-    ../common/optional/virt.nix
-    ../common/optional/ollama.nix
+    ../common/optional/stylix.nix
   ];
   networking.hostName = "hircine";
 
@@ -46,28 +45,46 @@
   hardware.nvidia = {
     # Modesetting is needed for most wayland compositors
     modesetting.enable = true;
-
     prime = {
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
-      };
-
-      amdgpuBusId = "PCI:6:0:0";
+      sync.enable = true;
+      amdgpuBusId = "PCI:5:0:0";
       nvidiaBusId = "PCI:1:0:0";
     };
-
     nvidiaSettings = true;
-    #open = true;
     package = config.boot.kernelPackages.nvidiaPackages.production;
   };
 
-  services.udev.extraRules = ''
-      ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789]?", ENV{ID_MM_DEVICE_IGNORE}="1"
-    ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789]?", ENV{MTP_NO_PROBE}="1"
-    SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789]?", MODE:="0666"
-    KERNEL=="ttyACM*", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789]?", MODE:="0666"
-  '';
+  specialisation = {
+    dGPU_offload.configuration = {
+      system.nixos.tags = ["dGPU_offload"];
+      ##### disable nvidia, very nice battery life.
+      boot.extraModprobeConfig = ''
+        blacklist nouveau
+        options nouveau modeset=0
+      '';
+
+      services.udev.extraRules = ''
+        # Remove NVIDIA USB xHCI Host Controller devices, if present
+        ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c0330", ATTR{power/control}="auto", ATTR{remove}="1"
+
+        # Remove NVIDIA USB Type-C UCSI devices, if present
+        ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c8000", ATTR{power/control}="auto", ATTR{remove}="1"
+
+        # Remove NVIDIA Audio devices, if present
+        ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x040300", ATTR{power/control}="auto", ATTR{remove}="1"
+
+        # Remove NVIDIA VGA/3D controller devices
+        ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
+      '';
+      boot.blacklistedKernelModules = ["nouveau" "nvidia" "nvidia_drm" "nvidia_modeset"];
+
+      #   hardware.nvidia = {
+      #     prime.offload.enable = lib.mkForce true;
+      #     prime.offload.enableOffloadCmd = lib.mkForce true;
+      #     prime.sync.enable = lib.mkForce false;
+      #   };
+    };
+  };
 
   # XDG Portals
   xdg = {

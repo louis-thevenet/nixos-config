@@ -21,6 +21,7 @@
       devTools.enable = true;
     };
     desktop.hyprland.enable = true;
+    desktop.stylix.enable = true;
     virtualization.enable = true;
     gaming.enable = true;
   };
