@@ -80,12 +80,12 @@
   services.darkman = {
     enable = true;
     darkModeScript = ''
-      sudo /run/booted-system/specialisation/dark/bin/switch-to-configuration switch
-      swaync-client -rs # reload CSS for swaync (notification center)
+      /run/booted-system/specialisation/dark/bin/switch-to-configuration switch
+      ${pkgs.swaynotificationcenter}/bin/swaync-client -rs # reload CSS for swaync (notification center)
     '';
     lightModeScript = ''
-      sudo /run/booted-system/specialisation/light/bin/switch-to-configuration switch
-      swaync-client -rs # reload CSS for swaync (notification center)
+      /run/booted-system/specialisation/light/bin/switch-to-configuration switch
+      ${pkgs.swaynotificationcenter}/bin/swaync-client -rs # reload CSS for swaync (notification center)
     '';
     settings = {
       lat = 48.86;

@@ -27,17 +27,6 @@ with lib; let
         not required.
       '';
     };
-
-  generateScripts = folder:
-    mapAttrs' (k: v: {
-      name = "${folder}/${k}";
-      value = {
-        source =
-          if builtins.isPath v || isDerivation v
-          then v
-          else pkgs.writeShellScript k v;
-      };
-    });
 in {
   meta.maintainers = [maintainers.xlambein];
 
@@ -65,12 +54,11 @@ in {
     };
 
     darkModeScript = scriptsOptionType "dark";
-
     lightModeScript = scriptsOptionType "light";
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [cfg.package];
+    environment.systemPackages = [cfg.package pkgs.dbus];
 
     environment.etc."xdg/darkman/config.yaml".source = yamlFormat.generate "darkman-config.yaml" cfg.settings;
     environment.etc."darkman-scripts/dark-mode.d/activate".source = pkgs.writeShellScript "activate" cfg.darkModeScript;
@@ -78,19 +66,20 @@ in {
 
     systemd.user.services.darkman = {
       description = "Darkman system service";
-      partOf = ["graphical-session.target"];
-      bindsTo = ["graphical-session.target"];
-
+      enable = true;
+      environment = {
+        XDG_DATA_DIRS = "/etc/darkman-scripts";
+      };
       serviceConfig = {
         Type = "dbus";
         BusName = "nl.whynothugo.darkman";
-        ExecStart = "XDG_DATA_DIRS='/etc/darkman-scripts' bash -c '${getExe cfg.package} run'";
+        ExecStart = "${getExe cfg.package} run";
         Restart = "on-failure";
         TimeoutStopSec = 15;
         Slice = "background.slice";
       };
 
-      wantedBy = mkDefault ["graphical-session.target"];
+      wantedBy = mkDefault ["multi-user.target"];
     };
   };
 }
