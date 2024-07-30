@@ -33,6 +33,7 @@
         suspendTime = 99999; # currently broken on magnus
       };
     };
+    desktop.stylix.enable = true;
     misc = {
       nextcloud.enable = true;
     };

@@ -90,6 +90,10 @@ in {
       gnome.enable = mkEnableOption ''
         Enable Gnome
       '';
+
+      stylix.enable = mkEnableOption ''
+        Enable stylix (if enabled in NixOS config)
+      '';
     };
 
     misc = {
