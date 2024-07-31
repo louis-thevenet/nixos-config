@@ -245,11 +245,11 @@ in {
           format-icons = {
             "No player active" = " ";
             "Celluloid" = "󰎁 ";
-            "spotify" = " 󰓇";
-            "ncspot" = " 󰓇";
+            "spotify" = "󰓇";
+            "ncspot" = "󰓇";
             "qutebrowser" = "󰖟";
             "firefox" = " ";
-            "discord" = " 󰙯 ";
+            "discord" = "󰙯 ";
             "sublimemusic" = " ";
             "kdeconnect" = "󰄡 ";
           };
