@@ -51,12 +51,20 @@
       nvidiaBusId = "PCI:1:0:0";
     };
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
 
   specialisation = {
     dGPU_offload.configuration = {
       system.nixos.tags = ["dGPU_offload"];
+      hardware.nvidia = {
+        prime.offload.enable = lib.mkForce true;
+        prime.offload.enableOffloadCmd = lib.mkForce true;
+        prime.sync.enable = lib.mkForce false;
+      };
+    };
+    no_gpu.configuration = {
+      system.nixos.tags = ["no_gpu"];
       ##### disable nvidia, very nice battery life.
       boot.extraModprobeConfig = ''
         blacklist nouveau
@@ -77,12 +85,6 @@
         ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
       '';
       boot.blacklistedKernelModules = ["nouveau" "nvidia" "nvidia_drm" "nvidia_modeset"];
-
-      #   hardware.nvidia = {
-      #     prime.offload.enable = lib.mkForce true;
-      #     prime.offload.enableOffloadCmd = lib.mkForce true;
-      #     prime.sync.enable = lib.mkForce false;
-      #   };
     };
   };
 
