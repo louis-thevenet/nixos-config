@@ -13,6 +13,7 @@
     settings = {
       experimental-features = "nix-command flakes";
       auto-optimise-store = true;
+      cores = 4;
     };
     gc = {
       automatic = true;
