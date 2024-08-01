@@ -41,16 +41,20 @@
     mkShell = system:
       nixpkgs.legacyPackages.${system}.mkShell {
         packages = with nixpkgs.legacyPackages.${system};
-        with pkgs; [
-          nil
-          alejandra
-          python311Packages.nix-prefetch-github
-          nixos-generators
-          nix-du
-          graphviz
-          sops
-          age
-        ];
+        with pkgs;
+          [
+            nil
+            alejandra
+            python311Packages.nix-prefetch-github
+            nixos-generators
+            # nix-du
+            graphviz
+            sops
+            age
+          ]
+          ++ [
+            pkgs.home-manager
+          ];
       };
 
     mkNixos = user: host: system:
