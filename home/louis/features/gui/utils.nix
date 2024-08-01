@@ -11,7 +11,7 @@ in {
     calibre
     libsForQt5.okular
     tor-browser-bundle-bin
-    gnome.nautilus
+    yazi
     spotifywm
     warp-terminal
     obs-studio

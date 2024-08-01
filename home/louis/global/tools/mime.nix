@@ -15,7 +15,7 @@
         "application/pdf" = "org.kde.okular.desktop";
         "text/plain" = editor;
         "text/*" = editor;
-        "inode/directory" = "org.gnome.Nautilus.desktop";
+        "inode/directory" = "yazi.desktop";
       };
     };
   };
