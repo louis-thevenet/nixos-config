@@ -292,8 +292,9 @@ in {
             background-color: transparent;
         }
 
-        #workspaces button,
-        #workspaces button.hidden,
+
+        #workspaces button.focused,
+        #workspaces button.active,
 
         #clock,
         #custom-notifications,
@@ -320,10 +321,15 @@ in {
             padding: 0 10px
         }
 
-        #workspaces button.focused,
-        #workspaces button.active {
+        #workspaces button,
+        #workspaces button.hidden
+        {
             background-color: #${colors.base01}; /* 0A */
             color: #${colors.base05}; /* 00 */
+            padding: 0px 10px;
+            border-radius: 10px;
+            margin: 4px;
+            border: 1px solid #${colors.base06};
         }
       '';
   };
