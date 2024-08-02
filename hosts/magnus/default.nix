@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./sops.nix
     ../common/global
     ../common/users/louis
     ../common/optional/airpods-battery-fetcher.nix

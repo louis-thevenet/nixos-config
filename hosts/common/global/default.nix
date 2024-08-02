@@ -8,7 +8,6 @@
   imports = [
     ./locale.nix
     ./nix.nix
-    ./sops.nix
   ];
   nixpkgs = {
     overlays = [];
