@@ -28,6 +28,7 @@
   };
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   programs.hyprland = {
     enable = true;
@@ -53,7 +54,7 @@
       nvidiaBusId = "PCI:1:0:0";
     };
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
   };
 
   specialisation = {
