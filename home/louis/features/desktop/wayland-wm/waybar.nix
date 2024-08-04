@@ -41,12 +41,17 @@
   ''}/bin/waybar-${name}";
 in {
   stylix.targets.waybar.enable = false;
-  stylix.targets.hyprland.enable = false;
 
   programs.waybar = mkIf cfg.hyprland.enable {
     enable = true;
     package = pkgs.waybar.overrideAttrs (oa: {
       mesonFlags = (oa.mesonFlags or []) ++ ["-Dexperimental=true"];
+      src = pkgs.fetchFromGitHub {
+        owner = "Alexays";
+        repo = "Waybar";
+        rev = "9d15c666b2ec3b4286b4054bc7ad59881e5dd56d";
+        hash = "sha256-XsOORWLtCrjDPkqZIjO5UPj1muQv6DPRCxZBOn/q0AQ=";
+      };
     });
     systemd.enable = true;
     settings = {
@@ -54,21 +59,20 @@ in {
         layer = "top";
         position = "bottom";
         exclusive = false;
+        fixed-center = false;
         modules-left =
-          #   ++ (lib.optionals config.wayland.windowManager.sway.enable [
-          #     "sway/workspaces"
-          #     "sway/mode"
-          #   ])
           lib.optionals
           config.wayland.windowManager.hyprland.enable [
             "hyprland/workspaces"
             #"hyprland/submap"
+          ]
+          ++ [
+            "cpu"
+            "memory"
           ];
         modules-center = [
           "custom/player"
-          #"cpu"
           #"custom/gpu"
-          #"memory"
         ];
         modules-right = [
           "tray"
@@ -297,6 +301,8 @@ in {
         #workspaces button.active,
 
         #clock,
+        #cpu,
+        #memory,
         #custom-notifications,
         #custom-hostname,
         #battery,
