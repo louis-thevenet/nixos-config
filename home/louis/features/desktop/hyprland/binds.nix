@@ -8,6 +8,14 @@
   cfg = config.home-config.desktop;
 in {
   wayland = mkIf cfg.hyprland.enable {
+    windowManager.hyprland.settings.bindl = let
+      playerctl = "${pkgs.playerctl}/bin/playerctl";
+    in [
+      ",XF86AudioPlay, exec, ${playerctl} play-pause"
+      ",XF86AudioNext, exec, ${playerctl} next"
+      ",XF86AudioPrev, exec, ${playerctl} previous"
+    ];
+
     windowManager.hyprland.settings.binde = let
       brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
       pactl = "${pkgs.pulseaudio}/bin/pactl";
