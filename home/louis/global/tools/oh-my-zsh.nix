@@ -9,8 +9,9 @@
 
       vim = "hx";
 
-      ls = "eza --long --header --binary --git --no-permissions --no-user";
+      ls = "eza --long --header --binary --no-permissions --no-user";
       lss = "ls --total-size";
+      lsg = "ls --git";
       cat = "bat --theme=\"Solarized (light)\"";
     };
     autosuggestion.enable = true;
