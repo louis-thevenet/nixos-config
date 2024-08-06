@@ -35,6 +35,8 @@
     enable = true;
   };
 
+  programs.steam.enable = true;
+
   hardware.graphics.enable = true;
 
   # NVIDIA drivers are unfree.

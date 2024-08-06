@@ -8,7 +8,6 @@
   cfg = config.home-config;
 in {
   home.packages = mkIf cfg.gaming.enable (with pkgs; [
-    steam
     prismlauncher
     # lutris
     # wine
