@@ -19,7 +19,7 @@ hosts
    └── hardware-configuration.nix
 ```
 - `magnus` : Main System
-- `hircine` : Laptop
+- `hircine` : Laptop (disk managed with [disko](https://github.com/nix-community/disko) with [impermanence](https://nixos.wiki/wiki/Impermanence) for NixOS)
 
 The setup is rather classic, most of the system configuration is shared between hosts.
 
@@ -68,7 +68,7 @@ home-config = {
 };
 ```
 
-Style is handled by `Stylix`:
+Style is handled by [Stylix](https://github.com/danth/stylix):
 
 (Theme auto switches from light to dark on sunset using darkman and nix specialisations)
 
@@ -133,10 +133,10 @@ Here are some random examples:
 
 ## What you need to do
 ### NixOS
-- Enable experimental features in your initial configuration if it's not already done
+- Enable experimental features (nix-commands) in your initial configuration if it's not already done
 - Clone the repo
 - Replace all occurences of `louis` by your username
-- Replace all occurences of `magnus` by your hostname
+- Replace all occurences of `magnus` or `hircine` (if you're going the impermanence route) by your hostname
 - Either remove secrets management through `sops` or replace them with your own secrets. A hashed password could be considered as being enough so don't bother with secrets if you don't have any. (that's in `./hosts/common/users/USERNAME/default.nix`)
 - Replace `hardware-config.nix` with your own file produced by `nixos-generate-config`.
 
@@ -144,6 +144,5 @@ Here are some random examples:
 - you should already have changed `magnus`'s config to be yours
 - You should probably follow this algorithm:
 - Comment out all features in `./home/USERNAME/HOSTNAME.nix`
-- For each feature, see what it enables, remove what you don't want, then enable it
-
+- For each feature, see what it enables, remove what you don't want, then enable it or not
 - You should be good to rebuild : `sudo nixos-rebuild --flake .#HOSTNAME boot` then `reboot now`.
