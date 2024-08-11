@@ -88,7 +88,7 @@ in {
 
       extensions = {
         enableDefaultExtensions = true;
-        darkreader.enable = false;
+        darkreader.enable = true;
         enableExtraExtensions = true;
         extraExtensions = {
           "cb-remover@search.mozilla.org".install_url = "https://addons.mozilla.org/firefox/downloads/latest/clickbait-remover-for-youtube/latest.xpi";
@@ -102,6 +102,21 @@ in {
           "skipredirect@sblask".install_url = "https://addons.mozilla.org/firefox/downloads/latest/skip-redirect/latest.xpi";
           "smart-referer@meh.paranoid.pk".install_url = "https://addons.mozilla.org/firefox/downloads/latest/smart-referer/latest.xpi";
           "7esoorv3@alefvanoon.anonaddy.me".install_url = "https://addons.mozilla.org/firefox/downloads/latest/libredirect/latest.xpi";
+
+          "{b43b974b-1d3a-4232-b226-eaa2ac6ebb69}" = {
+            # Random User-Agent Switcher
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/random_user_agent/latest.xpi";
+            installation_mode = "force_installed";
+          };
+
+          "jid0-3GUEt1r69sQNSrca5p8kx9Ezc3U@jetpack" = {
+            # Terms of Service, Didn't Read
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/tosdr_browser_extension/latest.xpi";
+          };
+          "sponsorBlocker@ajay.app" = {
+            # Sponsor Block
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi";
+          };
         };
       };
 
