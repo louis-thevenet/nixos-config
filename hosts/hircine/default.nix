@@ -11,6 +11,7 @@
     ../common/users/louis
     ../common/optional/stylix.nix
     ../common/optional/impermanence-disko.nix
+    ../common/optional/ollama.nix
   ];
   networking.hostName = "hircine";
 
