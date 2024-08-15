@@ -192,7 +192,7 @@ in {
             "kitty" = " ";
             "codium-url-handler" = " 󰨞";
             "Discord" = " 󰙯";
-            "class<Spotify>" = " 󰓇";
+            "spotube" = "󰓇";
             "matlab" = "󰆧";
             "Super Productivity" = " 󰨟";
             "Beeper" = " 💬";
@@ -249,7 +249,7 @@ in {
           format-icons = {
             "No player active" = " ";
             "Celluloid" = "󰎁 ";
-            "spotify" = "󰓇";
+            "spotube" = "󰓇";
             "ncspot" = "󰓇";
             "qutebrowser" = "󰖟";
             "firefox" = " ";

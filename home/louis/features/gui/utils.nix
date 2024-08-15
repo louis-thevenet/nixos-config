@@ -12,7 +12,7 @@ in {
     libsForQt5.okular
     tor-browser-bundle-bin
     yazi
-    spotifywm
+    spotube
     warp-terminal
     obs-studio
   ]);

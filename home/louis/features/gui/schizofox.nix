@@ -109,6 +109,8 @@ in {
             installation_mode = "force_installed";
           };
 
+          "{6fb452f2-75ff-468c-b383-aa422688fc64}".install_url = "https://addons.mozilla.org/firefox/downloads/latest/pageassist/latest.xpi";
+
           "jid0-3GUEt1r69sQNSrca5p8kx9Ezc3U@jetpack" = {
             # Terms of Service, Didn't Read
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/tosdr_browser_extension/latest.xpi";
