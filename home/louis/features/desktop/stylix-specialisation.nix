@@ -13,7 +13,7 @@ in {
     };
 
     dark.configuration = {
-      stylix.base16Scheme = lib.mkForce "${pkgs.base16-schemes}/share/themes/solarized-dark.yaml";
+      stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/windows-highcontrast.yaml";
     };
   };
 }
