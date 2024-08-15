@@ -85,6 +85,8 @@ in {
 
         "SUPER,i,togglespecialworkspace, I"
         "SUPERSHIFT,i,movetoworkspace,special:I"
+
+        "SUPERSHIFT,g,pin"
       ]
       ++
       # Change workspace
