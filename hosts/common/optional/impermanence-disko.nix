@@ -85,6 +85,7 @@
       "/var/lib/nixos"
       "/etc/NetworkManager"
       "/var/lib/bluetooth"
+      "/var/lib/private/ollama"
     ];
   };
 
