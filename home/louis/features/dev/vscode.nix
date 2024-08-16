@@ -10,14 +10,14 @@ in {
   programs.vscode = mkIf cfg.vscode.enable {
     enable = true;
     package = pkgs.master.vscodium;
-    enableExtensionUpdateCheck = false;
+    enableExtensionUpdateCheck = true;
     enableUpdateCheck = false;
     extensions = with pkgs.vscode-extensions;
       [
         mkhl.direnv
         jnoortheen.nix-ide
         rust-lang.rust-analyzer
-        nvarner.typst-lsp
+        # nvarner.typst-lsp
         tomoki1207.pdf
         vadimcn.vscode-lldb
         #redhat.java
@@ -30,7 +30,8 @@ in {
         christian-kohler.path-intellisense
         llvm-vs-code-extensions.vscode-clangd
         eamodio.gitlens
-        ocamllabs.ocaml-platform
+        wakatime.vscode-wakatime
+        # ocamllabs.ocaml-platform
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
