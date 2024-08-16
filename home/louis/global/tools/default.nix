@@ -9,7 +9,7 @@
     ./direnv.nix
     ./git.nix
     #./nixvim
-    ./helix
+    ./helix.nix
     ./oh-my-zsh.nix
     ./mime.nix
   ];
