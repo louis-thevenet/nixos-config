@@ -20,4 +20,10 @@ in {
   };
 
   security.pam.services.swaylock = {};
+
+  sops.secrets.wakatime_cfg = {
+    sopsFile = ../../secrets.yaml;
+    path = "/home/louis/.wakatime.cfg";
+    owner = "louis";
+  };
 }

@@ -32,6 +32,11 @@
       url = "github:schizofox/schizofox/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    wakatime-lsp = {
+      url = "github:louis-thevenet/wakatime-lsp/update-cargo";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -40,6 +45,7 @@
     nixpkgs-master,
     home-manager,
     stylix,
+    wakatime-lsp,
     ...
   }: let
     forEachSystem = nixpkgs.lib.genAttrs ["aarch64-linux" "x86_64-linux"];
