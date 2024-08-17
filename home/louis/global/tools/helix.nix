@@ -18,7 +18,7 @@
         };
         bufferline = "multiple";
         color-modes = true;
-        line-number = "relative";
+        line-number = "absolute";
         indent-guides.render = true;
         cursor-shape = {
           normal = "block";
@@ -27,6 +27,26 @@
         };
         soft-wrap.enable = true;
         text-width = 110;
+
+        statusline = {
+          left = [
+            "mode"
+            "spinner"
+            "version-control"
+            "file-name"
+            "read-only-indicator"
+            "file-modification-indicator"
+          ];
+          center = [];
+          right = [
+            "diagnostics"
+            "selections"
+            "register"
+            "position-percentage"
+            "position"
+            "file-encoding"
+          ];
+        };
       };
 
       keys = {
@@ -45,7 +65,7 @@
       language = [
         {
           name = "bash";
-          language-servers = ["bash-language-server" "vale"];
+          language-servers = ["bash-language-server"];
           formatter = {
             command = "${pkgs.shfmt}/bin/shfmt";
             args = ["-i" "2" "-"];
@@ -58,20 +78,20 @@
         {
           name = "typst";
           language-servers = ["typst-lsp" "wakatime" "vale"];
-          #auto-format = false; # see https://github.com/helix-editor/helix/issues/11237
+          auto-format = true; # see https://github.com/helix-editor/helix/issues/11237
         }
         {
           name = "rust";
-          language-servers = ["rust-analyzer" "wakatime" "vale"];
+          language-servers = ["rust-analyzer" "wakatime"];
         }
         {
           name = "toml";
-          language-servers = ["taplo" "wakatime" "vale"];
+          language-servers = ["taplo" "wakatime"];
         }
         {
           name = "nix";
-          language-servers = ["nil" "wakatime" "vale"];
-          auto-format = false; # see https://github.com/helix-editor/helix/issues/11237
+          language-servers = ["nil" "wakatime"];
+          auto-format = true; # see https://github.com/helix-editor/helix/issues/11237
         }
       ];
       language-server = {
