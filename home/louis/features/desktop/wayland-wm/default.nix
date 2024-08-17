@@ -14,6 +14,7 @@ in {
     ./cliphist.nix
     ./hyprlock.nix
     ./hypridle.nix
+    ./hyprpaper.nix
   ];
   home.packages = mkIf cfg.hyprland.enable (with pkgs; [
     meson
@@ -21,7 +22,6 @@ in {
     wayland-utils
     wlroots
     copyq
-    swww
     wl-clipboard
   ]);
 

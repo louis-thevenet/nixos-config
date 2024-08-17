@@ -8,13 +8,15 @@
   cfg = config.home-config.desktop;
 in {
   services.darkman = let
+    swaync-client = "${pkgs.swaynotificationcenter}/bin/sway-nc-client";
+    systemctl = "${pkgs.systemd}/bin/systemctl";
+
     find-hm-generation = let
       home-manager = "${pkgs.home-manager}/bin/home-manager";
       grep = "${pkgs.toybox}/bin/grep";
       head = "${pkgs.toybox}/bin/head";
       find = "${pkgs.toybox}/bin/find";
     in ''
-
       for line in $(${home-manager} generations | ${grep} -o '/.*')
       do
         res=$(${find} $line | ${grep} specialisation | ${head} -1)
@@ -25,20 +27,20 @@ in {
         fi
       done
     '';
+
+    switch-theme-script = theme: ''
+      $(${find-hm-generation})/${theme}/activate
+      ${swaync-client} -rs # reload CSS for swaync (notification center)
+      ${systemctl} --user restart hyprpaper.service
+    '';
   in
     mkIf cfg.stylix.enable {
       enable = true;
       darkModeScripts = {
-        activate = ''
-          $(${find-hm-generation})/dark/activate
-          swaync-client -rs # reload CSS for swaync (notification center)
-        '';
+        activate = switch-theme-script "dark";
       };
       lightModeScripts = {
-        activate = ''
-          $(${find-hm-generation})/light/activate
-          swaync-client -rs # reload CSS for swaync (notification center)
-        '';
+        activate = switch-theme-script "light";
       };
       settings = {
         lat = 48.86;

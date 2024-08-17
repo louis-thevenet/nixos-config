@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  inputs,
   lib,
   ...
 }: let
@@ -21,20 +20,13 @@ in {
     xwayland.enable = true;
 
     extraConfig = let
-      swww-script = pkgs.writeShellScript "swww-script" ''
-        # have pre-start here itself
-        ${pkgs.swww}/bin/swww init &
-
-        # Start Service here
-        ${pkgs.swww}/bin/swww clear 000000
-      '';
-
       swaync = "${pkgs.swaynotificationcenter}/bin/swaync";
+      hypridle = "${pkgs.hypridle}/bin/hypridle";
+      copyq = "${pkgs.copyq}/bin/copyq";
     in ''
-      exec-once = ${swww-script}
       exec-once = ${swaync}
-      exec-once = hypridle
-      exec-once = copyq &
+      exec-once = ${hypridle}
+      exec-once = ${copyq}
     '';
 
     settings = {
@@ -74,6 +66,8 @@ in {
       };
 
       misc = {
+        disable_splash_rendering = true;
+        disable_hyprland_logo = true;
         mouse_move_enables_dpms = true;
         enable_swallow = true;
         swallow_regex = "^(kitty)$";
