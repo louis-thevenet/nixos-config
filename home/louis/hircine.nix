@@ -14,7 +14,6 @@
       schizofox.enable = true;
       social.enable = true;
       utils.enable = true;
-      lmstudio.enable = true;
     };
     dev = {
       vscode.enable = true;
@@ -24,7 +23,6 @@
     desktop.stylix.enable = true;
     virtualization.enable = true;
     misc.nextcloud.enable = true;
-    gaming.enable = true;
   };
 
   monitors = [
