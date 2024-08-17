@@ -8,8 +8,6 @@
   cfg = config.home-config.gui;
 in {
   home.packages = mkIf cfg.lmstudio.enable [
-    (pkgs.callPackage
-      ./lmstudio
-      {})
+    pkgs.lmstudio
   ];
 }

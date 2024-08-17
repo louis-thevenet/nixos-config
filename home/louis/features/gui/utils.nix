@@ -11,7 +11,6 @@ in {
     calibre
     libsForQt5.okular
     tor-browser-bundle-bin
-    yazi
     spotube
     warp-terminal
     obs-studio
