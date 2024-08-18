@@ -9,5 +9,6 @@
 in {
   home.packages = mkIf cfg.social.enable (with pkgs; [
     beeper
+    discord
   ]);
 }
