@@ -227,24 +227,6 @@
         "type": "github"
       }
     },
-    "flake-parts_3": {
-      "inputs": {
-        "nixpkgs-lib": "nixpkgs-lib_2"
-      },
-      "locked": {
-        "lastModified": 1722555600,
-        "narHash": "sha256-XOQkdLafnb/p9ij77byFQjDf5m5QYl9b2REiVClC+x4=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "8471fe90ad337a8074e957b69ca4d0089218391d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
-      }
-    },
     "fromYaml": {
       "flake": false,
       "locked": {
@@ -258,6 +240,27 @@
       "original": {
         "owner": "SenchoPens",
         "repo": "fromYaml",
+        "type": "github"
+      }
+    },
+    "gitignore": {
+      "inputs": {
+        "nixpkgs": [
+          "wakatime-lsp",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1709087332,
+        "narHash": "sha256-HG2cCnktfHsKV0s4XW83gU3F57gaTljL9KNSuG6bnQs=",
+        "owner": "hercules-ci",
+        "repo": "gitignore.nix",
+        "rev": "637db329424fd7e46cf4185293b9cc8c88c95394",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "gitignore.nix",
         "type": "github"
       }
     },
@@ -458,25 +461,13 @@
         "type": "github"
       }
     },
-    "nixpkgs-lib_2": {
-      "locked": {
-        "lastModified": 1722555339,
-        "narHash": "sha256-uFf2QeW7eAHlYXuDktm9c25OxOyCoUOQmh5SZ9amE5Q=",
-        "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/a5d394176e64ab29c852d03346c1fc9b0b7d33eb.tar.gz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/a5d394176e64ab29c852d03346c1fc9b0b7d33eb.tar.gz"
-      }
-    },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1723713441,
-        "narHash": "sha256-f+/R+jiKoLh1NwDETlwt3jurUN3Lxn3hIi3C8qQlC3g=",
+        "lastModified": 1723970588,
+        "narHash": "sha256-LYOu+OkYDm/LC4Lq23yIkZlQAo7krzK2vvqHtpmDGpk=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "8092d86fc2ef99f194b6f527d5b0b28f4eed9e7f",
+        "rev": "4c66fe4cb40272c7e5506b3517ffac63250d0bb8",
         "type": "github"
       },
       "original": {
@@ -502,22 +493,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1720957393,
-        "narHash": "sha256-oedh2RwpjEa+TNxhg5Je9Ch6d3W1NKi7DbRO1ziHemA=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "693bc46d169f5af9c992095736e82c3488bf7dbb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "disko": "disko",
@@ -529,7 +504,28 @@
         "schizofox": "schizofox",
         "sops-nix": "sops-nix",
         "stylix": "stylix",
-        "xdg-desktop-portal-termfilepickers": "xdg-desktop-portal-termfilepickers"
+        "wakatime-lsp": "wakatime-lsp"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "wakatime-lsp",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1723774846,
+        "narHash": "sha256-m53hVat6XXiKooV1oUDEMnPcdNKqSn/kAW+g8juSq84=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "519f4892641bc04a6ac7c2d260cc68356f9ae90f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     },
     "schizofox": {
@@ -620,11 +616,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1722946882,
-        "narHash": "sha256-mxtnMye8gs82tdQbVC+g6v3aPOZlH150f9WyntHIkTg=",
+        "lastModified": 1723834469,
+        "narHash": "sha256-PkJTr9DWBQcR5Ru1fJpG80dtw0MLSxAZlKnhHHFAGIA=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "5853f1a8bd072f2ebabfc3de3973084353cf6f1e",
+        "rev": "6858d08ed012bc6491cc92c13142104e56badf31",
         "type": "github"
       },
       "original": {
@@ -648,60 +644,25 @@
         "type": "github"
       }
     },
-    "systems_2": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
-    "treefmt-nix": {
+    "wakatime-lsp": {
       "inputs": {
-        "nixpkgs": "nixpkgs_2"
-      },
-      "locked": {
-        "lastModified": 1723454642,
-        "narHash": "sha256-S0Gvsenh0II7EAaoc9158ZB4vYyuycvMGKGxIbERNAM=",
-        "owner": "numtide",
-        "repo": "treefmt-nix",
-        "rev": "349de7bc435bdff37785c2466f054ed1766173be",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "treefmt-nix",
-        "type": "github"
-      }
-    },
-    "xdg-desktop-portal-termfilepickers": {
-      "inputs": {
-        "flake-parts": "flake-parts_3",
+        "gitignore": "gitignore",
         "nixpkgs": [
           "nixpkgs"
         ],
-        "systems": "systems_2",
-        "treefmt-nix": "treefmt-nix"
+        "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1723657438,
-        "narHash": "sha256-4oYQ7tEUd3fhEjEy7gsOFoosOebAIEH/fPVGg/hOlUs=",
-        "owner": "Guekka",
-        "repo": "xdg-desktop-portal-termfilepickers",
-        "rev": "156b673a9c9e2147e8f60096c53ee3ef2af577bf",
+        "lastModified": 1723800963,
+        "narHash": "sha256-bvkig0TLiorNp7Lxer8ZRJQGB3C8lVJ96H2+SwYIT6s=",
+        "owner": "mrnossiom",
+        "repo": "wakatime-lsp",
+        "rev": "552fbbcc5fc0f8cf3122daad63bb4eb1497bbc76",
         "type": "github"
       },
       "original": {
-        "owner": "Guekka",
-        "ref": "main",
-        "repo": "xdg-desktop-portal-termfilepickers",
+        "owner": "mrnossiom",
+        "repo": "wakatime-lsp",
         "type": "github"
       }
     }
