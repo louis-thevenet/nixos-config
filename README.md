@@ -1,8 +1,8 @@
 # NixOS Hyprland flake setup
+
 ![image](https://github.com/user-attachments/assets/babe7c25-b7e1-43b6-bba7-abe00aa80fbd)
 ![image](https://github.com/user-attachments/assets/1dc4faea-9f66-4a4a-82c6-782b56627114)
 
-*Unfocused windows are grayed out*
 ## NixOS Config
 ```
 hosts
@@ -13,10 +13,12 @@ hosts
 │  └── users
 ├── hircine
 │  ├── default.nix
-│  └── hardware-configuration.nix
+│  ├── hardware-configuration.nix
+│  └── sops.nix
 └── magnus
    ├── default.nix
-   └── hardware-configuration.nix
+   ├── hardware-configuration.nix
+   └── sops.nix
 ```
 - `magnus` : Main System
 - `hircine` : Laptop (disk managed with [disko](https://github.com/nix-community/disko) with [impermanence](https://nixos.wiki/wiki/Impermanence) for NixOS)
@@ -26,27 +28,28 @@ The setup is rather classic, most of the system configuration is shared between 
 ## HomeManager Config
 
 ```
-/home/louis
-├── features
-│  ├── cli
-│  ├── default.nix
-│  ├── desktop
-│  ├── dev
-│  ├── gaming
-│  ├── gui
-│  ├── misc
-│  └── virtualization
-├── global
-│  ├── default.nix
-│  ├── home-manager.nix
-│  ├── options
-│  ├── stylix.nix
-│  └── tools
-├── hircine.nix
-└── magnus.nix
+home
+└── louis
+   ├── features
+   │  ├── cli
+   │  ├── default.nix
+   │  ├── desktop
+   │  ├── dev
+   │  ├── gaming
+   │  ├── gui
+   │  ├── impermanence.nix
+   │  ├── misc
+   │  └── virtualization
+   ├── global
+   │  ├── default.nix
+   │  ├── home-manager.nix
+   │  ├── options
+   │  └── tools
+   ├── hircine.nix
+   └── magnus.nix
 ```
 
-There are some tools enabled by default (`home/louis/global/tools.nix`) but most features are optional.
+There are some tools enabled by default (`home/louis/global/tools.nix`, `helix`) but most features are optional.
 
 Features are enabled using options defined in (`home/louis/global/options`). See `magnus.nix`:
 ```nix
@@ -68,58 +71,10 @@ home-config = {
 };
 ```
 
+## Theming
 Style is handled by [Stylix](https://github.com/danth/stylix):
 
-(Theme auto switches from light to dark on sunset using darkman and nix specialisations)
-
-```nix
-stylix = {
-    enable = true;
-    image = pkgs.fetchurl {
-      url = "https://images.pexels.com/photos/167698/pexels-photo-167698.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-      sha256 = "sha256-/Pw6zZ41isjbUwsaFOt2YWhE7oD8D6kNdLsaGtUdBrI=";
-    };
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
-    cursor = {
-      package = pkgs.numix-cursor-theme;
-      name = "Numix-Cursor-Light";
-      size = 22;
-    };
-    fonts = {
-      monospace = {
-        name = "FiraCode Nerd Font";
-        package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
-      };
-      serif = config.stylix.fonts.monospace;
-      sansSerif = config.stylix.fonts.monospace;
-      emoji = config.stylix.fonts.monospace;
-    };
-  };
-
-  specialisation = {
-    light.configuration = {
-      stylix.base16Scheme = lib.mkForce "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
-    };
-
-    dark.configuration = {
-      stylix.base16Scheme = lib.mkForce "${pkgs.base16-schemes}/share/themes/solarized-dark.yaml";
-    };
-  };
-```
-
-You also need to configure monitors (only for Hyprland):
-```nix
-monitors = [
-    {
-      name = "eDP-1";  # laptop
-      width = 1920;
-      height = 1080;
-      x = 0;
-      workspace = "1";
-      primary = true;
-    }
-  ];
-```
+Theme and wallpaper auto switch from light to dark on sunset using darkman and nix specialisations.
 
 # What you would change to use this config
 ## Delete what you wouldn't use
@@ -133,10 +88,10 @@ Here are some random examples:
 
 ## What you need to do
 ### NixOS
-- Enable experimental features (nix-commands) in your initial configuration if it's not already done
+- Have experimental features (nix-commands and flakes) enabled in your initial configuration
 - Clone the repo
 - Replace all occurences of `louis` by your username
-- Replace all occurences of `magnus` or `hircine` (if you're going the impermanence route) by your hostname
+- Replace all occurences of `magnus` or `hircine` by your hostname (only hircine uses impermanence)
 - Either remove secrets management through `sops` or replace them with your own secrets. A hashed password could be considered as being enough so don't bother with secrets if you don't have any. (that's in `./hosts/common/users/USERNAME/default.nix`)
 - Replace `hardware-config.nix` with your own file produced by `nixos-generate-config`.
 
