@@ -9,13 +9,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
- impermanence.url = "github:nix-community/impermanence";
+    impermanence.url = "github:nix-community/impermanence";
 
- disko = {
+    disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     sops-nix = {
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,7 +34,7 @@
     };
 
     wakatime-lsp = {
-      url = "github:louis-thevenet/wakatime-lsp/update-cargo";
+      url = "github:mrnossiom/wakatime-lsp";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -45,7 +45,6 @@
     nixpkgs-master,
     home-manager,
     stylix,
-    wakatime-lsp,
     ...
   }: let
     forEachSystem = nixpkgs.lib.genAttrs ["aarch64-linux" "x86_64-linux"];
