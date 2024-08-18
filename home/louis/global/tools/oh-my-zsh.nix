@@ -2,13 +2,10 @@
   programs.zsh = {
     enable = true;
     shellAliases = {
-      sys-update-l = "sudo nixos-rebuild --flake .#hircine switch";
-      sys-update-d = "sudo nixos-rebuild --flake .#magnus switch";
-      home-update-d = "home-manager --flake .#louis@magnus switch";
-      home-update-l = "home-manager --flake .#louis@hircine switch";
+      rebuild-sys = "sudo nh os switch /home/louis/src/nixos-config";
+      update-sys = "sudo nh os switch /home/louis/src/nixos-config --update";
 
       vim = "hx";
-
       ls = "eza --long --header --binary --no-permissions --no-user";
       lss = "ls --total-size";
       lsg = "ls --git";

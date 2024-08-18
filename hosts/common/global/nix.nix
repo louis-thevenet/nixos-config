@@ -15,10 +15,14 @@
       auto-optimise-store = true;
       cores = 4;
     };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
+  };
+
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      extraArgs = "--keep 3 --keep-since 7d";
     };
+    flake = /home/louis/src/nixos-config;
   };
 }
