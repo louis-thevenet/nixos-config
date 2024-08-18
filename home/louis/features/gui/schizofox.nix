@@ -103,6 +103,11 @@ in {
           "smart-referer@meh.paranoid.pk".install_url = "https://addons.mozilla.org/firefox/downloads/latest/smart-referer/latest.xpi";
           "7esoorv3@alefvanoon.anonaddy.me".install_url = "https://addons.mozilla.org/firefox/downloads/latest/libredirect/latest.xpi";
 
+          "{addons@wakatime.com}" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/wakatime/latest.xpi";
+            installation_mode = "force_installed";
+          };
+
           "{b43b974b-1d3a-4232-b226-eaa2ac6ebb69}" = {
             # Random User-Agent Switcher
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/random_user_agent/latest.xpi";
