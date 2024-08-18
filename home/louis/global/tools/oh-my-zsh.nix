@@ -2,8 +2,8 @@
   programs.zsh = {
     enable = true;
     shellAliases = {
-      rebuild-sys = "sudo nh os switch /home/louis/src/nixos-config";
-      update-sys = "sudo nh os switch /home/louis/src/nixos-config --update";
+      rebuild-sys = "nh os switch /home/louis/src/nixos-config";
+      update-sys = "nh os switch /home/louis/src/nixos-config --update";
 
       vim = "hx";
       ls = "eza --long --header --binary --no-permissions --no-user";
