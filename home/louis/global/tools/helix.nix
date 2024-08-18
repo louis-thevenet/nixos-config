@@ -18,7 +18,7 @@
         };
         bufferline = "multiple";
         color-modes = true;
-        line-number = "absolute";
+        line-number = "relative";
         indent-guides.render = true;
         cursor-shape = {
           normal = "block";
@@ -78,7 +78,7 @@
         {
           name = "typst";
           language-servers = ["typst-lsp" "wakatime" "vale"];
-          auto-format = true; # see https://github.com/helix-editor/helix/issues/11237
+          auto-format = false; # see https://github.com/helix-editor/helix/issues/11237
         }
         {
           name = "rust";
