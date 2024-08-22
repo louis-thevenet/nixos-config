@@ -17,7 +17,6 @@ in {
     noti
     nm-tray
     killall
-    yazi
     wget
   ]);
 }

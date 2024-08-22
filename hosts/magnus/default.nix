@@ -11,6 +11,7 @@
     ../common/users/louis
     ../common/optional/airpods-battery-fetcher.nix
     ../common/optional/stylix.nix
+    ../common/optional/hyprland.nix
   ];
   networking.hostName = "magnus";
   boot.binfmt.emulatedSystems = ["aarch64-linux"]; # allows building iso for arm devices
@@ -19,9 +20,6 @@
     xserver = {
       enable = true;
       xkb.layout = "fr";
-      #   desktopManager.gnome = {
-      #     enable = true;
-      #   };
       displayManager.sddm = {
         enable = true;
       };
@@ -30,10 +28,6 @@
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-
-  programs.hyprland = {
-    enable = true;
-  };
 
   hardware.graphics.enable = true;
 
@@ -62,19 +56,4 @@
 
     #package = config.boot.kernelPackages.nvidiaPackages.production;
   };
-
-  # XDG Portals
-  xdg = {
-    portal = {
-      enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal-hyprland
-      ];
-    };
-  };
-
-  environment.systemPackages = [
-    pkgs.xdg-utils # xdg-open
-  ];
 }

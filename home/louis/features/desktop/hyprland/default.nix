@@ -30,12 +30,6 @@ in {
     '';
 
     settings = {
-      env = [
-        "LIBVA_DRIVER_NAME,nvidia"
-        "XDG_SESSION_TYPE,wayland"
-        "WLR_NO_HARDWARE_CURSORS,1"
-        "NIXOS_OZONE_WL,1"
-      ];
       input = {
         kb_layout = "fr";
         kb_variant = "azerty";

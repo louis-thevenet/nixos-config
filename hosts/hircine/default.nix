@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }: {
   imports = [
@@ -12,6 +11,7 @@
     ../common/optional/stylix.nix
     ../common/optional/impermanence-disko.nix
     ../common/optional/ollama.nix
+    ../common/optional/hyprland.nix
   ];
   networking.hostName = "hircine";
 
@@ -19,9 +19,6 @@
     xserver = {
       enable = true;
       xkb.layout = "fr";
-      # desktopManager.gnome = {
-      #   enable = true;
-      # };
       displayManager.gdm = {
         enable = true;
       };
@@ -32,12 +29,7 @@
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   services.udisks2.enable = true;
 
-  programs.hyprland = {
-    enable = true;
-  };
-
   programs.steam.enable = true;
-
   hardware.graphics.enable = true;
 
   # NVIDIA drivers are unfree.
@@ -92,19 +84,6 @@
         ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
       '';
       boot.blacklistedKernelModules = ["nouveau" "nvidia" "nvidia_drm" "nvidia_modeset"];
-    };
-  };
-
-  # XDG Portals
-  xdg = {
-    portal = {
-      enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal-wlr
-        xdg-desktop-portal-hyprland
-      ];
     };
   };
 }
