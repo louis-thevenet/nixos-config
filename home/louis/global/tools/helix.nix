@@ -84,6 +84,14 @@
           name = "rust";
           language-servers = ["rust-analyzer" "wakatime"];
         }
+                {
+          name = "ocaml";
+          language-servers = ["ocaml-lsp"];
+          formatter = {
+            command = lib.getExe pkgs.ocamlformat;
+            args = ["-" "--impl" "--enable-outside-detected-project"];
+          };
+        }
         {
           name = "toml";
           language-servers = ["taplo" "wakatime"];
