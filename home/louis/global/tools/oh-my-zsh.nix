@@ -8,6 +8,7 @@
       vim = "hx";
       ls = "eza --long --header --binary --no-permissions --no-user";
       lss = "ls --total-size";
+      lst = "eza --tree";
       lsg = "ls --git";
       cat = "bat --theme=\"Solarized (light)\"";
     };
