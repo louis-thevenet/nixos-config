@@ -73,18 +73,18 @@
         }
         {
           name = "markdown";
-          language-servers = ["markdown-oxide" "wakatime" "vale"];
+          language-servers = ["markdown-oxide" "wakatime" "ltex-ls"];
         }
         {
           name = "typst";
-          language-servers = ["typst-lsp" "wakatime" "vale"];
+          language-servers = ["typst-lsp" "wakatime" "ltex-ls"];
           auto-format = false; # see https://github.com/helix-editor/helix/issues/11237
         }
         {
           name = "rust";
-          language-servers = ["rust-analyzer" "wakatime"];
+          language-servers = ["rust-analyzer" "wakatime" "ltex-ls"];
         }
-                {
+        {
           name = "ocaml";
           language-servers = ["ocaml-lsp"];
           formatter = {
@@ -109,7 +109,9 @@
         };
 
         markdown-oxide.command = lib.getExe pkgs.markdown-oxide;
+
         toml.command = lib.getExe pkgs.taplo;
+
         nil = {
           command = lib.getExe pkgs.nil;
           config.nil.formatting.command = ["${lib.getExe pkgs.alejandra}" "-q"];
@@ -119,8 +121,8 @@
           command = lib.getExe pkgs.rust-analyzer;
         };
 
-        vale = {
-          command = lib.getExe pkgs.vale-ls;
+        ltex-ls = {
+          command = lib.getExe' pkgs.ltex-ls "ltex-ls";
         };
 
         wakatime.command = lib.getExe inputs.wakatime-lsp.packages.${pkgs.system}.default;
