@@ -11,6 +11,8 @@
       lst = "eza --tree";
       lsg = "ls --git";
       cat = "bat --theme=\"Solarized (light)\"";
+
+      src = ''DIR=`find /home/louis/src/* -maxdepth 0 -type d -print 2> /dev/null | fzf-tmux` && cd "$DIR"'';
     };
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
@@ -59,7 +61,7 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = ["git" "web-search" "history" "copypath" "copyfile" "vscode" "rust" "direnv"];
+      plugins = ["git" "web-search" "history" "copypath" "copyfile" "vscode" "rust" "direnv" "fzf"];
       theme = "candy";
     };
   };

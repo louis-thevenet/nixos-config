@@ -18,5 +18,6 @@ in {
     nm-tray
     killall
     wget
+    fzf
   ]);
 }
