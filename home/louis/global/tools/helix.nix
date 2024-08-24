@@ -123,6 +123,20 @@
 
         ltex-ls = {
           command = lib.getExe' pkgs.ltex-ls "ltex-ls";
+          config.ltex = {
+            disabledRules = {
+              en = [
+                "ARROWS"
+              ];
+              fr = [
+                "FLECHES"
+              ];
+            };
+            additionnalRules = {
+              enablePickyRules = true;
+            };
+            language = "auto";
+          };
         };
 
         wakatime.command = lib.getExe inputs.wakatime-lsp.packages.${pkgs.system}.default;
