@@ -12,7 +12,8 @@
       lsg = "ls --git";
       cat = "bat --theme=\"Solarized (light)\"";
 
-      src = ''DIR=`find /home/louis/src/* -maxdepth 0 -type d -print 2> /dev/null | fzf-tmux` && cd "$DIR"'';
+      src = ''DIR=`find /home/louis/src/* -maxdepth 0 -type d -print 2> /dev/null | fzf-tmux` && cd "$DIR" && tmux new -smain'';
+      hxt = "src && tmux new -smain -- hx .";
     };
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
@@ -31,32 +32,6 @@
           };
         file = "command-time.plugin.zsh";
       }
-
-      #   {
-      #     name = "zsh-airpods-battery";
-      #     src =
-      #       pkgs.fetchFromGitHub
-      #       {
-      #         owner = "louis-thevenet";
-      #         repo = "zsh-airpods-battery";
-      #         rev = "46edc4b782d9b5a2a29f30a64aa22e2da1305f5e";
-      #         sha256 = "TORbJOSFGk2/9Fj798E+eGnkucfr/btuellFhkzpf/8=";
-      #       };
-      #     file = "airpods-battery.plugin.zsh";
-      #   }
-
-      #   {
-      #     name = "zsh-autocomplete";
-      #     src =
-      #       pkgs.fetchFromGitHub
-      #       {
-      #         owner = "marlonrichert";
-      #         repo = "zsh-autocomplete";
-      #         rev = "23.07.13";
-      #         sha256 = "sha256-0NW0TI//qFpUA2Hdx6NaYdQIIUpRSd0Y4NhwBbdssCs=";
-      #       };
-      #     file = "zsh-autocomplete.plugin.zsh";
-      #   }
     ];
 
     oh-my-zsh = {

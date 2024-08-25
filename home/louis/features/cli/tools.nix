@@ -18,8 +18,8 @@ in {
     nm-tray
     killall
     wget
-    fzf
     comma
     tdf
   ]);
+  programs.fzf.enable = cfg.commonTools.enable;
 }
