@@ -8,8 +8,15 @@
   cfg = config.home-config.dev;
 in {
   home.packages = mkIf cfg.devTools.enable (with pkgs; [
-    screen
-    tmux
     tokei
   ]);
+
+  programs.tmux = mkIf cfg.devTools.enable {
+    enable = true;
+    clock24 = true;
+    extraConfig = ''
+      set -s escape-time 0
+    '';
+    prefix = "C-a";
+  };
 }
