@@ -192,7 +192,7 @@ in {
             "kitty" = " ";
             "codium-url-handler" = " 󰨞";
             "Discord" = " 󰙯";
-            "spotube" = "󰓇";
+            "spotube" = " 󰓇";
             "matlab" = "󰆧";
             "Super Productivity" = " 󰨟";
             "Beeper" = " 💬";
