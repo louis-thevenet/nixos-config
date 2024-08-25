@@ -35,16 +35,22 @@ in {
       };
 
       social.enable = mkEnableOption ''
-        Enable Social
+        Enable Social (Discord, Beeper)
       '';
 
       utils.enable = mkEnableOption ''
         Enable common GUI Tools
       '';
 
-      lmstudio.enable = mkEnableOption ''
-        Enable LMStudio
-      '';
+      ai = {
+        lmstudio.enable = mkEnableOption ''
+          Enable LMStudio
+        '';
+
+        comfyUI.enable = mkEnableOption ''
+          Enable ComfyUI (from nix-ai-stuff flake)
+        '';
+      };
     };
 
     dev = {

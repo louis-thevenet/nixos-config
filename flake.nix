@@ -1,6 +1,5 @@
 {
   description = "NixOS config";
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
@@ -42,6 +41,11 @@
       url = "github:Guekka/xdg-desktop-portal-termfilepickers";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-ai-stuff = {
+      url = "github:BatteredBunny/nix-ai-stuff";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -68,6 +72,7 @@
             graphviz
             sops
             age
+            deadnix
           ]
           ++ [
             pkgs.home-manager
