@@ -14,8 +14,6 @@
     ../common/optional/hyprland.nix
   ];
   networking.hostName = "magnus";
-  boot.binfmt.emulatedSystems = ["aarch64-linux"]; # allows building iso for arm devices
-  services.udisks2.enable = true;
   services = {
     xserver = {
       enable = true;
@@ -28,7 +26,7 @@
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-
+  services.udisks2.enable = true;
   hardware.graphics.enable = true;
 
   # NVIDIA drivers are unfree.
@@ -43,7 +41,6 @@
   hardware.nvidia = {
     # Modesetting is needed for most wayland compositors
     modesetting.enable = true;
-    #open = true;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
       version = "535.154.05";
@@ -53,7 +50,5 @@
       settingsSha256 = "sha256-9wqoDEWY4I7weWW05F4igj1Gj9wjHsREFMztfEmqm10=";
       persistencedSha256 = "sha256-d0Q3Lk80JqkS1B54Mahu2yY/WocOqFFbZVBh+ToGhaE=";
     };
-
-    #package = config.boot.kernelPackages.nvidiaPackages.production;
   };
 }
