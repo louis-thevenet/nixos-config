@@ -18,5 +18,6 @@ in {
       set -s escape-time 0
     '';
     prefix = "C-a";
+    baseIndex = 1;
   };
 }
