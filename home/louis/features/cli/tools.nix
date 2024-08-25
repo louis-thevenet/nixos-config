@@ -19,5 +19,7 @@ in {
     killall
     wget
     fzf
+    comma
+    tdf
   ]);
 }
