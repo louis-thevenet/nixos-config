@@ -8,7 +8,7 @@
   cfg = config.home-config.desktop;
 in {
   services.darkman = let
-    swaync-client = "${pkgs.swaynotificationcenter}/bin/sway-nc-client";
+    swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
     systemctl = "${pkgs.systemd}/bin/systemctl";
 
     find-hm-generation = let
