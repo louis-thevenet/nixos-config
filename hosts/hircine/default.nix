@@ -50,7 +50,7 @@
       nvidiaBusId = "PCI:1:0:0";
     };
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   specialisation = {
