@@ -91,38 +91,88 @@ in {
         darkreader.enable = true;
         enableExtraExtensions = true;
         extraExtensions = {
-          "cb-remover@search.mozilla.org".install_url = "https://addons.mozilla.org/firefox/downloads/latest/clickbait-remover-for-youtube/latest.xpi";
-          "treestyletab@piro.sakura.ne.jp".install_url = "https://addons.mozilla.org/firefox/downloads/latest/tree-style-tab/latest.xpi";
-          "{446900e4-71c2-419f-a6a7-df9c091e268b}".install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
+          # Remove YT thumbnails
+          "cb-remover@search.mozilla.org" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/clickbait-remover-for-youtube/latest.xpi";
+            installation_mode = "force_installed";
+          };
 
-          "{74145f27-f039-47ce-a470-a662b129930a}".install_url = "https://addons.mozilla.org/firefox/downloads/latest/clearurls/latest.xpi";
-          "{b86e4813-687a-43e6-ab65-0bde4ab75758}".install_url = "https://addons.mozilla.org/firefox/downloads/latest/localcdn-fork-of-decentraleyes/latest.xpi";
-          "DontFuckWithPaste@raim.ist".install_url = "https://addons.mozilla.org/firefox/downloads/latest/don-t-fuck-with-paste/latest.xpi";
-          "{531906d3-e22f-4a6c-a102-8057b88a1a63}".install_url = "https://addons.mozilla.org/firefox/downloads/latest/single-file/latest.xpi";
-          "skipredirect@sblask".install_url = "https://addons.mozilla.org/firefox/downloads/latest/skip-redirect/latest.xpi";
-          "smart-referer@meh.paranoid.pk".install_url = "https://addons.mozilla.org/firefox/downloads/latest/smart-referer/latest.xpi";
-          "7esoorv3@alefvanoon.anonaddy.me".install_url = "https://addons.mozilla.org/firefox/downloads/latest/libredirect/latest.xpi";
+          # Tree view for tabs
+          "treestyletab@piro.sakura.ne.jp" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/tree-style-tab/latest.xpi";
+            installation_mode = "force_installed";
+          };
 
+          # Bitwarden
+          "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
+            installation_mode = "force_installed";
+          };
+
+          # Clear URL
+          "{74145f27-f039-47ce-a470-a662b129930a}" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/clearurls/latest.xpi";
+            installation_mode = "force_installed";
+          };
+
+          # Local CDN (Protection against tracking)
+          "{b86e4813-687a-43e6-ab65-0bde4ab75758}" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/localcdn-fork-of-decentraleyes/latest.xpi";
+            installation_mode = "force_installed";
+          };
+
+          # Don't Fuck with Paste
+          "DontFuckWithPaste@raim.ist" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/don-t-fuck-with-paste/latest.xpi";
+            installation_mode = "force_installed";
+          };
+
+          # Skip Redirect
+          "skipredirect@sblask" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/skip-redirect/latest.xpi";
+            installation_mode = "force_installed";
+          };
+
+          # Smart Referer
+          "smart-referer@meh.paranoid.pk" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/smart-referer/latest.xpi";
+            installation_mode = "force_installed";
+          };
+
+          # LibRedirect
+          "7esoorv3@alefvanoon.anonaddy.me" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/libredirect/latest.xpi";
+            installation_mode = "force_installed";
+          };
+
+          # Wakatime Tracker
           "{addons@wakatime.com}" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/wakatime/latest.xpi";
             installation_mode = "force_installed";
           };
 
+          # Random User-Agent Switcher
           "{b43b974b-1d3a-4232-b226-eaa2ac6ebb69}" = {
-            # Random User-Agent Switcher
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/random_user_agent/latest.xpi";
             installation_mode = "force_installed";
           };
 
-          "{6fb452f2-75ff-468c-b383-aa422688fc64}".install_url = "https://addons.mozilla.org/firefox/downloads/latest/pageassist/latest.xpi";
-
-          "jid0-3GUEt1r69sQNSrca5p8kx9Ezc3U@jetpack" = {
-            # Terms of Service, Didn't Read
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/tosdr_browser_extension/latest.xpi";
+          # LLMs in browser
+          "{6fb452f2-75ff-468c-b383-aa422688fc64}" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/pageassist/latest.xpi";
+            installation_mode = "force_installed";
           };
+
+          # Terms of Service, Didn't Read
+          "jid0-3GUEt1r69sQNSrca5p8kx9Ezc3U@jetpack" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/tosdr_browser_extension/latest.xpi";
+            installation_mode = "force_installed";
+          };
+
+          # Sponsor Block
           "sponsorBlocker@ajay.app" = {
-            # Sponsor Block
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi";
+            installation_mode = "force_installed";
           };
         };
       };
