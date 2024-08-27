@@ -65,11 +65,11 @@ in
           }
         },
         "widgets": [
-          "inhibitors",
-          "title",
-          "volume",
-          "buttons-grid",
+          /*"inhibitors",
           "dnd",
+           "volume",
+          "buttons-grid",*/
+          "title",
           "notifications"
         ],
         "widget-config": {
