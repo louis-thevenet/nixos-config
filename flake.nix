@@ -116,6 +116,7 @@
     nixosConfigurations = {
       magnus = mkNixos "louis" "magnus" "x86_64-linux";
       hircine = mkNixos "louis" "hircine" "x86_64-linux";
+      akatosh = mkNixos "louis" "akatosh" "x86_64-linux";
     };
   };
 }
