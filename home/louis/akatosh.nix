@@ -2,7 +2,6 @@
   imports = [
     ./global
     ./features
-    ./features/impermanence.nix
   ];
 
   home-config = {
@@ -11,13 +10,13 @@
       VPNC.enable = false;
     };
     gui = {
-      kitty.enable = true;
-      schizofox.enable = true;
-      social.enable = true;
+      kitty.enable = false;
+      schizofox.enable = false;
+      social.enable = false;
       utils.enable = true;
     };
     dev = {
-      vscode.enable = true;
+      vscode.enable = false;
       devTools.enable = true;
     };
     desktop.hyprland.enable = false;

@@ -12,7 +12,7 @@
     # ../common/users/louis
 
     ../common/optional/stylix.nix
-    ../common/optional/home-impermanence-disko.nix
+    ../common/optional/impermanence-disko.nix
     # ../common/optional/ollama.nix
     # ../common/optional/hyprland.nix
   ];
