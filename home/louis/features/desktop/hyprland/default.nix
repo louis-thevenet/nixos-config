@@ -30,6 +30,14 @@ in {
     '';
 
     settings = {
+      env = [
+        "ELECTRON_OZONE_PLATFORM_HINT,auto"
+        "NIXOS_OZONE_WL,1"
+        "SDL_VIDEODRIVER,wayland"
+        "_JAVA_AWT_WM_NONREPARENTING,1"
+        "CLUTTER_BACKEND,wayland"
+        "WLR_RENDERER,vulkan"
+      ];
       input = {
         kb_layout = "fr";
         kb_variant = "azerty";

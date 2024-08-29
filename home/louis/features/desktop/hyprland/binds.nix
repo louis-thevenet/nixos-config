@@ -40,7 +40,7 @@ in {
       terminal = config.home.sessionVariables.TERMINAL;
       killall = "${pkgs.killall}/bin/killall";
       darkman = "${pkgs.darkman}/bin/darkman";
-      rofi = "${pkgs.rofi}/bin/rofi";
+      rofi = "${pkgs.rofi-wayland}/bin/rofi";
       copyq = "${pkgs.copyq}/bin/copyq";
       blueman-manager = "${pkgs.blueman}/bin/blueman-manager";
     in
