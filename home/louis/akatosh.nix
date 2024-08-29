@@ -14,6 +14,7 @@
       social.enable = true;
       utils.enable = true;
       ai.comfyUI.enable = true;
+      ai.lmstudio.enable = true;
     };
     dev = {
       vscode.enable = true;
@@ -23,7 +24,6 @@
     desktop.stylix.enable = true;
     misc.nextcloud.enable = true;
   };
-
   monitors = [
     {
       name = "eDP-1";

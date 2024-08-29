@@ -16,6 +16,14 @@
   ];
   networking.hostName = "akatosh";
 
+  services.asusd = {
+    enable = true;
+    enableUserService = true;
+    # asusdConfig = ''
+    #   "bat_charge_limit": 80,
+    # '';
+  };
+
   services = {
     xserver = {
       enable = true;
@@ -30,4 +38,9 @@
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   services.udisks2.enable = true;
   hardware.graphics.enable = true;
+
+  # environment.sessionVariables = {
+  #   GDK_SCALE = 1.5;
+  #   XCURSOR_SIZE = 24;
+  # };
 }
