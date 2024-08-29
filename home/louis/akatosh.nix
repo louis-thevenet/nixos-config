@@ -7,30 +7,30 @@
   home-config = {
     cli = {
       commonTools.enable = true;
-      VPNC.enable = false;
     };
     gui = {
-      kitty.enable = false;
-      schizofox.enable = false;
-      social.enable = false;
+      kitty.enable = true;
+      schizofox.enable = true;
+      social.enable = true;
       utils.enable = true;
+      ai.comfyUI.enable = true;
     };
     dev = {
-      vscode.enable = false;
+      vscode.enable = true;
       devTools.enable = true;
     };
-    desktop.hyprland.enable = false;
-    desktop.stylix.enable = false;
-    virtualization.enable = false;
-    misc.nextcloud.enable = false;
+    desktop.hyprland.enable = true;
+    desktop.stylix.enable = true;
+    misc.nextcloud.enable = true;
   };
 
   monitors = [
     {
       name = "eDP-1";
-      width = 1920;
-      height = 1080;
+      width = 2880;
+      height = 1620;
       refreshRate = 120;
+      scale = 1.5;
       x = 0;
       workspace = "1";
       primary = true;
