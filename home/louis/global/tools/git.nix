@@ -5,10 +5,12 @@
 }: {
   # magnus
   # hircine
+  # akatosh
   xdg.configFile."git/allowed_signers".text = ''
     louis.tvnt@gmail.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF0w5CDimW+k9ic7fOJ3aNjFA9Bhe1LT4Bb0bczrheKr louis.tvnt@gmail.com
     louis.tvnt@gmail.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHzcuekFCsXm/zYTn78Xb3+g22OqFib+YaMRFsvRkBYi louis.tvnt@gmail.com
     louis.tvnt@gmail.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID+ZZGb5qzQST+UuFqlx5XL5wfQsrPYXBKUjsqCXfeI1 louis.tvnt@gmail.com
+    louis.tvnt@gmail.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEYb4WD9wCl6uWjXbjwF3yKfguM4hW5DqOIHNxHCCR/g louis.tvnt@gmail.com
   '';
   services.ssh-agent = {
     enable = true;
