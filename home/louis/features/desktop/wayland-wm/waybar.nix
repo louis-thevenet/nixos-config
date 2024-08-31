@@ -201,7 +201,7 @@ in {
         };
 
         battery = {
-          bat = "BAT0";
+          bat = cfg.hyprland.waybarConfig.batteryName;
           interval = 10;
           format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
           format = "{icon} {capacity}%";

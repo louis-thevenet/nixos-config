@@ -20,7 +20,10 @@
       vscode.enable = true;
       devTools.enable = true;
     };
-    desktop.hyprland.enable = true;
+    desktop.hyprland = {
+      enable = true;
+      waybarConfig.batteryName = "BAT1";
+    };
     desktop.stylix.enable = true;
     misc.nextcloud.enable = true;
   };

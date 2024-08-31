@@ -91,6 +91,14 @@ in {
             description = "Suspend time in seconds";
           };
         };
+
+        waybarConfig = {
+          batteryName = mkOption {
+            type = lib.types.string;
+            default = "BAT0";
+            description = "Battery filename as in /sys/class/powwer_supply/BATx";
+          };
+        };
       };
 
       gnome.enable = mkEnableOption ''
