@@ -28,10 +28,8 @@
     xserver = {
       enable = true;
       xkb.layout = "fr";
-      displayManager.gdm = {
-        enable = true;
-      };
     };
+    displayManager.sddm.enable = true;
   };
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
