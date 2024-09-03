@@ -25,6 +25,8 @@
           insert = "bar";
           select = "underline";
         };
+        cursorline = true;
+        cursorcolumn = true;
         soft-wrap.enable = true;
         text-width = 110;
 
@@ -82,7 +84,7 @@
         }
         {
           name = "rust";
-          language-servers = ["rust-analyzer" "wakatime" "ltex-ls"];
+          language-servers = ["rust-analyzer" "wakatime"];
         }
         {
           name = "ocaml";
@@ -119,6 +121,13 @@
 
         rust-analyzer = {
           command = lib.getExe pkgs.rust-analyzer;
+          config = {
+            check = {
+              checkOnSave = true;
+              command = "clippy";
+              # extraArgs = ["--" "-W" "clippy::unwrap_used" "-W" "clippy::expect_used" "-W" "clippy::pedantic" "-W" "clippy::nursery"];
+            };
+          };
         };
 
         ltex-ls = {
