@@ -125,7 +125,7 @@
             check = {
               checkOnSave = true;
               command = "clippy";
-              # extraArgs = ["--" "-W" "clippy::unwrap_used" "-W" "clippy::expect_used" "-W" "clippy::pedantic" "-W" "clippy::nursery"];
+              extraArgs = ["--" "-W" "clippy::complexity" "-W" "clippy::perf" "-W" "clippy::style" "-W" "clippy::pedantic" "-W" "clippy::nursery"];
             };
           };
         };
