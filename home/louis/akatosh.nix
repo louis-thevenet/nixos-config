@@ -13,7 +13,6 @@
       schizofox.enable = true;
       social.enable = true;
       utils.enable = true;
-      ai.comfyUI.enable = true;
       ai.lmstudio.enable = true;
     };
     dev = {
