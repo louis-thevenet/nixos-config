@@ -20,6 +20,7 @@ in {
     wget
     comma
     tdf
+    (callPackage ./smd.nix {})
   ]);
   programs.fzf.enable = cfg.commonTools.enable;
 }
