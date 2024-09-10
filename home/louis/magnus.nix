@@ -18,7 +18,8 @@
       };
       social.enable = true;
       utils.enable = true;
-      lmstudio.enable = true;
+      ai.lmstudio.enable = true;
+      ai.comfyUI.enable = true;
     };
     dev = {
       vscode.enable = true;
