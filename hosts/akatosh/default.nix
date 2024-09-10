@@ -13,6 +13,7 @@
     ../common/optional/impermanence-disko.nix
     ../common/optional/ollama.nix
     ../common/optional/hyprland.nix
+    ../common/optional/tlp.nix
   ];
   networking.hostName = "akatosh";
 
@@ -36,9 +37,4 @@
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   services.udisks2.enable = true;
   hardware.graphics.enable = true;
-
-  # environment.sessionVariables = {
-  #   GDK_SCALE = 1.5;
-  #   XCURSOR_SIZE = 24;
-  # };
 }
