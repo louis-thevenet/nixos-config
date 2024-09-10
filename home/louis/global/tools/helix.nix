@@ -88,11 +88,7 @@
         }
         {
           name = "ocaml";
-          language-servers = ["ocaml-lsp"];
-          formatter = {
-            command = lib.getExe pkgs.ocamlformat;
-            args = ["-" "--impl" "--enable-outside-detected-project"];
-          };
+          language-servers = ["ocaml-lsp" "wakatime"];
         }
         {
           name = "toml";
@@ -117,6 +113,14 @@
         nil = {
           command = lib.getExe pkgs.nil;
           config.nil.formatting.command = ["${lib.getExe pkgs.alejandra}" "-q"];
+        };
+
+        ocaml-lsp = {
+          command = lib.getExe pkgs.ocamlPackages.ocaml-lsp;
+          formatter = {
+            command = lib.getExe pkgs.ocamlformat;
+            args = ["-" "--impl" "--enable-outside-detected-project"];
+          };
         };
 
         rust-analyzer = {
