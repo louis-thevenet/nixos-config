@@ -20,7 +20,7 @@ in {
     wget
     comma
     tdf
-    (callPackage ./smd.nix {})
+    (callPackage ./see-cat.nix {})
   ]);
   programs.fzf.enable = cfg.commonTools.enable;
 }
