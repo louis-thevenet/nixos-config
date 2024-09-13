@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: let
   inherit (lib) mkIf;
@@ -21,6 +22,7 @@ in {
     comma
     tdf
     (callPackage ./see-cat.nix {})
+    inputs.vault-tasks.packages.${pkgs.system}.default
   ]);
   programs.fzf.enable = cfg.commonTools.enable;
 }

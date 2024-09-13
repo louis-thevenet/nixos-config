@@ -46,6 +46,11 @@
       url = "github:BatteredBunny/nix-ai-stuff";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    vault-tasks = {
+      url = "github:louis-thevenet/vault-tasks/75bc4f8b441942fb3fe00a9c769b802082342165"; # commits after ratatui are probably unstable
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
