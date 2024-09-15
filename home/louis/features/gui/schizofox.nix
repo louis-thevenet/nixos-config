@@ -213,8 +213,8 @@ in {
             Folder = "N7";
           }
           {
-            Title = "Moodle";
-            URL = "https://moodle-n7.inp-toulouse.fr/";
+            Title = "Moodle 2A SN";
+            URL = "https://moodle-n7.inp-toulouse.fr/course/index.php?categoryid=705";
             Placement = "toolbar";
             Folder = "N7";
           }
