@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  inputs,
   ...
 }: let
   inherit (lib) mkIf;
@@ -21,8 +20,7 @@ in {
     wget
     comma
     tdf
-    (callPackage ./see-cat.nix {})
-    inputs.vault-tasks.packages.${pkgs.system}.default
+    see-cat
   ]);
   programs.fzf.enable = cfg.commonTools.enable;
 }
