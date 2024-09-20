@@ -48,7 +48,7 @@
     };
 
     vault-tasks = {
-      url = "github:louis-thevenet/vault-tasks/75bc4f8b441942fb3fe00a9c769b802082342165"; # commits after ratatui are probably unstable
+      url = "github:louis-thevenet/vault-tasks/b05e215db206bd96cc68d42f4a4be8a2d9db515e"; # commits after ratatui are probably unstable
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
