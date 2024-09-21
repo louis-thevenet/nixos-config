@@ -21,7 +21,7 @@ in {
     wget
     comma
     tdf
-    (callPackage ./see-cat.nix {})
+    see-cat
     inputs.vault-tasks.packages.${pkgs.system}.default
   ]);
   programs.fzf.enable = cfg.commonTools.enable;
