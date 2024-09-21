@@ -48,7 +48,7 @@
     };
 
     vault-tasks = {
-      url = "github:louis-thevenet/vault-tasks/b05e215db206bd96cc68d42f4a4be8a2d9db515e"; # commits after ratatui are probably unstable
+      url = "github:louis-thevenet/vault-tasks";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -120,7 +120,6 @@
 
     nixosConfigurations = {
       magnus = mkNixos "louis" "magnus" "x86_64-linux";
-      hircine = mkNixos "louis" "hircine" "x86_64-linux";
       akatosh = mkNixos "louis" "akatosh" "x86_64-linux";
     };
   };
