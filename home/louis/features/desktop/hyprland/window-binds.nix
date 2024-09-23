@@ -80,13 +80,16 @@ in {
         "SUPER,b,changegroupactive,f"
         "SUPERSHIFT,r,changegroupactive,r"
 
+        "SUPERSHIFT,g,pin"
+
         "SUPER,u,togglespecialworkspace, U"
         "SUPERSHIFT,u,movetoworkspace,special:U"
 
         "SUPER,i,togglespecialworkspace, I"
         "SUPERSHIFT,i,movetoworkspace,special:I"
 
-        "SUPERSHIFT,g,pin"
+        "SUPER,o,togglespecialworkspace, O"
+        "SUPERSHIFT,o,movetoworkspace,special:O"
       ]
       ++
       # Change workspace
