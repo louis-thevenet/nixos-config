@@ -32,7 +32,7 @@
     };
     displayManager.sddm.enable = true;
   };
-
+  programs.steam.enable = true;
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   services.udisks2.enable = true;
