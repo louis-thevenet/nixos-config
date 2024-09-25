@@ -19,7 +19,7 @@
       social.enable = true;
       utils.enable = true;
       ai.lmstudio.enable = true;
-      ai.comfyUI.enable = true;
+      ai.comfyUI.enable = false;
     };
     dev = {
       vscode.enable = true;
