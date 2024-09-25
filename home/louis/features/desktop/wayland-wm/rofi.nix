@@ -40,25 +40,15 @@ in {
     package = pkgs.rofi-wayland;
 
     plugins = [
-      (pkgs.callPackage
-        ./rofi-ollama
-        {})
-
-      (pkgs.callPackage
-        ./rofi-vscode-mode
-        {})
     ];
     terminal = config.home.sessionVariables.TERMINAL;
     extraConfig = {
-      modi = "drun,filebrowser,ssh"; #,ollama,vscode-recent"; #,clipboard:${cliphist-rofi-img}";
+      modi = "drun,filebrowser,ssh";
       show-icons = true;
       display-drun = "🔍 Apps";
       display-run = "🔧 Run";
       display-filebrowser = "📂 Files";
       display-ssh = "🔑 SSH";
-      display-ollama = "🧠 Ollama";
-      display-vscode-recent = "📂 VSCode Recent";
-      #display-clipboard = "Clipboard";
       dpi = 1;
     };
 
@@ -78,8 +68,8 @@ in {
       };
 
       "window" = {
-        width = mkLiteral "50%";
-        height = mkLiteral "50%";
+        width = mkLiteral "30%";
+        height = mkLiteral "70%";
         x-offset = mkLiteral "0px";
         y-offset = mkLiteral "0px";
         padding = mkLiteral "5px";
@@ -120,7 +110,7 @@ in {
 
       "listview" = {
         padding = mkLiteral "4px 0px";
-        columns = 2;
+        columns = 1;
         scrollbar = true;
       };
 
@@ -130,7 +120,7 @@ in {
       };
 
       "element-icon" = {
-        size = mkLiteral "0.8em";
+        size = mkLiteral "2em";
       };
 
       "element-text" = {
