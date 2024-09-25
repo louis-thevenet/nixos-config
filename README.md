@@ -1,27 +1,36 @@
 # NixOS Hyprland flake setup
+![image](https://github.com/user-attachments/assets/29804599-a741-42ae-b2b3-1726eec60d36)
+![image](https://github.com/user-attachments/assets/d3762d3a-bf14-401a-90c9-00f5940a8f7e)
 
-![image](https://github.com/user-attachments/assets/babe7c25-b7e1-43b6-bba7-abe00aa80fbd)
-![image](https://github.com/user-attachments/assets/1dc4faea-9f66-4a4a-82c6-782b56627114)
+## Features
+- Hyprland (Hypridle, Hyprlock, Hyprpaper, Mako, Rofi, Swaync, Waybar)
+- Nix Flakes
+- Theme handled by [Stylix](https://github.com/danth/stylix)
+- Automatic light and dark themes
+- Multiple hosts
+- Home config as a Nix Module
+- Home Impermanence (on Akatosh)
+- Secrets Management
 
 ## NixOS Config
-```
+```rust
 hosts
+├── akatosh
+│  ├── default.nix
+│  ├── hardware-configuration.nix
+│  └── sops.nix
 ├── common
 │  ├── global
 │  ├── optional
 │  ├── secrets.yaml
 │  └── users
-├── hircine
-│  ├── default.nix
-│  ├── hardware-configuration.nix
-│  └── sops.nix
 └── magnus
    ├── default.nix
    ├── hardware-configuration.nix
    └── sops.nix
 ```
 - `magnus` : Main System
-- `hircine` : Laptop (disk managed with [disko](https://github.com/nix-community/disko) with [impermanence](https://nixos.wiki/wiki/Impermanence) for NixOS)
+- `akatosh` : Laptop (disk managed with [disko](https://github.com/nix-community/disko) with [impermanence](https://nixos.wiki/wiki/Impermanence) for NixOS)
 
 The setup is rather classic, most of the system configuration is shared between hosts.
 
@@ -30,6 +39,7 @@ The setup is rather classic, most of the system configuration is shared between 
 ```
 home
 └── louis
+   ├── akatosh.nix
    ├── features
    │  ├── cli
    │  ├── default.nix
@@ -45,7 +55,6 @@ home
    │  ├── home-manager.nix
    │  ├── options
    │  └── tools
-   ├── hircine.nix
    └── magnus.nix
 ```
 
