@@ -174,6 +174,12 @@ in {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi";
             installation_mode = "force_installed";
           };
+
+          # Search for tabs
+          "{11a68c03-baa3-41fb-869c-5172c4c4dd2e}" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/tab_search/latest.xpi";
+            installation_mode = "force_installed";
+          };
         };
       };
 
