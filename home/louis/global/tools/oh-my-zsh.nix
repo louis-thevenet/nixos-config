@@ -13,8 +13,8 @@
       cat = "bat --theme=\"Solarized (light)\"";
 
       src = ''DIR=`find /home/louis/src/* -maxdepth 0 -type d -print 2> /dev/null | fzf-tmux` && cd "$DIR"'';
-      tsrc = ''src && tmux new -smain'';
-      hxt = "src && tmux new -smain -- hx .";
+      tmx = ''src && tmux new -A -s $(basename "$DIR")'';
+      hxt = ''src && tmux new -A -s $(basename "$DIR") -- hx .'';
     };
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
