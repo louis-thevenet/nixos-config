@@ -44,15 +44,6 @@ in {
 
   programs.waybar = mkIf cfg.hyprland.enable {
     enable = true;
-    package = pkgs.waybar.overrideAttrs (oa: {
-      mesonFlags = (oa.mesonFlags or []) ++ ["-Dexperimental=true"];
-      src = pkgs.fetchFromGitHub {
-        owner = "Alexays";
-        repo = "Waybar";
-        rev = "9d15c666b2ec3b4286b4054bc7ad59881e5dd56d";
-        hash = "sha256-XsOORWLtCrjDPkqZIjO5UPj1muQv6DPRCxZBOn/q0AQ=";
-      };
-    });
     systemd.enable = true;
     settings = {
       primary = {
