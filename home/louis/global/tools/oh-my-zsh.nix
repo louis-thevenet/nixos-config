@@ -6,7 +6,7 @@
       update-sys = "nh os switch /home/louis/src/nixos-config --update";
 
       vim = "hx";
-      ls = "eza --long --header --binary --no-permissions --no-user";
+      ls = "eza --long --header --binary --no-permissions --no-user --icons=auto";
       lss = "ls --total-size";
       lst = "eza --tree";
       lsg = "ls --git";
