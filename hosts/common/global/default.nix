@@ -26,6 +26,7 @@
   services.printing.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
+  services.gnome.gnome-keyring.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;

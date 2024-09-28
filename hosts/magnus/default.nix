@@ -18,7 +18,7 @@
     xserver = {
       enable = true;
       xkb.layout = "fr";
-      displayManager.sddm = {
+      displayManager.gdm = {
         enable = true;
       };
     };
