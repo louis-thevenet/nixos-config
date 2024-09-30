@@ -35,6 +35,10 @@
   };
 
   services.libinput.enable = true;
+  services.logind.extraConfig = ''
+    # don’t shutdown when power button is short-pressed
+    HandlePowerKey=ignore
+  '';
 
   environment.systemPackages = with pkgs; [vim];
   services.blueman.enable = true;

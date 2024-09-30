@@ -35,6 +35,8 @@ in {
 
     windowManager.hyprland.settings.bind = let
       hyprlock = "${pkgs.hyprlock}/bin/hyprlock";
+      systemctl = "${pkgs.systemd}/bin/systemctl";
+      poweroff = "${pkgs.systemd}/bin/poweroff";
       swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
       grimblast = "${pkgs.grimblast}/bin/grimblast";
       terminal = config.home.sessionVariables.TERMINAL;
@@ -88,6 +90,11 @@ in {
       # Darkman toggle
       [
         "SUPERSHIFT,T,exec,${darkman} toggle"
+      ]
+      # Power button
+      ++ [
+        ",xf86poweroff ,exec, ${systemctl} suspend"
+        "SUPER,xf86poweroff ,exec, ${poweroff}"
       ];
   };
 }
