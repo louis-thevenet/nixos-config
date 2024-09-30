@@ -70,7 +70,7 @@ in {
           #"custom/hostname"
           "network"
           "battery"
-          "custom/hypridle"
+          "idle_inhibitor"
           "custom/currentplayer"
           "pulseaudio"
           "custom/notifications"
@@ -136,36 +136,12 @@ in {
           escape = true;
         };
 
-        "custom/hypridle" = let
-          pgrep = "${pkgs.toybox}/bin/pgrep";
-          pkill = "${pkgs.toybox}/bin/pkill";
-          hypridle = "${pkgs.hypridle}/bin/hypridle";
-        in {
-          interval = 2;
-          # format = "";
-          exec = ''
-            if ${pgrep} "hypridle" > /dev/null
-              then
-                  echo " "
-              else
-                  echo " "
-              fi
-
-          '';
-          tooltip = false;
-
-          on-click = let
-            noti = "${pkgs.noti}/bin/noti";
-          in ''
-            if ${pgrep} "hypridle" > /dev/null
-            then
-                ${pkill} hypridle
-                ${noti} -t "   Hypridle Inactive"
-            else
-                ${hypridle} &
-                ${noti} -t "   Hypridle Active"
-            fi
-          '';
+        "idle_inhibitor" = {
+          "format" = "{icon}";
+          "format-icons" = {
+            "activated" = " ";
+            "deactivated" = " ";
+          };
         };
 
         "hyprland/workspaces" = {
@@ -297,7 +273,7 @@ in {
         #custom-notifications,
         #custom-hostname,
         #battery,
-        #custom-hypridle,
+        #idle_inhibitor,
         #network,
         #pulseaudio,
         #tray,
