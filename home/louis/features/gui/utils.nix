@@ -14,5 +14,6 @@ in {
     spotube
     warp-terminal
     obs-studio
+    spotifywm
   ]);
 }
