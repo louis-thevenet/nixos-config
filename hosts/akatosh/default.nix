@@ -1,9 +1,4 @@
-{
-  lib,
-  config,
-  nixos-hardware,
-  ...
-}: {
+{...}: {
   imports = [
     ./hardware-configuration.nix
     ./sops.nix
@@ -20,19 +15,6 @@
   services.asusd = {
     enable = true;
     enableUserService = true;
-    # asusdConfig = ''
-    #   "bat_charge_limit": 80,
-    # '';
-  };
-
-  services = {
-    xserver = {
-      enable = true;
-      xkb.layout = "fr";
-      displayManager.gdm = {
-        enable = true;
-      };
-    };
   };
 
   programs.steam.enable = true;
