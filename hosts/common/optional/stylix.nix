@@ -6,7 +6,7 @@
 }: {
   stylix = {
     enable = true;
-    image = lib.mkDefault ./background_light.jpg;
+    image = lib.mkDefault ./background_light.png;
     base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
     cursor = {
       package = pkgs.numix-cursor-theme;
