@@ -86,6 +86,7 @@
       "/etc/NetworkManager"
       "/var/lib/bluetooth"
       "/var/lib/private/ollama"
+      "/var/lib/howdy/models"
     ];
   };
 

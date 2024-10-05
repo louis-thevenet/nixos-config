@@ -491,6 +491,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-howdy": {
+      "locked": {
+        "lastModified": 1714585140,
+        "narHash": "sha256-cQ7nYEKOgf5D8HNdy8VSFH5Ms0v1wsdpZ19fxr9mnAs=",
+        "owner": "fufexan",
+        "repo": "nixpkgs",
+        "rev": "39edb2550421f88ff2a5c330c3471a2a9c596f91",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fufexan",
+        "ref": "howdy",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-lib": {
       "locked": {
         "dir": "lib",
@@ -611,6 +627,7 @@
         "nix-ai-stuff": "nix-ai-stuff",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-howdy": "nixpkgs-howdy",
         "nixpkgs-master": "nixpkgs-master",
         "schizofox": "schizofox",
         "sops-nix": "sops-nix",
