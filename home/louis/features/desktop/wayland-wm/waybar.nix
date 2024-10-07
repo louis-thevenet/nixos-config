@@ -51,6 +51,7 @@ in {
         position = "bottom";
         exclusive = false;
         fixed-center = false;
+        start_hidden = true;
         modules-left =
           lib.optionals
           config.wayland.windowManager.hyprland.enable [
