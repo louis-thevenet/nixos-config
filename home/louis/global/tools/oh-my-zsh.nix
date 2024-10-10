@@ -11,10 +11,6 @@
       lst = "eza --tree";
       lsg = "ls --git";
       cat = "bat --theme=\"Solarized (light)\"";
-
-      src = ''DIR=`find /home/louis/src/* -maxdepth 0 -type d -print 2> /dev/null | fzf-tmux` && cd "$DIR"'';
-      tmx = ''src && tmux new -A -s $(basename "$DIR")'';
-      hxt = ''src && tmux new -A -s $(basename "$DIR") -- hx .'';
     };
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
