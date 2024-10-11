@@ -909,11 +909,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1728421461,
-        "narHash": "sha256-kOGbzrP71Xbq+MHeLUaFCGRgi80lUOba1pGwt5luKFg=",
+        "lastModified": 1728581798,
+        "narHash": "sha256-DdFFmWyOGz7eksw4nTbYSGOUfpm+WiMdf0HJLfqMJfY=",
         "owner": "louis-thevenet",
         "repo": "vault-tasks",
-        "rev": "4cc417721c0356ded734bd7c2fdb1526969a12d7",
+        "rev": "023e5cc9bd181fbea165fa173e58fa268b4ecb0e",
         "type": "github"
       },
       "original": {
