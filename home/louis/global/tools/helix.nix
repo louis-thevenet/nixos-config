@@ -89,10 +89,19 @@
         {
           name = "ocaml";
           language-servers = ["ocaml-lsp" "wakatime"];
+          formatter = {
+            command = lib.getExe pkgs.ocamlPackages.ocamlformat;
+            args = ["-" "--impl" "--enable-outside-detected-project"];
+            auto-format = true;
+          };
         }
         {
           name = "toml";
           language-servers = ["taplo" "wakatime"];
+        }
+        {
+          name = "java";
+          language-servers = ["jdtls"];
         }
         {
           name = "nix";
@@ -117,10 +126,18 @@
 
         ocaml-lsp = {
           command = lib.getExe pkgs.ocamlPackages.ocaml-lsp;
-          formatter = {
-            command = lib.getExe pkgs.ocamlformat;
-            args = ["-" "--impl" "--enable-outside-detected-project"];
-          };
+        };
+
+        jdtls = let
+          jdtls-bin =
+            if (lib.versionOlder pkgs.jdt-language-server.version "1.31.0")
+            then "jdt-language-server"
+            else "jdtls";
+        in {
+          command = "${pkgs.jdt-language-server}/bin/${jdtls-bin}";
+          args = [
+            "--jvm-arg=-javaagent:${pkgs.lombok}/share/java/lombok.jar"
+          ];
         };
 
         rust-analyzer = {
