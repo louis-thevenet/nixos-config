@@ -92,8 +92,8 @@
           formatter = {
             command = lib.getExe pkgs.ocamlPackages.ocamlformat;
             args = ["-" "--impl" "--enable-outside-detected-project"];
-            auto-format = true;
           };
+          auto-format = true;
         }
         {
           name = "toml";
@@ -102,11 +102,12 @@
         {
           name = "java";
           language-servers = ["jdtls"];
+          auto-format = true;
         }
         {
           name = "nix";
           language-servers = ["nil" "wakatime"];
-          auto-format = true; # see https://github.com/helix-editor/helix/issues/11237
+          auto-format = true;
         }
       ];
       language-server = {
