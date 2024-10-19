@@ -79,8 +79,8 @@
         }
         {
           name = "typst";
-          language-servers = ["typst-lsp" "wakatime" "ltex-ls"];
-          auto-format = false; # see https://github.com/helix-editor/helix/issues/11237
+          language-servers = ["typst-lsp" "wakatime"];
+          auto-format = true; # see https://github.com/helix-editor/helix/issues/11237
         }
         {
           name = "rust";
@@ -124,7 +124,9 @@
           command = lib.getExe pkgs.nil;
           config.nil.formatting.command = ["${lib.getExe pkgs.alejandra}" "-q"];
         };
-
+        typst-lsp = {
+          command = lib.getExe pkgs.typst-lsp;
+        };
         ocaml-lsp = {
           command = lib.getExe pkgs.ocamlPackages.ocaml-lsp;
         };
