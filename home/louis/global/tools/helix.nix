@@ -79,7 +79,7 @@
         }
         {
           name = "typst";
-          language-servers = ["typst-lsp" "wakatime"];
+          language-servers = ["tinymist" "wakatime"];
           auto-format = true; # see https://github.com/helix-editor/helix/issues/11237
         }
         {
@@ -124,9 +124,14 @@
           command = lib.getExe pkgs.nil;
           config.nil.formatting.command = ["${lib.getExe pkgs.alejandra}" "-q"];
         };
-        typst-lsp = {
-          command = lib.getExe pkgs.typst-lsp;
+
+        tinymist = {
+          command = lib.getExe pkgs.tinymist;
+          config = {
+            exportPdf = "onType";
+          };
         };
+
         ocaml-lsp = {
           command = lib.getExe pkgs.ocamlPackages.ocaml-lsp;
         };
