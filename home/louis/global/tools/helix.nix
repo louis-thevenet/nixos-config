@@ -76,10 +76,19 @@
         {
           name = "markdown";
           language-servers = ["markdown-oxide" "wakatime" "ltex-ls"];
+          formatter = {
+            command = lib.getExe pkgs.nodePackages.prettier;
+            args = ["--stdin-filepath" "file.md"];
+          };
+          auto-format = true;
         }
         {
           name = "typst";
           language-servers = ["tinymist" "wakatime"];
+          formatter = {
+            command = lib.getExe pkgs.typstfmt;
+            args = ["/dev/stdin" "-o" "/dev/stdout"];
+          };
           auto-format = true; # see https://github.com/helix-editor/helix/issues/11237
         }
         {
@@ -99,6 +108,7 @@
           name = "toml";
           language-servers = ["taplo" "wakatime"];
         }
+
         {
           name = "java";
           language-servers = ["jdtls"];
