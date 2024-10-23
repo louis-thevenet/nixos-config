@@ -41,6 +41,6 @@
       enable = true;
       extraArgs = "--keep 3 --keep-since 7d";
     };
-    flake = /home/louis/src/nixos-config;
+    flake = "/home/louis/src/nixos-config";
   };
 }
