@@ -23,7 +23,7 @@ in {
     tdf
     see-cat
     inputs.vault-tasks.packages.${pkgs.system}.default
-    asciinema
+    vhs
   ]);
   programs.fzf.enable = cfg.commonTools.enable;
 }
