@@ -27,6 +27,7 @@
     };
     desktop.hyprland = {
       enable = true;
+      nvidia = true;
       hypridleConfig = {
         screenDimTime = 300;
         lockTime = 400;
