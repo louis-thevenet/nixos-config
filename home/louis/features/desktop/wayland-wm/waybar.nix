@@ -4,7 +4,8 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (lib) mkIf;
   cfg = config.home-config.desktop;
 
@@ -21,25 +22,29 @@
   nvtop-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.nvtopPackages.nvidia}/bin/nvtop";
 
   # Function to simplify making waybar outputs
-  jsonOutput = name: {
-    pre ? "",
-    text ? "",
-    tooltip ? "",
-    alt ? "",
-    class ? "",
-    percentage ? "",
-  }: "${pkgs.writeShellScriptBin "waybar-${name}" ''
-    set -euo pipefail
-    ${pre}
-    ${jq} -cn \
-      --arg text "${text}" \
-      --arg tooltip "${tooltip}" \
-      --arg alt "${alt}" \
-      --arg class "${class}" \
-      --arg percentage "${percentage}" \
-      '{text:$text,tooltip:$tooltip,alt:$alt,class:$class,percentage:$percentage}'
-  ''}/bin/waybar-${name}";
-in {
+  jsonOutput =
+    name:
+    {
+      pre ? "",
+      text ? "",
+      tooltip ? "",
+      alt ? "",
+      class ? "",
+      percentage ? "",
+    }:
+    "${pkgs.writeShellScriptBin "waybar-${name}" ''
+      set -euo pipefail
+      ${pre}
+      ${jq} -cn \
+        --arg text "${text}" \
+        --arg tooltip "${tooltip}" \
+        --arg alt "${alt}" \
+        --arg class "${class}" \
+        --arg percentage "${percentage}" \
+        '{text:$text,tooltip:$tooltip,alt:$alt,class:$class,percentage:$percentage}'
+    ''}/bin/waybar-${name}";
+in
+{
   stylix.targets.waybar.enable = false;
 
   programs.waybar = mkIf cfg.hyprland.enable {
@@ -53,8 +58,7 @@ in {
         fixed-center = false;
         start_hidden = true;
         modules-left =
-          lib.optionals
-          config.wayland.windowManager.hyprland.enable [
+          lib.optionals config.wayland.windowManager.hyprland.enable [
             "hyprland/workspaces"
             #"hyprland/submap"
           ]
@@ -111,7 +115,11 @@ in {
             headphone = "󰋋";
             headset = "󰋎";
             portable = "";
-            default = ["" "" ""];
+            default = [
+              ""
+              ""
+              ""
+            ];
           };
           on-click = pavucontrol;
         };
@@ -171,7 +179,18 @@ in {
         battery = {
           bat = cfg.hyprland.waybarConfig.batteryName;
           interval = 10;
-          format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+          format-icons = [
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
+          ];
           format = "{icon} {capacity}%";
           format-charging = "󰂄 {capacity}%";
           onclick = "";
@@ -252,8 +271,9 @@ in {
     # x y z -> top, horizontal, bottom
     # w x y z -> top, right, bottom, left
 
-    style = with config.lib.stylix;
-    # css
+    style =
+      with config.lib.stylix;
+      # css
       ''
 
         * {

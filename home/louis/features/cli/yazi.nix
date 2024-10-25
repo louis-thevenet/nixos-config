@@ -1,5 +1,7 @@
-{config, ...}: let
+{ config, ... }:
+let
   cfg = config.home-config.cli;
-in {
+in
+{
   programs.yazi.enable = cfg.commonTools.enable;
 }

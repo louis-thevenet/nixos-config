@@ -2,10 +2,12 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   inherit (lib) mkIf;
   cfg = config.home-config.gui;
-in {
+in
+{
   programs.kitty = mkIf cfg.kitty.enable {
     enable = true;
     theme = "Solarized Light";

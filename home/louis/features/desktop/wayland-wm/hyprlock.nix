@@ -3,14 +3,19 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (lib) mkIf;
   cfg = config.home-config.desktop;
   colors = config.lib.stylix.colors;
-in {
-  home.packages = mkIf cfg.hyprland.enable (with pkgs; [
-    hyprlock
-  ]);
+in
+{
+  home.packages = mkIf cfg.hyprland.enable (
+    with pkgs;
+    [
+      hyprlock
+    ]
+  );
   home.file.".config/hypr/hyprlock.conf".text = ''
 
     $text_color = 0xff${colors.base05}

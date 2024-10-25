@@ -2,7 +2,8 @@
   lib,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     inputs.disko.nixosModules.default
     inputs.impermanence.nixosModule
@@ -51,23 +52,23 @@
                 nix = {
                   type = "filesystem";
                   mountpoint = "/nix";
-                  mountOptions = ["compress=zstd"];
+                  mountOptions = [ "compress=zstd" ];
                 };
                 persist = {
                   type = "filesystem";
                   mountpoint = "/persist";
-                  mountOptions = ["compress=zstd"];
+                  mountOptions = [ "compress=zstd" ];
                 };
                 shared = {
                   type = "filesystem";
                   mountpoint = "/shared";
-                  mountOptions = ["compress=zstd"];
+                  mountOptions = [ "compress=zstd" ];
                 };
 
                 log = {
                   type = "filesystem";
                   mountpoint = "/var/log";
-                  mountOptions = ["compress=zstd"];
+                  mountOptions = [ "compress=zstd" ];
                 };
               };
             };

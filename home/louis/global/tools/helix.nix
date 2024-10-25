@@ -3,7 +3,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   programs.helix = {
     enable = true;
     defaultEditor = true;
@@ -39,7 +40,7 @@
             "read-only-indicator"
             "file-modification-indicator"
           ];
-          center = [];
+          center = [ ];
           right = [
             "diagnostics"
             "selections"
@@ -67,63 +68,92 @@
       language = [
         {
           name = "bash";
-          language-servers = ["bash-language-server"];
+          language-servers = [ "bash-language-server" ];
           formatter = {
             command = "${pkgs.shfmt}/bin/shfmt";
-            args = ["-i" "2" "-"];
+            args = [
+              "-i"
+              "2"
+              "-"
+            ];
           };
         }
         {
           name = "markdown";
-          language-servers = ["markdown-oxide" "wakatime" "ltex-ls"];
+          language-servers = [
+            "markdown-oxide"
+            "wakatime"
+            "ltex-ls"
+          ];
           formatter = {
             command = lib.getExe pkgs.nodePackages.prettier;
-            args = ["--stdin-filepath" "file.md"];
+            args = [
+              "--stdin-filepath"
+              "file.md"
+            ];
           };
           auto-format = true;
         }
         {
           name = "typst";
-          language-servers = ["tinymist" "wakatime"];
+          language-servers = [
+            "tinymist"
+            "wakatime"
+          ];
           formatter = {
-            command = lib.getExe pkgs.typstfmt;
-            args = ["/dev/stdin" "-o" "/dev/stdout"];
+            command = lib.getExe pkgs.typstyle;
           };
-          auto-format = true; # see https://github.com/helix-editor/helix/issues/11237
+          auto-format = true;
         }
         {
           name = "rust";
-          language-servers = ["rust-analyzer" "wakatime"];
+          language-servers = [
+            "rust-analyzer"
+            "wakatime"
+          ];
         }
         {
           name = "ocaml";
-          language-servers = ["ocaml-lsp" "wakatime"];
+          language-servers = [
+            "ocaml-lsp"
+            "wakatime"
+          ];
           formatter = {
             command = lib.getExe pkgs.ocamlPackages.ocamlformat;
-            args = ["-" "--impl" "--enable-outside-detected-project"];
+            args = [
+              "-"
+              "--impl"
+              "--enable-outside-detected-project"
+            ];
           };
           auto-format = true;
         }
         {
           name = "toml";
-          language-servers = ["taplo" "wakatime"];
+          language-servers = [
+            "taplo"
+            "wakatime"
+          ];
         }
 
         {
           name = "java";
-          language-servers = ["jdtls"];
+          language-servers = [ "jdtls" ];
           auto-format = true;
         }
         {
           name = "nix";
-          language-servers = ["nil" "wakatime"];
+          language-servers = [
+            "nil"
+            "wakatime"
+          ];
           auto-format = true;
         }
       ];
       language-server = {
         bash-language-server = {
           command = "${pkgs.nodePackages.bash-language-server}/bin/bash-language-server";
-          args = ["start"];
+          args = [ "start" ];
         };
 
         markdown-oxide.command = lib.getExe pkgs.markdown-oxide;
@@ -132,7 +162,7 @@
 
         nil = {
           command = lib.getExe pkgs.nil;
-          config.nil.formatting.command = ["${lib.getExe pkgs.alejandra}" "-q"];
+          config.nil.formatting.command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
         };
 
         tinymist = {
@@ -146,17 +176,20 @@
           command = lib.getExe pkgs.ocamlPackages.ocaml-lsp;
         };
 
-        jdtls = let
-          jdtls-bin =
-            if (lib.versionOlder pkgs.jdt-language-server.version "1.31.0")
-            then "jdt-language-server"
-            else "jdtls";
-        in {
-          command = "${pkgs.jdt-language-server}/bin/${jdtls-bin}";
-          args = [
-            "--jvm-arg=-javaagent:${pkgs.lombok}/share/java/lombok.jar"
-          ];
-        };
+        jdtls =
+          let
+            jdtls-bin =
+              if (lib.versionOlder pkgs.jdt-language-server.version "1.31.0") then
+                "jdt-language-server"
+              else
+                "jdtls";
+          in
+          {
+            command = "${pkgs.jdt-language-server}/bin/${jdtls-bin}";
+            args = [
+              "--jvm-arg=-javaagent:${pkgs.lombok}/share/java/lombok.jar"
+            ];
+          };
 
         rust-analyzer = {
           command = lib.getExe pkgs.rust-analyzer;
@@ -164,7 +197,19 @@
             check = {
               checkOnSave = true;
               command = "clippy";
-              extraArgs = ["--" "-W" "clippy::complexity" "-W" "clippy::perf" "-W" "clippy::style" "-W" "clippy::pedantic" "-W" "clippy::nursery"];
+              extraArgs = [
+                "--"
+                "-W"
+                "clippy::complexity"
+                "-W"
+                "clippy::perf"
+                "-W"
+                "clippy::style"
+                "-W"
+                "clippy::pedantic"
+                "-W"
+                "clippy::nursery"
+              ];
             };
           };
         };

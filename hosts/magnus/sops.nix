@@ -2,8 +2,9 @@
   inputs,
   config,
   ...
-}: {
-  imports = [inputs.sops-nix.nixosModules.sops];
+}:
+{
+  imports = [ inputs.sops-nix.nixosModules.sops ];
   sops = {
     defaultSopsFile = ../common/secrets.yaml;
     age.keyFile = "${config.users.users.louis.home}/.config/sops/age/keys.txt";

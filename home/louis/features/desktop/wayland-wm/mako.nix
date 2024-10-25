@@ -2,19 +2,22 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   inherit (config.colorScheme) palette kind;
 
   inherit (lib) mkIf;
   cfg = config.home-config.desktop;
-in {
+in
+{
   services.mako = mkIf cfg.hyprland.enable {
     enable = true;
 
     iconPath =
-      if kind == "dark"
-      then "${config.gtk.iconTheme.package}/share/icons/Papirus-Dark"
-      else "${config.gtk.iconTheme.package}/share/icons/Papirus-Light";
+      if kind == "dark" then
+        "${config.gtk.iconTheme.package}/share/icons/Papirus-Dark"
+      else
+        "${config.gtk.iconTheme.package}/share/icons/Papirus-Light";
     font = "${config.fontProfiles.regular.family} 12";
     padding = "10,20";
     anchor = "top-center";

@@ -4,13 +4,14 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./locale.nix
     ./nix.nix
   ];
   nixpkgs = {
-    overlays = [];
+    overlays = [ ];
     config = {
       allowUnfree = true;
     };
@@ -40,7 +41,7 @@
     HandlePowerKey=ignore
   '';
 
-  environment.systemPackages = with pkgs; [vim];
+  environment.systemPackages = with pkgs; [ vim ];
   services.blueman.enable = true;
 
   system.stateVersion = "24.11";

@@ -1,3 +1,4 @@
-{...}: {
-  imports = [./nextcloud.nix];
+{ ... }:
+{
+  imports = [ ./nextcloud.nix ];
 }

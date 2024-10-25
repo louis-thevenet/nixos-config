@@ -41,6 +41,6 @@ rustPlatform.buildRustPackage rec {
     description = "A rofi mode to fetch and open recent VSCode projects";
     homepage = "https://github.com/fuljo/rofi-vscode-mode";
     license = lib.licenses.mpl20;
-    maintainers = [];
+    maintainers = [ ];
   };
 }

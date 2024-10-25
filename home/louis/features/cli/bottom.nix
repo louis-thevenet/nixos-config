@@ -2,10 +2,12 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   inherit (lib) mkIf;
   cfg = config.home-config.cli;
-in {
+in
+{
   programs.bottom = mkIf cfg.commonTools.enable {
     enable = true;
     settings = {
@@ -14,7 +16,14 @@ in {
         table_header_color = "#${base06}";
         all_cpu_color = "#${base06}";
         avg_cpu_color = "#${base0F}";
-        cpu_core_colors = ["#${base08}" "#${base09}" "#${base0A}" "#${base0B}" "#${base0D}" "#${base0E}"];
+        cpu_core_colors = [
+          "#${base08}"
+          "#${base09}"
+          "#${base0A}"
+          "#${base0B}"
+          "#${base0D}"
+          "#${base0E}"
+        ];
         ram_color = "#${base0B}";
         swap_color = "#${base09}";
         rx_color = "#${base0B}";
@@ -30,7 +39,14 @@ in {
         high_battery_color = "#${base0B}";
         medium_battery_color = "#${base0A}";
         low_battery_color = "#${base08}";
-        gpu_core_colors = ["#${base0D}" "#${base0E}" "#${base08}" "#${base09}" "#${base0A}" "#${base0B}"];
+        gpu_core_colors = [
+          "#${base0D}"
+          "#${base0E}"
+          "#${base08}"
+          "#${base09}"
+          "#${base0A}"
+          "#${base0B}"
+        ];
         arc_color = "#${base0C}";
       };
 

@@ -3,10 +3,12 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (lib) mkIf;
   cfg = config.home-config.desktop;
-in {
+in
+{
   imports = [
     ./swaync.nix
     ./waybar.nix
@@ -16,14 +18,17 @@ in {
     ./hypridle.nix
     ./hyprpaper.nix
   ];
-  home.packages = mkIf cfg.hyprland.enable (with pkgs; [
-    meson
-    wayland-protocols
-    wayland-utils
-    wlroots
-    copyq
-    wl-clipboard
-  ]);
+  home.packages = mkIf cfg.hyprland.enable (
+    with pkgs;
+    [
+      meson
+      wayland-protocols
+      wayland-utils
+      wlroots
+      copyq
+      wl-clipboard
+    ]
+  );
 
   services.playerctld.enable = cfg.hyprland.enable;
 }

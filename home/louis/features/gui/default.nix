@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   imports = [
     ./schizofox.nix
     ./kitty.nix

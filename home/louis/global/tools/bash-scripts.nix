@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   cpu-cores-disable = pkgs.writeShellScriptBin "cpu-core-disable" ''
     #!/usr/bin/env bash
 
@@ -14,7 +15,8 @@
       echo 0 | sudo tee /sys/devices/system/cpu/cpu"$i"/online
     done
   '';
-in {
+in
+{
   home.packages = [
     cpu-cores-disable
   ];

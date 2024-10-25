@@ -3,12 +3,17 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   inherit (lib) mkIf;
   cfg = config.home-config.gui;
-in {
-  home.packages = mkIf cfg.social.enable (with pkgs; [
-    beeper
-    discord
-  ]);
+in
+{
+  home.packages = mkIf cfg.social.enable (
+    with pkgs;
+    [
+      beeper
+      discord
+    ]
+  );
 }
