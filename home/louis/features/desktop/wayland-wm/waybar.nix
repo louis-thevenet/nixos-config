@@ -7,7 +7,6 @@
 }: let
   inherit (lib) mkIf;
   cfg = config.home-config.desktop;
-
   # Dependencies
   cut = "${pkgs.coreutils}/bin/cut";
   wc = "${pkgs.coreutils}/bin/wc";
@@ -19,7 +18,6 @@
   btm-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.bottom}/bin/btm";
   nmtui-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.networkmanager}/bin/nmtui";
   nvtop-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.nvtopPackages.nvidia}/bin/nvtop";
-
   # Function to simplify making waybar outputs
   jsonOutput = name: {
     pre ? "",
@@ -41,7 +39,6 @@
   ''}/bin/waybar-${name}";
 in {
   stylix.targets.waybar.enable = false;
-
   programs.waybar = mkIf cfg.hyprland.enable {
     enable = true;
     systemd.enable = true;
@@ -53,8 +50,7 @@ in {
         fixed-center = false;
         start_hidden = true;
         modules-left =
-          lib.optionals
-          config.wayland.windowManager.hyprland.enable [
+          lib.optionals config.wayland.windowManager.hyprland.enable [
             "hyprland/workspaces"
             #"hyprland/submap"
           ]
@@ -68,16 +64,15 @@ in {
         ];
         modules-right = [
           "tray"
-          #"custom/hostname"
           "network"
           "battery"
           "idle_inhibitor"
           "custom/currentplayer"
           "pulseaudio"
+          "backlight"
           "custom/notifications"
           "clock"
         ];
-
         clock = {
           format = "{:%d/%m %H:%M}";
           tooltip-format = ''
@@ -93,7 +88,6 @@ in {
           return-type = "json";
           exec = jsonOutput "gpu" {
             text = "";
-
             tooltip = "";
           };
           on-click = "${nvtop-kitty}";
@@ -111,11 +105,14 @@ in {
             headphone = "󰋋";
             headset = "󰋎";
             portable = "";
-            default = ["" "" ""];
+            default = [
+              ""
+              ""
+              ""
+            ];
           };
           on-click = pavucontrol;
         };
-
         "custom/notifications" = {
           tooltip = false;
           format = "{} {icon}";
@@ -136,7 +133,6 @@ in {
           on-click-right = "${swaync-client} -d -sw";
           escape = true;
         };
-
         "idle_inhibitor" = {
           "format" = "{icon}";
           "format-icons" = {
@@ -144,7 +140,6 @@ in {
             "deactivated" = " ";
           };
         };
-
         "hyprland/workspaces" = {
           format-window-separator = "";
           active-only = false;
@@ -167,11 +162,21 @@ in {
             "LM Studio" = " ";
           };
         };
-
         battery = {
           bat = cfg.hyprland.waybarConfig.batteryName;
           interval = 10;
-          format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+          format-icons = [
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
+          ];
           format = "{icon} {capacity}%";
           format-charging = "󰂄 {capacity}%";
           onclick = "";
@@ -191,11 +196,14 @@ in {
             Down: {bandwidthDownBits}'';
           on-click = nmtui-kitty;
         };
-
         "custom/hostname" = {
           exec = "echo $USER@$HOSTNAME";
         };
-
+        "backlight" = {
+          "device" = "intel_backlight";
+          "format" = "{icon} {percent}%";
+          "format-icons" = ["" "" "" "" "" "" "" "" ""];
+        };
         "custom/currentplayer" = {
           interval = 2;
           return-type = "json";
@@ -255,19 +263,18 @@ in {
     style = with config.lib.stylix;
     # css
       ''
-
         * {
-            font-size: 10pt;
+          font-size: 10pt;
+          font-family: "Fira Code Nerd Font";
+          font-weight: bold;
+          transition-property: background-color;
+          transition-duration: 0.5s;
         }
-
         window#waybar {
             background-color: transparent;
         }
-
-
         #workspaces button.focused,
         #workspaces button.active,
-
         #clock,
         #cpu,
         #memory,
@@ -277,6 +284,7 @@ in {
         #idle_inhibitor,
         #network,
         #pulseaudio,
+        #backlight,
         #tray,
         #custom-currentplayer,
         #custom-player
@@ -288,13 +296,10 @@ in {
             margin: 4px;
             border: 1px solid #${colors.base06};
         }
-
-
         #workspaces button {
             border-radius: 5;
             padding: 0 10px
         }
-
         #workspaces button,
         #workspaces button.hidden
         {
