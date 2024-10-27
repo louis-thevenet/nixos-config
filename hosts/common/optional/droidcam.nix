@@ -1,3 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.droidcam.enable = true;
 }

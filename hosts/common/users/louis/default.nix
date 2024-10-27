@@ -2,16 +2,21 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   passwordFile = config.sops.secrets.sys-passphrase.path;
-in {
+in
+{
   users = {
     mutableUsers = false;
     users = {
       louis = {
         isNormalUser = true;
         description = "louis thevenet";
-        extraGroups = ["networkmanager" "wheel"];
+        extraGroups = [
+          "networkmanager"
+          "wheel"
+        ];
         shell = pkgs.zsh;
         home = "/home/louis";
         hashedPasswordFile = passwordFile;
@@ -19,7 +24,7 @@ in {
     };
   };
 
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
 
   sops.secrets.wakatime_cfg = {
     sopsFile = ../../secrets.yaml;

@@ -3,10 +3,12 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   inherit (lib) mkIf;
   cfg = config.home-config.desktop;
-in {
+in
+{
   specialisation = mkIf cfg.stylix.enable {
     light.configuration = {
       stylix.image = ../../../../hosts/common/optional/background_light.png;

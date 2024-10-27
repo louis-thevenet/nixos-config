@@ -3,11 +3,13 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (lib) mkIf;
 
   cfg = config.home-config.desktop;
-in {
+in
+{
   dconf.settings = mkIf cfg.gnome.enable {
     "org/gnome/desktop/interface" = {
       color-scheme = "default";
@@ -15,7 +17,9 @@ in {
       show-battery-percentage = true;
     };
 
-    "org/gnome/desktop/peripherals/mouse" = {accel-profile = "flat";};
+    "org/gnome/desktop/peripherals/mouse" = {
+      accel-profile = "flat";
+    };
 
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "appmenu:minimize,maximize,close";
@@ -23,16 +27,16 @@ in {
     };
 
     "org/gnome/desktop/wm/keybindings" = {
-      maximize = ["<Super>semicolon"];
-      minimize = ["<Super>comma"];
-      unmaximize = [];
-      toggle-fullscreen = ["F11"];
-      move-to-workspace-left = ["<Control><Super>Left"];
-      move-to-workspace-right = ["<Control><Super>Right"];
+      maximize = [ "<Super>semicolon" ];
+      minimize = [ "<Super>comma" ];
+      unmaximize = [ ];
+      toggle-fullscreen = [ "F11" ];
+      move-to-workspace-left = [ "<Control><Super>Left" ];
+      move-to-workspace-right = [ "<Control><Super>Right" ];
     };
     "org/gnome/mutter/keybindings" = {
-      "toggle-tiled-left" = [];
-      "toggle-tiled-right" = [];
+      "toggle-tiled-left" = [ ];
+      "toggle-tiled-right" = [ ];
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
@@ -52,7 +56,9 @@ in {
       binding = "<Super>t";
     };
 
-    "org/gnome/settings-daemon/plugins/power" = {idle-dim = false;};
+    "org/gnome/settings-daemon/plugins/power" = {
+      idle-dim = false;
+    };
 
     "org/gnome/shell" = {
       disabled-extensions = [
@@ -92,11 +98,17 @@ in {
       startup-status = 0;
     };
 
-    "org/gnome/shell/extensions/hidetopbar" = {mouse-sensitive = true;};
+    "org/gnome/shell/extensions/hidetopbar" = {
+      mouse-sensitive = true;
+    };
 
-    "org/gnome/shell/extensions/clipboard-indicator" = {history-size = 100;};
+    "org/gnome/shell/extensions/clipboard-indicator" = {
+      history-size = 100;
+    };
 
-    "org/gnome/shell/extensions/vitals" = {hot-sensors = "['_memory_usage_', '__network-rx_max__', '_processor_usage_']";};
+    "org/gnome/shell/extensions/vitals" = {
+      hot-sensors = "['_memory_usage_', '__network-rx_max__', '_processor_usage_']";
+    };
 
     "altTab-mod" = {
       "disable-hover-select" = true;
@@ -104,20 +116,23 @@ in {
     };
   };
 
-  home.packages = mkIf cfg.gnome.enable (with pkgs; [
-    pop-launcher
-    gnomeExtensions.pop-shell
-    gnomeExtensions.pop-launcher-super-key
-    gnomeExtensions.caffeine
-    gnomeExtensions.just-perfection
-    gnomeExtensions.clipboard-indicator
-    #gnomeExtensions.media-controls
-    gnomeExtensions.vitals
-    gnomeExtensions.workspace-indicator
-    gnomeExtensions.alttab-mod
-    gnomeExtensions.upower-battery
-    gnomeExtensions.battery-time-2
-    gnomeExtensions.hide-top-bar
-    gnomeExtensions.gtk-title-bar
-  ]);
+  home.packages = mkIf cfg.gnome.enable (
+    with pkgs;
+    [
+      pop-launcher
+      gnomeExtensions.pop-shell
+      gnomeExtensions.pop-launcher-super-key
+      gnomeExtensions.caffeine
+      gnomeExtensions.just-perfection
+      gnomeExtensions.clipboard-indicator
+      #gnomeExtensions.media-controls
+      gnomeExtensions.vitals
+      gnomeExtensions.workspace-indicator
+      gnomeExtensions.alttab-mod
+      gnomeExtensions.upower-battery
+      gnomeExtensions.battery-time-2
+      gnomeExtensions.hide-top-bar
+      gnomeExtensions.gtk-title-bar
+    ]
+  );
 }

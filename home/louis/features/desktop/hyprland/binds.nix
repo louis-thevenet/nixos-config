@@ -3,49 +3,56 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (lib) mkIf;
   cfg = config.home-config.desktop;
-in {
+in
+{
   wayland = mkIf cfg.hyprland.enable {
-    windowManager.hyprland.settings.bindl = let
-      playerctl = "${pkgs.playerctl}/bin/playerctl";
-    in [
-      ",XF86AudioPlay, exec, ${playerctl} play-pause"
-      ",XF86AudioNext, exec, ${playerctl} next"
-      ",XF86AudioPrev, exec, ${playerctl} previous"
-    ];
+    windowManager.hyprland.settings.bindl =
+      let
+        playerctl = "${pkgs.playerctl}/bin/playerctl";
+      in
+      [
+        ",XF86AudioPlay, exec, ${playerctl} play-pause"
+        ",XF86AudioNext, exec, ${playerctl} next"
+        ",XF86AudioPrev, exec, ${playerctl} previous"
+      ];
 
-    windowManager.hyprland.settings.binde = let
-      brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
-      pactl = "${pkgs.pulseaudio}/bin/pactl";
-    in [
-      # Brightness
-      ",XF86MonBrightnessUp,exec,${brightnessctl} set +5%"
-      ",XF86MonBrightnessDown,exec,${brightnessctl} set 5%-"
-      # Volume
-      ",XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
-      ",XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
-      "SHIFT,XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +1%"
-      "SHIFT,XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -1%"
-      ",XF86AudioMute,exec,${pactl} set-sink-mute @DEFAULT_SINK@ toggle"
-      "SHIFT,XF86AudioMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
-      ",XF86AudioMicMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
-    ];
+    windowManager.hyprland.settings.binde =
+      let
+        brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
+        pactl = "${pkgs.pulseaudio}/bin/pactl";
+      in
+      [
+        # Brightness
+        ",XF86MonBrightnessUp,exec,${brightnessctl} set +5%"
+        ",XF86MonBrightnessDown,exec,${brightnessctl} set 5%-"
+        # Volume
+        ",XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
+        ",XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
+        "SHIFT,XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +1%"
+        "SHIFT,XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -1%"
+        ",XF86AudioMute,exec,${pactl} set-sink-mute @DEFAULT_SINK@ toggle"
+        "SHIFT,XF86AudioMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
+        ",XF86AudioMicMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
+      ];
 
-    windowManager.hyprland.settings.bind = let
-      hyprlock = "${pkgs.hyprlock}/bin/hyprlock";
-      systemctl = "${pkgs.systemd}/bin/systemctl";
-      poweroff = "${pkgs.systemd}/bin/poweroff";
-      swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
-      grimblast = "${pkgs.grimblast}/bin/grimblast";
-      terminal = config.home.sessionVariables.TERMINAL;
-      killall = "${pkgs.killall}/bin/killall";
-      darkman = "${pkgs.darkman}/bin/darkman";
-      rofi = "${pkgs.rofi-wayland}/bin/rofi";
-      copyq = "${pkgs.copyq}/bin/copyq";
-      blueman-manager = "${pkgs.blueman}/bin/blueman-manager";
-    in
+    windowManager.hyprland.settings.bind =
+      let
+        hyprlock = "${pkgs.hyprlock}/bin/hyprlock";
+        systemctl = "${pkgs.systemd}/bin/systemctl";
+        poweroff = "${pkgs.systemd}/bin/poweroff";
+        swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
+        grimblast = "${pkgs.grimblast}/bin/grimblast";
+        terminal = config.home.sessionVariables.TERMINAL;
+        killall = "${pkgs.killall}/bin/killall";
+        darkman = "${pkgs.darkman}/bin/darkman";
+        rofi = "${pkgs.rofi-wayland}/bin/rofi";
+        copyq = "${pkgs.copyq}/bin/copyq";
+        blueman-manager = "${pkgs.blueman}/bin/blueman-manager";
+      in
       [
         "SUPER,T,exec,${terminal}"
 
@@ -70,27 +77,27 @@ in {
         "SUPERSHIFT,w,exec,${killall} -SIGUSR1 .waybar-wrapped"
       ]
       ++
-      # Screen lock
-      [
-        ",XF86Launch5,exec,${hyprlock}"
-        ",XF86Launch4,exec,${hyprlock}"
-        "SUPER,backspace,exec,${hyprlock}"
-      ]
+        # Screen lock
+        [
+          ",XF86Launch5,exec,${hyprlock}"
+          ",XF86Launch4,exec,${hyprlock}"
+          "SUPER,backspace,exec,${hyprlock}"
+        ]
       ++
-      # Notification manager
-      [
-        "SUPER,w,exec,${swaync-client} -t" # cp closes
-      ]
+        # Notification manager
+        [
+          "SUPER,w,exec,${swaync-client} -t" # cp closes
+        ]
       ++
-      # Bluetooth
-      [
-        "SUPER,p,exec,${blueman-manager}"
-      ]
+        # Bluetooth
+        [
+          "SUPER,p,exec,${blueman-manager}"
+        ]
       ++
-      # Darkman toggle
-      [
-        "SUPERSHIFT,T,exec,${darkman} toggle"
-      ]
+        # Darkman toggle
+        [
+          "SUPERSHIFT,T,exec,${darkman} toggle"
+        ]
       # Power button
       ++ [
         ",xf86poweroff ,exec, ${systemctl} suspend"

@@ -3,14 +3,17 @@
   inputs,
   lib,
   ...
-}: let
+}:
+let
   inherit (lib) mkIf;
   cfg = config.home-config.gui;
-in {
-  imports = [inputs.schizofox.homeManagerModule];
-  programs.schizofox = let
-    inherit (config.lib.stylix) colors;
-  in
+in
+{
+  imports = [ inputs.schizofox.homeManagerModule ];
+  programs.schizofox =
+    let
+      inherit (config.lib.stylix) colors;
+    in
     mkIf cfg.schizofox.enable {
       enable = true;
 
@@ -42,7 +45,14 @@ in {
       search = {
         defaultSearchEngine = "Searx";
 
-        removeEngines = ["Google" "Bing" "Amazon.com" "eBay" "Twitter" "Wikipedia"];
+        removeEngines = [
+          "Google"
+          "Bing"
+          "Amazon.com"
+          "eBay"
+          "Twitter"
+          "Wikipedia"
+        ];
 
         searxUrl = cfg.schizofox.searxngInstance;
         searxQuery = cfg.schizofox.searxngInstance + "/search?q={searchTerms}&categories=general";

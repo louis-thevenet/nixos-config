@@ -3,7 +3,8 @@
   inputs,
   config,
   ...
-}: {
+}:
+{
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     ./plugins
@@ -26,11 +27,13 @@
         };
         cursorword = {
           enable = true;
-          hl = {underline = true;};
+          hl = {
+            underline = true;
+          };
         };
       };
     };
 
-    extraPlugins = with pkgs.vimPlugins; [];
+    extraPlugins = with pkgs.vimPlugins; [ ];
   };
 }

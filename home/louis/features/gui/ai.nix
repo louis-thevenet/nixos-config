@@ -4,10 +4,12 @@
   lib,
   inputs,
   ...
-}: let
+}:
+let
   inherit (lib) mkIf mkMerge;
   cfg = config.home-config.gui.ai;
-in {
+in
+{
   home.packages = mkMerge [
     (mkIf cfg.lmstudio.enable [
       pkgs.lmstudio

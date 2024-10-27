@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.zsh = {
     enable = true;
     shellAliases = {
@@ -19,21 +20,29 @@
     plugins = [
       {
         name = "zsh-command-time";
-        src =
-          pkgs.fetchFromGitHub
-          {
-            owner = "popstas";
-            repo = "zsh-command-time";
-            rev = "803d26eef526bff1494d1a584e46a6e08d25d918";
-            sha256 = "ndHVFcz+XmUW0zwFq7pBXygdRKyPLjDZNmTelhd5bv8=";
-          };
+        src = pkgs.fetchFromGitHub {
+          owner = "popstas";
+          repo = "zsh-command-time";
+          rev = "803d26eef526bff1494d1a584e46a6e08d25d918";
+          sha256 = "ndHVFcz+XmUW0zwFq7pBXygdRKyPLjDZNmTelhd5bv8=";
+        };
         file = "command-time.plugin.zsh";
       }
     ];
 
     oh-my-zsh = {
       enable = true;
-      plugins = ["git" "web-search" "history" "copypath" "copyfile" "vscode" "rust" "direnv" "fzf"];
+      plugins = [
+        "git"
+        "web-search"
+        "history"
+        "copypath"
+        "copyfile"
+        "vscode"
+        "rust"
+        "direnv"
+        "fzf"
+      ];
       theme = "candy";
     };
   };

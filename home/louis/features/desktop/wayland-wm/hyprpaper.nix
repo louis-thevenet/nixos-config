@@ -1,5 +1,7 @@
-{config, ...}: let
+{ config, ... }:
+let
   cfg = config.home-config.desktop;
-in {
+in
+{
   services.hyprpaper.enable = cfg.hyprland.enable;
 }

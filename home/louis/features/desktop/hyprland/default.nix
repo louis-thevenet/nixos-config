@@ -3,10 +3,12 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   inherit (lib) mkIf;
   cfg = config.home-config.desktop;
-in {
+in
+{
   imports = [
     ./window-binds.nix
     ./binds.nix
@@ -19,15 +21,17 @@ in {
     # Whether to enable XWayland
     xwayland.enable = true;
 
-    extraConfig = let
-      swaync = "${pkgs.swaynotificationcenter}/bin/swaync";
-      hypridle = "${pkgs.hypridle}/bin/hypridle";
-      copyq = "${pkgs.copyq}/bin/copyq";
-    in ''
-      exec-once = ${swaync}
-      exec-once = ${hypridle}
-      exec-once = ${copyq}
-    '';
+    extraConfig =
+      let
+        swaync = "${pkgs.swaynotificationcenter}/bin/swaync";
+        hypridle = "${pkgs.hypridle}/bin/hypridle";
+        copyq = "${pkgs.copyq}/bin/copyq";
+      in
+      ''
+        exec-once = ${swaync}
+        exec-once = ${hypridle}
+        exec-once = ${copyq}
+      '';
 
     settings = {
       env = [
@@ -48,20 +52,16 @@ in {
         };
       };
       monitor =
-        map
-        (
-          m: let
+        map (
+          m:
+          let
             resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
             position = "${toString m.x}x${toString m.y}";
             scale = "${toString m.scale}";
-          in "${m.name},${
-            if m.enabled
-            then "${resolution},${position},${scale}"
-            else "disable"
-          }"
-        )
-        (config.monitors)
-        ++ [",preferred,auto,1"];
+          in
+          "${m.name},${if m.enabled then "${resolution},${position},${scale}" else "disable"}"
+        ) (config.monitors)
+        ++ [ ",preferred,auto,1" ];
 
       gestures = {
         workspace_swipe = true;

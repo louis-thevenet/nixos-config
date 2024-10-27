@@ -3,7 +3,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
-    nixpkgs-howdy.url = "github:fufexan/nixpkgs/howdy";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,7 +57,6 @@
     self,
     nixpkgs,
     nixpkgs-master,
-    nixpkgs-howdy,
     home-manager,
     stylix,
     ...
@@ -99,12 +97,6 @@
           };
         in [
           ./hosts/${host}
-
-          # enable unmerged Howdy
-          {disabledModules = ["security/pam.nix"];}
-          "${nixpkgs-howdy}/nixos/modules/security/pam.nix"
-          "${nixpkgs-howdy}/nixos/modules/services/security/howdy"
-          "${nixpkgs-howdy}/nixos/modules/services/misc/linux-enable-ir-emitter.nix"
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -123,7 +115,7 @@
         ];
       };
   in {
-    formatter = forEachPkgs (pkgs: pkgs.alejandra);
+    formatter = forEachPkgs (pkgs: pkgs.nixfmt-rfc-style);
     devShells."x86_64-linux".default = mkShell "x86_64-linux";
 
     nixosConfigurations = {

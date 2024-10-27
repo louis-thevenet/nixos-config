@@ -202,7 +202,17 @@ in {
         "backlight" = {
           "device" = "intel_backlight";
           "format" = "{icon} {percent}%";
-          "format-icons" = ["" "" "" "" "" "" "" "" ""];
+          "format-icons" = [
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
         };
         "custom/currentplayer" = {
           interval = 2;

@@ -1,4 +1,5 @@
-{inputs, ...}: {
+{ inputs, ... }:
+{
   imports = [
     (inputs.impermanence + "/home-manager.nix")
   ];
@@ -18,8 +19,9 @@
         method = "symlink";
       }
     ];
-    files = [
-    ];
+    files =
+      [
+      ];
     allowOther = true;
   };
 }

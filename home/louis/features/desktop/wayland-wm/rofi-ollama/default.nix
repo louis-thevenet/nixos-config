@@ -31,11 +31,14 @@ rustPlatform.buildRustPackage rec {
     mv $out/lib/librofi_ollama.so $out/lib/rofi/
   '';
 
-  buildInputs = [pango openssl];
+  buildInputs = [
+    pango
+    openssl
+  ];
   meta = {
     description = "A rofi plugin to fetch and run available ollama models";
     homepage = "https://github.com/louis-thevenet/rofi-ollama";
     license = lib.licenses.mpl20;
-    maintainers = [];
+    maintainers = [ ];
   };
 }

@@ -2,7 +2,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
     ./sops.nix
@@ -19,7 +20,7 @@
   services.udisks2.enable = true;
   hardware.graphics.enable = true;
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
   programs.steam.enable = true;
   hardware.nvidia = {
     # Modesetting is needed for most wayland compositors

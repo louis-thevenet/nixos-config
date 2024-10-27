@@ -3,7 +3,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   stylix = {
     enable = true;
     image = lib.mkDefault ./background_light.png;
@@ -16,7 +17,7 @@
     fonts = {
       monospace = {
         name = "FiraCode Nerd Font";
-        package = pkgs.nerdfonts.override {fonts = ["FiraCode"];};
+        package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
       };
       serif = config.stylix.fonts.monospace;
       sansSerif = config.stylix.fonts.monospace;

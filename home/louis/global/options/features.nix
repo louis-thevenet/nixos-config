@@ -1,6 +1,8 @@
-{lib, ...}: let
+{ lib, ... }:
+let
   inherit (lib) mkEnableOption mkOption;
-in {
+in
+{
   options.home-config = {
     cli = {
       commonTools.enable = mkEnableOption ''
