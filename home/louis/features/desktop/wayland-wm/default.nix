@@ -3,12 +3,10 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   inherit (lib) mkIf;
   cfg = config.home-config.desktop;
-in
-{
+in {
   imports = [
     ./swaync.nix
     ./waybar.nix
@@ -17,10 +15,10 @@ in
     ./hyprlock.nix
     ./hypridle.nix
     ./hyprpaper.nix
+    ./battery.nix
   ];
   home.packages = mkIf cfg.hyprland.enable (
-    with pkgs;
-    [
+    with pkgs; [
       meson
       wayland-protocols
       wayland-utils
