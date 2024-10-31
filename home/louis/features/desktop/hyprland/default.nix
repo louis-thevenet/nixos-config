@@ -42,6 +42,9 @@ in
         "CLUTTER_BACKEND,wayland"
         "WLR_RENDERER,vulkan"
       ];
+      cursor = mkIf cfg.hyprland.nvidia {
+        no_hardware_cursors = true;
+      };
       input = {
         kb_layout = "fr";
         kb_variant = "azerty";

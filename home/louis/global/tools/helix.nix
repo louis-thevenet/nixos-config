@@ -101,14 +101,9 @@
             "wakatime"
           ];
           formatter = {
-            command = lib.getExe pkgs.typstfmt;
-            args = [
-              "/dev/stdin"
-              "-o"
-              "/dev/stdout"
-            ];
+            command = lib.getExe pkgs.typstyle;
           };
-          auto-format = true; # see https://github.com/helix-editor/helix/issues/11237
+          auto-format = true;
         }
         {
           name = "rust";
@@ -167,10 +162,7 @@
 
         nil = {
           command = lib.getExe pkgs.nil;
-          config.nil.formatting.command = [
-            "${lib.getExe pkgs.alejandra}"
-            "-q"
-          ];
+          config.nil.formatting.command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
         };
 
         tinymist = {

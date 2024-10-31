@@ -74,7 +74,13 @@ in
         enable = mkEnableOption ''
           Enable Hyprland
         '';
-
+        nvidia = mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = ''
+            Enable Nvidia options for Hyprland
+          '';
+        };
         hypridleConfig = {
           screenDimTime = mkOption {
             type = lib.types.ints.u32;
