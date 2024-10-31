@@ -1,18 +1,34 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.zsh = {
     enable = true;
-    shellAliases = {
-      rebuild-sys = "nh os switch /home/louis/src/nixos-config";
-      update-sys = "nh os switch /home/louis/src/nixos-config --update";
+    shellAliases =
+      let
+        eza = lib.getExe pkgs.eza;
+        helix = lib.getExe pkgs.helix;
+        dysk = lib.getExe pkgs.dysk;
+        bat = lib.getExe pkgs.bat;
+        broot = lib.getExe pkgs.broot;
+        dust = lib.getExe pkgs.dust;
+      in
+      {
+        rebuild-sys = "nh os switch /home/louis/src/nixos-config";
+        update-sys = "nh os switch /home/louis/src/nixos-config --update";
 
-      vim = "hx";
-      ls = "eza --long --header --binary --no-permissions --no-user --icons=auto";
-      lss = "ls --total-size";
-      lst = "eza --tree";
-      lsg = "ls --git";
-      cat = "bat --theme=\"Solarized (light)\"";
-    };
+        vim = helix;
+
+        ls = "${eza} --long --header --binary --no-permissions --no-user --icons=auto";
+        lss = "${eza} --total-size";
+        lst = "${eza} --tree";
+        lsg = "${eza} --git";
+
+        cat = "${bat} --theme=\"Solarized (light)\"";
+
+        tree = broot;
+        du = dust;
+
+        df = dysk;
+      };
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     enableCompletion = true;

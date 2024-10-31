@@ -16,6 +16,8 @@ in
       neofetch
       eza
       bat
+      dysk
+      broot
       trash-cli
       du-dust
       git-open
