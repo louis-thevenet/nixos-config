@@ -68,7 +68,10 @@
       language = [
         {
           name = "bash";
-          language-servers = [ "bash-language-server" ];
+          language-servers = [
+            "bash-language-server"
+            "gpt"
+          ];
           formatter = {
             command = "${pkgs.shfmt}/bin/shfmt";
             args = [
@@ -84,6 +87,7 @@
             "markdown-oxide"
             "wakatime"
             "ltex-ls"
+            "gpt"
           ];
           formatter = {
             command = lib.getExe pkgs.nodePackages.prettier;
@@ -99,6 +103,7 @@
           language-servers = [
             "tinymist"
             "wakatime"
+            "gpt"
           ];
           formatter = {
             command = lib.getExe pkgs.typstyle;
@@ -151,6 +156,15 @@
         }
       ];
       language-server = {
+        gpt = {
+          command = lib.getExe pkgs.helix-gpt;
+          args = [
+            "--handler"
+            "ollama"
+            # "--logFile"
+            # "helix-gpt.log"
+          ];
+        };
         bash-language-server = {
           command = "${pkgs.nodePackages.bash-language-server}/bin/bash-language-server";
           args = [ "start" ];
@@ -199,16 +213,16 @@
               command = "clippy";
               extraArgs = [
                 "--"
-                "-W"
-                "clippy::complexity"
+                # "-W"
+                # "clippy::complexity"
                 "-W"
                 "clippy::perf"
                 "-W"
                 "clippy::style"
                 "-W"
                 "clippy::pedantic"
-                "-W"
-                "clippy::nursery"
+                # "-W"
+                # "clippy::nursery"
               ];
             };
           };
