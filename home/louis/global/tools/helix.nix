@@ -59,7 +59,9 @@
           "down" = "goto_prev_diag";
           "up" = "goto_next_diag";
 
-          "backspace-y" = ":yank-diagnostic";
+          backspace = {
+            "y" = ":yank-diagnostic";
+          };
         };
       };
     };
