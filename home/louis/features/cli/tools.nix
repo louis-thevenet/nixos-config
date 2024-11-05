@@ -26,6 +26,7 @@ in
       comma
       tdf
       see-cat
+      smartcat
       inputs.vault-tasks.packages.${pkgs.system}.default
       vhs
     ]
