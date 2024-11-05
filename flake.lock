@@ -621,6 +621,7 @@
         "nix-ai-stuff": "nix-ai-stuff",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-howdy": "nixpkgs-howdy",
         "nixpkgs-master": "nixpkgs-master",
         "schizofox": "schizofox",
         "sops-nix": "sops-nix",
