@@ -2,6 +2,7 @@
   description = "NixOS config";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-howdy.url = "github:fufexan/nixpkgs/howdy";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -53,74 +54,98 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nixpkgs-master,
-    home-manager,
-    stylix,
-    ...
-  }: let
-    forEachSystem = nixpkgs.lib.genAttrs ["aarch64-linux" "x86_64-linux"];
-    forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixpkgs-master,
+      nixpkgs-howdy,
+      home-manager,
+      stylix,
+      ...
+    }:
+    let
+      forEachSystem = nixpkgs.lib.genAttrs [
+        "aarch64-linux"
+        "x86_64-linux"
+      ];
+      forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
 
-    mkShell = system:
-      nixpkgs.legacyPackages.${system}.mkShell {
-        packages = with nixpkgs.legacyPackages.${system};
-        with pkgs;
-          [
-            nil
-            alejandra
-            python311Packages.nix-prefetch-github
-            nixos-generators
-            # nix-du
-            graphviz
-            sops
-            age
-            deadnix
-          ]
-          ++ [
-            pkgs.home-manager
-          ];
-      };
+      mkShell =
+        system:
+        nixpkgs.legacyPackages.${system}.mkShell {
+          packages =
+            with nixpkgs.legacyPackages.${system};
+            with pkgs;
+            [
+              nil
+              alejandra
+              python311Packages.nix-prefetch-github
+              nixos-generators
+              # nix-du
+              graphviz
+              sops
+              age
+              deadnix
+            ]
+            ++ [
+              pkgs.home-manager
+            ];
+        };
 
-    mkNixos = user: host: system:
-      nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit (self) inputs outputs;};
-        modules = let
-          overlay-master = final: prev: {
-            master = import nixpkgs-master {
-              system = final.system;
-              config.allowUnfree = true;
-            };
+      mkNixos =
+        user: host: system:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit (self) inputs outputs;
           };
-        in [
-          ./hosts/${host}
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.users.${user} = import ./home/${user}/${host}.nix;
-            home-manager.extraSpecialArgs = {
-              inherit (self) inputs outputs;
-            };
-          }
-          stylix.nixosModules.stylix
-          ({
-            config,
-            pkgs,
-            stylix,
-            ...
-          }: {nixpkgs.overlays = [overlay-master];})
-        ];
-      };
-  in {
-    formatter = forEachPkgs (pkgs: pkgs.nixfmt-rfc-style);
-    devShells."x86_64-linux".default = mkShell "x86_64-linux";
+          modules =
+            let
+              overlay-master = final: prev: {
+                master = import nixpkgs-master {
+                  system = final.system;
+                  config.allowUnfree = true;
+                };
+              };
+            in
+            [
+              ./hosts/${host}
+              # enable unmerged Howdy
+              # { disabledModules = [ "security/pam.nix" ]; }
+              # "${nixpkgs-howdy}/nixos/modules/security/pam.nix"
+              # "${nixpkgs-howdy}/nixos/modules/services/security/howdy"
+              # "${nixpkgs-howdy}/nixos/modules/services/misc/linux-enable-ir-emitter.nix"
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.users.${user} = import ./home/${user}/${host}.nix;
+                home-manager.extraSpecialArgs = {
+                  inherit (self) inputs outputs;
+                };
+              }
+              stylix.nixosModules.stylix
+              (
+                {
+                  config,
+                  pkgs,
+                  stylix,
+                  ...
+                }:
+                {
+                  nixpkgs.overlays = [ overlay-master ];
+                }
+              )
+            ];
+        };
+    in
+    {
+      formatter = forEachPkgs (pkgs: pkgs.nixfmt);
+      devShells."x86_64-linux".default = mkShell "x86_64-linux";
 
-    nixosConfigurations = {
-      magnus = mkNixos "louis" "magnus" "x86_64-linux";
-      akatosh = mkNixos "louis" "akatosh" "x86_64-linux";
+      nixosConfigurations = {
+        magnus = mkNixos "louis" "magnus" "x86_64-linux";
+        akatosh = mkNixos "louis" "akatosh" "x86_64-linux";
+      };
     };
-  };
 }
