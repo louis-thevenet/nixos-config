@@ -17,7 +17,7 @@ in
 
     dark.configuration = {
       stylix.image = ../../../../hosts/common/optional/background_dark.jpeg;
-      stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/windows-highcontrast.yaml";
+      stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/darkviolet.yaml";
     };
   };
 }
