@@ -53,14 +53,14 @@
       };
 
       keys = {
-        # insert = {
-        #   "C-w" = "copilot_apply_completion";
-        #   "C-e" = "copilot_show_completion";
-        # };
+        normal = {
+          "right" = ":buffer-next";
+          "left" = ":buffer-previous";
+          "down" = "goto_prev_diag";
+          "up" = "goto_next_diag";
 
-        # normal = {
-        #   "C-e" = "copilot_toggle_auto_render";
-        # };
+          "backspace-y" = ":yank-diagnostic";
+        };
       };
     };
 
