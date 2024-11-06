@@ -59,6 +59,8 @@
           "down" = "goto_prev_diag";
           "up" = "goto_next_diag";
 
+          "ret" = "goto_word";
+
           backspace = {
             "y" = ":yank-diagnostic";
           };
@@ -105,7 +107,6 @@
           language-servers = [
             "tinymist"
             "wakatime"
-            "gpt"
           ];
           formatter = {
             command = lib.getExe pkgs.typstyle;
