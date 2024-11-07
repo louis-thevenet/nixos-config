@@ -8,6 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    helix.url = "github:helix-editor/helix";
     impermanence.url = "github:nix-community/impermanence";
 
     disko = {

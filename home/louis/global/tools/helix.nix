@@ -7,9 +7,15 @@
 {
   programs.helix = {
     enable = true;
+    package = inputs.helix.packages.${pkgs.system}.default;
     defaultEditor = true;
     settings = {
       editor = {
+        end-of-line-diagnostics = "hint";
+        inline-diagnostics = {
+          cursor-line = "warning";
+          other-lines = "hint";
+        };
         auto-save = {
           focus-lost = true;
           after-delay = {
