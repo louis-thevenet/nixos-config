@@ -126,8 +126,13 @@
             "wakatime"
           ];
         }
+
         {
           name = "ocaml";
+          file-types = [
+            "ml"
+            "mli"
+          ];
           language-servers = [
             "ocaml-lsp"
             "wakatime"
