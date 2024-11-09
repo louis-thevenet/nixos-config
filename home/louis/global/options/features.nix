@@ -22,6 +22,12 @@ in
         Enable Kitty
       '';
 
+      firefox = {
+        enable = mkEnableOption ''
+          Enable Firefox
+        '';
+      };
+
       schizofox = {
         enable = mkEnableOption ''
           Enable Schizofox
