@@ -13,6 +13,7 @@
     };
     gui = {
       kitty.enable = true;
+      # firefox.enable = true;
       schizofox = {
         enable = true;
         searxngInstance = "http://192.168.1.53:8080";
