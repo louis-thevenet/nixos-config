@@ -70,6 +70,20 @@
           backspace = {
             "y" = ":yank-diagnostic";
           };
+          x = [
+            "extend_line_below"
+          ];
+          X = [
+            "extend_line_above"
+          ];
+        };
+        select = {
+          x = [
+            "extend_line_below"
+          ];
+          X = [
+            "extend_line_above"
+          ];
         };
       };
     };
@@ -97,7 +111,6 @@
             "markdown-oxide"
             "wakatime"
             "ltex-ls"
-            "gpt"
           ];
           formatter = {
             command = lib.getExe pkgs.nodePackages.prettier;
