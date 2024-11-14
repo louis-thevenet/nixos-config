@@ -32,7 +32,10 @@ in
         exec-once = ${hypridle}
         exec-once = ${copyq}
       '';
-
+    plugins = with pkgs.hyprlandPlugins; [
+      hypr-dynamic-cursors
+      hyprgrass
+    ];
     settings = {
       env = [
         "ELECTRON_OZONE_PLATFORM_HINT,auto"
