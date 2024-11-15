@@ -8,7 +8,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    rerun.url = "git+file:../rerun";
     helix.url = "github:helix-editor/helix";
     impermanence.url = "github:nix-community/impermanence";
 
@@ -50,7 +49,7 @@
     };
 
     vault-tasks = {
-      url = "github:louis-thevenet/vault-tasks";
+      url = "github:louis-thevenet/vault-tasks/v0.4.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

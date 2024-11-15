@@ -28,7 +28,6 @@ in
       see-cat
       smartcat
       inputs.vault-tasks.packages.${pkgs.system}.default
-      inputs.rerun.packages.${pkgs.system}.default
       vhs
     ]
   );
