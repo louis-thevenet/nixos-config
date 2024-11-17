@@ -167,7 +167,15 @@
             "wakatime"
           ];
         }
+        {
+          name = "javascript";
+          language-servers = [
 
+            "typescript-language-server"
+
+          ];
+          auto-format = true;
+        }
         {
           name = "java";
           language-servers = [ "jdtls" ];
@@ -183,6 +191,9 @@
         }
       ];
       language-server = {
+        typescript-language-server = {
+          command = lib.getExe pkgs.nodePackages_latest.typescript-language-server;
+        };
         gpt = {
           command = lib.getExe pkgs.helix-gpt;
           args = [
