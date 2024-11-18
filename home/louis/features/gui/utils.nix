@@ -12,7 +12,7 @@ in
   home.packages = mkIf cfg.utils.enable (
     with pkgs;
     [
-      calibre
+      # calibre
       libsForQt5.okular
       tor-browser-bundle-bin
       spotube

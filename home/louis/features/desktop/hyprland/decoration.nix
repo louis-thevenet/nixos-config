@@ -28,9 +28,11 @@ in
         new_optimizations = true;
         ignore_opacity = true;
       };
-      drop_shadow = true;
-      shadow_range = 12;
-      shadow_offset = "3 3";
+      shadow = {
+        enabled = true;
+        range = 12;
+        offset = "3 3";
+      };
     };
     animations = {
       enabled = true;

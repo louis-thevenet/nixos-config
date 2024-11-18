@@ -33,8 +33,8 @@ in
         exec-once = ${copyq}
       '';
     plugins = with pkgs.hyprlandPlugins; [
-      hypr-dynamic-cursors
-      hyprgrass
+      # hypr-dynamic-cursors
+      # hyprgrass
     ];
     settings = {
       env = [

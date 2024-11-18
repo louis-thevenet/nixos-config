@@ -98,7 +98,7 @@ in
 
       extensions = {
         enableDefaultExtensions = true;
-        darkreader.enable = true;
+        darkreader.enable = false;
         enableExtraExtensions = true;
         extraExtensions = {
           # Remove YT thumbnails
