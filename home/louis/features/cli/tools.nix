@@ -28,7 +28,7 @@ in
       see-cat
       smartcat
       inputs.vault-tasks.packages.${pkgs.system}.default
-      inputs.television.packages.${pkgs.system}.default
+      television
       vhs
     ]
   );
