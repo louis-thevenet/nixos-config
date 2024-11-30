@@ -8,7 +8,7 @@
   stylix = {
     enable = true;
     image = lib.mkDefault ./background_light.png;
-    base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/google-light.yaml";
     cursor = {
       package = pkgs.numix-cursor-theme;
       name = "Numix-Cursor-Light";
