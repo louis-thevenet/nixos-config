@@ -1073,16 +1073,16 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1732468042,
-        "narHash": "sha256-tV8xSw8N5TCt6CHq4eF/Arp76HALXAklRA6RJYJvKXc=",
+        "lastModified": 1732969469,
+        "narHash": "sha256-mS+Frh8QAxXsfuJtitCzYqb191fm9uLyAus8xcKL6OQ=",
         "owner": "louis-thevenet",
         "repo": "vault-tasks",
-        "rev": "0f270e0f95988d46a57df6c836277919d0ed16a3",
+        "rev": "1ef0db9699162be995fcd314f9778b9f0128e569",
         "type": "github"
       },
       "original": {
         "owner": "louis-thevenet",
-        "ref": "v0.5.1",
+        "ref": "v0.6.0",
         "repo": "vault-tasks",
         "type": "github"
       }
