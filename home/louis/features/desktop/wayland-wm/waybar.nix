@@ -281,7 +281,7 @@ in
       ''
         * {
           font-size: 10pt;
-          font-family: "Fira Code Nerd Font";
+          font-family: "JetBrainsMono Nerd Font";
           font-weight: bold;
           transition-property: background-color;
           transition-duration: 0.5s;
