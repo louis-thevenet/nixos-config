@@ -20,7 +20,6 @@ in
 
     # Whether to enable XWayland
     xwayland.enable = true;
-
     extraConfig =
       let
         swaync = "${pkgs.swaynotificationcenter}/bin/swaync";
@@ -52,6 +51,7 @@ in
         kb_layout = "fr";
         kb_variant = "azerty";
         numlock_by_default = true;
+        kb_options = "fkeys:basic_13-24,ctrl:nocaps";
         touchpad = {
           disable_while_typing = false;
           natural_scroll = true;
