@@ -1,15 +1,22 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
   programs.zsh = {
     enable = true;
     shellAliases =
       let
         eza = lib.getExe pkgs.eza;
-        helix = lib.getExe pkgs.helix;
+        helix = lib.getExe (inputs.helix.packages.${pkgs.system}.default);
+        tmux = lib.getExe pkgs.tmux;
         dysk = lib.getExe pkgs.dysk;
         bat = lib.getExe pkgs.bat;
         broot = lib.getExe pkgs.broot;
         dust = lib.getExe pkgs.dust;
+        tv = lib.getExe pkgs.television;
       in
       {
         rebuild-sys = "nh os switch /home/louis/src/nixos-config";
@@ -23,6 +30,11 @@
         lsg = "${eza} --git";
 
         cat = "${bat} --theme=\"Solarized (light)\"";
+
+        tvg = "${tv} git-repos";
+        cdg = "cd $(tvg); ${tmux}";
+        hxtv = "${helix} $(${tv})";
+        cdhx = "tvg; ${helix} $(${tv})";
 
         tree = broot;
         du = dust;
