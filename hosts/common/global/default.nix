@@ -44,5 +44,15 @@
   environment.systemPackages = with pkgs; [ vim ];
   services.blueman.enable = true;
 
+  networking.firewall = {
+    enable = true;
+    allowedTCPPortRanges = [
+      {
+        from = 8080;
+        to = 8100;
+      }
+    ];
+  };
+
   system.stateVersion = "24.11";
 }
