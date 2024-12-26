@@ -20,6 +20,22 @@ in
         ",XF86AudioPrev, exec, ${playerctl} previous"
       ];
 
+    windowManager.hyprland.settings.bindr =
+      let
+        killall = "${pkgs.killall}/bin/killall";
+        rofi = "${pkgs.rofi-wayland}/bin/rofi";
+      in
+      # Waybar
+      [
+
+        "SUPER,x,exec,${killall} -SIGUSR1 .waybar-wrapped"
+      ]
+      # Launcher
+      ++ [
+        "SUPER,SUPER_L,exec,${rofi} -show drun -sidebar-mode"
+        "SUPERSHIFT,SUPER_L,exec,${rofi} -show run"
+        "SUPER,tab,exec,${rofi} -show window"
+      ];
     windowManager.hyprland.settings.binde =
       let
         brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
@@ -47,9 +63,7 @@ in
         swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
         grimblast = "${pkgs.grimblast}/bin/grimblast";
         terminal = config.home.sessionVariables.TERMINAL;
-        killall = "${pkgs.killall}/bin/killall";
         darkman = "${pkgs.darkman}/bin/darkman";
-        rofi = "${pkgs.rofi-wayland}/bin/rofi";
         copyq = "${pkgs.copyq}/bin/copyq";
         blueman-manager = "${pkgs.blueman}/bin/blueman-manager";
       in
@@ -65,16 +79,6 @@ in
         "SHIFT,Print,exec,${grimblast} --notify copy active"
         "CONTROL,Print,exec,${grimblast} --notify copy screen"
         "SUPER,Print,exec,${grimblast} --notify copy window"
-      ]
-      # Launcher
-      ++ [
-        "SUPER,x,exec,${rofi} -show drun -sidebar-mode"
-        "SUPERSHIFT,x,exec,${rofi} -show run"
-        "SUPER,tab,exec,${rofi} -show window"
-      ]
-      # Waybar
-      ++ [
-        "SUPERSHIFT,w,exec,${killall} -SIGUSR1 .waybar-wrapped"
       ]
       ++
         # Screen lock
