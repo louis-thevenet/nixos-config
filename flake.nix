@@ -38,6 +38,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     schizofox = {
       url = "github:schizofox/schizofox/main";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -71,6 +76,7 @@
       nixpkgs-master,
       home-manager,
       stylix,
+      nix-index-database,
       ...
     }:
     let
@@ -123,6 +129,7 @@
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.users.${user} = import ./home/${user}/${host}.nix;
+
                 home-manager.extraSpecialArgs = {
                   inherit (self) inputs outputs;
                 };
@@ -139,6 +146,11 @@
                   nixpkgs.overlays = [ overlay-master ];
                 }
               )
+              nix-index-database.nixosModules.nix-index
+              {
+                programs.nix-index-database.comma.enable = true;
+                programs.nix-index.enable = true;
+              }
             ];
         };
     in

@@ -536,6 +536,26 @@
         "type": "github"
       }
     },
+    "nix-index-database": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1735222882,
+        "narHash": "sha256-kWNi45/mRjQMG+UpaZQ7KyPavYrKfle3WgLn9YeBBVg=",
+        "owner": "nix-community",
+        "repo": "nix-index-database",
+        "rev": "7e3246f6ad43b44bc1c16d580d7bf6467f971530",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix-index-database",
+        "type": "github"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1734352517,
@@ -692,6 +712,7 @@
         "hyprland-qtutils": "hyprland-qtutils",
         "impermanence": "impermanence",
         "nix-ai-stuff": "nix-ai-stuff",
+        "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-master": "nixpkgs-master",

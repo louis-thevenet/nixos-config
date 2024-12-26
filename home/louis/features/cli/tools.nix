@@ -23,7 +23,6 @@ in
       nm-tray
       killall
       wget
-      comma
       tdf
       see-cat
       smartcat
