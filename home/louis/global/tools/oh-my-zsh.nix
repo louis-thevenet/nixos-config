@@ -17,10 +17,11 @@
         broot = lib.getExe pkgs.broot;
         dust = lib.getExe pkgs.dust;
         tv = lib.getExe pkgs.television;
+        nh = lib.getExe inputs.nh.packages.${pkgs.system}.default;
       in
       {
-        rebuild-sys = "nh os switch /home/louis/src/nixos-config";
-        update-sys = "nh os switch /home/louis/src/nixos-config --update";
+        rebuild-sys = "${nh} os switch /home/louis/src/nixos-config";
+        update-sys = "${nh} os switch /home/louis/src/nixos-config --update";
 
         vim = helix;
 
@@ -31,7 +32,7 @@
 
         cat = "${bat} --theme=\"Solarized (light)\"";
 
-        tvg = "${tv} git-repos";
+        tvg = "${tv} gitrepos";
         cdg = "cd $(tvg); ${tmux}";
         hxtv = "${helix} $(${tv})";
         cdhx = "tvg; ${helix} $(${tv})";
