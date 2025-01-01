@@ -15,7 +15,7 @@
           "x-scheme-handler/http" = browser;
           "x-scheme-handler/https" = browser;
           "x-scheme-handler/about" = browser;
-          "application/pdf" = "org.kde.okular.desktop";
+          "application/pdf" = "sioyek.app";
           "text/plain" = editor;
           "text/*" = editor;
           "inode/directory" = "yazi.desktop";

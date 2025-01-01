@@ -13,7 +13,7 @@ in
     with pkgs;
     [
       # calibre
-      libsForQt5.okular
+      sioyek
       tor-browser-bundle-bin
       spotube
       warp-terminal
