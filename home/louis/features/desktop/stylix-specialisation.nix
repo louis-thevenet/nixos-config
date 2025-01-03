@@ -11,12 +11,12 @@ in
 {
   specialisation = mkIf cfg.stylix.enable {
     light.configuration = {
-      stylix.image = ../../../../hosts/common/optional/background_light.png;
+      stylix.image = ../../../../hosts/common/optional/background.png;
       stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/google-light.yaml";
     };
 
     dark.configuration = {
-      stylix.image = ../../../../hosts/common/optional/background_dark.jpeg;
+      stylix.image = ../../../../hosts/common/optional/background.png;
       stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/primer-dark.yaml";
     };
   };

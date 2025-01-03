@@ -7,7 +7,7 @@
 {
   stylix = {
     enable = true;
-    image = lib.mkDefault ./background_light.png;
+    image = lib.mkDefault ./background.png;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/google-light.yaml";
     cursor = {
       package = pkgs.numix-cursor-theme;
