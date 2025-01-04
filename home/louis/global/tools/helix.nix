@@ -69,6 +69,8 @@
 
           backspace = {
             "y" = ":yank-diagnostic";
+            "t" = "@i- [ ] today ";
+            "n" = "@i- [ ] ";
           };
           x = [
             "extend_line_below"
