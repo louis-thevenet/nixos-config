@@ -69,7 +69,7 @@
     };
 
     vault-tasks = {
-      url = "github:louis-thevenet/vault-tasks/v0.7.0";
+      url = "github:louis-thevenet/vault-tasks/v0.8.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
