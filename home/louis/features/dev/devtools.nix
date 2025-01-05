@@ -48,11 +48,28 @@ in
   programs.tmux = mkIf cfg.devTools.enable {
     enable = true;
     clock24 = true;
-    extraConfig = ''
-      set -s escape-time 0
-    '';
     prefix = "C-a";
     baseIndex = 1;
     mouse = true;
+    disableConfirmationPrompt = true;
+    escapeTime = 0;
+    historyLimit = 5000;
+    plugins =
+      let
+        inherit (pkgs.tmuxPlugins) resurrect continuum;
+      in
+      [
+        {
+          plugin = resurrect;
+          extraConfig = "set -g @resurrect-processes '\"~hx->hx *\" lazygit vault-tasks'";
+        }
+        {
+          plugin = continuum;
+          extraConfig = ''
+            set -g @continuum-restore 'on'
+            set -g @continuum-save-interval '5' # minutes
+          '';
+        }
+      ];
   };
 }
