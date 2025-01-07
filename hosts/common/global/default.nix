@@ -25,7 +25,7 @@
 
   console.keyMap = "fr";
   services.printing.enable = true;
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
   services.pipewire = {

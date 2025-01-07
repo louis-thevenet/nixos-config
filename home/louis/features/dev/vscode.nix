@@ -11,7 +11,6 @@ in
 {
   programs.vscode = mkIf cfg.vscode.enable {
     enable = true;
-    package = pkgs.master.vscodium;
     enableExtensionUpdateCheck = true;
     enableUpdateCheck = false;
     extensions =
