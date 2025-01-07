@@ -16,7 +16,9 @@
         bat = lib.getExe pkgs.bat;
         broot = lib.getExe pkgs.broot;
         dust = lib.getExe pkgs.dust;
-        tv = lib.getExe pkgs.television;
+        # tv = lib.getExe pkgs.television;
+        fzf = lib.getExe pkgs.fzf;
+        cut = lib.getExe' pkgs.coreutils "cut";
         nh = lib.getExe inputs.nh.packages.${pkgs.system}.default;
       in
       {
@@ -26,16 +28,13 @@
         vim = helix;
 
         ls = "${eza} --long --header --binary --no-permissions --no-user --icons=auto";
-        lss = "${eza} --total-size";
-        lst = "${eza} --tree";
-        lsg = "${eza} --git";
+        lss = "ls --total-size";
+        lst = "ls --tree";
+        lsg = "ls --git";
 
         cat = "${bat} --theme=\"Solarized (light)\"";
 
-        tvg = "${tv} gitrepos";
-        cdg = "cd $(tvg); ${tmux}";
-        hxtv = "${helix} $(${tv})";
-        cdhx = "tvg; ${helix} $(${tv})";
+        tma = "${tmux} attach -t $(${tmux} ls | ${fzf} | ${cut} -d':' -f1)";
 
         tree = broot;
         du = dust;
