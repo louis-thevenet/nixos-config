@@ -71,6 +71,10 @@
             "y" = ":yank-diagnostic";
             "t" = "@i- [ ] today ";
             "n" = "@i- [ ] ";
+            "\"" = "@mi\"";
+            "{" = "@mi\{";
+            "[" = "@mi\[";
+            "(" = "@mi\(";
           };
           x = [
             "extend_line_below"
