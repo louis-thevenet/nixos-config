@@ -12,6 +12,10 @@
       url = "github:helix-editor/helix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    patchy = {
+      url = "github:nik-rev/patchy";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Why is this not on nixpkgs yet ?
     hyprland-qtutils = {
