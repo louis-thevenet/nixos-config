@@ -9,7 +9,7 @@
     };
 
     helix = {
-      url = "github:helix-editor/helix";
+      url = "github:louis-thevenet/helix/patchy";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     patchy = {
