@@ -16,8 +16,7 @@
         bat = lib.getExe pkgs.bat;
         broot = lib.getExe pkgs.broot;
         dust = lib.getExe pkgs.dust;
-        # tv = lib.getExe pkgs.television;
-        fzf = lib.getExe pkgs.fzf;
+        tv = lib.getExe pkgs.television;
         cut = lib.getExe' pkgs.coreutils "cut";
         nh = lib.getExe inputs.nh.packages.${pkgs.system}.default;
       in
@@ -32,14 +31,17 @@
         lst = "ls --tree";
         lsg = "ls --git";
 
-        cat = "${bat} --theme=\"Solarized (light)\"";
-
-        tma = "${tmux} attach -t $(${tmux} ls | ${fzf} | ${cut} -d':' -f1)";
-
+        cat = bat;
         tree = broot;
         du = dust;
-
         df = dysk;
+
+        tma = "${tmux} attach -t $(${tmux} list-sessions | ${tv} --preview 'tmux list-windows -t {0}' | ${cut} -d':' -f1)";
+        tmw = ''
+          session=$(${tmux} list-sessions | ${tv} --preview 'tmux list-windows -t {0}' | ${cut} -d':' -f1);
+          ${tmux} attach -t ''${session}:$(${tmux} list-windows -t ''${session} | ${tv} | ${cut} -d':' -f1)
+        '';
+
       };
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
