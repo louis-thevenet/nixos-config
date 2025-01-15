@@ -27,6 +27,7 @@ in
       see-cat
       smartcat
       inputs.vault-tasks.packages.${pkgs.system}.default
+      spotify-player
       television
       vhs
     ]

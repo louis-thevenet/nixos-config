@@ -65,7 +65,7 @@ in
       [
         {
           plugin = resurrect;
-          extraConfig = "set -g @resurrect-processes '\"~hx->hx *\" lazygit vault-tasks'";
+          extraConfig = "set -g @resurrect-processes '\"~hx->hx *\" lazygit vault-tasks spotify-player'";
         }
         {
           plugin = continuum;
