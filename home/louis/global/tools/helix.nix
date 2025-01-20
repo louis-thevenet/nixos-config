@@ -70,15 +70,31 @@
 
           "ret" = "goto_word";
 
+          "'" = {
+            "t" = "@:sh touch <C-r>%";
+            "r" = "@:sh rm <C-r>%";
+            "e" = "@:sh mkdir <C-r>%";
+            "w" = "@:sh mv <C-r>% <C-r>%";
+            "c" = "@:sh cp <C-r>% <C-r>%";
+          };
+
           backspace = {
-            "y" = ":yank-diagnostic";
             "t" = "@i- [ ] today ";
             "n" = "@i- [ ] ";
+
+            # Aliases for <mi+chr>
             "\"" = "@mi\"";
             "{" = "@mi\{";
             "[" = "@mi\[";
             "(" = "@mi\(";
+
+            # Jump between Markdown headers
+            "A-j" = "@/^#+\s+.*$<ret>";
+            "A-k" = "@?^#+\s+.*$<ret>";
           };
+
+          "C-y" = ":yank-diagnostic";
+
           x = [
             "extend_line_below"
           ];
