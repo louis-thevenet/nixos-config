@@ -41,6 +41,7 @@
           session=$(${tmux} list-sessions | ${tv} --preview 'tmux list-windows -t {0}' | ${cut} -d':' -f1);
           ${tmux} attach -t ''${session}:$(${tmux} list-windows -t ''${session} | ${tv} | ${cut} -d':' -f1)
         '';
+        hxtv = "hx $(tv)";
 
       };
     autosuggestion.enable = true;
