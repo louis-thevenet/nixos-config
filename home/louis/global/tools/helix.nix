@@ -158,6 +158,17 @@
           auto-format = true;
         }
         {
+          name = "python";
+          language-servers = [
+            "python-lsp"
+            "wakatime"
+          ];
+          formatter = {
+            command = lib.getExe pkgs.python312Packages.yapf;
+          };
+          auto-format = true;
+        }
+        {
           name = "rust";
           language-servers = [
             "rust-analyzer"
@@ -251,6 +262,9 @@
 
         ocaml-lsp = {
           command = lib.getExe pkgs.ocamlPackages.ocaml-lsp;
+        };
+        python-lsp = {
+          command = lib.getExe pkgs.python312Packages.python-lsp-server;
         };
 
         jdtls =
