@@ -220,9 +220,10 @@
         {
           name = "nix";
           language-servers = [
-            "nil"
+            "nixd"
             "wakatime"
           ];
+          formatter.command = lib.getExe pkgs.pkgs.nixfmt-rfc-style;
           auto-format = true;
         }
       ];
@@ -251,6 +252,18 @@
         nil = {
           command = lib.getExe pkgs.nil;
           config.nil.formatting.command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
+        };
+
+        nixd = {
+          command = lib.getExe pkgs.nixd;
+          config = {
+            nixpkgs.expr = "import <nixpkgs> { }";
+            options = {
+              nixos.expr = ''(builtins.getFlake "/home/louis/src/nixos-config").nixosConfigurations.magnus.options'';
+              # Only for standalone
+              # home-manager.expr = ''(builtins.getFlake "/home/louis/src/nixos-config").homeConfigurations."louis@magnus".options'';
+            };
+          };
         };
 
         tinymist = {
