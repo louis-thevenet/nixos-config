@@ -163,6 +163,7 @@
         };
     in
     {
+      nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
       formatter = forEachPkgs (pkgs: pkgs.nixfmt-rfc-style);
       devShells."x86_64-linux".default = mkShell "x86_64-linux";
 
