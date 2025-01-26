@@ -48,8 +48,8 @@ in
         no_hardware_cursors = true;
       };
       input = {
-        kb_layout = "fr";
-        kb_variant = "azerty";
+        kb_layout = "fr,fr";
+        kb_variant = "azerty,ergol";
         numlock_by_default = true;
         kb_options = "fkeys:basic_13-24,ctrl:nocaps";
         touchpad = {
