@@ -38,9 +38,6 @@
         text-width = 110;
 
         statusline = {
-          # Option from https://github.com/helix-editor/helix/pull/8908
-          render = "single";
-          ######
           left = [
             "mode"
             "spinner"
