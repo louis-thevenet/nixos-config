@@ -60,10 +60,12 @@
 
       keys = {
         normal = {
-          "right" = ":buffer-next";
-          "left" = ":buffer-previous";
-          "down" = "goto_prev_diag";
-          "up" = "goto_next_diag";
+          "h" = "no_op";
+          "j" = "no_op";
+          "k" = "no_op";
+          "l" = "no_op";
+
+          "!" = "no_op";
 
           "ret" = "goto_word";
 

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -10,6 +10,7 @@
     ../common/optional/ollama.nix
     ../common/optional/hyprland.nix
     ../common/optional/tlp.nix
+    ../common/optional/kanata.nix
   ];
   networking.hostName = "akatosh";
 

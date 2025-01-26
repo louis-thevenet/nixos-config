@@ -1,5 +1,4 @@
 {
-  lib,
   config,
   ...
 }:
@@ -13,6 +12,7 @@
     ../common/optional/stylix.nix
     ../common/optional/hyprland.nix
     ../common/optional/ollama.nix
+    ../common/optional/kanata.nix
   ];
   networking.hostName = "magnus";
 
@@ -20,9 +20,9 @@
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   services.udisks2.enable = true;
   hardware.graphics.enable = true;
-
   services.xserver.videoDrivers = [ "nvidia" ];
   programs.steam.enable = true;
+
   hardware.nvidia = {
     # Modesetting is needed for most wayland compositors
     modesetting.enable = true;
@@ -38,4 +38,5 @@
     #     persistencedSha256 = "sha256-d0Q3Lk80JqkS1B54Mahu2yY/WocOqFFbZVBh+ToGhaE=";
     #   };
   };
+
 }

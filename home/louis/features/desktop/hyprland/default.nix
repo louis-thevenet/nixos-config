@@ -48,10 +48,11 @@ in
         no_hardware_cursors = true;
       };
       input = {
-        kb_layout = "fr,fr";
-        kb_variant = "azerty,ergol";
+        kb_layout = "fr";
+        kb_variant = "azerty";
+
         numlock_by_default = true;
-        kb_options = "fkeys:basic_13-24,ctrl:nocaps";
+        kb_options = "fkeys:basic_13-24";
         touchpad = {
           disable_while_typing = false;
           natural_scroll = true;

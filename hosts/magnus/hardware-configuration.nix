@@ -21,7 +21,7 @@
     "usb_storage"
     "sd_mod"
   ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [ "uinput" ];
   boot.kernelModules = [
     "kvm-intel"
     "nvidia_modeset"
@@ -30,7 +30,8 @@
     "nvidia-uvm"
   ];
   boot.extraModulePackages = [ ];
-  boot.initrd.luks.devices."luks-68843c92-e4e6-4e0d-af2d-62c083d5774c".device = "/dev/disk/by-uuid/68843c92-e4e6-4e0d-af2d-62c083d5774c";
+  boot.initrd.luks.devices."luks-68843c92-e4e6-4e0d-af2d-62c083d5774c".device =
+    "/dev/disk/by-uuid/68843c92-e4e6-4e0d-af2d-62c083d5774c";
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/89b50b73-5601-4274-ba31-a3cb8cb98292";
