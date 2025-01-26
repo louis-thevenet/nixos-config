@@ -66,6 +66,7 @@ in
         darkman = "${pkgs.darkman}/bin/darkman";
         copyq = "${pkgs.copyq}/bin/copyq";
         blueman-manager = "${pkgs.blueman}/bin/blueman-manager";
+        hyprctl = lib.getExe' pkgs.hyprland "hyprctl";
       in
       [
         "SUPER,T,exec,${terminal}"
@@ -106,6 +107,9 @@ in
       ++ [
         ",xf86poweroff ,exec, ${systemctl} suspend"
         "SUPER,xf86poweroff ,exec, ${poweroff}"
+      ]
+      ++ [
+        "SUPER,s,exec,${hyprctl} switchxkblayout steelseries-steelseries-apex-7 next"
       ];
   };
 }
