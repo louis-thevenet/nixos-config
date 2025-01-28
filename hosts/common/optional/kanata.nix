@@ -73,24 +73,6 @@
              OEM_3 40
              )
 
-             ;; source layout
-             (defsrc
-               1 2 3 4 5 6 7 8 9 0
-            tab a z e r t  y u i o p
-           caps q s d f g   h j k l m
-                < w x c v b n OEM_COMMA OEM_PERIOD OEM_2 OEM_PLUS rsft
-                  lalt                    spc                    ralt 
-              )
-
-             ;; base layout
-             (deflayer base
-              1 2 3 4 5 6 7 8 9 0
-             @tab  a z e r t y u i o p
-          esc q s d f g h j k l m
-               < w x c v b n OEM_COMMA OEM_PERIOD OEM_2 OEM_PLUS rsft
-               @alt                   @nav                   @sym
-             )
-
              (defalias
                ;; Main mod-tap: Nav layer when held, Space when tapped.
                nav (tap-hold $tap_timeout $long_hold_timeout spc (layer-while-held navigation))
@@ -104,30 +86,6 @@
 
              ;; Symbol layer: Lafayette/Ergo‑L AltGr programmation layer for the masses!
 
-             ;; ergol layout
-             (deflayer ergol
-              1 2 3 4 5 6 7 8 9 0
-             tab q c o p w j m d @! y
-            esc a s e n f l r t i u
-               < z x @? v b @: h g @; k rsft
-               _                    _ _
-             )
-
-             (deflayer symbols
-               AG-1 AG-2 AG-3 AG-4 AG-5 AG-6 AG-7 AG-8 AG-9 AG-0
-          tab @^   @<   @>   @$   @%        @@   @&   @*   @'   @`
-          esc @{ @pl  @pr  @}   @=        @\   @+   @-   @/  @dq 
-              @< @~   @[   @]   @_  @#  @|   @!   @;   @:   @?
-                         _             spc             _
-             )
-
-             (deflayer navigation
-               M-1  M-2  M-3  M-4  M-5  lrld M-6  M-7  M-8  M-9  M-0
-          tab  @pad @cls bck  fwd  XX        home pgdn pgup end  @run
-          esc   @all @sav S-tab tab XX        lft  down up   rght @fun
-                 @ndo @cut @cpy @pst XX    _   @mwl @mwd @mwu @mwr XX
-                         del             _             esc
-             )
              (defalias run M-x ) ;; run = hyprland rofi keybind
 
              (defalias
@@ -142,24 +100,6 @@
                mwl (mwheel-left  50 120)
                mwr (mwheel-right 50 120)
              )
-
-             ;; NumPad
-             (deflayer numpad
-               _    _    _    _    _     _   _    _    _    _    _
-          tab  XX   home up   end  pgup      @/   @7   @8   @9   XX
-          esc   XX   lft  down rght pgdn      @-   @4   @5   @6   @0
-                 XX   XX   XX   XX   XX    _   @,   @1   @2   @3   @.
-                         @std           @nbs           @std
-             )
-
-             ;; function keys
-             (deflayer funpad
-          tab XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
-               f1   f2   f3   f4   XX        XX   XX   XX   XX   XX
-            esc f5   f6   f7   f8   XX        XX   lctl lalt lmet _
-                 f9   f10  f11  f12  XX   XX   XX   XX   XX   XX   XX
-                         _               _             _
-             )  
 
 
              ;; Azerty Windows/Linux aliases
@@ -192,7 +132,7 @@
 
              ;; Symbols layer
              (defalias
-              dq (unicode r#"""#)
+               dq 3
                ^  (macro [ spc)
                <  <
                >  S-<
@@ -224,8 +164,8 @@
                !  /
                ;  ,
                :  .
-               ?  S-m
-               )
+               ? S-m
+             )
 
                ;; NumRow layer
                (defalias
@@ -248,6 +188,66 @@
                dk4 XX
                dk5 XX
                )
+
+             ;; source layout
+             (defsrc
+               1 2 3 4 5 6 7 8 9 0
+            tab a z e r t  y u i o p
+           caps q s d f g   h j k l m
+                < w x c v b n OEM_COMMA OEM_PERIOD OEM_2 OEM_PLUS rsft
+                  lalt                    spc                    ralt 
+              )
+
+             ;; base layout
+             (deflayer base
+              1 2 3 4 5 6 7 8 9 0
+             @tab  a z e r t y u i o p
+          esc q s d f g h j k l m
+               < w x c v b n OEM_COMMA OEM_PERIOD OEM_2 OEM_PLUS rsft
+               @alt                   @nav                   @sym
+             )
+
+             ;; ergol layout
+             (deflayer ergol
+              1 2 3 4 5 6 7 8 9 0
+             tab q c o p w j m d @! y
+            esc a s e n f l r t i u
+               < z x @? v b @: h g @; k rsft
+               _                    _ _
+             )
+
+             (deflayer symbols
+               AG-1 AG-2 AG-3 AG-4 AG-5 AG-6 AG-7 AG-8 AG-9 AG-0
+          tab @^   @<   @>   @$   @%        @@   @&   @*   @'   @`
+          esc @{ @pl  @pr  @}   @=        @\   @+   @-   @/  @dq 
+              @< @~   @[   @]   @_  @#  @|   @!   @;   @:   @? _
+                         _             spc             _
+             )
+
+             (deflayer navigation
+               M-1  M-2  M-3  M-4  M-5  lrld M-6  M-7  M-8  M-9  M-0
+          tab  @pad @cls bck  fwd  XX        home pgdn pgup end  @run
+          esc   @all @sav S-tab tab XX        lft  down up   rght @fun
+                 @ndo @cut @cpy @pst XX    _   @mwl @mwd @mwu @mwr XX
+                         del             _             esc
+             )
+             ;; NumPad
+             (deflayer numpad
+               _    _    _    _    _     _   _    _    _    _    _
+          tab  XX   home up   end  pgup      @/   @7   @8   @9   XX
+          esc   XX   lft  down rght pgdn      @-   @4   @5   @6   @0
+                 XX   XX   XX   XX   XX    _   @,   @1   @2   @3   @.
+                         @std           @nbs           @std
+             )
+
+             ;; function keys
+             (deflayer funpad
+          tab XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
+               f1   f2   f3   f4   XX        XX   XX   XX   XX   XX
+            esc f5   f6   f7   f8   XX        XX   lctl lalt lmet _
+                 f9   f10  f11  f12  XX   XX   XX   XX   XX   XX   XX
+                         _               _             _
+             )  
 
         '';
       };
