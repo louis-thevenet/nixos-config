@@ -26,13 +26,6 @@ in
         enable = mkEnableOption ''
           Enable Firefox
         '';
-      };
-
-      schizofox = {
-        enable = mkEnableOption ''
-          Enable Schizofox
-        '';
-
         searxngInstance = mkOption {
           type = lib.types.str;
           default = "https://searxng.brihx.fr";

@@ -142,7 +142,7 @@
               home-manager.nixosModules.home-manager
               {
                 home-manager.users.${user} = import ./home/${user}/${host}.nix;
-
+                home-manager.backupFileExtension = "backup_hm";
                 home-manager.extraSpecialArgs = {
                   inherit (self) inputs outputs;
                 };

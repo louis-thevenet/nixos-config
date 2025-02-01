@@ -6,7 +6,7 @@
       enable = true;
       defaultApplications =
         let
-          browser = "Schizofox.desktop";
+          browser = "Firefox.desktop";
           editor = "code.desktop";
         in
         {
