@@ -1,7 +1,8 @@
 { ... }:
 {
   imports = [
-    ./schizofox.nix
+    ./firefox.nix
+    # ./schizofox.nix
     ./kitty.nix
     ./social.nix
     ./utils.nix

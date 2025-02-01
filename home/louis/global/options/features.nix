@@ -22,11 +22,10 @@ in
         Enable Kitty
       '';
 
-      schizofox = {
+      firefox = {
         enable = mkEnableOption ''
-          Enable Schizofox
+          Enable Firefox
         '';
-
         searxngInstance = mkOption {
           type = lib.types.str;
           default = "https://searxng.brihx.fr";
