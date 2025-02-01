@@ -11,7 +11,7 @@
     };
     gui = {
       kitty.enable = true;
-      schizofox.enable = true;
+      firefox.enable = true;
       social.enable = true;
       utils.enable = true;
       ai.lmstudio.enable = true;
