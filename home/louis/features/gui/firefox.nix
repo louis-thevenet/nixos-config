@@ -9,6 +9,34 @@ let
   inherit (lib) mkIf;
   cfg = config.home-config.gui;
   plugins = inputs.firefox-addons.packages.${pkgs.system};
+  buildFirefoxXpiAddon = lib.makeOverridable (
+    {
+      src,
+      pname,
+      version,
+      addonId,
+      meta,
+      ...
+    }:
+    pkgs.stdenv.mkDerivation {
+      name = "${pname}-${version}";
+
+      inherit meta src;
+
+      preferLocalBuild = true;
+      allowSubstitutes = true;
+
+      passthru = {
+        inherit addonId;
+      };
+
+      buildCommand = ''
+        dst="$out/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+        mkdir -p "$dst"
+        install -v -m644 "$src" "$dst/${addonId}.xpi"
+      '';
+    }
+  );
 in
 {
   programs.firefox = mkIf cfg.firefox.enable {
@@ -25,25 +53,25 @@ in
         };
         "MyNixOS" = {
           urls = [ { template = "https://mynixos.com/search?q={searchTerms}"; } ];
-          definedAliases = [ "nix" ];
+          definedAliases = [ "@nix" ];
         };
         "Nixpkgs" = {
           urls = [ { template = "https://search.nixos.org/packages?&query={searchTerms}"; } ];
-          definedAliases = [ "pkg" ];
+          definedAliases = [ "@pkg" ];
         };
         "Nixpkgs Pulls" = {
           urls = [
             { template = "https://github.com/NixOS/nixpkgs/pulls?q=is%3Apr+is%3Aopen+{searchTerms}"; }
           ];
-          definedAliases = [ "npp" ];
+          definedAliases = [ "@npp" ];
         };
         "GitHub Repos" = {
           urls = [ { template = "https://github.com/search?q={searchTerms}&type=repositories"; } ];
-          definedAliases = [ "gh" ];
+          definedAliases = [ "@gh" ];
         };
         "GitHub Code" = {
           urls = [ { template = "https://github.com/search?q={searchTerms}&type=code"; } ];
-          definedAliases = [ "gc" ];
+          definedAliases = [ "@gc" ];
         };
         Bing.metaData.hidden = true;
         "Amazon.com".metaData.hidden = true;
@@ -55,20 +83,35 @@ in
       userChrome = ''
         #TabsToolbar{ visibility: collapse !important }
       '';
-      extensions = with plugins; [
-        adaptive-tab-bar-colour
-        bitwarden
-        clearurls
-        darkreader
-        enhanced-github
-        privacy-badger
-        refined-github
-        terms-of-service-didnt-read
-        tree-style-tab
-        ublock-origin
-        unpaywall
-        vimium
-      ];
+      extensions =
+        with plugins;
+        [
+          adaptive-tab-bar-colour
+          bitwarden
+          clearurls
+          darkreader
+          enhanced-github
+          privacy-badger
+          refined-github
+          terms-of-service-didnt-read
+          tree-style-tab
+          ublock-origin
+          unpaywall
+          vimium
+        ]
+        ++ [
+          # LanguageTool, grammar and spell checker
+          (buildFirefoxXpiAddon rec {
+            pname = "cb-remover";
+            version = "0.7.1";
+            addonId = "cb-remover@search.mozilla.org";
+            src = pkgs.fetchurl {
+              url = "https://addons.mozilla.org/firefox/downloads/file/4043434/clickbait_remover_for_youtube-${version}.xpi";
+              hash = "sha256-o5gJZ1gydXItxHgBNUkco5jUJ1CydCDA3j5mnfl4xkk=";
+            };
+            meta = { };
+          })
+        ];
       settings = {
         # Allow svgs to take on theme colors
         "svg.context-properties.content.enabled" = true;
