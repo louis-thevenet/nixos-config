@@ -9,7 +9,7 @@
     };
 
     helix = {
-      url = "github:helix-editor/helix";
+      url = "github:Guekka/helix/copilot";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     patchy = {
