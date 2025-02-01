@@ -9,7 +9,7 @@
     };
 
     helix = {
-      url = "github:helix-editor/helix";
+      url = "github:Guekka/helix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     patchy = {

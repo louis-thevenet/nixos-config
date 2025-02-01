@@ -4,11 +4,32 @@
   pkgs,
   ...
 }:
+let
+  helix = inputs.helix.packages.${pkgs.system}.helix;
+  copilot = pkgs.writeShellScriptBin "copilot" ''
+    exec ${pkgs.nodejs}/bin/node ${pkgs.vimPlugins.copilot-vim}/dist/language-server.js "''$@"
+  '';
+  helix-copilot = pkgs.writeShellApplication {
+    name = "hx";
+    runtimeInputs = [ copilot ];
+    text = ''
+      exec ${helix}/bin/hx -a "''$@"
+    '';
+  };
+  helix-single = pkgs.writeShellApplication {
+    name = "hxs";
+    text = ''
+      exec ${helix}/bin/hx "''$@"
+    '';
+  };
+in
 {
+  home.packages = [ helix-single ];
   programs.helix = {
     enable = true;
-    package = inputs.helix.packages.${pkgs.system}.default;
+    package = helix-copilot;
     defaultEditor = true;
+
     settings = {
       editor = {
         end-of-line-diagnostics = "hint";
@@ -59,7 +80,14 @@
       };
 
       keys = {
+
+        insert = {
+          "C-w" = "copilot_apply_completion";
+          "C-e" = "copilot_show_completion";
+        };
+
         normal = {
+          "C-e" = "copilot_toggle_auto_render";
           "h" = "no_op";
           "j" = "no_op";
           "k" = "no_op";
@@ -338,5 +366,6 @@
         wakatime.command = lib.getExe inputs.wakatime-lsp.packages.${pkgs.system}.default;
       };
     };
+
   };
 }

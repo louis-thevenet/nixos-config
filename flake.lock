@@ -449,13 +449,13 @@
       "locked": {
         "lastModified": 1738362896,
         "narHash": "sha256-vPTwmrlGfMvznqxjA3enTYUwvLq1tVhid0pSlkvd73g=",
-        "owner": "helix-editor",
+        "owner": "Guekka",
         "repo": "helix",
         "rev": "8439ce56836df60b6c3e7e570712dc8a07582e4c",
         "type": "github"
       },
       "original": {
-        "owner": "helix-editor",
+        "owner": "Guekka",
         "repo": "helix",
         "type": "github"
       }
