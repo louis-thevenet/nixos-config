@@ -12,11 +12,9 @@ in
   home.packages = mkIf cfg.utils.enable (
     with pkgs;
     [
-      # calibre
+      calibre
       sioyek
       tor-browser-bundle-bin
-      spotube
-      warp-terminal
       obs-studio
       spotifywm
     ]

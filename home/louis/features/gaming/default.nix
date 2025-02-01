@@ -12,7 +12,7 @@ in
   home.packages = mkIf cfg.gaming.enable (
     with pkgs;
     [
-      prismlauncher
+      # prismlauncher
       # lutris
       # wine
       # heroic

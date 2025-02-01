@@ -14,8 +14,6 @@ in
     [
       bitwarden
       onlyoffice-bin
-      super-productivity
-      obsidian
     ]
   );
 }

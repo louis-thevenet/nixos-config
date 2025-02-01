@@ -12,7 +12,7 @@ in
   home.packages = mkIf cfg.jetbrains.enable (
     with pkgs;
     [
-      jetbrains.rust-rover
+      # jetbrains.rust-rover
       #jetbrains.idea-ultimate
       #jetbrains.clion
       #jetbrains.pycharm-professional
