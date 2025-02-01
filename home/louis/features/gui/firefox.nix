@@ -56,17 +56,18 @@ in
         #TabsToolbar{ visibility: collapse !important }
       '';
       extensions = with plugins; [
-        privacy-badger
-        darkreader
-        ublock-origin
-        refined-github
-        enhanced-github
-        clearurls
         adaptive-tab-bar-colour
+        bitwarden
+        clearurls
+        darkreader
+        enhanced-github
+        privacy-badger
+        refined-github
+        terms-of-service-didnt-read
+        tree-style-tab
+        ublock-origin
         unpaywall
         vimium
-        bitwarden
-        tree-style-tab
       ];
       settings = {
         # Allow svgs to take on theme colors
