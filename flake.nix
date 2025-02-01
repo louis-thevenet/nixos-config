@@ -150,9 +150,6 @@
               stylix.nixosModules.stylix
               (
                 {
-                  config,
-                  pkgs,
-                  stylix,
                   ...
                 }:
                 {
