@@ -5,26 +5,24 @@
   ...
 }:
 let
-  helix = inputs.helix.packages.${pkgs.system}.helix;
-  copilot = pkgs.writeShellScriptBin "copilot" ''
-    exec ${pkgs.nodejs}/bin/node ${pkgs.vimPlugins.copilot-vim}/dist/language-server.js "''$@"
-  '';
-  helix-copilot = pkgs.writeShellApplication {
-    name = "hx";
-    runtimeInputs = [ copilot ];
-    text = ''
-      exec ${helix}/bin/hx -a "''$@"
-    '';
-  };
-  helix-single = pkgs.writeShellApplication {
-    name = "hxs";
-    text = ''
-      exec ${helix}/bin/hx "''$@"
+
+  copilot = pkgs.writeShellScriptBin "copilot" "${lib.getExe pkgs.nodejs} ${pkgs.vimPlugins.copilot-vim}/dist/language-server.js";
+  helix-copilot = pkgs.symlinkJoin {
+    name = "helix";
+    paths = [
+      inputs.helix.packages.${pkgs.system}.helix
+    ];
+    buildInputs = [ pkgs.makeWrapper ];
+    runtimeInputs = [
+      copilot
+    ];
+    postBuild = ''
+      wrapProgram $out/bin/hx --add-flags "-a"
     '';
   };
 in
 {
-  home.packages = [ helix-single ];
+  home.packages = [ copilot ];
   programs.helix = {
     enable = true;
     package = helix-copilot;
