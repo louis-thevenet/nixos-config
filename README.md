@@ -1,6 +1,9 @@
 # NixOS Hyprland flake setup
-![image](https://github.com/user-attachments/assets/29804599-a741-42ae-b2b3-1726eec60d36)
-![image](https://github.com/user-attachments/assets/d3762d3a-bf14-401a-90c9-00f5940a8f7e)
+
+![2025-02-01T12:13:36,252545958+01:00](https://github.com/user-attachments/assets/6c2c80aa-f000-47b0-9394-1ce99e7db4a1)
+![2025-02-01T12:16:10,334871696+01:00](https://github.com/user-attachments/assets/a142067b-6cf3-4906-a5e6-23027c0d7e35)
+
+
 
 ## Features
 - Hyprland (Hypridle, Hyprlock, Hyprpaper, Mako, Rofi, Swaync, Waybar)
