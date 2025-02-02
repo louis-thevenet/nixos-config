@@ -11,7 +11,16 @@
     };
     gui = {
       kitty.enable = true;
-      firefox.enable = true;
+      firefox = {
+        enable = true;
+        searxngInstance = "https://searxng.brihx.fr";
+        homepageUrl = "localhost:30069";
+      };
+      glance = {
+        enable = true;
+        host = "localhost";
+        port = 30069;
+      };
       social.enable = true;
       utils.enable = true;
       ai.lmstudio.enable = true;
