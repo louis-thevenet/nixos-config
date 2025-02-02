@@ -132,7 +132,7 @@ in
         "browser.shell.checkDefaultBrowser" = false;
         # Remove the newtab page
         "browser.newtabpage.enabled" = false;
-        "browser.startup.homepage" = "about:blank";
+        "browser.startup.homepage" = cfg.firefox.homepageUrl;
         "browser.startup.homepage_override.mstone" = "ignore";
         # "browser.newtab.url" = cfg.firefox.searxngInstance;
         # Disable Activity Stream

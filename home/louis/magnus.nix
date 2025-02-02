@@ -16,6 +16,7 @@
       firefox = {
         enable = true;
         searxngInstance = "http://192.168.1.61:8080";
+        homepageUrl = "localhost:30069";
       };
       social.enable = true;
       utils.enable = true;

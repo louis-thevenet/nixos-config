@@ -33,6 +33,13 @@ in
             URL for searxng instance
           '';
         };
+        homepageUrl = mkOption {
+          type = lib.types.str;
+          default = "about:blank";
+          description = ''
+            URL for firefox homepage
+          '';
+        };
       };
 
       social.enable = mkEnableOption ''
