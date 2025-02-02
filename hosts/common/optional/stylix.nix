@@ -7,6 +7,7 @@
 {
   stylix = {
     enable = true;
+    polarity = "light";
     image = lib.mkDefault ./background.png;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/google-light.yaml";
     cursor = {
