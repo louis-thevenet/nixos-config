@@ -10,16 +10,16 @@ let
 in
 {
   specialisation = mkIf cfg.stylix.enable {
-    light.configuration = {
-      stylix.polarity = "light";
-      stylix.image = ../../../../hosts/common/optional/background.png;
-      stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/google-light.yaml";
+    light.configuration.stylix = {
+      polarity = "light";
+      image = ../../../../hosts/common/optional/background.png;
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/google-light.yaml";
     };
 
-    dark.configuration = {
-      stylix.polarity = "dark";
-      stylix.image = ../../../../hosts/common/optional/background.png;
-      stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/primer-dark.yaml";
+    dark.configuration.stylix = {
+      polarity = "dark";
+      image = ../../../../hosts/common/optional/background.png;
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/primer-dark.yaml";
     };
   };
 }

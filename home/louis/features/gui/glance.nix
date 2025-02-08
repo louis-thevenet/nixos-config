@@ -8,8 +8,8 @@
 let
   inherit (lib) mkIf;
   cfg = config.home-config.gui;
-  host = cfg.glance.host;
-  port = cfg.glance.port;
+  inherit (cfg.glance) host;
+  inherit (cfg.glance) port;
 
 in
 

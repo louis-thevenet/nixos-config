@@ -108,6 +108,7 @@
             with pkgs;
             [
               nil
+              statix
               python311Packages.nix-prefetch-github
               nixos-generators
               # nix-du
@@ -132,7 +133,7 @@
             let
               overlay-master = final: prev: {
                 master = import nixpkgs-master {
-                  system = final.system;
+                  inherit (final) system;
                   config.allowUnfree = true;
                 };
               };
@@ -141,21 +142,18 @@
               ./hosts/${host}
               home-manager.nixosModules.home-manager
               {
-                home-manager.users.${user} = import ./home/${user}/${host}.nix;
-                home-manager.backupFileExtension = "backup_hm";
-                home-manager.extraSpecialArgs = {
-                  inherit (self) inputs outputs;
+                home-manager = {
+                  users.${user} = import ./home/${user}/${host}.nix;
+                  backupFileExtension = "backup_hm";
+                  extraSpecialArgs = {
+                    inherit (self) inputs outputs;
+                  };
                 };
               }
               stylix.nixosModules.stylix
-              (
-                {
-                  ...
-                }:
-                {
-                  nixpkgs.overlays = [ overlay-master ];
-                }
-              )
+              (_: {
+                nixpkgs.overlays = [ overlay-master ];
+              })
               nix-index-database.nixosModules.nix-index
               {
                 programs.nix-index-database.comma.enable = true;

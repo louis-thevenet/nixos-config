@@ -1,4 +1,4 @@
-{ ... }:
+_:
 {
   hardware.uinput.enable = true;
   # Set up udev rules for uinput

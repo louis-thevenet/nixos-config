@@ -7,7 +7,7 @@
 let
   inherit (lib) mkIf;
   cfg = config.home-config.desktop;
-  colors = config.lib.stylix.colors;
+  inherit (config.lib.stylix) colors;
 in
 {
   home.packages = mkIf cfg.hyprland.enable (

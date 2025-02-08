@@ -67,7 +67,7 @@ in
             scale = "${toString m.scale}";
           in
           "${m.name},${if m.enabled then "${resolution},${position},${scale}" else "disable"}"
-        ) (config.monitors)
+        ) config.monitors
         ++ [ ",preferred,auto,1" ];
 
       gestures = {

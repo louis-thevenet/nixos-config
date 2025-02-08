@@ -43,43 +43,44 @@ in
     enable = true;
     profiles.louis = {
       isDefault = true;
-      search.default = "SearxNG";
-      search.privateDefault = "SearxNG";
-      search.engines = {
-        "SearxNG" = {
-          urls = [
-            { template = cfg.firefox.searxngInstance + "/search?q={searchTerms}&categories=general"; }
-          ];
+      search = {
+        default = "SearxNG";
+        privateDefault = "SearxNG";
+        engines = {
+          "SearxNG" = {
+            urls = [
+              { template = cfg.firefox.searxngInstance + "/search?q={searchTerms}&categories=general"; }
+            ];
+          };
+          "MyNixOS" = {
+            urls = [ { template = "https://mynixos.com/search?q={searchTerms}"; } ];
+            definedAliases = [ "@nix" ];
+          };
+          "Nixpkgs" = {
+            urls = [ { template = "https://search.nixos.org/packages?&query={searchTerms}"; } ];
+            definedAliases = [ "@pkg" ];
+          };
+          "Nixpkgs Pulls" = {
+            urls = [
+              { template = "https://github.com/NixOS/nixpkgs/pulls?q=is%3Apr+is%3Aopen+{searchTerms}"; }
+            ];
+            definedAliases = [ "@npp" ];
+          };
+          "GitHub Repos" = {
+            urls = [ { template = "https://github.com/search?q={searchTerms}&type=repositories"; } ];
+            definedAliases = [ "@gh" ];
+          };
+          "GitHub Code" = {
+            urls = [ { template = "https://github.com/search?q={searchTerms}&type=code"; } ];
+            definedAliases = [ "@gc" ];
+          };
+          Bing.metaData.hidden = true;
+          "Amazon.com".metaData.hidden = true;
+          "Wikipedia (en)".metaData.hidden = true;
+          "Google".metaData.hidden = true;
+          "DuckDuckGo".metaData.hidden = true;
         };
-        "MyNixOS" = {
-          urls = [ { template = "https://mynixos.com/search?q={searchTerms}"; } ];
-          definedAliases = [ "@nix" ];
-        };
-        "Nixpkgs" = {
-          urls = [ { template = "https://search.nixos.org/packages?&query={searchTerms}"; } ];
-          definedAliases = [ "@pkg" ];
-        };
-        "Nixpkgs Pulls" = {
-          urls = [
-            { template = "https://github.com/NixOS/nixpkgs/pulls?q=is%3Apr+is%3Aopen+{searchTerms}"; }
-          ];
-          definedAliases = [ "@npp" ];
-        };
-        "GitHub Repos" = {
-          urls = [ { template = "https://github.com/search?q={searchTerms}&type=repositories"; } ];
-          definedAliases = [ "@gh" ];
-        };
-        "GitHub Code" = {
-          urls = [ { template = "https://github.com/search?q={searchTerms}&type=code"; } ];
-          definedAliases = [ "@gc" ];
-        };
-        Bing.metaData.hidden = true;
-        "Amazon.com".metaData.hidden = true;
-        "Wikipedia (en)".metaData.hidden = true;
-        "Google".metaData.hidden = true;
-        "DuckDuckGo".metaData.hidden = true;
       };
-
       userChrome = ''
         #TabsToolbar{ visibility: collapse !important }
       '';
