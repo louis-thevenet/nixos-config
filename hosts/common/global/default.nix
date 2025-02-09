@@ -41,15 +41,7 @@
 
   networking = {
     networkmanager.enable = true;
-    firewall = {
-      enable = true;
-      allowedTCPPortRanges = [
-        {
-          from = 8080;
-          to = 8100;
-        }
-      ];
-    };
+    firewall.enable = true;
   };
 
   system.stateVersion = "24.11";
