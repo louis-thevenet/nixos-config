@@ -33,7 +33,6 @@
       # don’t shutdown when power button is short-pressed
       HandlePowerKey=ignore
     '';
-    blueman.enable = true;
   };
 
   security.rtkit.enable = true;

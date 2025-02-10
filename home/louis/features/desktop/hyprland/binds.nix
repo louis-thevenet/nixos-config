@@ -66,7 +66,7 @@ in
           terminal = config.home.sessionVariables.TERMINAL;
           darkman = "${pkgs.darkman}/bin/darkman";
           copyq = "${pkgs.copyq}/bin/copyq";
-          blueman-manager = "${pkgs.blueman}/bin/blueman-manager";
+          bluetui = "${pkgs.bluetui}/bin/bluetui";
           hyprctl = lib.getExe' pkgs.hyprland "hyprctl";
         in
         [
@@ -97,7 +97,7 @@ in
         ++
           # Bluetooth
           [
-            "SUPER,p,exec,${blueman-manager}"
+            "SUPER,p,exec,${terminal} ${bluetui}"
           ]
         ++
           # Darkman toggle
