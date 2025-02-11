@@ -65,44 +65,44 @@ in
       }
     ];
 
-    userSettings.cmake.configureOnOpen = true;
-    userSettings.editor.formatOnSave = true;
+    # userSettings.cmake.configureOnOpen = true;
+    # userSettings.editor.formatOnSave = true;
 
-    # Indent
-    userSettings.editor.detectIndentation = false;
-    userSettings.editor.indent_style = "space";
-    userSettings.editor.indentSize = 4;
-    userSettings.editor.insertSpaces = true;
-    userSettings.editor.tabSize = 2;
+    # # Indent
+    # userSettings.editor.detectIndentation = false;
+    # userSettings.editor.indent_style = "space";
+    # userSettings.editor.indentSize = 4;
+    # userSettings.editor.insertSpaces = true;
+    # userSettings.editor.tabSize = 2;
 
-    userSettings.editor.inlineSuggest.enabled = true;
+    # userSettings.editor.inlineSuggest.enabled = true;
 
-    # Font
-    userSettings.editor.fontLigatures = true;
-    userSettings.editor.fontFamily = config.fontProfiles.monospace.family;
+    # # Font
+    # userSettings.editor.fontLigatures = true;
+    # userSettings.editor.fontFamily = config.fontProfiles.monospace.family;
 
-    userSettings.explorer.confirmDragAndDrop = false;
+    # userSettings.explorer.confirmDragAndDrop = false;
 
-    userSettings.files.insertFinalNewLine = true;
-    userSettings.files.trimTrailingWhitespace = true;
+    # userSettings.files.insertFinalNewLine = true;
+    # userSettings.files.trimTrailingWhitespace = true;
 
-    userSettings.git.autofetch = true;
-    userSettings.git.confirmSync = false;
+    # userSettings.git.autofetch = true;
+    # userSettings.git.confirmSync = false;
 
-    userSettings.workbench.iconTheme = "material-icon-theme";
+    # userSettings.workbench.iconTheme = "material-icon-theme";
 
-    userSettings.nix.enableLanguageServer = true;
-    userSettings.nix.serverPath = "${pkgs.nil}/bin/nil";
-    userSettings.nix.formatterPath = "${pkgs.alejandra}/bin/alejandra";
-    userSettings.nix.serverSettings.nil.formatting.command = [ "alejandra" ];
+    # userSettings.nix.enableLanguageServer = true;
+    # userSettings.nix.serverPath = "${pkgs.nil}/bin/nil";
+    # userSettings.nix.formatterPath = "${pkgs.alejandra}/bin/alejandra";
+    # userSettings.nix.serverSettings.nil.formatting.command = [ "alejandra" ];
 
-    userSettings.typst-lsp.exportPdf = "onType";
-    userSettings.typst-lsp.experimentalFormatterMode = "on";
-    userSettings.typst.editor.defaultFormatter = "typst-fmt";
+    # userSettings.typst-lsp.exportPdf = "onType";
+    # userSettings.typst-lsp.experimentalFormatterMode = "on";
+    # userSettings.typst.editor.defaultFormatter = "typst-fmt";
 
-    userSettings.rust-analyzer.checkOnSave = true;
-    userSettings.rust-analyzer.check.command = "clippy";
+    # userSettings.rust-analyzer.checkOnSave = true;
+    # userSettings.rust-analyzer.check.command = "clippy";
 
-    userSettings."[c]".editor.defaultFormatter = "llvm-vs-code-extensions.vscode-clangd";
+    # userSettings."[c]".editor.defaultFormatter = "llvm-vs-code-extensions.vscode-clangd";
   };
 }
