@@ -8,6 +8,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    git-hooks-nix.url = "github:cachix/git-hooks.nix";
+
     helix = {
       url = "github:Guekka/helix/copilot";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -90,6 +92,7 @@
       nixpkgs-master,
       home-manager,
       stylix,
+      git-hooks-nix,
       nix-index-database,
       ...
     }:
@@ -99,10 +102,22 @@
         "x86_64-linux"
       ];
       forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
+      mkChecks = system: {
+        pre-commit-check = git-hooks-nix.lib.${system}.run {
+          src = ./.;
+          hooks = {
+            nixfmt-rfc-style.enable = true;
+            deadnix.enable = true;
+            statix.enable = true;
+          };
+        };
+      };
 
       mkShell =
         system:
         nixpkgs.legacyPackages.${system}.mkShell {
+          inherit (self.checks.${system}.pre-commit-check) shellHook;
+          buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
           packages =
             with nixpkgs.legacyPackages.${system};
             with pkgs;
@@ -131,7 +146,7 @@
           };
           modules =
             let
-              overlay-master = final: prev: {
+              overlay-master = final: {
                 master = import nixpkgs-master {
                   inherit (final) system;
                   config.allowUnfree = true;
@@ -165,8 +180,8 @@
     {
       nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
       formatter = forEachPkgs (pkgs: pkgs.nixfmt-rfc-style);
+      checks."x86_64-linux" = mkChecks "x86_64-linux";
       devShells."x86_64-linux".default = mkShell "x86_64-linux";
-
       nixosConfigurations = {
         magnus = mkNixos "louis" "magnus" "x86_64-linux";
         akatosh = mkNixos "louis" "akatosh" "x86_64-linux";
