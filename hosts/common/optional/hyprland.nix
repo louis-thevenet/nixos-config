@@ -1,5 +1,4 @@
 {
-  config,
   inputs,
   lib,
   pkgs,
@@ -11,12 +10,12 @@
     enable = true;
   };
 
-  # XDG Portals
   xdg = {
+    autostart.enable = true;
     portal = {
       enable = true;
+      wlr.enable = true;
       extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-      xdgOpenUsePortal = true;
     };
   };
 
