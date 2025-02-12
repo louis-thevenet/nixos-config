@@ -148,7 +148,7 @@
             let
               overlay-master = final: {
                 master = import nixpkgs-master {
-                  inherit (final) system;
+                  inherit final prev system;
                   config.allowUnfree = true;
                 };
               };

@@ -13,7 +13,8 @@ in
     with pkgs;
     [
       calibre
-      sioyek
+      okular
+      qimgv
       tor-browser-bundle-bin
       obs-studio
       spotifywm

@@ -32,8 +32,7 @@ in
         exec-once = ${copyq}
       '';
     plugins = with pkgs.hyprlandPlugins; [
-      # hypr-dynamic-cursors
-      # hyprgrass
+      hypr-dynamic-cursors
     ];
     settings = {
       env = [
@@ -43,6 +42,8 @@ in
         "_JAVA_AWT_WM_NONREPARENTING,1"
         "CLUTTER_BACKEND,wayland"
         "WLR_RENDERER,vulkan"
+        "XDG_CURRENT_DESKTOP,Hyprland"
+        "XDG_SESSION_DESKTOP,Hyprland"
       ];
       cursor = mkIf cfg.hyprland.nvidia {
         no_hardware_cursors = true;
