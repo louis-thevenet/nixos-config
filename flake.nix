@@ -8,8 +8,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    git-hooks-nix.url = "github:cachix/git-hooks.nix";
-
+    git-hooks-nix = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     helix = {
       url = "github:Guekka/helix/copilot";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,7 +44,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     stylix = {
       url = "github:danth/stylix";
@@ -83,6 +85,7 @@
       url = "github:louis-thevenet/vault-tasks";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
   };
 
   outputs =
@@ -106,7 +109,10 @@
         pre-commit-check = git-hooks-nix.lib.${system}.run {
           src = ./.;
           hooks = {
-            nixfmt-rfc-style.enable = true;
+            nixfmt-rfc-style = {
+              enable = false;
+              settings.width = 110;
+            };
             deadnix.enable = true;
             statix.enable = true;
           };

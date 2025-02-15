@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+_:
 {
   programs.droidcam.enable = true;
 }

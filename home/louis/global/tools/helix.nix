@@ -276,7 +276,7 @@ in
 
         nil = {
           command = lib.getExe pkgs.nil;
-          config.nil.formatting.command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
+          config.nil.formatting.command = [ "${lib.getExe pkgs.nixfmt-rfc-style} --width=110" ];
         };
 
         nixd = {

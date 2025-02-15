@@ -1,5 +1,4 @@
-_:
-{
+_: {
   hardware.uinput.enable = true;
   # Set up udev rules for uinput
   services.udev.extraRules = ''

@@ -20,7 +20,8 @@ in
     ./battery.nix
   ];
   home.packages = mkIf cfg.hyprland.enable (
-    with pkgs; [
+    with pkgs;
+    [
       meson
       wayland-protocols
       wayland-utils

@@ -1,5 +1,4 @@
-_:
-{
+_: {
   services.tlp = {
     enable = true;
     settings = {

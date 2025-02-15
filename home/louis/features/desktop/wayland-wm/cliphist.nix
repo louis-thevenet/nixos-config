@@ -1,7 +1,4 @@
-{ config, ... }:
-let
-  cfg = config.home-config.desktop;
-in
+_:
 {
   #services.cliphist.enable = cfg.hyprland.enable;
 }

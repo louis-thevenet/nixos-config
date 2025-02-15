@@ -41,9 +41,8 @@ in
     enable = true;
     package = pkgs.rofi-wayland;
 
-    plugins =
-      [
-      ];
+    plugins = [
+    ];
     terminal = config.home.sessionVariables.TERMINAL;
     extraConfig = {
       modi = "drun,filebrowser,ssh";
