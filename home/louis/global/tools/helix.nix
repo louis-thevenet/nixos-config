@@ -145,6 +145,7 @@ in
           language-servers = [
             "bash-language-server"
             "gpt"
+            "typos"
           ];
           formatter = {
             command = "${pkgs.shfmt}/bin/shfmt";
@@ -187,6 +188,7 @@ in
           language-servers = [
             "python-lsp"
             "wakatime"
+            "typos"
           ];
           formatter = {
             command = lib.getExe pkgs.python312Packages.yapf;
@@ -198,6 +200,7 @@ in
           language-servers = [
             "rust-analyzer"
             "wakatime"
+            "typos"
           ];
         }
 
@@ -226,6 +229,7 @@ in
           language-servers = [
             "taplo"
             "wakatime"
+            "typos"
           ];
         }
         {
@@ -247,6 +251,7 @@ in
           language-servers = [
             "nixd"
             "wakatime"
+            "typos"
           ];
           formatter.command = lib.getExe pkgs.pkgs.nixfmt-rfc-style;
           auto-format = true;
@@ -362,6 +367,13 @@ in
         };
 
         wakatime.command = lib.getExe inputs.wakatime-lsp.packages.${pkgs.system}.default;
+        typos = {
+          command = lib.getExe pkgs.typos-lsp;
+          config.config = pkgs.writeText "typos.toml" ''
+            [default.extend-identifiers]
+            ratatui = "ratatui"
+          '';
+        };
       };
     };
 
