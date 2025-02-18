@@ -19,6 +19,7 @@ in
       trash-cli
       du-dust
       git-open
+      nix-output-monitor
       noti
       nm-tray
       killall
