@@ -17,9 +17,9 @@ in
       find-hm-generation =
         let
           home-manager = "${pkgs.home-manager}/bin/home-manager";
-          grep = "${pkgs.toybox}/bin/grep";
-          head = "${pkgs.toybox}/bin/head";
-          find = "${pkgs.toybox}/bin/find";
+          grep = lib.getExe' pkgs.toybox "grep";
+          head = lib.getExe' pkgs.toybox "head";
+          find = lib.getExe' pkgs.toybox "find";
         in
         ''
           for line in $(${home-manager} generations | ${grep} -o '/.*')
@@ -54,4 +54,6 @@ in
         dbusserver = true;
       };
     };
+  # restart darkman after switching to new configuration
+  systemd.user.services.darkman.Unit.X-SwitchMethod = "restart";
 }
