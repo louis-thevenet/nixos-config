@@ -56,4 +56,9 @@ in
     };
   # restart darkman after switching to new configuration
   systemd.user.services.darkman.Unit.X-SwitchMethod = "restart";
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.darkman ];
+    config.common."org.freedesktop.impl.portal.Settings" = "darkman";
+  };
 }
