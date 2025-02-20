@@ -18,6 +18,7 @@ in
     ./hypridle.nix
     ./hyprpaper.nix
     ./battery.nix
+    ./termfilepickers.nix
   ];
   home.packages = mkIf cfg.hyprland.enable (
     with pkgs;
