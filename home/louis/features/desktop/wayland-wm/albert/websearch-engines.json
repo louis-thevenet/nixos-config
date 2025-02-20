@@ -1,0 +1,98 @@
+[
+    {
+        "fallback": false,
+        "iconPath": ":amazon",
+        "id": "187151ab",
+        "name": "Amazon",
+        "trigger": "ama",
+        "url": "http://www.amazon.fr/s/?field-keywords=%s"
+    },
+    {
+        "fallback": true,
+        "iconPath": ":gpt",
+        "id": "56bb7a89",
+        "name": "Chat GPT",
+        "trigger": "gpt",
+        "url": "https://chat.openai.com/?q=%s"
+    },
+    {
+        "fallback": false,
+        "iconPath": ":ebay",
+        "id": "e8507563",
+        "name": "Ebay",
+        "trigger": "eb",
+        "url": "http://www.ebay.com/sch/i.html?_nkw=%s"
+    },
+    {
+        "fallback": false,
+        "iconPath": ":github",
+        "id": "5b7ae170",
+        "name": "GitHub Code",
+        "trigger": "gh",
+        "url": "https://github.com/search?utf8=✓&q=%s&type=code"
+    },
+    {
+        "fallback": true,
+        "iconPath": ":google",
+        "id": "29cf85bf",
+        "name": "Google",
+        "trigger": "gg",
+        "url": "https://www.google.com/search?q=%s"
+    },
+    {
+        "fallback": false,
+        "iconPath": ":maps",
+        "id": "1244b7d7",
+        "name": "Google Maps",
+        "trigger": "maps",
+        "url": "https://www.google.com/maps/search/%s/"
+    },
+    {
+        "fallback": false,
+        "iconPath": ":scholar",
+        "id": "ed40f8c0",
+        "name": "Google Scholar",
+        "trigger": "scholar",
+        "url": "https://scholar.google.com/scholar?q=%s"
+    },
+    {
+        "fallback": false,
+        "iconPath": ":google_translate",
+        "id": "032afff1",
+        "name": "Google Translate",
+        "trigger": "gt",
+        "url": "https://translate.google.com/?text=%s"
+    },
+    {
+        "fallback": false,
+        "iconPath": ":default",
+        "id": "88e4329e",
+        "name": "My NixOS",
+        "trigger": "nix",
+        "url": "https://mynixos.com/search?q=%s"
+    },
+    {
+        "fallback": true,
+        "iconPath": ":default",
+        "id": "77e1dff4",
+        "name": "SearxNG",
+        "trigger": "ss",
+        "url": "https://searxng.brihx.fr/search?q=%s&categories=general"
+    },
+    {
+        "fallback": false,
+        "iconPath": ":wolfram",
+        "id": "653ef86f",
+        "name": "Wolfram Alpha",
+        "trigger": "wa",
+        "url": "https://www.wolframalpha.com/input/?i=%s"
+    },
+    {
+        "fallback": true,
+        "iconPath": ":youtube",
+        "id": "fd66faac",
+        "name": "YouTube",
+        "trigger": "yt",
+        "url": "https://www.youtube.com/results?search_query=%s"
+    }
+]

@@ -19,6 +19,7 @@ in
     ./hyprpaper.nix
     ./battery.nix
     ./termfilepickers.nix
+    ./albert
   ];
   home.packages = mkIf cfg.hyprland.enable (
     with pkgs;

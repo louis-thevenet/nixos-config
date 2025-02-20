@@ -90,6 +90,12 @@ in
         "tile,Warp"
         "float,^(Rofi)$"
       ];
+      windowrulev2 = [
+        # keep focus on albert
+        "stayfocused, class:(albert)"
+        "float, class:(albert)"
+        "center, class:(albert)"
+      ];
     };
   };
 }

@@ -30,6 +30,8 @@ in
       inputs.vault-tasks.packages.${pkgs.system}.default
       spotify-player
       television
+      rbw
+      pinentry
       vhs
     ]
   );

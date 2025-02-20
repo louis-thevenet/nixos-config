@@ -24,19 +24,15 @@ in
       bindr =
         let
           killall = "${pkgs.killall}/bin/killall";
-          rofi = "${pkgs.rofi-wayland}/bin/rofi";
+          socat = lib.getExe pkgs.socat;
         in
         # Waybar
-        [
-
-          "SUPER,x,exec,${killall} -SIGUSR1 .waybar-wrapped"
-        ]
+        [ "SUPER,x,exec,${killall} -SIGUSR1 .waybar-wrapped" ]
         # Launcher
-        ++ [
-          "SUPER,SUPER_L,exec,${rofi} -show drun -sidebar-mode"
-          "SUPERSHIFT,SUPER_L,exec,${rofi} -show run"
-          "SUPER,tab,exec,${rofi} -show window"
-        ];
+        ++ (lib.optionals config.services.albert.enable [
+          # <https://albertlauncher.github.io/gettingstarted/faq/#how-to-make-hotkeys-work-on-wayland>
+          "SUPER,SUPER_L,exec,echo -n toggle | ${socat} - ~/.cache/albert/ipc_socket"
+        ]);
       binde =
         let
           brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
