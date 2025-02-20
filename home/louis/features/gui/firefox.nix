@@ -115,6 +115,7 @@ in
           })
         ];
       settings = {
+        widget.use-xdg-desktop-portal.file-picker = 1; # use xdg-desktop-portal for file picker
         # Allow svgs to take on theme colors
         "svg.context-properties.content.enabled" = true;
         # Pressing TAB from address bar shouldn't cycle through buttons before
@@ -187,7 +188,8 @@ in
         # https://github.com/tlswg/tls13-spec/issues/1001
         "security.tls.enable_0rtt_data" = false;
         # Use Mozilla geolocation service instead of Google if given permission
-        "geo.provider.network.url" = "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%";
+        "geo.provider.network.url" =
+          "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%";
         "geo.provider.use_gpsd" = false;
         # https://support.mozilla.org/en-US/kb/extension-recommendations
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr" = false;
