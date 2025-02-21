@@ -11,8 +11,9 @@ in
 {
   services.darkman =
     let
-      swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
-      systemctl = "${pkgs.systemd}/bin/systemctl";
+      swaync-client = lib.getExe' pkgs.swaynotificationcenter "swaync-client";
+      systemctl = lib.getExe' pkgs.systemd "systemctl";
+      killall = lib.getExe' pkgs.toybox "killall";
 
       find-hm-generation =
         let
@@ -38,6 +39,8 @@ in
         ${swaync-client} -rs # reload CSS for swaync (notification center)
         ${systemctl} --user restart hyprpaper.service
         ${systemctl} --user restart glance.service
+        ${killall} -SIGUSR1 .hx-wrapped
+        # ${systemctl} --user restart albert # cannot reload config
       '';
     in
     mkIf cfg.stylix.enable {
