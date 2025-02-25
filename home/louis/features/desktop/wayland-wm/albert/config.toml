@@ -29,7 +29,7 @@ global_handler_enabled=false
 enabled=true
 
 [python]
-enabled=true
+enabled=false
 
 [python.bitwarden]
 enabled=true
