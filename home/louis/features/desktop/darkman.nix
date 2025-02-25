@@ -14,6 +14,7 @@ in
       swaync-client = lib.getExe' pkgs.swaynotificationcenter "swaync-client";
       systemctl = lib.getExe' pkgs.systemd "systemctl";
       killall = lib.getExe' pkgs.toybox "killall";
+      albert = lib.getExe pkgs.albert;
 
       find-hm-generation =
         let
@@ -40,7 +41,7 @@ in
         ${systemctl} --user restart hyprpaper.service
         ${systemctl} --user restart glance.service
         ${killall} -SIGUSR1 .hx-wrapped
-        # ${systemctl} --user restart albert # cannot reload config
+        ${albert} restart
       '';
     in
     mkIf cfg.stylix.enable {

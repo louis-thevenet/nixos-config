@@ -22,14 +22,16 @@ in
     xwayland.enable = true;
     extraConfig =
       let
-        swaync = "${pkgs.swaynotificationcenter}/bin/swaync";
-        hypridle = "${pkgs.hypridle}/bin/hypridle";
-        copyq = "${pkgs.copyq}/bin/copyq";
+        swaync = lib.getExe' pkgs.swaynotificationcenter "swaync";
+        hypridle = lib.getExe pkgs.hypridle;
+        copyq = lib.getExe pkgs.copyq;
+        albert = lib.getExe pkgs.albert;
       in
       ''
         exec-once = ${swaync}
         exec-once = ${hypridle}
         exec-once = ${copyq}
+        exec-once = ${albert}
       '';
     plugins = with pkgs.hyprlandPlugins; [
       hypr-dynamic-cursors

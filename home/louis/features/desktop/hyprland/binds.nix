@@ -29,10 +29,10 @@ in
         # Waybar
         [ "SUPER,x,exec,${killall} -SIGUSR1 .waybar-wrapped" ]
         # Launcher
-        ++ (lib.optionals config.services.albert.enable [
+        ++ [
           # <https://albertlauncher.github.io/gettingstarted/faq/#how-to-make-hotkeys-work-on-wayland>
           "SUPER,SUPER_L,exec,echo -n toggle | ${socat} - ~/.cache/albert/ipc_socket"
-        ]);
+        ];
       binde =
         let
           brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";

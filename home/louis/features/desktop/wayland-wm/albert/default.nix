@@ -10,10 +10,9 @@
     packages = [
       pkgs.goldendict-ng
       pkgs.libnotify
+      pkgs.albert
     ];
   };
-
-  services.albert.enable = true;
 
   xdg.configFile =
     let
