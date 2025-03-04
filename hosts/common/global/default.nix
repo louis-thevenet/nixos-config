@@ -14,7 +14,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  programs.zsh.enable = true;
+  programs.fish.enable = true;
 
   console.keyMap = "fr";
   services = {

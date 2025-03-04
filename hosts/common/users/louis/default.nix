@@ -17,7 +17,7 @@ in
           "networkmanager"
           "wheel"
         ];
-        shell = pkgs.zsh;
+        shell = pkgs.fish;
         home = "/home/louis";
         hashedPasswordFile = passwordFile;
       };

@@ -10,5 +10,7 @@
     ./oh-my-zsh.nix
     ./mime.nix
     ./bash-scripts.nix
+    ./fish.nix
+    ./starship.nix
   ];
 }

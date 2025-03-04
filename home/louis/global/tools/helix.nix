@@ -256,8 +256,21 @@ in
           formatter.command = lib.getExe pkgs.pkgs.nixfmt-rfc-style;
           auto-format = true;
         }
+        {
+          name = "fish";
+          language-servers = [
+            "fish"
+            "wakatime"
+          ];
+        }
       ];
       language-server = {
+        fish = {
+          command = lib.getExe pkgs.fish-lsp;
+          args = [ "start" ];
+          environment.fish_lsp_show_client_popups = "false";
+        };
+
         typescript-language-server = {
           command = lib.getExe pkgs.nodePackages_latest.typescript-language-server;
         };
