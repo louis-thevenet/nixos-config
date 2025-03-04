@@ -13,7 +13,7 @@ in
     with pkgs;
     [
       calibre
-      okular
+      kdePackages.okular
       qimgv
       tor-browser-bundle-bin
       obs-studio
