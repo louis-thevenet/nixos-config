@@ -16,6 +16,10 @@
       url = "github:Guekka/helix/copilot";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    yazi = {
+      url = "github:sxyazi/yazi";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     patchy = {
       url = "github:nik-rev/patchy";
       inputs.nixpkgs.follows = "nixpkgs";

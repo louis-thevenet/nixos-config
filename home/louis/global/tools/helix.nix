@@ -85,6 +85,19 @@ in
         };
 
         normal = {
+          "C-y" =
+            let
+              yazi = lib.getExe inputs.yazi.packages.${pkgs.system}.yazi;
+            in
+            [
+              ":sh rm -f /tmp/unique-file"
+              ":insert-output ${yazi} %{buffer_name} --chooser-file=/tmp/unique-file"
+              '':insert-output echo "\x1b[?1049h" > /dev/tty''
+              ":open %sh{cat /tmp/unique-file}"
+              ":redraw"
+              ":set mouse false"
+              ":set mouse true"
+            ];
           "C-e" = "copilot_toggle_auto_render";
           "h" = "no_op";
           "j" = "no_op";
@@ -94,15 +107,6 @@ in
           "!" = "no_op";
 
           "ret" = "goto_word";
-
-          "'" = {
-            "t" = "@:sh touch <C-r>%";
-            "r" = "@:sh rm <C-r>%";
-            "e" = "@:sh mkdir <C-r>%";
-            "w" = "@:sh mv <C-r>% <C-r>%";
-            "c" = "@:sh cp <C-r>% <C-r>%";
-          };
-
           backspace = {
             "t" = "@i- [ ] today ";
             "n" = "@i- [ ] ";
@@ -116,9 +120,9 @@ in
             # Jump between Markdown headers
             "A-j" = "@/^#+\s+.*$<ret>";
             "A-k" = "@?^#+\s+.*$<ret>";
-          };
 
-          "C-y" = ":yank-diagnostic";
+            "y" = ":yank-diagnostic";
+          };
 
           x = [
             "extend_line_below"

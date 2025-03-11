@@ -1,7 +1,15 @@
-{ config, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
 let
-  cfg = config.home-config.cli;
+  inherit (config.home-config.cli.commonTools) enable;
 in
 {
-  programs.yazi.enable = cfg.commonTools.enable;
+  programs.yazi = {
+    inherit enable;
+    package = inputs.yazi.packages.${pkgs.system}.yazi;
+  };
 }
