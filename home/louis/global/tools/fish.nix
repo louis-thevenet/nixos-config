@@ -53,6 +53,7 @@
         broot = lib.getExe pkgs.broot;
         dust = lib.getExe pkgs.dust;
         nh = lib.getExe inputs.nh.packages.${pkgs.system}.default;
+        git = lib.getExe pkgs.git;
       in
 
       {
@@ -71,6 +72,7 @@
         tree = broot;
         du = dust;
         df = dysk;
+        g = git;
 
         hxtv = "hx $(tv)";
 
