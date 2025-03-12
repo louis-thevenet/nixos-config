@@ -9,7 +9,6 @@
     ../common/optional/impermanence-disko.nix
     ../common/optional/ollama.nix
     ../common/optional/niri.nix
-    # ../common/optional/hyprland.nix
     ../common/optional/tlp.nix
     ../common/optional/kanata.nix
     ../common/optional/xdg.nix
