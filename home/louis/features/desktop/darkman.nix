@@ -38,7 +38,7 @@ in
       switch-theme-script = theme: ''
         $(${find-hm-generation})/${theme}/activate
         ${swaync-client} -rs # reload CSS for swaync (notification center)
-        ${systemctl} --user restart hyprpaper.service
+        # ${systemctl} --user restart hyprpaper.service
         ${systemctl} --user restart glance.service
         ${killall} -SIGUSR1 .hx-wrapped
         ${albert} restart
