@@ -9,7 +9,7 @@ let
   cfg = config.home-config.desktop;
 in
 {
-  home.packages = mkIf cfg.hyprland.enable (
+  home.packages = mkIf cfg.wayland.hyprland.enable (
     with pkgs;
     [
       hypridle
@@ -35,18 +35,18 @@ in
       }
 
       listener {
-          timeout = ${builtins.toString cfg.hyprland.hypridleConfig.lockTime}
+          timeout = ${builtins.toString cfg.wayland.hypridleConfig.lockTime}
           on-timeout = ${hyprlock}
       }
 
       listener {
-          timeout = ${builtins.toString cfg.hyprland.hypridleConfig.screenDimTime}
+          timeout = ${builtins.toString cfg.wayland.hypridleConfig.screenDimTime}
           on-timeout =  ${hyprctl} dispatch dpms off
           on-resume =  ${hyprctl} dispatch dpms on
       }
 
       listener {
-          timeout = ${builtins.toString cfg.hyprland.hypridleConfig.suspendTime}
+          timeout = ${builtins.toString cfg.wayland.hypridleConfig.suspendTime}
           on-timeout = ${systemctl} suspend
       }
     '';

@@ -101,16 +101,24 @@ in
     };
 
     desktop = {
-      hyprland = {
-        enable = mkEnableOption ''
-          Enable Hyprland
-        '';
-        nvidia = mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = ''
-            Enable Nvidia options for Hyprland
+      wayland = {
+
+        enable = mkEnableOption ''Enable Wayland Window Manager'';
+        niri = {
+          enable = mkEnableOption ''Enable Niri'';
+        };
+
+        hyprland = {
+          enable = mkEnableOption ''
+            Enable Hyprland
           '';
+          nvidia = mkOption {
+            type = lib.types.bool;
+            default = false;
+            description = ''
+              Enable Nvidia options for Hyprland
+            '';
+          };
         };
         hypridleConfig = {
           screenDimTime = mkOption {

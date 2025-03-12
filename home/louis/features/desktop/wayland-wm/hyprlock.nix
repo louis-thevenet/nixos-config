@@ -10,7 +10,7 @@ let
   inherit (config.lib.stylix) colors;
 in
 {
-  home.packages = mkIf cfg.hyprland.enable (
+  home.packages = mkIf cfg.wayland.hyprland.enable (
     with pkgs;
     [
       hyprlock
