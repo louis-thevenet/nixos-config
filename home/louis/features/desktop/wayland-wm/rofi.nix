@@ -37,7 +37,7 @@ in
     '';
     executable = true;
   };
-  programs.rofi = mkIf cfg.hyprland.enable {
+  programs.rofi = mkIf cfg.wayland.enable {
     enable = true;
     package = pkgs.rofi-wayland;
 

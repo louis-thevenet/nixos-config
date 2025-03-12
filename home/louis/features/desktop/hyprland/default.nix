@@ -14,7 +14,7 @@ in
     ./binds.nix
     ./decoration.nix
   ];
-  wayland.windowManager.hyprland = mkIf cfg.hyprland.enable {
+  wayland.windowManager.hyprland = mkIf cfg.wayland.hyprland.enable {
     # Whether to enable Hyprland wayland compositor
     enable = true;
 

@@ -24,7 +24,7 @@ in
   home =
 
     {
-      packages = mkIf cfg.hyprland.enable (
+      packages = mkIf cfg.wayland.enable (
         with pkgs;
         [
           swaynotificationcenter

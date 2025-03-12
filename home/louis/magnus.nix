@@ -36,13 +36,15 @@
       devTools.enable = true;
       jetbrains.enable = true;
     };
-    desktop.hyprland = {
-      enable = true;
-      nvidia = true;
-      hypridleConfig = {
-        screenDimTime = 300;
-        lockTime = 400;
-        suspendTime = 99999; # currently broken on magnus
+    desktop.wayland = {
+      hyprland = {
+        enable = true;
+        nvidia = true;
+        hypridleConfig = {
+          screenDimTime = 300;
+          lockTime = 400;
+          suspendTime = 99999; # currently broken on magnus
+        };
       };
     };
     desktop.stylix.enable = true;
