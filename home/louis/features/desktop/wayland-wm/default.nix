@@ -20,7 +20,7 @@ in
     ./battery.nix
     ./termfilepickers.nix
     ./albert
-    ./niri.nix
+    ./niri
   ];
   home.packages = mkIf cfg.wayland.enable (
     with pkgs;
