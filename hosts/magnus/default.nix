@@ -13,6 +13,7 @@
     ../common/optional/hyprland.nix
     ../common/optional/ollama.nix
     ../common/optional/kanata.nix
+    ../common/optional/xdg.nix
   ];
   networking.hostName = "magnus";
 
