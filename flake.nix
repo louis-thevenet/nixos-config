@@ -7,7 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     git-hooks-nix = {
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -95,6 +98,7 @@
       nixpkgs-master,
       home-manager,
       stylix,
+      niri,
       git-hooks-nix,
       nix-index-database,
       ...
@@ -171,10 +175,16 @@
                   };
                 };
               }
+
               stylix.nixosModules.stylix
               (_: {
-                nixpkgs.overlays = [ overlay-master ];
+                nixpkgs.overlays = [
+                  overlay-master
+                  niri.overlays.niri
+                ];
+
               })
+              niri.nixosModules.niri
               nix-index-database.nixosModules.nix-index
               {
                 programs.nix-index-database.comma.enable = true;

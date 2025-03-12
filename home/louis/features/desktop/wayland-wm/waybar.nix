@@ -49,7 +49,7 @@ in
     settings = {
       primary = {
         layer = "top";
-        position = "bottom";
+        position = "top";
         exclusive = false;
         fixed-center = false;
         start_hidden = true;
