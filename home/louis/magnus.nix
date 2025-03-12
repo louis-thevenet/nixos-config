@@ -37,15 +37,17 @@
       jetbrains.enable = true;
     };
     desktop.wayland = {
-      hyprland = {
-        enable = true;
-        nvidia = true;
-        hypridleConfig = {
-          screenDimTime = 300;
-          lockTime = 400;
-          suspendTime = 99999; # currently broken on magnus
-        };
-      };
+      # hyprland = {
+      # enable = true;
+      # nvidia = true;
+      # hypridleConfig = {
+      #   screenDimTime = 300;
+      #   lockTime = 400;
+      #   suspendTime = 99999; # currently broken on magnus
+      # };
+      # };
+      niri.enable = true;
+      enable = true;
     };
     desktop.stylix.enable = true;
     misc = {
@@ -71,10 +73,10 @@
       workspace = "1";
       primary = true;
     }
-    # get rid of the ghost monitor
-    {
-      name = "Unknown-1";
-      enabled = false;
-    }
+    # # get rid of the ghost monitor
+    # {
+    #   name = "Unknown-1";
+    #   enabled = false;
+    # }
   ];
 }
