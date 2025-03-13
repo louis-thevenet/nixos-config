@@ -75,7 +75,10 @@ in
 {
 
   programs.niri.settings = {
-    input.keyboard.xkb.layout = "fr,fr";
+    input = {
+      keyboard.xkb.layout = "fr,fr";
+      focus-follows-mouse.enable = true;
+    };
     screenshot-path = "~/Pictures/Screenshots/%Y-%m-%dT%H:%M:%S.png";
     binds =
       with config.lib.niri.actions;
@@ -118,6 +121,10 @@ in
             "Down" = "window-down";
             "Up" = "window-up";
             "Right" = "column-right";
+            "J" = "column-left";
+            "K" = "window-down";
+            "L" = "window-up";
+            "M" = "column-right";
           };
 
           prefixes = {
@@ -256,6 +263,9 @@ in
 
       }) config.monitors
     );
+    environment = {
+      DISPLAY = ":0";
+    };
     spawn-at-startup =
       let
         get-wayland-display = "systemctl --user show-environment | awk -F 'WAYLAND_DISPLAY=' '{print $2}' | awk NF";
@@ -273,19 +283,24 @@ in
         {
           command = [
             "${only-without-session}"
-            "${lib.getExe pkgs.waybar}"
+            (lib.getExe pkgs.waybar)
           ];
         }
         {
           command = [
             "${only-without-session}"
-            "${lib.getExe pkgs.albert}"
+            (lib.getExe pkgs.albert)
           ];
         }
         {
           command = [
             "${only-without-session}"
-            ''${lib.getExe' pkgs.swaynotificationcenter "swaync"}''
+            (lib.getExe' pkgs.swaynotificationcenter "swaync")
+          ];
+        }
+        {
+          command = [
+            (lib.getExe pkgs.xwayland-satellite)
           ];
         }
       ];
