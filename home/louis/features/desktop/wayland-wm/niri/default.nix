@@ -112,6 +112,7 @@ in
         {
           # Other
           "Mod+colon".action = show-hotkey-overlay;
+          "Mod+Q".action = close-window;
         }
         # Window binds
         (binds {
