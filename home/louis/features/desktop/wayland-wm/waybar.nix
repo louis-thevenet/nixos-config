@@ -54,10 +54,14 @@ in
         fixed-center = false;
         start_hidden = true;
         modules-left =
-          lib.optionals config.wayland.windowManager.hyprland.enable [
+          (lib.optionals config.wayland.windowManager.hyprland.enable [
             "hyprland/workspaces"
             #"hyprland/submap"
-          ]
+          ])
+          ++ (lib.optionals cfg.wayland.niri.enable [
+            "niri/workspaces"
+            #"hyprland/submap"
+          ])
           ++ [
             "cpu"
             "memory"
@@ -164,6 +168,13 @@ in
             "Super Productivity" = " 󰨟";
             "Beeper" = " 💬";
             "LM Studio" = " ";
+          };
+        };
+        "niri/workspaces" = {
+          format = "{index} {icon}";
+          "format-icons" = {
+            "active" = "";
+            "default" = "";
           };
         };
         battery = {
