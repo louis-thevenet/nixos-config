@@ -63,8 +63,8 @@ let
   toAzerty = n: set: if (builtins.elem n (lib.attrNames set)) then set.${n} else n;
   socat = lib.getExe pkgs.socat;
   killall = "${pkgs.killall}/bin/killall";
-  brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
-  pactl = "${pkgs.pulseaudio}/bin/pactl";
+  brightnessctl = lib.getExe pkgs.brightnessctl;
+  wpctl = lib.getExe' pkgs.wireplumber "wpctl";
 
   swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
   terminal = config.home.sessionVariables.TERMINAL;
@@ -99,12 +99,12 @@ in
         }
         {
           # Functions
-          "XF86MonBrightnessUp".action = sh "${brightnessctl}" "set" "+5%";
-          "XF86MonBrightnessDown".action = sh "${brightnessctl}" "set" "%-5";
-          "XF86AudioRaiseVolume".action = sh "${pactl}" "set-sink-volume" "@DEFAULT_SINK@" "+5%";
-          "XF86AudioLowerVolume".action = sh "${pactl}" "set-sink-volume" "@DEFAULT_SINK@" "-5%";
-          "XF86AudioMute".action = sh "${pactl}" "set-sink-mute" "@DEFAULT_SINK@" "toggle";
-          "XF86AudioMicMute".action = sh "${pactl}" "set-source-mute" "@DEFAULT_SOURCE@" "toggle";
+          "XF86AudioRaiseVolume".action = sh "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 0.05+";
+          "XF86AudioLowerVolume".action = sh "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 0.05-";
+          "XF86AudioMute".action = sh "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
+
+          "XF86MonBrightnessUp".action = sh "${brightnessctl} set 10%+";
+          "XF86MonBrightnessDown".action = sh "${brightnessctl} set 10%-";
 
           "Print".action = screenshot;
           "Alt+Print".action = screenshot-window;
