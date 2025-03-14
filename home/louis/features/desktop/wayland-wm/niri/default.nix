@@ -68,6 +68,7 @@ let
 
   swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
   terminal = config.home.sessionVariables.TERMINAL;
+  hyprlock = lib.getExe pkgs.hyprlock;
   darkman = "${pkgs.darkman}/bin/darkman";
   copyq = "${pkgs.copyq}/bin/copyq";
   bluetui = "${pkgs.bluetui}/bin/bluetui";
@@ -89,13 +90,14 @@ in
 
         {
           # Apps
-          "Mod+T".action = spawn "kitty";
+          "Mod+T".action = spawn terminal;
           "Mod+D".action = sh "echo -n toggle | ${socat} - ~/.cache/albert/ipc_socket";
           "Mod+x".action = sh "${killall} -SIGUSR1 .waybar-wrapped";
           "Mod+O".action = sh "${copyq} show";
           "Mod+W".action = sh "${swaync-client} -t";
           "Mod+P".action = sh "${terminal} ${bluetui}";
           "Mod+Shift+T".action = sh "${darkman} toggle";
+          "Mod+Backspace".action = spawn hyprlock;
         }
         {
           # Functions
@@ -291,6 +293,12 @@ in
           command = [
             "${only-without-session}"
             (lib.getExe pkgs.albert)
+          ];
+        }
+        {
+          command = [
+            "${only-without-session}"
+            (lib.getExe pkgs.hypridle)
           ];
         }
         {
