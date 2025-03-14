@@ -29,11 +29,14 @@
       vscode.enable = true;
       devTools.enable = true;
     };
-    desktop.hyprland = {
-      enable = true;
-      waybarConfig.batteryName = "BAT1";
+    desktop = {
+      stylix.enable = true;
+      wayland = {
+        enable = true;
+        niri.enable = true;
+        waybarConfig.batteryName = "BAT1";
+      };
     };
-    desktop.stylix.enable = true;
     misc.nextcloud.enable = true;
   };
   monitors = [
@@ -41,7 +44,7 @@
       name = "eDP-1";
       width = 2880;
       height = 1620;
-      refreshRate = 120;
+      refreshRate = 120.0;
       scale = 1.5;
       x = 0;
       workspace = "1";

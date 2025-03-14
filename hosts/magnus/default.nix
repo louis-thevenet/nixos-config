@@ -10,7 +10,7 @@
     ../common/users/louis
     ../common/optional/airpods-battery-fetcher.nix
     ../common/optional/stylix.nix
-    ../common/optional/hyprland.nix
+    ../common/optional/niri.nix
     ../common/optional/ollama.nix
     ../common/optional/kanata.nix
     ../common/optional/xdg.nix
