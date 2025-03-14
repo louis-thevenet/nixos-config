@@ -9,7 +9,7 @@ let
   cfg = config.home-config.desktop;
 in
 {
-  home.packages = mkIf cfg.wayland.hyprland.enable (
+  home.packages = mkIf cfg.wayland.enable (
     with pkgs;
     [
       hypridle
