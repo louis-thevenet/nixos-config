@@ -312,6 +312,11 @@ in
             (lib.getExe pkgs.xwayland-satellite)
           ];
         }
+        {
+          command = [
+            (lib.getExe' pkgs.nextcloud-client "nextcloud")
+          ];
+        }
       ];
   };
 }
