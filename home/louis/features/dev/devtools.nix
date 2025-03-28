@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  inputs,
   ...
 }:
 let
@@ -41,9 +40,6 @@ in
       tokei
       src
       dev
-    ]
-    ++ [
-      inputs.patchy.packages.${pkgs.system}.default
     ]
   );
 
