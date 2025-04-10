@@ -5,7 +5,7 @@
 }:
 let
   inherit (lib) mkIf;
-  cfg = config.home-config.desktop;
+  cfg = config.home-config.desktop.wayland;
 in
 {
   wayland.windowManager.hyprland.settings = mkIf cfg.hyprland.enable {

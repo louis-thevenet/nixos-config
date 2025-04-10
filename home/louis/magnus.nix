@@ -38,13 +38,8 @@
     };
     desktop.wayland = {
       # hyprland = {
-      # enable = true;
-      # nvidia = true;
-      # hypridleConfig = {
-      #   screenDimTime = 300;
-      #   lockTime = 400;
-      #   suspendTime = 99999; # currently broken on magnus
-      # };
+      #   enable = true;
+      #   nvidia = true;
       # };
       niri.enable = true;
       enable = true;

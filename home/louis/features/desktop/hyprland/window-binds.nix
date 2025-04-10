@@ -5,7 +5,7 @@
 }:
 let
   inherit (lib) mkIf;
-  cfg = config.home-config.desktop;
+  cfg = config.home-config.desktop.wayland;
 
   workspaces = (map toString (lib.range 0 9)) ++ (map (n: "F${toString n}") (lib.range 1 12));
   # Map keys to hyprland directions
@@ -89,8 +89,8 @@ in
         "SUPERSHIFT,o,movetoworkspace,special:O"
       ]
       ++
-      # Change workspace
-      (map (n: "SUPER,${toAzerty n azerty},workspace,name:${n}") workspaces)
+        # Change workspace
+        (map (n: "SUPER,${toAzerty n azerty},workspace,name:${n}") workspaces)
       ++
         # Move window to workspace
         (map (n: "SUPERSHIFT,${toAzerty n azerty},movetoworkspacesilent,name:${n}") workspaces)
