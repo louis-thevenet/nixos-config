@@ -31,7 +31,7 @@ in
         # Launcher
         ++ [
           # <https://albertlauncher.github.io/gettingstarted/faq/#how-to-make-hotkeys-work-on-wayland>
-          "SUPER,SUPER_L,exec,echo -n toggle | ${socat} - ~/.cache/albert/ipc_socket"
+          "SUPER,d,exec,echo -n toggle | ${socat} - ~/.cache/albert/ipc_socket"
         ];
       binde =
         let

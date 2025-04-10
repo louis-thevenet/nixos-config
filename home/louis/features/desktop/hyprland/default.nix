@@ -88,10 +88,6 @@ in
         focus_on_activate = true;
       };
 
-      windowrule = [
-        "tile,Warp"
-        "float,^(Rofi)$"
-      ];
       windowrulev2 = [
         # keep focus on albert
         "stayfocused, class:(albert)"
