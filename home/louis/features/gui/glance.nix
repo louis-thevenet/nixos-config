@@ -83,7 +83,11 @@ in
                 {
                   type = "search";
                   autofocus = true;
-                  search-engine = cfg.firefox.searxngInstance + "/search?q={QUERY}&categories=general";
+                  search-engine =
+                    cfg.firefox.searxngInstance.url
+                    + ":"
+                    + (toString cfg.firefox.searxngInstance.port)
+                    + "/search?q={QUERY}&categories=general";
                 }
                 {
                   type = "group";

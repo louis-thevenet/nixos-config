@@ -13,7 +13,11 @@
       kitty.enable = true;
       firefox = {
         enable = true;
-        searxngInstance = "https://searxng.brihx.fr";
+        searxngInstance = {
+          local = true;
+          url = "http://127.0.0.1";
+          port = 30070;
+        };
         homepageUrl = "localhost:30069";
       };
       glance = {

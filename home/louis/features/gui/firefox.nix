@@ -50,7 +50,13 @@ in
         engines = {
           "SearxNG" = {
             urls = [
-              { template = cfg.firefox.searxngInstance + "/search?q={searchTerms}&categories=general"; }
+              {
+                template =
+                  cfg.firefox.searxngInstance.url
+                  + ":"
+                  + (toString cfg.firefox.searxngInstance.port)
+                  + "/search?q={searchTerms}&categories=general";
+              }
             ];
           };
           "MyNixOS" = {

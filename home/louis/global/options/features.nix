@@ -21,7 +21,6 @@ in
       kitty.enable = mkEnableOption ''
         Enable Kitty
       '';
-
       glance = {
         enable = mkEnableOption ''
           Enable Glance
@@ -41,13 +40,24 @@ in
         enable = mkEnableOption ''
           Enable Firefox
         '';
-        searxngInstance = mkOption {
-          type = lib.types.str;
-          default = "https://searxng.brihx.fr";
-          description = ''
-            URL for searxng instance
-          '';
+        searxngInstance = {
+          local = mkEnableOption ''Self-host Searxng or not'';
+          url = mkOption {
+            type = lib.types.str;
+            default = "https://searxng.brihx.fr";
+            description = ''
+              URL for searxng instance
+            '';
+          };
+          port = mkOption {
+            type = lib.types.int;
+            default = 443;
+            description = ''
+              Port for searxng instance
+            '';
+          };
         };
+
         homepageUrl = mkOption {
           type = lib.types.str;
           default = "about:blank";
