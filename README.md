@@ -1,7 +1,8 @@
 # NixOS Hyprland flake setup
 
-![2025-02-01T12:13:36,252545958+01:00](https://github.com/user-attachments/assets/6c2c80aa-f000-47b0-9394-1ce99e7db4a1)
-![2025-02-01T12:16:10,334871696+01:00](https://github.com/user-attachments/assets/a142067b-6cf3-4906-a5e6-23027c0d7e35)
+![image](https://github.com/user-attachments/assets/8cc89a79-9bfd-4882-bbca-07f925fd1338)
+
+![image](https://github.com/user-attachments/assets/eeccd1de-dc22-4cf0-8a91-444e31e507fb)
 
 ## Features
 
