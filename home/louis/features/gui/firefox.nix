@@ -105,7 +105,6 @@ in
           tree-style-tab
           ublock-origin
           unpaywall
-          wikiwand-wikipedia-modernized
           vimium
           (limit-limit-distracting-sites.overrideAttrs { meta.license.free = true; })
         ]
