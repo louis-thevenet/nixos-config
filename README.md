@@ -3,10 +3,10 @@
 ![2025-02-01T12:13:36,252545958+01:00](https://github.com/user-attachments/assets/6c2c80aa-f000-47b0-9394-1ce99e7db4a1)
 ![2025-02-01T12:16:10,334871696+01:00](https://github.com/user-attachments/assets/a142067b-6cf3-4906-a5e6-23027c0d7e35)
 
-
-
 ## Features
-- Hyprland (Hypridle, Hyprlock, Hyprpaper, Mako, Rofi, Swaync, Waybar)
+
+- Hyprland (Hypridle, Hyprlock, Hyprpaper, Mako, Albert, Swaync, Waybar)
+- Niri (with mostly the same wayland DE)
 - Nix Flakes
 - Theme handled by [Stylix](https://github.com/danth/stylix)
 - Automatic light and dark themes
@@ -16,6 +16,7 @@
 - Secrets Management
 
 ## NixOS Config
+
 ```rust
 hosts
 ├── akatosh
@@ -32,6 +33,7 @@ hosts
    ├── hardware-configuration.nix
    └── sops.nix
 ```
+
 - `magnus` : Main System
 - `akatosh` : Laptop (disk managed with [disko](https://github.com/nix-community/disko) with [impermanence](https://nixos.wiki/wiki/Impermanence) for NixOS)
 
@@ -40,58 +42,83 @@ The setup is rather classic, most of the system configuration is shared between 
 ## HomeManager Config
 
 ```
-home
+.
 └── louis
-   ├── akatosh.nix
-   ├── features
-   │  ├── cli
-   │  ├── default.nix
-   │  ├── desktop
-   │  ├── dev
-   │  ├── gaming
-   │  ├── gui
-   │  ├── impermanence.nix
-   │  ├── misc
-   │  └── virtualization
-   ├── global
-   │  ├── default.nix
-   │  ├── home-manager.nix
-   │  ├── options
-   │  └── tools
-   └── magnus.nix
+    ├── akatosh.nix
+    ├── features
+    │   ├── cli
+    │   ├── default.nix
+    │   ├── desktop
+    │   ├── dev
+    │   ├── gaming
+    │   ├── gui
+    │   ├── impermanence.nix
+    │   ├── misc
+    │   └── virtualization
+    ├── global
+    │   ├── default.nix
+    │   ├── home-manager.nix
+    │   ├── options
+    │   └── tools
+    └── magnus.nix
 ```
 
 There are some tools enabled by default (`home/louis/global/tools.nix`, `helix`) but most features are optional.
 
 Features are enabled using options defined in (`home/louis/global/options`). See `magnus.nix`:
+
 ```nix
 home-config = {
   cli.commonTools.enable = true;   # eza, bat, wget, ...
-  gui = {
-    kitty.enable = true;
-    schizofox.enable = true;       # "super ultra privacy friendly firefox config"
-    social.enable = true;
-    utils.enable = true;           # spotify, file manager, calibre, ...
-  };
-  dev = {
-    vscode.enable = true;
-    devTools.enable = true;       # tokei, tmux, ...
-  };
-  desktop.hyprland.enable = true; # Gnome is also an option
+   gui = {
+      kitty.enable = true;         # terminal
+      firefox = {
+        enable = true;
+        searxngInstance = { # privacy-focused search engine
+          local = true; # self-hosted
+          url = "http://127.0.0.1";
+          port = 30070;
+        };
+        homepageUrl = "localhost:30069"; # glance homepage
+      };
+      glance = {
+        enable = true;
+        host = "localhost";
+        port = 30069;
+      };
+      social.enable = true; # discord, beeper, ...
+      utils.enable = true;# spotify, file manager, calibre, ...
+      ai.lmstudio.enable = true;
+    };
+    dev = {
+      vscode.enable = true;
+      devTools.enable = true; # tokei, tmux, ...
+    };
+    desktop.wayland = {
+      enable = true; # contains most of my wayland "DE" (waybar, albert, swaync, ...)
+      # hyprland = {
+      #   enable = true;
+      #   nvidia = true;
+      # };
+      niri.enable = true;
+    };
   virtualization.enable = true;   # qemu, ...
   # other options exists (gaming, ...)
 };
 ```
 
 ## Theming
+
 Style is handled by [Stylix](https://github.com/danth/stylix):
 
 Theme and wallpaper auto switch from light to dark on sunset using darkman and nix specialisations.
 
 # What you would change to use this config
+
 ## Delete what you wouldn't use
-Here are some random examples:
-- Schizofox
+
+Here are some (random) examples:
+
 - Nextcloud
 - Helix/NixVim
 - Some VSCode extensions
@@ -99,7 +126,9 @@ Here are some random examples:
 - Git signing keys
 
 ## What you need to do
+
 ### NixOS
+
 - Have experimental features (nix-commands and flakes) enabled in your initial configuration
 - Clone the repo
 - Replace all occurences of `louis` by your username
@@ -108,7 +137,8 @@ Here are some random examples:
 - Replace `hardware-config.nix` with your own file produced by `nixos-generate-config`.
 
 ### Home Manager
-- you should already have changed `magnus`'s config to be yours
+
+- You should already have changed `magnus`'s config to be yours
 - You should probably follow this algorithm:
 - Comment out all features in `./home/USERNAME/HOSTNAME.nix`
 - For each feature, see what it enables, remove what you don't want, then enable it or not
