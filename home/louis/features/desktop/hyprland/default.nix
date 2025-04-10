@@ -6,7 +6,7 @@
 }:
 let
   inherit (lib) mkIf;
-  cfg = config.home-config.desktop;
+  cfg = config.home-config.desktop.wayland;
 in
 {
   imports = [
@@ -14,7 +14,7 @@ in
     ./binds.nix
     ./decoration.nix
   ];
-  wayland.windowManager.hyprland = mkIf cfg.wayland.hyprland.enable {
+  wayland.windowManager.hyprland = mkIf cfg.hyprland.enable {
     # Whether to enable Hyprland wayland compositor
     enable = true;
 
