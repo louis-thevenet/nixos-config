@@ -358,6 +358,8 @@ in
                 # "clippy::style"
                 "-W"
                 "clippy::pedantic"
+                "-A"
+                "clippy::pedantic::missing_errors_doc"
                 # "-W"
                 # "clippy::nursery"
               ];
