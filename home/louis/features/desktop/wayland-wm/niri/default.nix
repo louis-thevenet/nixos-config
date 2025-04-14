@@ -189,15 +189,19 @@ in
           };
         })
         {
+          # Move columns
           "Mod+Comma".action = consume-window-into-column;
           "Mod+semicolon".action = expel-window-from-column;
+          "Mod+V".action = toggle-column-tabbed-display;
+          "Mod+C".action = center-column;
 
+          # Resize columns
           "Mod+R".action = switch-preset-column-width;
           "Mod+Shift+R" = switch-preset-window-height;
           "Mod+Ctrl+R" = reset-window-height;
+          "Mod+Ctrl+F".action = expand-column-to-available-width;
           "Mod+F".action = maximize-column;
           "Mod+Shift+F".action = fullscreen-window;
-          "Mod+C".action = center-column;
 
           "Mod+KP_Subtract".action = set-column-width "-10%";
           "Mod+KP_Add".action = set-column-width "+10%";
@@ -211,43 +215,59 @@ in
           "Mod+Shift+Ctrl+T".action = toggle-debug-tint;
         }
         {
-          "Mod+Ctrl+F".action = expand-column-to-available-width;
         }
       ];
     layout = {
-      gaps = 16;
-      struts.left = 64;
-      struts.right = 64;
-      border.width = 4;
-      always-center-single-column = true;
-
-      empty-workspace-above-first = true;
-      # fog of war
-      focus-ring = {
-        # enable = true;
-        width = 10000;
-        active.color = "#00000055";
+      gaps = 8;
+      struts = {
+        top = -8; # removes gap
+        bottom = -8;
+        left = 64;
+        right = 64;
       };
-      # border.active.gradient = {
-      #   from = "red";
-      #   to = "blue";
-      #   in' = "oklch shorter hue";
-      # };
+      always-center-single-column = true;
+      center-focused-column = "on-overflow";
+      empty-workspace-above-first = true;
 
-      shadow.enable = true;
+      preset-column-widths = [
+        { proportion = 1.0 / 3.0; }
+        { proportion = 1.0 / 2.0; }
+        { proportion = 2.0 / 3.0; }
+      ];
+      default-column-width = {
+        proportion = 1.0 / 2.0;
+      };
 
-      # default-column-display = "tabbed";
+      border = {
+        enable = true;
+        width = 6;
+        active = {
+          gradient = {
+            from = "#AFEEEE";
+            to = "#1E98FF";
+            angle = 45;
+            relative-to = "workspace-view";
+          };
+        };
+        inactive = {
+          gradient = {
+            from = "#585b70";
+            to = "#7f849c";
+            angle = 45;
+            relative-to = "workspace-view";
+          };
+        };
+      };
 
       tab-indicator = {
         position = "top";
         gaps-between-tabs = 10;
-
-        # hide-when-single-tab = true;
-        # place-within-column = true;
-
-        # active.color = "red";
+        place-within-column = true;
       };
-
+    };
+    cursor = {
+      hide-after-inactive-ms = 1000;
+      hide-when-typing = true;
     };
     outputs = builtins.listToAttrs (
       map (m: {
