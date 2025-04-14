@@ -72,7 +72,6 @@
         "vscode"
         "rust"
         "direnv"
-        "fzf"
       ];
       theme = "candy";
     };

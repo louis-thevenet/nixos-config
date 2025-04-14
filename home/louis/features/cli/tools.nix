@@ -35,5 +35,4 @@ in
       vhs
     ]
   );
-  programs.fzf.enable = cfg.commonTools.enable;
 }
