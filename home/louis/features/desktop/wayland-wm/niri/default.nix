@@ -6,6 +6,8 @@
 }:
 with lib;
 let
+  inherit (lib) mkIf;
+  cfg = config.home-config.desktop.wayland;
   binds =
     {
       suffixes,
@@ -75,7 +77,7 @@ let
 in
 {
 
-  programs.niri.settings = {
+  programs.niri.settings = mkIf cfg.niri.enable {
     input = {
       keyboard.xkb.layout = "fr,fr";
       focus-follows-mouse.enable = true;
@@ -103,7 +105,9 @@ in
           # Functions
           "XF86AudioRaiseVolume".action = sh "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 0.05+";
           "XF86AudioLowerVolume".action = sh "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 0.05-";
-          "XF86AudioMute".action = sh "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          "XF86AudioMute" = mkIf (!cfg.niri.brokenAudioMuteKey) {
+            action = sh "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          };
 
           "XF86MonBrightnessUp".action = sh "${brightnessctl} set 10%+";
           "XF86MonBrightnessDown".action = sh "${brightnessctl} set 10%-";
@@ -118,7 +122,6 @@ in
         }
         # Window binds
         (binds {
-
           suffixes = {
             "Left" = "column-left";
             "Down" = "window-down";

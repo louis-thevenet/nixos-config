@@ -41,8 +41,11 @@
       #   enable = true;
       #   nvidia = true;
       # };
-      niri.enable = true;
       enable = true;
+      niri = {
+        enable = true;
+        brokenAudioMuteKey = true;
+      };
     };
     desktop.stylix.enable = true;
     misc = {

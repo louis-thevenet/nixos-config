@@ -106,6 +106,7 @@ in
         enable = mkEnableOption ''Enable Wayland Window Manager'';
         niri = {
           enable = mkEnableOption ''Enable Niri'';
+          brokenAudioMuteKey = mkEnableOption ''How did I even break this'';
         };
 
         hyprland = {
