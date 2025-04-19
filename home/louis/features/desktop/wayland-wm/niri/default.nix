@@ -70,6 +70,7 @@ let
 
   swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
   terminal = config.home.sessionVariables.TERMINAL;
+  browser = lib.getExe pkgs.firefox;
   hyprlock = lib.getExe pkgs.hyprlock;
   darkman = "${pkgs.darkman}/bin/darkman";
   copyq = "${pkgs.copyq}/bin/copyq";
@@ -97,6 +98,7 @@ in
           "Mod+x".action = sh "${killall} -SIGUSR1 .waybar-wrapped";
           "Mod+O".action = sh "${copyq} show";
           "Mod+W".action = sh "${swaync-client} -t";
+          "Mod+B".action = sh browser;
           "Mod+P".action = sh "${terminal} ${bluetui}";
           "Mod+Shift+T".action = sh "${darkman} toggle";
           "Mod+Backspace".action = spawn hyprlock;
