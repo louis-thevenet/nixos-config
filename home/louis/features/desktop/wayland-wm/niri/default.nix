@@ -291,6 +291,16 @@ in
 
       }) config.monitors
     );
+    window-rules = [
+      {
+        matches = [
+          {
+            title = "Albert";
+          }
+        ];
+        border.enable = false;
+      }
+    ];
     environment = {
       DISPLAY = ":0";
     };
@@ -349,4 +359,5 @@ in
         }
       ];
   };
+
 }
