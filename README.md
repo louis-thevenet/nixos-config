@@ -1,4 +1,4 @@
-# NixOS Hyprland flake setup
+# NixOS Niri flake setup
 
 ![image](https://github.com/user-attachments/assets/8cc89a79-9bfd-4882-bbca-07f925fd1338)
 
