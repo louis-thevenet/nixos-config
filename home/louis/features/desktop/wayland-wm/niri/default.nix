@@ -5,9 +5,27 @@
   ...
 }:
 with lib;
+with config.lib.stylix.colors;
 let
   inherit (lib) mkIf;
   cfg = config.home-config.desktop.wayland;
+  default-background = base00;
+  # lighter-background = base01;
+  # selection-background = base02;
+  # comments = base03;
+  # dark-foreground = base04;
+  default-foreground = base05;
+  light-foreground = base06;
+  light-background = base07;
+  # variables = base08;
+  # constants = base09;
+  # classes = base0A;
+  # strings = base0B;
+  # support = base0C;
+  # functions = base0D;
+  # keywords = base0E;
+  # deprecated = base0F;
+
   binds =
     {
       suffixes,
@@ -245,16 +263,16 @@ in
         width = 6;
         active = {
           gradient = {
-            from = "#AFEEEE";
-            to = "#1E98FF";
+            from = default-foreground;
+            to = light-foreground;
             angle = 45;
             relative-to = "workspace-view";
           };
         };
         inactive = {
           gradient = {
-            from = "#585b70";
-            to = "#7f849c";
+            from = default-background;
+            to = light-background;
             angle = 45;
             relative-to = "workspace-view";
           };
@@ -292,6 +310,16 @@ in
       }) config.monitors
     );
     window-rules = [
+      {
+        matches = [ ];
+        geometry-corner-radius = {
+          bottom-left = 12.0;
+          bottom-right = 12.0;
+          top-left = 12.0;
+          top-right = 12.0;
+        };
+        clip-to-geometry = true;
+      }
       {
         matches = [
           {
