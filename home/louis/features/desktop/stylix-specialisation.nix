@@ -19,7 +19,7 @@ in
     dark.configuration.stylix = {
       polarity = "dark";
       image = ../../../../hosts/common/optional/background.png;
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/primer-dark.yaml";
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/evenok-dark.yaml";
     };
   };
 }
