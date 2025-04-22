@@ -41,6 +41,8 @@
         waybarConfig.batteryName = "BAT1";
       };
     };
+
+    virtualization.enable = true;
     misc.nextcloud.enable = true;
   };
   monitors = [

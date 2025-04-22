@@ -16,7 +16,7 @@ in
       virt-manager
     ]
   );
-
+  programs.distrobox.enable = true;
   dconf.settings = mkIf cfg.virtualization.enable {
     "org/virt-manager/virt-manager/connections" = {
       autoconnect = [ "qemu:///system" ];
