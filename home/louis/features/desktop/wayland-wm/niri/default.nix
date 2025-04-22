@@ -333,40 +333,36 @@ in
       DISPLAY = ":0";
     };
     spawn-at-startup =
-      let
-        get-wayland-display = "systemctl --user show-environment | awk -F 'WAYLAND_DISPLAY=' '{print $2}' | awk NF";
-        wrapper =
-          name: op:
-          pkgs.writeScript "${name}" ''
-            if [ "$(${get-wayland-display})" ${op} "$WAYLAND_DISPLAY" ]; then
-              exec "$@"
-            fi
-          '';
+      # let
+      # get-wayland-display = "systemctl --user show-environment | awk -F 'WAYLAND_DISPLAY=' '{print $2}' | awk NF";
+      # wrapper =
+      #   name: op:
+      #   pkgs.writeScript "${name}" ''
+      #     if [ "$(${get-wayland-display})" ${op} "$WAYLAND_DISPLAY" ]; then
+      #       exec "$@"
+      #     fi
+      #   '';
 
-        only-without-session = wrapper "only-without-session" "!=";
-      in
+      # only-without-session = wrapper "only-without-session" "!=";
+      # in
       [
         {
           command = [
-            "${only-without-session}"
             (lib.getExe pkgs.waybar)
           ];
         }
         {
           command = [
-            "${only-without-session}"
             (lib.getExe pkgs.albert)
           ];
         }
         {
           command = [
-            "${only-without-session}"
             (lib.getExe pkgs.hypridle)
           ];
         }
         {
           command = [
-            "${only-without-session}"
             (lib.getExe' pkgs.swaynotificationcenter "swaync")
           ];
         }
