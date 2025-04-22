@@ -60,7 +60,7 @@ in
           ])
           ++ (lib.optionals cfg.wayland.niri.enable [
             "niri/workspaces"
-            #"hyprland/submap"
+            "niri/window"
           ])
           ++ [
             "cpu"
@@ -175,6 +175,20 @@ in
           "format-icons" = {
             "active" = "";
             "default" = "";
+          };
+
+          "niri/window" = {
+            "format" = "{title}";
+            rewrite = {
+              # Doesn't work (?)
+              "(.*)Mozilla Firefox" = " $1";
+              "hxtv (.*)" = "> [$1]";
+              "hx (.*)" = "> [$1]";
+              "~" = "> [$1]";
+            };
+            icon = true;
+            separate-outputs = true;
+            max-length = 90;
           };
         };
         battery = {
@@ -301,6 +315,7 @@ in
         }
         #workspaces button.focused,
         #workspaces button.active,
+        #window,
         #clock,
         #cpu,
         #memory,
