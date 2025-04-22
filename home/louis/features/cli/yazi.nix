@@ -11,5 +11,6 @@ in
   programs.yazi = {
     inherit enable;
     package = inputs.yazi.packages.${pkgs.system}.yazi;
+    enableFishIntegration = true;
   };
 }

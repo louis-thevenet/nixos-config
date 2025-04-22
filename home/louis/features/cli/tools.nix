@@ -14,7 +14,6 @@ in
     with pkgs;
     [
       neofetch
-      eza
       bat
       trash-cli
       du-dust
@@ -35,4 +34,8 @@ in
       vhs
     ]
   );
+  programs.eza = {
+    enable = true;
+    enableFishIntegration = true;
+  };
 }
