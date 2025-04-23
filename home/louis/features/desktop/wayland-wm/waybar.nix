@@ -67,8 +67,10 @@ in
             "memory"
           ];
         modules-center = [
+
+          "cava#left"
           "custom/player"
-          #"custom/gpu"
+          "cava#right"
         ];
         modules-right = [
           "tray"
@@ -81,6 +83,58 @@ in
           "custom/notifications"
           "clock"
         ];
+        "cava#left" = {
+          framerate = 60;
+          autosens = 1;
+          bars = 18;
+          lower_cutoff_freq = 50;
+          higher_cutoff_freq = 10000;
+          method = "pipewire";
+          source = "auto";
+          stereo = true;
+          reverse = false;
+          bar_delimiter = 0;
+          monstercat = false;
+          waves = false;
+          input_delay = 2;
+          hide_on_silence = true;
+          format-icons = [
+            "▁"
+            "▂"
+            "▃"
+            "▄"
+            "▅"
+            "▆"
+            "▇"
+            "█"
+          ];
+        };
+        "cava#right" = {
+          framerate = 60;
+          autosens = 1;
+          bars = 18;
+          lower_cutoff_freq = 50;
+          higher_cutoff_freq = 10000;
+          method = "pipewire";
+          source = "auto";
+          stereo = true;
+          reverse = false;
+          bar_delimiter = 0;
+          monstercat = false;
+          waves = false;
+          input_delay = 2;
+          hide_on_silence = true;
+          format-icons = [
+            "▁"
+            "▂"
+            "▃"
+            "▄"
+            "▅"
+            "▆"
+            "▇"
+            "█"
+          ];
+        };
         clock = {
           format = "{:%d/%m %H:%M}";
           tooltip-format = ''
@@ -188,7 +242,7 @@ in
             };
             icon = true;
             separate-outputs = true;
-            max-length = 90;
+            max-length = 40;
           };
         };
         battery = {
