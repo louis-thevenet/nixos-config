@@ -14,19 +14,6 @@
         cut = lib.getExe' pkgs.coreutils "cut";
       in
       {
-        # finds latest file in a directory, mostly for the last download
-        latest = {
-          body = ''
-            # no argument
-            if test -z "$argv[1]"
-              set argv[1] dl
-            end
-            if [ "$argv[1]" = "dl" ]
-              set argv[1] "$HOME/Downloads"
-            end
-            echo (fd . $argv -tf -x stat -c '%X %n' | sort -nr | head -n 1 | cut -f 2- -d ' ')
-          '';
-        };
         tma.body = "${tmux} attach -t $(${tmux} list-sessions | ${tv} --preview 'tmux list-windows -t {0}' | ${cut} -d':' -f1)";
         tmw.body = ''
           session=$(${tmux} list-sessions | ${tv} --preview 'tmux list-windows -t {0}' | ${cut} -d':' -f1);
@@ -78,16 +65,9 @@
 
       };
 
-    interactiveShellInit =
-
-      ''
-        # Open command buffer in vim when alt+e is pressed
-        bind \ee edit_command_buffer
-        # set fish_cursor_default     block      blink
-        # set fish_cursor_insert      line       blink
-        # set fish_cursor_replace_one underscore blink
-        # set fish_cursor_visual      block
-
-      '';
+    interactiveShellInit = ''
+      # Open command buffer in vim when alt+e is pressed
+      bind \ee edit_command_buffer
+    '';
   };
 }
