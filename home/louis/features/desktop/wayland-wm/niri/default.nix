@@ -373,11 +373,6 @@ in
         }
         {
           command = [
-            (lib.getExe' pkgs.nextcloud-client "nextcloud")
-          ];
-        }
-        {
-          command = [
             (lib.getExe pkgs.copyq)
           ];
         }
