@@ -184,7 +184,7 @@ in
         "browser.onboarding.enabled" = false; # "New to Firefox? Let's get started!" tour
         "browser.aboutConfig.showWarning" = false; # Warning when opening about:config
         "media.videocontrols.picture-in-picture.video-toggle.enabled" = false;
-        "extensions.pocket.enabled" = false;
+        "extensions.pocket.enabled" = true;
         "extensions.unifiedExtensions.enabled" = false;
         "extensions.shield-recipe-client.enabled" = false;
         "reader.parse-on-load.enabled" = false; # "reader view"
