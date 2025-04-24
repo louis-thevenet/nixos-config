@@ -14,6 +14,7 @@
     ../common/optional/ollama.nix
     ../common/optional/kanata.nix
     ../common/optional/xdg.nix
+    ../common/optional/virt.nix
   ];
   networking.hostName = "magnus";
 
