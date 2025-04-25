@@ -126,8 +126,8 @@
       mkShell =
         system:
         nixpkgs.legacyPackages.${system}.mkShell {
-          inherit (self.checks.${system}.pre-commit-check) shellHook;
-          buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+          # inherit (self.checks.${system}.pre-commit-check) shellHook;
+          # buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
           packages =
             with nixpkgs.legacyPackages.${system};
             with pkgs;
@@ -198,6 +198,8 @@
       formatter = forEachPkgs (pkgs: pkgs.nixfmt-rfc-style);
       checks."x86_64-linux" = mkChecks "x86_64-linux";
       devShells."x86_64-linux".default = mkShell "x86_64-linux";
+      devShells."aarch64-linux".default = mkShell "aarch64-linux";
+
       nixosConfigurations = {
         magnus = mkNixos "louis" "magnus" "x86_64-linux";
         akatosh = mkNixos "louis" "akatosh" "x86_64-linux";
