@@ -201,6 +201,7 @@
       nixosConfigurations = {
         magnus = mkNixos "louis" "magnus" "x86_64-linux";
         akatosh = mkNixos "louis" "akatosh" "x86_64-linux";
+        dagon = mkNixos "louis" "dagon" "aarch64-linux";
       };
     };
 }
