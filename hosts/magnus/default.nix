@@ -8,6 +8,7 @@
     ./sops.nix
     ../common/global
     ../common/users/louis
+    ../common/optional/services.nix
     ../common/optional/airpods-battery-fetcher.nix
     ../common/optional/stylix.nix
     ../common/optional/niri.nix

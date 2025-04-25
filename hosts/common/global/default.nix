@@ -17,23 +17,8 @@
   programs.fish.enable = true;
 
   console.keyMap = "fr";
-  services = {
 
-    printing.enable = true;
-    pulseaudio.enable = false;
-    gnome.gnome-keyring.enable = true;
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
-    libinput.enable = true;
-    logind.extraConfig = ''
-      # don’t shutdown when power button is short-pressed
-      HandlePowerKey=ignore
-    '';
-  };
+  services.libinput.enable = true;
 
   security.rtkit.enable = true;
   environment.systemPackages = with pkgs; [ vim ];
