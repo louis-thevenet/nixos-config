@@ -4,7 +4,7 @@
 }:
 {
   imports = [
-    # ./hardware-configuration.nix
+    ./hardware-configuration.nix
     ./sops.nix
     ../common/global
     ../common/users/louis
