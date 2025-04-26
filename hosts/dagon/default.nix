@@ -12,10 +12,8 @@
   networking.hostName = "dagon";
 
   programs.fish.enable = true;
-
+  programs.dconf.enable = true;
   console.keyMap = "fr";
-
-  services.libinput.enable = true;
 
   security.rtkit.enable = true;
   environment.systemPackages = with pkgs; [ vim ];
@@ -24,7 +22,10 @@
     networkmanager.enable = true;
     firewall.enable = true;
   };
-
+  services.openssh = {
+    enable=true;
+    ports = [22];
+  };
   system.stateVersion = "24.11";
 
 }
