@@ -39,6 +39,7 @@
       #   };
     };
   };
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   services = {
     udisks2.enable = true;
     xserver.videoDrivers = [ "nvidia" ];
