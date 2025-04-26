@@ -101,6 +101,7 @@
       niri,
       git-hooks-nix,
       nix-index-database,
+      nixos-hardware,
       ...
     }:
     let
@@ -127,7 +128,7 @@
         system:
         nixpkgs.legacyPackages.${system}.mkShell {
           inherit (self.checks.${system}.pre-commit-check) shellHook;
-          buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+          # buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
           packages =
             with nixpkgs.legacyPackages.${system};
             with pkgs;
@@ -148,7 +149,7 @@
         };
 
       mkNixos =
-        user: host: system:
+        user: host: system: specific-modules:
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
@@ -190,17 +191,26 @@
                 programs.nix-index-database.comma.enable = true;
                 programs.nix-index.enable = true;
               }
-            ];
+            ]
+            ++ specific-modules;
         };
     in
     {
       nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
       formatter = forEachPkgs (pkgs: pkgs.nixfmt-rfc-style);
+
       checks."x86_64-linux" = mkChecks "x86_64-linux";
       devShells."x86_64-linux".default = mkShell "x86_64-linux";
+
+      checks."aarch64-linux" = mkChecks "aarch64-linux";
+      devShells."aarch64-linux".default = mkShell "aarch64-linux";
+
       nixosConfigurations = {
-        magnus = mkNixos "louis" "magnus" "x86_64-linux";
-        akatosh = mkNixos "louis" "akatosh" "x86_64-linux";
+        magnus = mkNixos "louis" "magnus" "x86_64-linux" [ ];
+        akatosh = mkNixos "louis" "akatosh" "x86_64-linux" [ ];
+        dagon = mkNixos "louis" "dagon" "aarch64-linux" [
+          nixos-hardware.nixosModules.raspberry-pi-4
+        ];
       };
     };
 }
