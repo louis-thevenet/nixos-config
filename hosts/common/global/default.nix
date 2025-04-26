@@ -32,6 +32,7 @@
     "/share/xdg-desktop-portal"
     "/share/applications"
   ];
+  documentation.man.generateCaches = false;
 
   system.stateVersion = "24.11";
 }
