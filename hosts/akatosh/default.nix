@@ -5,6 +5,7 @@
     ./sops.nix
     ../common/global
     ../common/users/louis
+    ../common/optional/services.nix
     ../common/optional/stylix.nix
     ../common/optional/impermanence-disko.nix
     ../common/optional/ollama.nix
