@@ -6,6 +6,8 @@
   imports = [
     ./hardware-configuration.nix
     ./sops.nix
+    ./nextcloud.nix
+    ./nginx.nix
     ../common/global/nix.nix
     ../common/global/locale.nix
     # ../common/global
@@ -22,7 +24,14 @@
 
   networking = {
     networkmanager.enable = true;
-    firewall.enable = true;
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [
+        80
+        443
+      ];
+    };
+
   };
   services.openssh = {
     enable = true;
