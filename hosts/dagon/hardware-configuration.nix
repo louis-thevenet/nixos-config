@@ -8,10 +8,17 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  fileSystems."/" = {
+  fileSystems = {
+"/" = {
     device = "/dev/disk/by-uuid/44444444-4444-4444-8888-888888888888";
     fsType = "ext4";
   };
+
+"/nextcloud_data" = { 
+   device = "/dev/disk/by-uuid/12f6e6d2-6b5c-4a26-99ca-566eaad9da01";
+    fsType = "ext4";
+};
+};
 
   swapDevices = [ ];
 
