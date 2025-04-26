@@ -9,6 +9,11 @@ creation_rules:
       - age:
           - *magnus
 
+  - path_regex: hosts/dagon/secrets.yaml$
+    key_groups:
+      - age:
+          - *dagon
+
   - path_regex: hosts/common/secrets.yaml$
     key_groups:
       - age:
