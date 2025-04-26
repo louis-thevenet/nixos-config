@@ -101,6 +101,7 @@
       niri,
       git-hooks-nix,
       nix-index-database,
+      nixos-hardware,
       ...
     }:
     let
@@ -148,7 +149,7 @@
         };
 
       mkNixos =
-        user: host: system:
+        user: host: system: modules:
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
@@ -190,7 +191,8 @@
                 programs.nix-index-database.comma.enable = true;
                 programs.nix-index.enable = true;
               }
-            ];
+            ]
+            ++ modules;
         };
     in
     {
@@ -201,9 +203,11 @@
       devShells."aarch64-linux".default = mkShell "aarch64-linux";
 
       nixosConfigurations = {
-        magnus = mkNixos "louis" "magnus" "x86_64-linux";
-        akatosh = mkNixos "louis" "akatosh" "x86_64-linux";
-        dagon = mkNixos "louis" "dagon" "aarch64-linux";
+        magnus = mkNixos "louis" "magnus" "x86_64-linux" [ ];
+        akatosh = mkNixos "louis" "akatosh" "x86_64-linux" [ ];
+        dagon = mkNixos "louis" "dagon" "aarch64-linux" [
+          nixos-hardware.nixosModules.raspberry-pi-4
+        ];
       };
     };
 }
