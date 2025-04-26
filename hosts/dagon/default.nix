@@ -6,6 +6,8 @@
   imports = [
     ./hardware-configuration.nix
     ./sops.nix
+    ../common/global/nix.nix
+    ../common/global/locale.nix
     # ../common/global
     ../common/users/louis
   ];
@@ -23,9 +25,10 @@
     firewall.enable = true;
   };
   services.openssh = {
-    enable=true;
-    ports = [22];
+    enable = true;
+    ports = [ 22 ];
   };
+  documentation.man.generateCaches = false;
   system.stateVersion = "24.11";
 
 }
