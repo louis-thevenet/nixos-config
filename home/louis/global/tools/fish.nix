@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  inputs,
   ...
 }:
 {
@@ -39,7 +38,7 @@
         bat = lib.getExe pkgs.bat;
         broot = lib.getExe pkgs.broot;
         dust = lib.getExe pkgs.dust;
-        nh = lib.getExe inputs.nh.packages.${pkgs.system}.default;
+        nh = lib.getExe pkgs.nh;
         git = lib.getExe pkgs.git;
       in
 

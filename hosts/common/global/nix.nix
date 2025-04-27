@@ -2,7 +2,6 @@
   inputs,
   lib,
   config,
-  pkgs,
   ...
 }:
 {
@@ -42,7 +41,6 @@
 
   programs.nh = {
     enable = true;
-    package = inputs.nh.packages.${pkgs.system}.default;
     clean = {
       enable = true;
       extraArgs = "--keep 3 --keep-since 7d";

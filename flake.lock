@@ -664,26 +664,6 @@
         "type": "github"
       }
     },
-    "nh": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1745701677,
-        "narHash": "sha256-ajEl9nV4XFW7H98XCPUshzYL+K0+gVqEWUC4+MBAUFw=",
-        "owner": "viperML",
-        "repo": "nh",
-        "rev": "7c913894581c21a8669384a366dc486c136ea7d5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "viperML",
-        "repo": "nh",
-        "type": "github"
-      }
-    },
     "niri": {
       "inputs": {
         "niri-stable": "niri-stable",
@@ -973,7 +953,6 @@
         "home-manager": "home-manager",
         "hyprland-qtutils": "hyprland-qtutils",
         "impermanence": "impermanence",
-        "nh": "nh",
         "niri": "niri",
         "nix-ai-stuff": "nix-ai-stuff",
         "nix-index-database": "nix-index-database",
