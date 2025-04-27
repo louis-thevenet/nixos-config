@@ -332,51 +332,33 @@ in
     environment = {
       DISPLAY = ":0";
     };
-    spawn-at-startup =
-      # let
-      # get-wayland-display = "systemctl --user show-environment | awk -F 'WAYLAND_DISPLAY=' '{print $2}' | awk NF";
-      # wrapper =
-      #   name: op:
-      #   pkgs.writeScript "${name}" ''
-      #     if [ "$(${get-wayland-display})" ${op} "$WAYLAND_DISPLAY" ]; then
-      #       exec "$@"
-      #     fi
-      #   '';
-
-      # only-without-session = wrapper "only-without-session" "!=";
-      # in
-      [
-        {
-          command = [
-            (lib.getExe pkgs.waybar)
-          ];
-        }
-        {
-          command = [
-            (lib.getExe pkgs.albert)
-          ];
-        }
-        {
-          command = [
-            (lib.getExe pkgs.hypridle)
-          ];
-        }
-        {
-          command = [
-            (lib.getExe' pkgs.swaynotificationcenter "swaync")
-          ];
-        }
-        {
-          command = [
-            (lib.getExe pkgs.xwayland-satellite)
-          ];
-        }
-        {
-          command = [
-            (lib.getExe pkgs.copyq)
-          ];
-        }
-      ];
+    spawn-at-startup = [
+      {
+        command = [
+          (lib.getExe pkgs.albert)
+        ];
+      }
+      {
+        command = [
+          (lib.getExe pkgs.hypridle)
+        ];
+      }
+      {
+        command = [
+          (lib.getExe' pkgs.swaynotificationcenter "swaync")
+        ];
+      }
+      {
+        command = [
+          (lib.getExe pkgs.xwayland-satellite)
+        ];
+      }
+      {
+        command = [
+          (lib.getExe pkgs.copyq)
+        ];
+      }
+    ];
   };
 
 }
