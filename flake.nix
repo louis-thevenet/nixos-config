@@ -19,10 +19,6 @@
       url = "github:Guekka/helix/copilot";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    yazi = {
-      url = "github:sxyazi/yazi";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     # Why is this not on nixpkgs yet ?
     hyprland-qtutils = {
