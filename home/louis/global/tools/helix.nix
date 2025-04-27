@@ -4,28 +4,28 @@
   pkgs,
   ...
 }:
-let
+# let
 
-  copilot = pkgs.writeShellScriptBin "copilot" "${lib.getExe pkgs.nodejs} ${pkgs.vimPlugins.copilot-vim}/dist/language-server.js";
-  helix-copilot = pkgs.symlinkJoin {
-    name = "helix";
-    paths = [
-      inputs.helix.packages.${pkgs.system}.helix
-    ];
-    buildInputs = [ pkgs.makeWrapper ];
-    runtimeInputs = [
-      copilot
-    ];
-    postBuild = ''
-      wrapProgram $out/bin/hx --add-flags "-a"
-    '';
-  };
-in
+#   copilot = pkgs.writeShellScriptBin "copilot" "${lib.getExe pkgs.nodejs} ${pkgs.vimPlugins.copilot-vim}/dist/language-server.js";
+#   helix-copilot = pkgs.symlinkJoin {
+#     name = "helix";
+#     paths = [
+#       inputs.helix.packages.${pkgs.system}.helix
+#     ];
+#     buildInputs = [ pkgs.makeWrapper ];
+#     runtimeInputs = [
+#       copilot
+#     ];
+#     postBuild = ''
+#       wrapProgram $out/bin/hx --add-flags "-a"
+#     '';
+#   };
+# in
 {
-  home.packages = [ copilot ];
+  # home.packages = [ copilot ];
   programs.helix = {
     enable = true;
-    package = helix-copilot;
+    # package = helix-copilot;
     defaultEditor = true;
 
     settings = {
@@ -79,15 +79,15 @@ in
 
       keys = {
 
-        insert = {
-          "C-w" = "copilot_apply_completion";
-          "C-e" = "copilot_show_completion";
-        };
+        # insert = {
+        #   "C-w" = "copilot_apply_completion";
+        #   "C-e" = "copilot_show_completion";
+        # };
 
         normal = {
           "C-y" =
             let
-              yazi = lib.getExe inputs.yazi.packages.${pkgs.system}.yazi;
+              yazi = lib.getExe pkgs.yazi;
             in
             [
               ":sh rm -f /tmp/unique-file"
@@ -98,7 +98,7 @@ in
               ":set mouse false"
               ":set mouse true"
             ];
-          "C-e" = "copilot_toggle_auto_render";
+          # "C-e" = "copilot_toggle_auto_render";
           "h" = "no_op";
           "j" = "no_op";
           "k" = "no_op";

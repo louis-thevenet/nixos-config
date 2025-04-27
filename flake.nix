@@ -15,10 +15,6 @@
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    helix = {
-      url = "github:Guekka/helix/copilot";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     # Why is this not on nixpkgs yet ?
     hyprland-qtutils = {

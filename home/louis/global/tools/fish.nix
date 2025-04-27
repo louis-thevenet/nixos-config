@@ -34,7 +34,7 @@
 
       let
         eza = lib.getExe pkgs.eza;
-        helix = lib.getExe inputs.helix.packages.${pkgs.system}.default;
+        helix = lib.getExe pkgs.helix;
         dysk = lib.getExe pkgs.dysk;
         bat = lib.getExe pkgs.bat;
         broot = lib.getExe pkgs.broot;
