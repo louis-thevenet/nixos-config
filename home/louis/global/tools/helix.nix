@@ -22,7 +22,7 @@
 #   };
 # in
 {
-  # home.packages = [ copilot ];
+
   programs.helix = {
     enable = true;
     # package = helix-copilot;
@@ -108,18 +108,21 @@
 
           "ret" = "goto_word";
           backspace = {
-            "t" = "@i- [ ] today ";
-            "n" = "@i- [ ] ";
+            # Nix stuff
+            "n" = {
+              "o" = "@f.yv999ndvf{mm<A-minus>xms{a;<esc>P;r="; # Would be better if I searched within selection instead of whole file
+            };
+            # Vault-tasks stuff
+            "t" = {
+              "t" = "@i- [ ] today ";
+              "n" = "@i- [ ] ";
+            };
 
             # Aliases for <mi+chr>
             "\"" = "@mi\"";
             "{" = "@mi\{";
             "[" = "@mi\[";
             "(" = "@mi\(";
-
-            # Jump between Markdown headers
-            "A-j" = "@/^#+\s+.*$<ret>";
-            "A-k" = "@?^#+\s+.*$<ret>";
 
             "y" = ":yank-diagnostic";
           };
