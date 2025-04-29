@@ -3,6 +3,7 @@ _: {
     ./hardware-configuration.nix
     ./sops.nix
     ./nextcloud.nix
+    ./glance.nix
     ./nginx.nix
     ../common/global/nix.nix
     ../common/global/locale.nix
