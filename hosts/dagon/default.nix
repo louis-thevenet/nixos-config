@@ -8,9 +8,9 @@ _: {
     ../common/global/nix.nix
     ../common/global/locale.nix
     ../common/users/louis
+    ../common/optional/stylix.nix
   ];
   networking.hostName = "dagon";
-
   programs.fish.enable = true;
   programs.dconf.enable = true;
   console.keyMap = "fr";
