@@ -1,10 +1,7 @@
 _: {
   services.nginx = {
     enable = true;
-    virtualHosts."nc.louis-thevenet.fr" = {
-      forceSSL = true;
-      enableACME = true; # automatic Let's Encrypt
-    };
+    virtualHosts."_" = { };
   };
   security.acme = {
     acceptTerms = true;

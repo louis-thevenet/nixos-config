@@ -1,8 +1,4 @@
-{
-  pkgs,
-  ...
-}:
-{
+_: {
   imports = [
     ./hardware-configuration.nix
     ./sops.nix
@@ -10,7 +6,6 @@
     ./nginx.nix
     ../common/global/nix.nix
     ../common/global/locale.nix
-    # ../common/global
     ../common/users/louis
   ];
   networking.hostName = "dagon";
@@ -20,18 +15,10 @@
   console.keyMap = "fr";
 
   security.rtkit.enable = true;
-  environment.systemPackages = with pkgs; [ vim ];
 
   networking = {
     networkmanager.enable = true;
-    firewall = {
-      enable = true;
-      allowedTCPPorts = [
-        80
-        443
-      ];
-    };
-
+    firewall.enable = true;
   };
   services.openssh = {
     enable = true;
