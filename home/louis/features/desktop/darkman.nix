@@ -5,7 +5,9 @@
   ...
 }:
 let
-  inherit (lib) mkIf;
+  inherit (lib) mkIf optionalString concatStringsSep;
+  gui-cfg = config.home-config.gui;
+  wayland-cfg = config.home-config.desktop.wayland;
   cfg = config.home-config.desktop;
 in
 {
@@ -35,14 +37,18 @@ in
           done
         '';
 
-      switch-theme-script = theme: ''
-        $(${find-hm-generation})/${theme}/activate
-        ${swaync-client} -rs # reload CSS for swaync (notification center)
-        # ${systemctl} --user restart hyprpaper.service
-        ${systemctl} --user restart glance.service
-        ${killall} -SIGUSR1 .hx-wrapped
-        ${albert} restart
-      '';
+      switch-theme-script =
+        theme:
+        concatStringsSep "\n" [
+          "$(${find-hm-generation})/${theme}/activate"
+          "${killall} -SIGUSR1 .hx-wrapped" # enabled by default
+          (optionalString wayland-cfg.hyprland.enable "${systemctl} --user restart hyprpaper.service")
+          (optionalString wayland-cfg.enable ''
+            ${swaync-client} -rs # reload CSS for swaync (notification center)
+            ${albert} restart
+          '')
+          (optionalString gui-cfg.glance.enable "${systemctl} --user restart glance.service")
+        ];
     in
     mkIf cfg.stylix.enable {
       enable = true;
