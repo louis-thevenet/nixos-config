@@ -96,269 +96,276 @@ let
 in
 {
 
-  programs.niri.settings = mkIf cfg.niri.enable {
-    input = {
-      keyboard.xkb.layout = "fr,fr";
-      focus-follows-mouse.enable = true;
-    };
-    screenshot-path = "~/Pictures/Screenshots/%Y-%m-%dT%H:%M:%S.png";
-    binds =
-      with config.lib.niri.actions;
-      let
-        sh = spawn "sh" "-c";
-      in
-      lib.attrsets.mergeAttrsList [
-
-        {
-          # Apps
-          "Mod+T".action = spawn terminal;
-          "Mod+D".action = sh "echo -n toggle | ${socat} - ~/.cache/albert/ipc_socket";
-          "Mod+x".action = sh "${killall} -SIGUSR1 .waybar-wrapped";
-          "Mod+O".action = sh "${copyq} show";
-          "Mod+W".action = sh "${swaync-client} -t";
-          "Mod+B".action = sh browser;
-          "Mod+P".action = sh "${terminal} ${bluetui}";
-          "Mod+Shift+T".action = sh "${darkman} toggle";
-          "Mod+Backspace".action = spawn hyprlock;
-        }
-        {
-          # Functions
-          "XF86AudioRaiseVolume".action = sh "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 0.05+";
-          "XF86AudioLowerVolume".action = sh "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 0.05-";
-          "XF86AudioMute" = mkIf (!cfg.niri.brokenAudioMuteKey) {
-            action = sh "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
+  programs =
+    if cfg.niri.enable then
+      {
+        niri.settings = {
+          input = {
+            keyboard.xkb.layout = "fr,fr";
+            focus-follows-mouse.enable = true;
           };
 
-          "XF86MonBrightnessUp".action = sh "${brightnessctl} set 10%+";
-          "XF86MonBrightnessDown".action = sh "${brightnessctl} set 10%-";
+          screenshot-path = "~/Pictures/Screenshots/%Y-%m-%dT%H:%M:%S.png";
+          binds =
+            with config.lib.niri.actions;
+            let
+              sh = spawn "sh" "-c";
+            in
+            lib.attrsets.mergeAttrsList [
 
-          "Print".action = screenshot;
-          "Alt+Print".action = screenshot-window;
-        }
-        {
-          # Other
-          "Mod+colon".action = show-hotkey-overlay;
-          "Mod+Q".action = close-window;
-        }
-        # Window binds
-        (binds {
-          suffixes = {
-            "Left" = "column-left";
-            "Down" = "window-down";
-            "Up" = "window-up";
-            "Right" = "column-right";
-            "J" = "column-left";
-            "K" = "window-down";
-            "L" = "window-up";
-            "M" = "column-right";
-          };
+              {
+                # Apps
+                "Mod+T".action = spawn terminal;
+                "Mod+D".action = sh "echo -n toggle | ${socat} - ~/.cache/albert/ipc_socket";
+                "Mod+x".action = sh "${killall} -SIGUSR1 .waybar-wrapped";
+                "Mod+O".action = sh "${copyq} show";
+                "Mod+W".action = sh "${swaync-client} -t";
+                "Mod+B".action = sh browser;
+                "Mod+P".action = sh "${terminal} ${bluetui}";
+                "Mod+Shift+T".action = sh "${darkman} toggle";
+                "Mod+Backspace".action = spawn hyprlock;
+              }
+              {
+                # Functions
+                "XF86AudioRaiseVolume".action = sh "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 0.05+";
+                "XF86AudioLowerVolume".action = sh "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 0.05-";
+                "XF86AudioMute" = mkIf (!cfg.niri.brokenAudioMuteKey) {
+                  action = sh "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
+                };
 
-          prefixes = {
-            "Mod" = "focus";
-            "Mod+Ctrl" = "move";
-            "Mod+Shift" = "focus-monitor";
-            "Mod+Shift+Ctrl" = "move-window-to-monitor";
+                "XF86MonBrightnessUp".action = sh "${brightnessctl} set 10%+";
+                "XF86MonBrightnessDown".action = sh "${brightnessctl} set 10%-";
+
+                "Print".action = screenshot;
+                "Alt+Print".action = screenshot-window;
+              }
+              {
+                # Other
+                "Mod+colon".action = show-hotkey-overlay;
+                "Mod+Q".action = close-window;
+              }
+              # Window binds
+              (binds {
+                suffixes = {
+                  "Left" = "column-left";
+                  "Down" = "window-down";
+                  "Up" = "window-up";
+                  "Right" = "column-right";
+                  "J" = "column-left";
+                  "K" = "window-down";
+                  "L" = "window-up";
+                  "M" = "column-right";
+                };
+
+                prefixes = {
+                  "Mod" = "focus";
+                  "Mod+Ctrl" = "move";
+                  "Mod+Shift" = "focus-monitor";
+                  "Mod+Shift+Ctrl" = "move-window-to-monitor";
+                };
+                substitutions = {
+                  "monitor-column" = "monitor";
+                  "monitor-window" = "monitor";
+                };
+              })
+              {
+                "Mod+V".action = switch-focus-between-floating-and-tiling;
+                "Mod+Shift+V".action = toggle-window-floating;
+              }
+              (binds {
+                suffixes = {
+                  "Home" = "first";
+                  "End" = "last";
+                };
+                prefixes = {
+                  "Mod" = "focus-column";
+                  "Mod+Ctrl" = "move-column-to";
+                };
+              })
+              (binds {
+                suffixes = {
+                  "U" = "workspace-down";
+                  "Page_Down" = "workspace-down";
+                  "WheelScrollDown" = "workspace-down";
+                  "I" = "workspace-up";
+                  "WheelScrollUp" = "workspace-up";
+                  "Page_Up" = "workspace-up";
+                };
+                prefixes = {
+                  "Mod" = "focus";
+                  "Mod+Ctrl" = "move-window-to";
+                  "Mod+Shift" = "move";
+                };
+              })
+              (binds {
+                suffixes = builtins.listToAttrs (
+                  map (n: {
+                    name = toString (toAzerty (toString n) azerty);
+                    value = [
+                      "workspace"
+                      n
+                    ];
+                  }) (range 1 9)
+                );
+                prefixes = {
+                  "Mod" = "focus";
+                  "Mod+Ctrl" = "move-window-to";
+                };
+              })
+              {
+                # Move columns
+                "Mod+Comma".action = consume-window-into-column;
+                "Mod+semicolon".action = expel-window-from-column;
+                "Mod+V".action = toggle-column-tabbed-display;
+                "Mod+C".action = center-column;
+
+                # Resize columns
+                "Mod+R".action = switch-preset-column-width;
+                "Mod+Shift+R" = switch-preset-window-height;
+                "Mod+Ctrl+R" = reset-window-height;
+                "Mod+Ctrl+F".action = expand-column-to-available-width;
+                "Mod+F".action = maximize-column;
+                "Mod+Shift+F".action = fullscreen-window;
+
+                "Mod+KP_Subtract".action = set-column-width "-10%";
+                "Mod+KP_Add".action = set-column-width "+10%";
+                "Mod+Shift+KP_Subtract".action = set-window-height "-10%";
+                "Mod+Shift+KP_Add".action = set-window-height "+10%";
+
+                "Mod+Shift+Escape".action = toggle-keyboard-shortcuts-inhibit;
+                "Mod+Shift+E".action = quit;
+                "Mod+Shift+P".action = power-off-monitors;
+
+                "Mod+Shift+Ctrl+T".action = toggle-debug-tint;
+              }
+              {
+              }
+            ];
+          layout = {
+            gaps = 8;
+            struts = {
+              top = -8; # removes gap
+              bottom = -8;
+              left = 64;
+              right = 64;
+            };
+            always-center-single-column = true;
+            center-focused-column = "on-overflow";
+            empty-workspace-above-first = true;
+
+            preset-column-widths = [
+              { proportion = 1.0 / 3.0; }
+              { proportion = 1.0 / 2.0; }
+              { proportion = 2.0 / 3.0; }
+            ];
+            default-column-width = {
+              proportion = 1.0 / 2.0;
+            };
+
+            border = {
+              enable = true;
+              width = 6;
+              active = {
+                gradient = {
+                  from = default-foreground;
+                  to = light-foreground;
+                  angle = 45;
+                  relative-to = "workspace-view";
+                };
+              };
+              inactive = {
+                gradient = {
+                  from = default-background;
+                  to = light-background;
+                  angle = 45;
+                  relative-to = "workspace-view";
+                };
+              };
+            };
+
+            tab-indicator = {
+              position = "top";
+              gaps-between-tabs = 10;
+              place-within-column = true;
+            };
           };
-          substitutions = {
-            "monitor-column" = "monitor";
-            "monitor-window" = "monitor";
+          cursor = {
+            # hide-after-inactive-ms = 1000;
+            # hide-when-typing = true;
           };
-        })
-        {
-          "Mod+V".action = switch-focus-between-floating-and-tiling;
-          "Mod+Shift+V".action = toggle-window-floating;
-        }
-        (binds {
-          suffixes = {
-            "Home" = "first";
-            "End" = "last";
-          };
-          prefixes = {
-            "Mod" = "focus-column";
-            "Mod+Ctrl" = "move-column-to";
-          };
-        })
-        (binds {
-          suffixes = {
-            "U" = "workspace-down";
-            "Page_Down" = "workspace-down";
-            "WheelScrollDown" = "workspace-down";
-            "I" = "workspace-up";
-            "WheelScrollUp" = "workspace-up";
-            "Page_Up" = "workspace-up";
-          };
-          prefixes = {
-            "Mod" = "focus";
-            "Mod+Ctrl" = "move-window-to";
-            "Mod+Shift" = "move";
-          };
-        })
-        (binds {
-          suffixes = builtins.listToAttrs (
-            map (n: {
-              name = toString (toAzerty (toString n) azerty);
-              value = [
-                "workspace"
-                n
-              ];
-            }) (range 1 9)
+          outputs = builtins.listToAttrs (
+            map (m: {
+              inherit (m) name;
+              value = with m; {
+                enable = enabled;
+                background-color = "#000000";
+                mode = {
+                  inherit width;
+                  inherit height;
+                  refresh = refreshRate;
+                };
+                position = {
+                  inherit x;
+                  inherit y;
+                };
+                inherit scale;
+              };
+
+            }) config.monitors
           );
-          prefixes = {
-            "Mod" = "focus";
-            "Mod+Ctrl" = "move-window-to";
+          window-rules = [
+            {
+              matches = [ ];
+              geometry-corner-radius = {
+                bottom-left = 12.0;
+                bottom-right = 12.0;
+                top-left = 12.0;
+                top-right = 12.0;
+              };
+              clip-to-geometry = true;
+            }
+            {
+              matches = [
+                {
+                  title = "Albert";
+                }
+              ];
+              border.enable = false;
+            }
+          ];
+          environment = {
+            DISPLAY = ":0";
           };
-        })
-        {
-          # Move columns
-          "Mod+Comma".action = consume-window-into-column;
-          "Mod+semicolon".action = expel-window-from-column;
-          "Mod+V".action = toggle-column-tabbed-display;
-          "Mod+C".action = center-column;
-
-          # Resize columns
-          "Mod+R".action = switch-preset-column-width;
-          "Mod+Shift+R" = switch-preset-window-height;
-          "Mod+Ctrl+R" = reset-window-height;
-          "Mod+Ctrl+F".action = expand-column-to-available-width;
-          "Mod+F".action = maximize-column;
-          "Mod+Shift+F".action = fullscreen-window;
-
-          "Mod+KP_Subtract".action = set-column-width "-10%";
-          "Mod+KP_Add".action = set-column-width "+10%";
-          "Mod+Shift+KP_Subtract".action = set-window-height "-10%";
-          "Mod+Shift+KP_Add".action = set-window-height "+10%";
-
-          "Mod+Shift+Escape".action = toggle-keyboard-shortcuts-inhibit;
-          "Mod+Shift+E".action = quit;
-          "Mod+Shift+P".action = power-off-monitors;
-
-          "Mod+Shift+Ctrl+T".action = toggle-debug-tint;
-        }
-        {
-        }
-      ];
-    layout = {
-      gaps = 8;
-      struts = {
-        top = -8; # removes gap
-        bottom = -8;
-        left = 64;
-        right = 64;
-      };
-      always-center-single-column = true;
-      center-focused-column = "on-overflow";
-      empty-workspace-above-first = true;
-
-      preset-column-widths = [
-        { proportion = 1.0 / 3.0; }
-        { proportion = 1.0 / 2.0; }
-        { proportion = 2.0 / 3.0; }
-      ];
-      default-column-width = {
-        proportion = 1.0 / 2.0;
-      };
-
-      border = {
-        enable = true;
-        width = 6;
-        active = {
-          gradient = {
-            from = default-foreground;
-            to = light-foreground;
-            angle = 45;
-            relative-to = "workspace-view";
-          };
+          spawn-at-startup = [
+            {
+              command = [
+                (lib.getExe pkgs.albert)
+              ];
+            }
+            {
+              command = [
+                (lib.getExe pkgs.hypridle)
+              ];
+            }
+            {
+              command = [
+                (lib.getExe' pkgs.swaynotificationcenter "swaync")
+              ];
+            }
+            {
+              command = [
+                (lib.getExe pkgs.xwayland-satellite)
+              ];
+            }
+            {
+              command = [
+                (lib.getExe pkgs.copyq)
+              ];
+            }
+          ];
         };
-        inactive = {
-          gradient = {
-            from = default-background;
-            to = light-background;
-            angle = 45;
-            relative-to = "workspace-view";
-          };
-        };
-      };
-
-      tab-indicator = {
-        position = "top";
-        gaps-between-tabs = 10;
-        place-within-column = true;
-      };
-    };
-    cursor = {
-      # hide-after-inactive-ms = 1000;
-      # hide-when-typing = true;
-    };
-    outputs = builtins.listToAttrs (
-      map (m: {
-        inherit (m) name;
-        value = with m; {
-          enable = enabled;
-          background-color = "#000000";
-          mode = {
-            inherit width;
-            inherit height;
-            refresh = refreshRate;
-          };
-          position = {
-            inherit x;
-            inherit y;
-          };
-          inherit scale;
-        };
-
-      }) config.monitors
-    );
-    window-rules = [
-      {
-        matches = [ ];
-        geometry-corner-radius = {
-          bottom-left = 12.0;
-          bottom-right = 12.0;
-          top-left = 12.0;
-          top-right = 12.0;
-        };
-        clip-to-geometry = true;
       }
-      {
-        matches = [
-          {
-            title = "Albert";
-          }
-        ];
-        border.enable = false;
-      }
-    ];
-    environment = {
-      DISPLAY = ":0";
-    };
-    spawn-at-startup = [
-      {
-        command = [
-          (lib.getExe pkgs.albert)
-        ];
-      }
-      {
-        command = [
-          (lib.getExe pkgs.hypridle)
-        ];
-      }
-      {
-        command = [
-          (lib.getExe' pkgs.swaynotificationcenter "swaync")
-        ];
-      }
-      {
-        command = [
-          (lib.getExe pkgs.xwayland-satellite)
-        ];
-      }
-      {
-        command = [
-          (lib.getExe pkgs.copyq)
-        ];
-      }
-    ];
-  };
+    else
+      { };
 
 }

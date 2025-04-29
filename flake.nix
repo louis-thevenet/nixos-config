@@ -82,7 +82,7 @@
     {
       self,
       nixpkgs,
-      nixpkgs-master,
+      # nixpkgs-master,
       home-manager,
       stylix,
       niri,
@@ -143,14 +143,14 @@
             inherit (self) inputs outputs;
           };
           modules =
-            let
-              overlay-master = prev: final: {
-                master = import nixpkgs-master {
-                  inherit prev final system;
-                  config.allowUnfree = true;
-                };
-              };
-            in
+            # let
+            #   overlay-master = prev: final: {
+            #     master = import nixpkgs-master {
+            #       inherit prev final system;
+            #       config.allowUnfree = true;
+            #     };
+            #   };
+            # in
             [
               ./hosts/${host}
               home-manager.nixosModules.home-manager
@@ -165,21 +165,12 @@
               }
 
               stylix.nixosModules.stylix
-              (_: {
-                nixpkgs.overlays = [
-                  overlay-master
-                  niri.overlays.niri
-                ];
-
-              })
-              niri.nixosModules.niri
               nix-index-database.nixosModules.nix-index
               {
                 programs.nix-index-database.comma.enable = true;
                 programs.nix-index.enable = true;
               }
-            ]
-            ++ specific-modules;
+            ] ++ specific-modules;
         };
     in
     {
@@ -193,8 +184,24 @@
       devShells."aarch64-linux".default = mkShell "aarch64-linux";
 
       nixosConfigurations = {
-        magnus = mkNixos "louis" "magnus" "x86_64-linux" [ ];
-        akatosh = mkNixos "louis" "akatosh" "x86_64-linux" [ ];
+        magnus = mkNixos "louis" "magnus" "x86_64-linux" [
+          (_: {
+            nixpkgs.overlays = [
+              niri.overlays.niri
+            ];
+
+          })
+          niri.nixosModules.niri
+        ];
+        akatosh = mkNixos "louis" "akatosh" "x86_64-linux" [
+          (_: {
+            nixpkgs.overlays = [
+              niri.overlays.niri
+            ];
+
+          })
+          niri.nixosModules.niri
+        ];
         dagon = mkNixos "louis" "dagon" "aarch64-linux" [
           nixos-hardware.nixosModules.raspberry-pi-4
         ];
