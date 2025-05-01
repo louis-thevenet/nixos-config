@@ -392,8 +392,8 @@ in
             border: 1px solid #${colors.base06};
         }
         #workspaces button {
-            border-radius: 5;
-            padding: 0 10px
+            border-radius: 5px;
+            padding: 0px 10px
         }
         #workspaces button,
         #workspaces button.hidden
