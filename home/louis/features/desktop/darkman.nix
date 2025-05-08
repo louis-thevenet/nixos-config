@@ -41,12 +41,10 @@ in
         theme:
         concatStringsSep "\n" [
           "$(${find-hm-generation})/${theme}/activate"
-          "${killall} -SIGUSR1 .hx-wrapped" # enabled by default
+          "${killall} -SIGUSR1 hx" # enabled by default
           (optionalString wayland-cfg.hyprland.enable "${systemctl} --user restart hyprpaper.service")
-          (optionalString wayland-cfg.enable ''
-            ${swaync-client} -rs # reload CSS for swaync (notification center)
-            ${albert} restart
-          '')
+          (optionalString wayland-cfg.enable "${swaync-client} -rs") # reload CSS for swaync (notification center)
+          (optionalString wayland-cfg.enable "${albert} restart")
           (optionalString gui-cfg.glance.enable "${systemctl} --user restart glance.service")
         ];
     in
