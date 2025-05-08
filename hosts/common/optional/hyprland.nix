@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   ...
 }:
@@ -16,6 +15,6 @@
     };
   };
   environment.systemPackages = [
-    inputs.hyprland-qtutils.packages.${pkgs.system}.default
+    pkgs.hyprland-hyprland-qtutils
   ];
 }

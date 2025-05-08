@@ -16,12 +16,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Why is this not on nixpkgs yet ?
-    hyprland-qtutils = {
-      url = "github:hyprwm/hyprland-qtutils";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     impermanence.url = "github:nix-community/impermanence";
 
     disko = {
@@ -70,12 +64,6 @@
       url = "github:BatteredBunny/nix-ai-stuff";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    vault-tasks = {
-      url = "github:louis-thevenet/vault-tasks";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
   };
 
   outputs =

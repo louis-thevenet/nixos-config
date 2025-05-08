@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  inputs,
   ...
 }:
 let
@@ -26,7 +25,7 @@ in
       tdf
       see-cat
       smartcat
-      inputs.vault-tasks.packages.${pkgs.system}.default
+      vault-tasks
       spotify-player
       television
       rbw
