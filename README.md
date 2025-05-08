@@ -1,8 +1,8 @@
 # NixOS Niri flake setup
+![image](https://github.com/user-attachments/assets/5d2790c7-7669-469d-8843-e7ba16432f41)
 
-![image](https://github.com/user-attachments/assets/8cc89a79-9bfd-4882-bbca-07f925fd1338)
+![image](https://github.com/user-attachments/assets/8f2dcffb-2955-4eec-894b-0ba63e725fac)
 
-![image](https://github.com/user-attachments/assets/eeccd1de-dc22-4cf0-8a91-444e31e507fb)
 
 ## Features
 
