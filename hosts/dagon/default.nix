@@ -5,6 +5,7 @@ _: {
     ./nextcloud.nix
     ./glance.nix
     ./nginx.nix
+    ./anubis.nix
     ../common/global/nix.nix
     ../common/global/locale.nix
     ../common/users/louis
