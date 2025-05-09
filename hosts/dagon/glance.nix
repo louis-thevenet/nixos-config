@@ -1,4 +1,4 @@
-{ config, ... }:
+{ lib, config, ... }:
 let
   host = "localhost";
   port = 4321;
@@ -185,6 +185,22 @@ in
 
                   }
                 ];
+              }
+            ];
+          }
+          {
+            name = "Videos";
+            columns = [
+              {
+                size = "full";
+                widgets = lib.map (
+                  { name, value }:
+                  {
+                    type = "videos";
+                    title = name;
+                    channels = lib.catAttrs "url" value.channels;
+                  }
+                ) (lib.attrsToList (builtins.fromTOML (builtins.readFile /home/louis/Nextcloud/yt_channels.toml)));
               }
             ];
           }
