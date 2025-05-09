@@ -75,20 +75,36 @@ in
                     }
                   ];
                 }
+                {
+                  type = "monitor";
+                  cache = "1m";
+                  title = "Services";
+                  sites = [
+                    {
+                      title = "Nextcloud";
+                      url = "https://nc.louis-thevenet.fr";
+                    }
+                  ];
+                }
+                {
+                  type = "server-stats";
+                  servers = [
+                    {
+                      type = "local";
+                      name = "Server";
+                      mountpoints = {
+                        "/" = {
+                          name = "Server";
+                        };
+                      };
+                    }
+                  ];
+                }
               ];
             }
             {
               size = "full";
               widgets = [
-                {
-                  type = "search";
-                  autofocus = true;
-                  search-engine =
-                    cfg.firefox.searxngInstance.url
-                    + ":"
-                    + (toString cfg.firefox.searxngInstance.port)
-                    + "/search?q={QUERY}&categories=general";
-                }
                 {
                   type = "group";
                   widgets = [
@@ -141,7 +157,77 @@ in
             {
               size = "small";
               widgets = [
-                { type = "calendar"; }
+                { type = "calendar-legacy"; }
+                {
+                  type = "markets";
+                  markets = [
+                    {
+                      symbol = "CW8.PA";
+                      name = "Amundi MSCI World UCITS ETF C";
+                      symbol-link = "https://finance.yahoo.com/quote/CW8.PA";
+                    }
+                  ];
+
+                }
+              ];
+            }
+          ];
+        }
+        {
+          name = "Videos";
+          columns = [
+            {
+              size = "full";
+              widgets = lib.map (
+                { name, value }:
+                {
+                  type = "videos";
+                  title = name;
+                  video-url-template = "https://invidious.nerdvpn.de/watch?v={VIDEO-ID}";
+                  channels = lib.catAttrs "url" value.channels;
+                }
+              ) (lib.attrsToList (builtins.fromTOML (builtins.readFile /home/louis/Nextcloud/yt_channels.toml)));
+            }
+          ];
+        }
+        {
+          name = "Github";
+          columns = [
+            {
+              size = "small";
+              widgets = [
+                {
+                  type = "releases";
+                  collapse-after = 999;
+                  repositories = [
+                    "Skardyy/mcat"
+                    "bodo-run/yek"
+                    "alexpasmantier/television"
+                    "Thumuss/utpm"
+                    "louis-thevenet/vault-tasks"
+                    "nik-rev/patchy"
+                    "guilhermeprokisch/see"
+                  ];
+                }
+              ];
+            }
+            {
+              size = "full";
+              widgets = [
+                {
+                  type = "repository";
+                  repository = "louis-thevenet/vault-tasks";
+                  pull-requests-limit = 5;
+                  issues-limit = 5;
+                  commits-limit = 5;
+                }
+                {
+                  type = "repository";
+                  repository = "louis-thevenet/N7";
+                  pull-requests-limit = 5;
+                  issues-limit = 5;
+                  commits-limit = 5;
+                }
               ];
             }
           ];

@@ -20,7 +20,12 @@
           url = "http://127.0.0.1";
           port = 30070;
         };
-        homepageUrl = "db.louis-thevenet.fr";
+        homepageUrl = "localhost:30069";
+      };
+      glance = {
+        enable = true;
+        host = "localhost";
+        port = 30069;
       };
       social.enable = true;
       utils.enable = true;

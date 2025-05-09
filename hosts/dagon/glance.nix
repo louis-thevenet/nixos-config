@@ -198,6 +198,7 @@ in
                   {
                     type = "videos";
                     title = name;
+                    video-url-template = "https://invidious.nerdvpn.de/watch?v={VIDEO-ID}";
                     channels = lib.catAttrs "url" value.channels;
                   }
                 ) (lib.attrsToList (builtins.fromTOML (builtins.readFile /home/louis/Nextcloud/yt_channels.toml)));
