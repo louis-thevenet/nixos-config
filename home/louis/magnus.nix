@@ -34,7 +34,6 @@
     dev = {
       vscode.enable = true;
       devTools.enable = true;
-      jetbrains.enable = true;
     };
     desktop.wayland = {
       # hyprland = {
