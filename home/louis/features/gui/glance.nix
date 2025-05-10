@@ -104,55 +104,88 @@ in
             }
             {
               size = "full";
-              widgets = [
-                {
-                  type = "group";
-                  widgets = [
-
-                    {
-                      type = "rss";
-                      style = "vertical-list"; # https://github.com/glanceapp/glance/blob/main/docs/configuration.md#style
-                      collapse-after = 15;
-                      feeds = [
-                        {
-                          url = "https://main--nixos-homepage.netlify.app/blog/announcements-rss.xml";
-                          title = "NixOS";
-                        }
-                        {
-                          url = "https://www.lesswrong.com/feed.xml?view=curated-rss";
-                          title = "LessWrong";
-                        }
-                        {
-                          url = "https://privacyinternational.org/rss.xml";
-                          title = "PrivacyInternational";
-                        }
-                      ];
-                    }
-                    {
-                      type = "hacker-news";
-                      collapse-after = 15;
-                    }
-                    {
-                      type = "lobsters";
-                      collapse-after = 15;
-                      sort-by = "hot";
-                      tags = [
-                        "ai"
-                        "compsci"
-                        "formalmethods"
-                        "graphics"
-                        "plt"
-                        "programming"
-                        "ml"
-                        "rust"
-                        "nix"
-                        "privacy"
-                        "vim"
-                      ];
-                    }
-                  ];
-                }
-              ];
+              widgets =
+                let
+                  collapse-after = 15;
+                in
+                [
+                  {
+                    type = "group";
+                    widgets = [
+                      # {
+                      #   title = "LW (broken?)";
+                      #   type = "rss";
+                      #   style = "vertical-list";
+                      #   # https://github.com/glanceapp/glance/blob/main/docs/configuration.md#style
+                      #   inherit collapse-after;
+                      #   feeds = [
+                      #     {
+                      #       url = "http://www.lesswrong.com/feed.xml?view=curated-rss";
+                      #       title = "LessWrong";
+                      #     }
+                      #   ];
+                      # }
+                      {
+                        type = "hacker-news";
+                        inherit collapse-after;
+                      }
+                      {
+                        type = "lobsters";
+                        inherit collapse-after;
+                        sort-by = "hot";
+                        tags = [
+                          "ai"
+                          "compsci"
+                          "formalmethods"
+                          "graphics"
+                          "plt"
+                          "programming"
+                          "ml"
+                          "rust"
+                          "nix"
+                          "privacy"
+                          "vim"
+                        ];
+                      }
+                      # {
+                      #   title = "Misc.";
+                      #   type = "rss";
+                      #   style = "vertical-list";
+                      #   inherit collapse-after;
+                      #   feeds = [
+                      #     {
+                      #       url = "https://calenda.org/feed.php?primary=fsubject&fsubject=278";
+                      #       title = "Calenda";
+                      #     }
+                      #   ];
+                      # }
+                      {
+                        title = "Technology";
+                        type = "rss";
+                        style = "vertical-list";
+                        inherit collapse-after;
+                        feeds = [
+                          {
+                            url = "https://zythom.fr/feed/";
+                            title = "Zythom";
+                          }
+                        ];
+                      }
+                      {
+                        title = "Simon Willison";
+                        type = "rss";
+                        style = "vertical-list";
+                        inherit collapse-after;
+                        feeds = [
+                          {
+                            url = "https://simonwillison.net/atom/everything/";
+                            title = "Simon Willison";
+                          }
+                        ];
+                      }
+                    ];
+                  }
+                ];
             }
             {
               size = "small";
