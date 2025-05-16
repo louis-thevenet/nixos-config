@@ -141,7 +141,7 @@ _: {
                &  1
                *  \
                '  4
-               `  (macro AG-7 spc)
+               `  (macro AG-7)
 
                {  AG-4
                pl 5
@@ -154,7 +154,7 @@ _: {
                /  S-.
                ''' 3
 
-               ~  (macro AG-2 spc)
+               ~  (macro AG-2)
                [  AG-5
                ]  AG--
                _  8
