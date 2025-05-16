@@ -108,23 +108,18 @@
 
           "ret" = "goto_word";
           backspace = {
-            # Nix stuff
-            "n" = {
-              "o" = "@f.yv999ndvf{mm<A-minus>xms{a;<esc>P;r="; # Would be better if I searched within selection instead of whole file
-            };
             # Vault-tasks stuff
-            "t" = {
-              "t" = "@i- [ ] today ";
-              "n" = "@i- [ ] ";
-            };
+            t = "@i- [ ] today ";
+            n = "@i- [ ] ";
+            # Get current time
+            d = ":insert-output ${lib.getExe' pkgs.coreutils "date"} +'## %H:%M:%S'";
+            D = [
+              '':insert-output echo "# $(${lib.getExe' pkgs.coreutils "date"} +'%A, %d %B %Y' | ${lib.getExe pkgs.gnused} -e 's/./\u&/')"''
+              "open_below"
+              ":insert-output ${lib.getExe' pkgs.coreutils "date"} +'## %H:%M:%S'"
+            ];
 
-            # Aliases for <mi+chr>
-            "\"" = "@mi\"";
-            "{" = "@mi\{";
-            "[" = "@mi\[";
-            "(" = "@mi\(";
-
-            "y" = ":yank-diagnostic";
+            y = ":yank-diagnostic";
           };
 
           x = [
