@@ -9,7 +9,7 @@
     serviceConfig = {
       ExecStart = "${
         (pkgs.python3.withPackages (ps: with ps; [ bleak ]))
-      }/bin/python3 /home/louis/src/zsh-airpods-battery/fetch_airpods_battery.py";
+      }/bin/python3 /home/louis/src/zsh-airpods-battery/fetch_airpods_battery.py --format ansi > /tmp/airpods_battery.out";
       Restart = "on-failure";
     };
     wantedBy = [ "default.target" ];
