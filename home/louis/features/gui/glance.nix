@@ -169,6 +169,10 @@ in
                             url = "https://zythom.fr/feed/";
                             title = "Zythom";
                           }
+                          {
+                            url = "https://feeds.feedburner.com/ThePragmaticEngineer";
+                            title = "ThePragmaticEngineer";
+                          }
                         ];
                       }
                       {
