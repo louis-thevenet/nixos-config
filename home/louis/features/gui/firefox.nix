@@ -109,7 +109,18 @@ in
           (limit-limit-distracting-sites.overrideAttrs { meta.license.free = true; })
         ]
         ++ [
-          # LanguageTool, grammar and spell checker
+          (buildFirefoxXpiAddon rec {
+            pname = "priceperspective";
+            version = "1.1";
+            addonId = "priceperspective@drewdevault.com";
+            src = pkgs.fetchurl {
+              url = "https://addons.mozilla.org/firefox/downloads/file/4466074/price_perspective-${version}.xpi";
+              hash = "sha256-8CsBTdOqxFYh1/sjG7YpCVSoLTmvVLqJ+D8cWLscflk=";
+            };
+            meta = { };
+          })
+        ]
+        ++ [
           (buildFirefoxXpiAddon rec {
             pname = "cb-remover";
             version = "0.7.1";
