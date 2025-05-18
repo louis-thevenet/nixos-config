@@ -160,7 +160,7 @@ in
                       #   ];
                       # }
                       {
-                        title = "Technology";
+                        title = "Indie Blogs";
                         type = "rss";
                         style = "vertical-list";
                         inherit collapse-after;
@@ -170,9 +170,94 @@ in
                             title = "Zythom";
                           }
                           {
+                            url = "https://skybert.net/feeds/atom-feed.xml";
+                            title = "Skybert";
+                          }
+                          {
                             url = "https://feeds.feedburner.com/ThePragmaticEngineer";
                             title = "ThePragmaticEngineer";
                           }
+                          {
+                            url = "https://boehs.org/in/blog.xml";
+                            title = "Evan Boehs";
+                          }
+                          {
+                            url = "https://terminaltrove.com/blog.xml";
+                            title = "Terminal Trove";
+                          }
+                          {
+                            url = "https://vin01.github.io/piptagole";
+                            title = "Vin01";
+                          }
+                          {
+                            url = "https://vin01.github.io/piptagole";
+                            title = "Schneier on Security";
+                          }
+                          {
+                            url = "https://lcamtuf.substack.com/feed";
+                            title = "lcamtuf’s thing";
+                          }
+                          {
+                            url = "https://michaelnielsen.org/ddi/rss";
+                            title = "DDI Data-driven intelligence";
+                          }
+                          {
+                            url = "https://alexanderobenauer.com/assets/feed/rss.xml";
+                            title = "Alexander Obenauer";
+                          }
+                          {
+                            url = "https://drewdevault.com/blog/index.xml";
+                            title = "Drew DeVault's blog";
+                          }
+                          {
+                            url = "https://ciechanow.ski/atom.xml";
+                            title = "Bartosz Ciechanowski";
+                          }
+                          {
+                            url = "https://www.copetti.org/index.xml";
+                            title = "The Copetti site";
+                          }
+                          {
+                            url = "file:///home/louis/Downloads/feed.xml";
+                            title = "Taylor Troesh 🐸";
+                          }
+                          {
+                            url = "https://benjaminhollon.com/musings/feed/";
+                            title = "benjaminhollon Musings";
+                          }
+                          {
+                            url = "https://tty1.blog/feed/";
+                            title = "benjaminhollon TTY1";
+                          }
+                          {
+                            url = "https://arun.is/rss.xml";
+                            title = "Arun";
+                          }
+                          {
+                            url = "http://www.julian.digital/feed";
+                            title = "Julian digital";
+                          }
+                          {
+                            url = "https://axleos.com/blog/index.xml";
+                            title = "Axleos";
+                          }
+                          {
+                            url = "https://xeiaso.net/blog.rss";
+                            title = "Xe Iaso";
+                          }
+                          {
+                            url = "https://manuelmoreale.com/feed";
+                            title = "P&B";
+                          }
+                          {
+                            url = "https://uncenter.dev/feed.xml";
+                            title = "uncenter";
+                          }
+                          {
+                            url = "https://matklad.github.io/feed";
+                            title = "matklad";
+                          }
+
                         ];
                       }
                       {
