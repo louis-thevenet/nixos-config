@@ -232,6 +232,7 @@ in
                 "Mod+Shift+KP_Subtract".action = set-window-height "-10%";
                 "Mod+Shift+KP_Add".action = set-window-height "+10%";
 
+                "Mod+A".action = toggle-overview;
                 "Mod+Shift+Escape".action = toggle-keyboard-shortcuts-inhibit;
                 "Mod+Shift+E".action = quit;
                 "Mod+Shift+P".action = power-off-monitors;
@@ -261,7 +262,6 @@ in
             default-column-width = {
               proportion = 1.0 / 2.0;
             };
-
             border = {
               enable = true;
               width = 6;
@@ -288,6 +288,9 @@ in
               gaps-between-tabs = 10;
               place-within-column = true;
             };
+          };
+          overview = {
+            backdrop-color = "#000000";
           };
           cursor = {
             # hide-after-inactive-ms = 1000;
