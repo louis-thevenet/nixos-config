@@ -51,6 +51,11 @@ in
                           icon = "si:github";
                         }
                         {
+                          title = "Jellyfin";
+                          url = "https://jellyfin.louis-thevenet.fr";
+                          icon = "si:spotify";
+                        }
+                        {
                           title = "Proton Mail";
                           url = "https://mail.proton.me/u/0/inbox";
                           icon = "si:proton";
@@ -83,6 +88,10 @@ in
                     {
                       title = "Nextcloud";
                       url = "https://nc.louis-thevenet.fr";
+                    }
+                    {
+                      title = "Jellyfin";
+                      url = "https://jellyfin.louis-thevenet.fr";
                     }
                   ];
                 }
