@@ -3,6 +3,7 @@ _: {
     ./hardware-configuration.nix
     ./sops.nix
     ./nextcloud.nix
+    ./jellyfin.nix
     ./nginx.nix
     ../common/global/nix.nix
     ../common/global/locale.nix
@@ -15,7 +16,6 @@ _: {
   console.keyMap = "fr";
 
   security.rtkit.enable = true;
-
   networking = {
     networkmanager.enable = true;
     firewall.enable = true;
