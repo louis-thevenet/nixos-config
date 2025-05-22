@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   ...
 }:
 {
@@ -18,6 +19,13 @@
     ../common/optional/virt.nix
   ];
   networking.hostName = "magnus";
+  services.usbmuxd.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    # mount iphone storage with `ifuse ./mnt/iphone`
+    libimobiledevice
+    ifuse # optional, to mount using 'ifuse'
+  ];
 
   hardware = {
     bluetooth.enable = true; # enables support for Bluetooth
