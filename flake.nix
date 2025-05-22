@@ -64,6 +64,10 @@
       url = "github:BatteredBunny/nix-ai-stuff";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    vault-tasks = {
+      url = "github:louis-thevenet/vault-tasks";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
