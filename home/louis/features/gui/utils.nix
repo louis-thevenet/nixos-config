@@ -9,6 +9,27 @@ let
   cfg = config.home-config.gui;
 in
 {
+  programs.beets = {
+    enable = true;
+    settings = {
+      directory = "~/Nextcloud/music";
+      library = "~/Nextcloud/musiclibrary.db";
+      plugins = [
+        "fetchart"
+        "lyrics"
+        "lastgenre"
+        "embedart"
+        "duplicates"
+      ];
+      lastgenre = {
+        auto = true;
+        source = "album";
+      };
+      terminal_encoding = "utf-8";
+      original_date = true;
+    };
+
+  };
   home.packages = mkIf cfg.utils.enable (
     with pkgs;
     [
