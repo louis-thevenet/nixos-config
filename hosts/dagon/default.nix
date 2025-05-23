@@ -3,6 +3,8 @@ _: {
     ./hardware-configuration.nix
     ./sops.nix
     ./nextcloud.nix
+    ./glance.nix
+    ./anubis.nix
     ./jellyfin.nix
     ./nginx.nix
     ./karakeep.nix

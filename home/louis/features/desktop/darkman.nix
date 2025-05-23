@@ -6,7 +6,6 @@
 }:
 let
   inherit (lib) mkIf optionalString concatStringsSep;
-  gui-cfg = config.home-config.gui;
   wayland-cfg = config.home-config.desktop.wayland;
   cfg = config.home-config.desktop;
 in
@@ -45,7 +44,6 @@ in
           (optionalString wayland-cfg.hyprland.enable "${systemctl} --user restart hyprpaper.service")
           (optionalString wayland-cfg.enable "${swaync-client} -rs") # reload CSS for swaync (notification center)
           (optionalString wayland-cfg.enable "${albert} restart")
-          (optionalString gui-cfg.glance.enable "${systemctl} --user restart glance.service")
         ];
     in
     mkIf cfg.stylix.enable {

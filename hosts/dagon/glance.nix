@@ -1,5 +1,5 @@
 {
-  #lib,
+  lib,
   config,
   ...
 }:
@@ -8,6 +8,29 @@ let
   port = 4321;
 in
 {
+
+  users.users.glance = {
+    isSystemUser = true;
+    group = "glance";
+  };
+  users.groups.glance = { };
+  sops.secrets = {
+    glance-secret-key = {
+      sopsFile = ../common/secrets.yaml;
+      owner = "glance";
+    };
+    glance-password = {
+      sopsFile = ../common/secrets.yaml;
+      owner = "glance";
+    };
+  };
+  systemd.services.glance = {
+    serviceConfig = {
+      DynamicUser = lib.mkForce false;
+      User = "glance";
+      Group = "glance";
+    };
+  };
 
   networking.firewall.allowedTCPPorts = [
     port
@@ -27,7 +50,6 @@ in
         '';
       };
     };
-
     glance = {
       enable = true;
       settings = {
