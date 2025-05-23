@@ -2,6 +2,16 @@ _: {
   networking.firewall.allowedTCPPorts = [
     8096
   ];
+  users.users = {
+    jellyfin = {
+      isSystemUser = true;
+      group = "jellyfin";
+      extraGroups = [
+        "nextcloud" # so that I can store my jellyfish library in Nextcloud data
+      ];
+    };
+  };
+  users.groups.jellyfin = { };
   services = {
     nginx = {
       virtualHosts."jellyfin.louis-thevenet.fr" = {
@@ -16,7 +26,7 @@ _: {
     };
     jellyfin = {
       enable = true;
-      user = "louis";
+      user = "jellyfin";
     };
   };
 }
