@@ -5,6 +5,7 @@ _: {
     ./nextcloud.nix
     ./jellyfin.nix
     ./nginx.nix
+    ./karakeep.nix
     ../common/global/nix.nix
     ../common/global/locale.nix
     ../common/users/louis
