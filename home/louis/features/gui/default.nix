@@ -8,7 +8,6 @@
     ./utils.nix
     ./productivity.nix
     ./ai.nix
-    ./glance.nix
     ./searxng.nix
   ];
 }

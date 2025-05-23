@@ -21,20 +21,6 @@ in
       kitty.enable = mkEnableOption ''
         Enable Kitty
       '';
-      glance = {
-        enable = mkEnableOption ''
-          Enable Glance
-        '';
-        host = mkOption {
-          type = lib.types.str;
-          default = "localhost";
-
-        };
-        port = mkOption {
-          type = lib.types.ints.u32;
-          default = 30069;
-        };
-      };
 
       firefox = {
         enable = mkEnableOption ''
