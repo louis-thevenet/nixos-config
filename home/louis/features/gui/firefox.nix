@@ -15,13 +15,12 @@ let
       pname,
       version,
       addonId,
-      meta,
       ...
     }:
     pkgs.stdenv.mkDerivation {
       name = "${pname}-${version}";
 
-      inherit meta src;
+      inherit src;
 
       preferLocalBuild = true;
       allowSubstitutes = true;
@@ -106,30 +105,55 @@ in
           ublock-origin
           unpaywall
           vimium
+          batchcamp
           (limit-limit-distracting-sites.overrideAttrs { meta.license.free = true; })
         ]
         ++ [
           (buildFirefoxXpiAddon rec {
-            pname = "priceperspective";
+            pname = "price_perspective";
             version = "1.1";
+            file-number = "4466074";
             addonId = "priceperspective@drewdevault.com";
             src = pkgs.fetchurl {
-              url = "https://addons.mozilla.org/firefox/downloads/file/4466074/price_perspective-${version}.xpi";
+              url = "https://addons.mozilla.org/firefox/downloads/file/${file-number}/${pname}-${version}.xpi";
               hash = "sha256-8CsBTdOqxFYh1/sjG7YpCVSoLTmvVLqJ+D8cWLscflk=";
             };
-            meta = { };
           })
         ]
         ++ [
           (buildFirefoxXpiAddon rec {
-            pname = "cb-remover";
+            pname = "karakeep";
+            version = "1.2.5";
+            file-number = "4477863";
+            addonId = "karakeep@karakeep.app";
+            src = pkgs.fetchurl {
+              url = "https://addons.mozilla.org/firefox/downloads/file/${file-number}/${pname}-${version}.xpi";
+              hash = "sha256-oPr/M1v975jiNyUnDG6AV5n6RBu+dUS+BJb2+T9kiBU=";
+            };
+          })
+        ]
+        ++ [
+          (buildFirefoxXpiAddon rec {
+            pname = "clickbait_remover_for_youtube";
             version = "0.7.1";
+            file-number = "4043434";
             addonId = "cb-remover@search.mozilla.org";
             src = pkgs.fetchurl {
-              url = "https://addons.mozilla.org/firefox/downloads/file/4043434/clickbait_remover_for_youtube-${version}.xpi";
+              url = "https://addons.mozilla.org/firefox/downloads/file/${file-number}/${pname}-${version}.xpi";
               hash = "sha256-o5gJZ1gydXItxHgBNUkco5jUJ1CydCDA3j5mnfl4xkk=";
             };
-            meta = { };
+          })
+        ]
+        ++ [
+          # Appears to be corrupted ?
+          (buildFirefoxXpiAddon rec {
+            pname = "hoarders-pipette";
+            version = "1.3.0";
+            addonId = "hoarder-pipette@dansnow.github.io";
+            src = pkgs.fetchurl {
+              url = "https://github.com/DanSnow/hoarder-pipette/releases/download/hoarder-pipette-v${version}/${pname}-${version}.xpi";
+              hash = "sha256-gVFBt6NxRWVKfexvlyvA/uOlW0WgxUYUjTGzfrjLbjQ=";
+            };
           })
         ];
       settings = {
