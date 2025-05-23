@@ -22,6 +22,14 @@
         "nofail"
       ];
     };
+    "/backups" = {
+      device = "/dev/disk/by-uuid/8aa46536-1eb9-442f-84d2-2ce4be54feb7";
+      fsType = "ext4";
+      options = [
+        "defaults"
+        "nofail"
+      ];
+    };
     "/var/lib/nextcloud" = {
       device = "/ssd/nextcloud_data";
       fsType = "none"; # bc it's not a real filesystem
