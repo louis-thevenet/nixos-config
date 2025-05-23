@@ -1,8 +1,8 @@
 # NixOS Niri flake setup
+
 ![image](https://github.com/user-attachments/assets/5d2790c7-7669-469d-8843-e7ba16432f41)
 
 ![image](https://github.com/user-attachments/assets/8f2dcffb-2955-4eec-894b-0ba63e725fac)
-
 
 ## Features
 
@@ -35,10 +35,11 @@ hosts
    └── sops.nix
 ```
 
-- `magnus` : Main System
-- `akatosh` : Laptop (disk managed with [disko](https://github.com/nix-community/disko) with [impermanence](https://nixos.wiki/wiki/Impermanence) for NixOS)
+- `magnus`: Main System
+- `akatosh`: Laptop (disk managed with [disko](https://github.com/nix-community/disko) with [impermanence](https://nixos.wiki/wiki/Impermanence) for NixOS)
+- `dagon`: Home Server hosted on a Raspberry Pi running NextCloud, Jellyfin, Karakeep. Also has restic backup setup.
 
-The setup is rather classic, most of the system configuration is shared between hosts.
+Most of the system configuration is shared between hosts.
 
 ## HomeManager Config
 
