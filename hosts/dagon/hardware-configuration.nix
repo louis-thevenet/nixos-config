@@ -14,13 +14,18 @@
       fsType = "ext4";
     };
 
-    "/nextcloud_data" = {
+    "/ssd" = {
       device = "/dev/disk/by-uuid/12f6e6d2-6b5c-4a26-99ca-566eaad9da01";
       fsType = "ext4";
       options = [
         "defaults"
         "nofail"
       ];
+    };
+    "/var/lib/nextcloud" = {
+      device = "/ssd/nextcloud_data";
+      fsType = "none"; # bc it's not a real filesystem
+      options = [ "bind" ];
     };
   };
 
