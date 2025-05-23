@@ -27,10 +27,19 @@
       fsType = "none"; # bc it's not a real filesystem
       options = [ "bind" ];
     };
+    "/var/lib/karakeep" = {
+      device = "/ssd/karakeep_data";
+      fsType = "none"; # bc it's not a real filesystem
+      options = [ "bind" ];
+    };
   };
 
-  swapDevices = [ ];
-
+  swapDevices = [
+    {
+      device = "/ssd/swapfile";
+      size = 16 * 1024;
+    }
+  ];
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction

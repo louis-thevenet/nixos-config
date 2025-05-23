@@ -90,6 +90,10 @@ in
                       url = "https://nc.louis-thevenet.fr";
                     }
                     {
+                      title = "Karakeep";
+                      url = "https://karakeep.louis-thevenet.fr";
+                    }
+                    {
                       title = "Jellyfin";
                       url = "https://jellyfin.louis-thevenet.fr";
                     }
