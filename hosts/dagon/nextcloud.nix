@@ -35,7 +35,7 @@
       hostName = "nc.louis-thevenet.fr";
       maxUploadSize = "16G";
       https = true;
-      home = "/nextcloud_data";
+      home = "/var/lib/nextcloud";
       extraAppsEnable = true;
       # extraApps = with pkgs.nextcloud30Packages.apps; {
       # inherit
