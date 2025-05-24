@@ -32,6 +32,7 @@ in
       rbw
       pinentry
       vhs
+      transmission_4
     ]
   );
   programs.eza = {
