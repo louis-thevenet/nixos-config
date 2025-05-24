@@ -39,6 +39,7 @@ in
       tor-browser-bundle-bin
       obs-studio
       spotifywm
+      finamp
     ]
   );
 }

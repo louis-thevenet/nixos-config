@@ -32,6 +32,12 @@ in
       rbw
       pinentry
       vhs
+      transmission_4
+      restic
+      (mcat.override {
+        useFfmpeg = true;
+        useChromium = true;
+      })
     ]
   );
   programs.eza = {
