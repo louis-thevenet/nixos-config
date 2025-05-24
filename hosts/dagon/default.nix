@@ -9,6 +9,7 @@ _: {
     ./nginx.nix
     ./karakeep.nix
     ./restic.nix
+    ./adguardhome.nix
     ../common/global/nix.nix
     ../common/global/locale.nix
     ../common/users/louis
