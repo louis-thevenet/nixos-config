@@ -86,6 +86,7 @@ let
   brightnessctl = lib.getExe pkgs.brightnessctl;
   wpctl = lib.getExe' pkgs.wireplumber "wpctl";
 
+  playerctl = lib.getExe pkgs.playerctl;
   swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
   terminal = config.home.sessionVariables.TERMINAL;
   browser = lib.getExe pkgs.firefox;
@@ -127,6 +128,7 @@ in
               }
               {
                 # Functions
+                "XF86AudioPlay".action = sh "${playerctl} play-pause";
                 "XF86AudioRaiseVolume".action = sh "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 0.05+";
                 "XF86AudioLowerVolume".action = sh "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 0.05-";
                 "XF86AudioMute" = mkIf (!cfg.niri.brokenAudioMuteKey) {
