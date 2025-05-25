@@ -50,7 +50,7 @@ in
       primary = {
         layer = "top";
         position = "bottom";
-        exclusive = false;
+        exclusive = true;
         fixed-center = false;
         start_hidden = true;
         modules-left =
@@ -68,9 +68,9 @@ in
           ];
         modules-center = [
 
-          "cava#left"
+          # "cava#left"
           "custom/player"
-          "cava#right"
+          # "cava#right"
         ];
         modules-right = [
           "tray"
