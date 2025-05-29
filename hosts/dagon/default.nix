@@ -11,6 +11,7 @@
     ./karakeep.nix
     ./restic.nix
     ./adguardhome.nix
+    ./hugo.nix
     ../common/global/nix.nix
     ../common/global/locale.nix
     ../common/users/louis

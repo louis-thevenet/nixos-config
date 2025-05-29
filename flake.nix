@@ -68,6 +68,10 @@
       url = "github:louis-thevenet/vault-tasks";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    blog = {
+      url = "git:/home/louis/src/blog";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

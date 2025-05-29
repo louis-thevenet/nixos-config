@@ -1231,11 +1231,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1747901898,
-        "narHash": "sha256-pNH4JcIEkCVOssA1lDa47KG4zOUtSqTe8gk97V5QIyc=",
+        "lastModified": 1748266989,
+        "narHash": "sha256-Xb+ZdgyFXtY3zS56+3+eK5XfvIRJwH6ZuSf/Sz+3CRY=",
         "owner": "louis-thevenet",
         "repo": "vault-tasks",
-        "rev": "f245e4362af0c6449450d2172b11eb4e227df1bb",
+        "rev": "b48af62fcd4fb7a2d4f4ab5f0a1479202292e123",
         "type": "github"
       },
       "original": {
