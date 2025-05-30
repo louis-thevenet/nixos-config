@@ -1,4 +1,4 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 let
   domain = "karakeep.louis-thevenet.fr";
   meili-port = 2431;
@@ -10,15 +10,20 @@ in
     sopsFile = ../common/secrets.yaml;
     owner = "karakeep";
   };
+  sops.secrets.meili-search-master-key = {
+    sopsFile = ../common/secrets.yaml;
+  };
   services.meilisearch = {
     enable = true;
+    package = pkgs.meilisearch.override { version = "1.14.0"; };
+    masterKeyEnvironmentFile = config.sops.secrets.meili-search-master-key.path;
     listenPort = meili-port;
-    listenAddress = "127.0.0.1";
     dumplessUpgrade = true;
   };
   systemd.services.karakeep = {
     serviceConfig = {
-      ExecStartPre = ''umask 0027''; # for restic backups
+      UMask = "0027";
+      # ExecStartPre = ''umask 0027''; # for restic backups
       # so that members of karakeep group can read every karakeep files
     };
   };
