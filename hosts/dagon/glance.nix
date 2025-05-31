@@ -313,22 +313,9 @@ in
                               url = "https://slightknack.dev/atom.xml";
                               title = "SlightKnack";
                             }
-
-                          ];
-                        }
-                        {
-                          title = "Bandcamp releases";
-                          type = "rss";
-                          style = "vertical-list";
-                          inherit collapse-after;
-                          feeds = [
                             {
-                              url = "https://rss-bridge.org/bridge01/?action=display&bridge=BandcampBridge&context=By+band&band=obliqueoccasions&type=releases&limit=5&format=Json";
-                              title = "Obliques Occasions";
-                            }
-                            {
-                              url = "https://rss-bridge.org/bridge01/?action=display&bridge=BandcampBridge&context=By+band&band=catsystemcorp&type=releases&limit=5&format=Json";
-                              title = "猫 シ Corp.";
+                              url = "https://site.sebasmonia.com/feed.xml";
+                              title = "sebasmonia";
                             }
                           ];
                         }
