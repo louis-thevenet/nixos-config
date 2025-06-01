@@ -85,6 +85,7 @@
       git-hooks-nix,
       nix-index-database,
       nixos-hardware,
+      sops-nix,
       ...
     }:
     let
@@ -157,9 +158,11 @@
                   extraSpecialArgs = {
                     inherit (self) inputs outputs;
                   };
+                  sharedModules = [
+                    sops-nix.homeManagerModules.sops
+                  ];
                 };
               }
-
               stylix.nixosModules.stylix
               nix-index-database.nixosModules.nix-index
               {
