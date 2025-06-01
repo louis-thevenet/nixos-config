@@ -65,52 +65,46 @@ _: {
              OEM_1 27
              OEM_4 12
              OEM_MINUS 13
-             OEM_PLUS 53
-             OEM_2 52
-             OEM_PERIOD 51
-             OEM_COMMA 50
+             EXCL 53
+             COL 52
+             PER 51
+             COM 50
              OEM_3 40
              )
 
              (defalias
-               ;; Main mod-tap: Nav layer when held, Space when tapped.
-               nav (tap-hold $tap_timeout $long_hold_timeout spc (layer-while-held navigation))
+              ;; Main mod-tap: Nav layer when held, Space when tapped.
+              nav (tap-hold $tap_timeout $long_hold_timeout spc (layer-while-held navigation))
 
-               ;; Space-cadet thumb keys: Alt/BackSpace, AltGr/Enter.
-               ;; Acts as a modifier by default, or as BackSpace/Enter when tapped separately.
-               alt (tap-hold-press $tap_timeout $hold_timeout bspc lalt)
-               sym (tap-hold-press $tap_timeout $hold_timeout ret (layer-while-held symbols))
-              tab (tap-hold-press $tap_timeout $hold_timeout tab (layer-while-held ergol))
+              ;; Space-cadet thumb keys: Alt/BackSpace, AltGr/Enter.
+              ;; Acts as a modifier by default, or as BackSpace/Enter when tapped separately.
+              alt (tap-hold-press $tap_timeout $hold_timeout bspc lalt)
+              sym (tap-hold-press $tap_timeout $hold_timeout ret (layer-while-held symbols))
+              tab (tap-hold-press $tap_timeout $hold_timeout tab (layer-while-held mouse))
              )
 
-             ;; Symbol layer: Lafayette/Ergo‑L AltGr programmation layer for the masses!
-
-             (defalias run M-x ) ;; run = hyprland rofi keybind
-
              (defalias
-               std (layer-switch base)
-               pad (layer-switch numpad)
+              std (layer-switch base)
+              pad (layer-switch numpad)
 
-               fun (layer-while-held funpad)
+              fun (layer-while-held funpad)
 
-               ;; Mouse wheel emulation
-               mwu (mwheel-up    50 120)
-               mwd (mwheel-down  50 120)
-               mwl (mwheel-left  50 120)
-               mwr (mwheel-right 50 120)
+              ;; Mouse wheel emulation
+              mwu (mwheel-up    50 120)
+              mwd (mwheel-down  50 120)
+              mwl (mwheel-left  50 120)
+              mwr (mwheel-right 50 120)
              )
 
 
              ;; Azerty Windows/Linux aliases
              ;; Works with AZERTY-fr. Needs a couple tweaks for the Belgian and Mac variants.
 
-             ;; Navigation layer
              (defalias
-
-               all C-q
+               all C-a
                sav C-s
-               cls C-z
-               ndo C-w
+               cls C-w
+               ndo C-z
                cut C-x
                cpy C-c
                pst C-v
@@ -193,17 +187,17 @@ _: {
                1 2 3 4 5 6 7 8 9 0
             tab a z e r t  y u i o p
            caps q s d f g   h j k l m
-                < w x c v b n OEM_COMMA OEM_PERIOD OEM_2 OEM_PLUS rsft
-                  lalt                    spc                    ralt 
+               < w x c v b   n COM PER COL EXCL rsft
+                  lalt     spc       ralt 
               )
 
              ;; base layout
              (deflayer base
               1 2 3 4 5 6 7 8 9 0
-             @tab  a z e r t y u i o p
-          esc q s d f g h j k l m
-               < w x c v b n OEM_COMMA OEM_PERIOD OEM_2 OEM_PLUS rsft
-               @alt                   @nav                   @sym
+          @tab a z e r t   y u i o p
+          esc q s d f g     h j k l m
+             < w x c v b     n COM PER COL EXCL rsft
+               @alt          @nav          @sym
              )
 
              ;; ergol layout
@@ -215,36 +209,62 @@ _: {
                _                    _ _
              )
 
+           ;; mouse layout
+            (defalias
+              mse (layer-while-held mouse)
+            )
+
+            (defalias
+              fst (movemouse-speed 200)
+              slw (movemouse-speed 50)
+              vsl (movemouse-speed 25)
+
+              ms↑ (movemouse-up 4 4)
+              ms← (movemouse-left 4 4)
+              ms↓ (movemouse-down 4 4)
+              ms→ (movemouse-right 4 4)
+            )
+
+
+             (deflayer mouse
+               _  _    _    _    _    _  _  _  _  _ 
+            tab _  @fst @slw @vsl   _     _  _  _  _  _
+            esc  _    mrgt mmid mlft  _     _ @ms← @ms↓ @ms↑ @ms→
+               _  _        _    _      _  _   _  _  _  _  _  _
+                         _        _       _
+             )
+
+
              (deflayer symbols
                AG-1 AG-2 AG-3 AG-4 AG-5 AG-6 AG-7 AG-8 AG-9 AG-0
-          tab @^   @<   @>   @$   @%        @@   @&   @*   @'   @`
-          esc @{ @pl  @pr  @}   @=        @\   @+   @-   @/  @dq 
-              @< @~   @[   @]   @_  @#  @|   @!   @;   @:   @? _
-                         _             spc             _
+          tab @^  @<  @>  @$  @%        @@  @&  @*  @'  @`
+          esc  @{  @pl @pr @}  @=        @\  @+  @-  @/ @dq 
+              @< @~  @[  @]  @_ @#         @|  @!  @;  @:  @? _
+                         _       spc       _
              )
 
              (deflayer navigation
                M-1  M-2  M-3  M-4  M-5  lrld M-6  M-7  M-8  M-9  M-0
-          tab  @pad @cls bck  fwd  XX        home pgdn pgup end  @run
-          esc   @all @sav S-tab tab XX        lft  down up   rght @fun
-                 @ndo @cut @cpy @pst XX    _   @mwl @mwd @mwu @mwr XX
-                         del             _             esc
+          tab  @pad @cls bck  fwd  _       home pgdn pgup end  _
+          esc   @all @sav _     _    _        lft down  up  rght @fun
+                 @ndo @cut @cpy @pst _    _   @mwl @mwd @mwu @mwr _
+                       del             _             esc
              )
              ;; NumPad
              (deflayer numpad
                _    _    _    _    _     _   _    _    _    _    _
-          tab  XX   home up   end  pgup      @/   @7   @8   @9   XX
-          esc   XX   lft  down rght pgdn      @-   @4   @5   @6   @0
-                 XX   XX   XX   XX   XX    _   @,   @1   @2   @3   @.
+          tab  _    home up   end  pgup      @/   @7   @8   @9   _ 
+          esc   _    lft  down rght pgdn      @-   @4   @5   @6   @0
+                 _    _    _    _    _     _   @,   @1   @2   @3   @.
                          @std           @nbs           @std
              )
 
              ;; function keys
              (deflayer funpad
-          tab XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX
-               f1   f2   f3   f4   XX        XX   XX   XX   XX   XX
-            esc f5   f6   f7   f8   XX        XX   lctl lalt lmet _
-                 f9   f10  f11  f12  XX   XX   XX   XX   XX   XX   XX
+          tab _    _    _    _    _    _    _    _    _    _    _ 
+               f1   f2   f3   f4   _         _    _    _    _    _ 
+            esc f5   f6   f7   f8   _         _    lctl lalt lmet _
+                 f9   f10  f11  f12  _    _    _    _    _    _    _ 
                          _               _             _
              )  
 
