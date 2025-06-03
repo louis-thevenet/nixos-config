@@ -130,6 +130,7 @@
               sops
               age
               deadnix
+              just
             ]
             ++ [
               pkgs.home-manager

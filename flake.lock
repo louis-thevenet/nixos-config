@@ -3,17 +3,14 @@
     "ananke-mod": {
       "flake": false,
       "locked": {
-        "lastModified": 1747213057,
-        "narHash": "sha256-TCxQw9vys/Yt+x9iXK54vXBnBm39jy0zOLWYDVFpiAw=",
-        "owner": "theNewDynamic",
-        "repo": "gohugo-theme-ananke",
-        "rev": "b6fae8a40311ee22d23f1eed8fe5b12f1c93185f",
-        "type": "github"
+        "lastModified": 1748874933,
+        "narHash": "sha256-5NsorGKkQvLOppBr2IdivBWm7CzsqN25V9PXPGowGOA=",
+        "path": "/home/louis/src/blog/themes/ananke",
+        "type": "path"
       },
       "original": {
-        "owner": "theNewDynamic",
-        "repo": "gohugo-theme-ananke",
-        "type": "github"
+        "path": "/home/louis/src/blog/themes/ananke",
+        "type": "path"
       }
     },
     "base16": {
@@ -89,14 +86,15 @@
         "nixpkgs": [
           "nixpkgs"
         ],
+        "plausible-mod": "plausible-mod",
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1748626616,
-        "narHash": "sha256-HxbDWCnqvWVDXHxB6DmXMkl8TBgbS7AQaMwikFqMqM8=",
+        "lastModified": 1748895076,
+        "narHash": "sha256-5HmfUQGNgKPiKnVkS8yV1mym3y5dQ9h1FRl6Vxn/zR4=",
         "ref": "refs/heads/main",
-        "rev": "2fdc46fa3169bc397723810ac01ad2e5a22cfa56",
-        "revCount": 15,
+        "rev": "fa42d6a571bc7da87d4ef7f66b09db24969fc68c",
+        "revCount": 19,
         "type": "git",
         "url": "file://git:/home/louis/src/blog"
       },
@@ -873,6 +871,19 @@
         "owner": "nix-community",
         "repo": "NUR",
         "type": "github"
+      }
+    },
+    "plausible-mod": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1748874955,
+        "narHash": "sha256-bEyiyWBbuSpGbrQ/pW8snXz146HjcIyI9u7+fwVTTAM=",
+        "path": "/home/louis/src/blog/themes/plausible-hugo",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/louis/src/blog/themes/plausible-hugo",
+        "type": "path"
       }
     },
     "root": {
