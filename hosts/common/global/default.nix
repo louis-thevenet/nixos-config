@@ -3,6 +3,7 @@
   imports = [
     ./locale.nix
     ./nix.nix
+    ./openssh.nix
   ];
   nixpkgs = {
     overlays = [ ];

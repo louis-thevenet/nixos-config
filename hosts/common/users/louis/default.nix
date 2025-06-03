@@ -18,6 +18,9 @@ in
           "wheel"
         ];
         shell = pkgs.fish;
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF0w5CDimW+k9ic7fOJ3aNjFA9Bhe1LT4Bb0bczrheKr louis.tvnt@gmail.com"
+        ];
         home = "/home/louis";
         hashedPasswordFile = passwordFile;
       };

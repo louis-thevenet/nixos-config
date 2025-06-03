@@ -13,6 +13,7 @@
     ./adguardhome.nix
     ./hugo.nix
     ../common/global/nix.nix
+    ../common/global/openssh.nix
     ../common/global/locale.nix
     ../common/users/louis
     ../common/optional/stylix.nix
@@ -46,10 +47,6 @@
   networking = {
     networkmanager.enable = true;
     firewall.enable = true;
-  };
-  services.openssh = {
-    enable = true;
-    ports = [ 22 ];
   };
   documentation.man.generateCaches = false;
   system.stateVersion = "24.11";
