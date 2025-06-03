@@ -317,6 +317,18 @@ in
                               url = "https://site.sebasmonia.com/feed.xml";
                               title = "sebasmonia";
                             }
+                            {
+                              url = "https://milofultz.com/rss.xml";
+                              title = "milofutz";
+                            }
+                            {
+                              url = "https://milofultz.com/rss.xml";
+                              title = "milofutz";
+                            }
+                            {
+                              url = "https://milofultz.com/bookmarks.rss";
+                              title = "milofutz's bookmarks";
+                            }
                           ];
                         }
                         {
