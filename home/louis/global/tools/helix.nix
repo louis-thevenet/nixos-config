@@ -77,6 +77,11 @@
               ":set mouse false"
               ":set mouse true"
             ];
+          "C-left" = ":buffer-previous";
+          "C-right" = ":buffer-next";
+          "C-down" = "goto_next_diag";
+          "C-up" = "goto_prev_diag";
+
           "h" = "no_op";
           "j" = "no_op";
           "k" = "no_op";
@@ -87,11 +92,11 @@
             # Vault-tasks stuff t = "@i- [ ] today ";
             n = "@i- [ ] ";
             # Get current time
-            d = ":insert-output ${lib.getExe' pkgs.coreutils "date"} +'## %H:%M:%S'";
+            d = ":insert-output ${lib.getExe' pkgs.coreutils "date"} +'## %%H:%%M:%%S'";
             D = [
-              '':insert-output echo "# $(${lib.getExe' pkgs.coreutils "date"} +'%A, %d %B %Y' | ${lib.getExe pkgs.gnused} -e 's/./\u&/')"''
+              '':insert-output echo "# $(${lib.getExe' pkgs.coreutils "date"} +'%%A, %%d %%B %%Y' | ${lib.getExe pkgs.gnused} -e 's/./\u&/')"''
               "open_below"
-              ":insert-output ${lib.getExe' pkgs.coreutils "date"} +'## %H:%M:%S'"
+              ":insert-output ${lib.getExe' pkgs.coreutils "date"} +'## %%H:%%M:%%S'"
             ];
             y = ":yank-diagnostic";
           };
