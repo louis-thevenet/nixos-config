@@ -19,6 +19,7 @@
     userEmail = "louis.tvnt@gmail.com";
 
     extraConfig = {
+      submodule.recurse = true;
       merge.mergiraf = {
         name = "mergiraf";
         driver = "mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P";
