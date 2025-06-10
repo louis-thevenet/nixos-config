@@ -33,6 +33,12 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp98s0.useDHCP = lib.mkDefault true;
 
+  swapDevices = [
+    {
+      device = "/persist/swapfile";
+      size = 16 * 1024;
+    }
+  ];
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = true;
 }
