@@ -27,7 +27,7 @@
       devTools.enable = true;
     };
     desktop = {
-      # stylix.enable = true;
+      stylix.enable = true;
       wayland = {
         enable = true;
         niri.enable = true;
