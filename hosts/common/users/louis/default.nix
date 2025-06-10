@@ -30,7 +30,7 @@ in
         # 2. it is not used anywhere else
         # 3. it cannot be used to login over ssh
         # considering the odds of someone stealing my computer AND knowing how to crack this, I feel safe enough to put it here
-        hashedPassword = "$6$yZ3vsEdcCJUTFq4l$0z1DIXaHUPZ/WjHW1qgqa3XZkAZraq8D7KJzrfbuvEx2hoRn.c/tBLE/fcN71yfVv4hnB6SpsnHYqLr1uCX7m.";
+        hashedPassword = "$y$j9T$mK2B12LyU3mVF7gdvY2F70$qCV.AJvR34tA6S/T0SgqbNyssh/sezQF43fv3RnEKFA";
       };
     };
   };
