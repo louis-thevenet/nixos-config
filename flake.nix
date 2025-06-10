@@ -203,6 +203,15 @@
           })
           niri.nixosModules.niri
         ];
+        arkay = mkNixos "louis" "arkay" "x86_64-linux" [
+          (_: {
+            nixpkgs.overlays = [
+              niri.overlays.niri
+            ];
+
+          })
+          niri.nixosModules.niri
+        ];
         dagon = mkNixos "louis" "dagon" "aarch64-linux" [
           nixos-hardware.nixosModules.raspberry-pi-4
         ];

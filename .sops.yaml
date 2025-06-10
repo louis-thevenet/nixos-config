@@ -3,6 +3,7 @@ keys:
   - &hircine age16jawa4xtsyyj4r4szwf9nsame6dsxk90pvqz7gz5s3pxl8jmygss87qndt
   - &akatosh age1n4658ysaeadsnh7yydss87u0twm55sayyc65x5kuqcrcavpsd32smpw02k
   - &dagon age1zcyflrt857zs25pghm44l290d0q3fmyrp3t5uawf4sfvldzejehq32jzsa
+  - &arkay age168j47emmxn4g4zem9tydpz2jd638cn8wgp84cwltp2yr3kulz4wqs72s08
 creation_rules:
   - path_regex: hosts/magnus/secrets.yaml$
     key_groups:
@@ -21,3 +22,4 @@ creation_rules:
           - *hircine
           - *akatosh
           - *dagon
+          - *arkay
