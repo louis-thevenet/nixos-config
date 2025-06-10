@@ -66,13 +66,8 @@
     };
     vault-tasks = {
       url = "github:louis-thevenet/nixpkgs/vault-tasks-0.12.0";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     blog.url = "git+file:/home/louis/src/blog?ref=main";
-    helix = {
-      url = "github:helix-editor/helix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
