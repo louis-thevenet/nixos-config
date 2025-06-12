@@ -1,6 +1,8 @@
 {
   description = "NixOS config";
   inputs = {
+    re6st.url = "git+https://lab.nexedi.com/louis.thevenet/re6stnet?ref=build-nix";
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     home-manager = {
