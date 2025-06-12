@@ -6,6 +6,12 @@
 }:
 let
   inherit (inputs.re6st.packages.${pkgs.system}) re6st;
+  re6stnet-config = pkgs.writeText "re6stnet.conf" '''';
+  re6st-registry-config = pkgs.writeText "re6st-registry.conf" '''';
+  geolite2-country-mmdb = pkgs.fetchurl {
+    url = "https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-Country.mmdb";
+    hash = "sha256-PPaezALpVEGaLMkt2JJjc2M+qmRk+swCXVU8uKQ4cFY=";
+  };
 in
 {
   imports = [
@@ -38,32 +44,15 @@ in
   environment.defaultPackages = [
     re6st
   ];
-  environment.etc = {
-    "re6stnet/re6st-registry.conf" = {
-      text = ''
 
-      '';
-
-      mode = "0440";
-    };
-  };
   systemd.user.services.re6stnet = {
     description = "Resilient, Scalable, IPv6 Network application";
-    unitConfig.ConditionPathExists = "/etc/re6stnet/re6st-registry.conf";
-    StartLimitIntervalSec = 0;
-    script = ''
-      /bin/sh -c 'GEOIP2_MMDB=/etc/re6stnet/GeoLite2-Country.mmdb; [ -r $GEOIP2_MMDB ]
-      && export GEOIP2_MMDB; exec re6stnet @re6stnet.conf'
-    '';
-    wantedBy = "multi-user.target";
+    script = "GEOIP2_MMDB=${geolite2-country-mmdb} ${lib.getExe re6st "re6stnet"} @${re6stnet-config}";
+    # wantedBy = "multi-user.target";
   };
   systemd.user.services.re6stnet-registry = {
     description = "Server application for re6snet";
-    unitConfig.ConditionPathExists = "/etc/re6stnet/re6st-registry.conf";
-    StartLimitIntervalSec = 0;
-    script = ''
-      ${lib.getExe' re6st "re6st-registry"} @re6st-registry.conf
-    '';
-    wantedBy = "multi-user.target";
+    script = "${lib.getExe' re6st "re6st-registry"} @${re6st-registry-config}";
+    # wantedBy = "multi-user.target";
   };
 }
