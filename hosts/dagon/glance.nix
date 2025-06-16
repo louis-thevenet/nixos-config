@@ -188,29 +188,7 @@ in
                         #       title = "LessWrong";
                         #     }
                         #   ];
-                        # }
-                        {
-                          type = "hacker-news";
-                          inherit collapse-after;
-                        }
-                        {
-                          type = "lobsters";
-                          inherit collapse-after;
-                          sort-by = "hot";
-                          tags = [
-                            "ai"
-                            "compsci"
-                            "formalmethods"
-                            "graphics"
-                            "plt"
-                            "programming"
-                            "ml"
-                            "rust"
-                            "nix"
-                            "privacy"
-                            "vim"
-                          ];
-                        }
+                        #{
                         {
                           title = "Indie Blogs";
                           type = "rss";
@@ -329,8 +307,35 @@ in
                               url = "https://milofultz.com/bookmarks.rss";
                               title = "milofutz's bookmarks";
                             }
+                            {
+                              url = "https://akselmo.dev/feed.xml";
+                              title = "Akselmo";
+                            }
                           ];
                         }
+                        {
+                          type = "hacker-news";
+                          inherit collapse-after;
+                        }
+                        {
+                          type = "lobsters";
+                          inherit collapse-after;
+                          sort-by = "hot";
+                          tags = [
+                            "ai"
+                            "compsci"
+                            "formalmethods"
+                            "graphics"
+                            "plt"
+                            "programming"
+                            "ml"
+                            "rust"
+                            "nix"
+                            "privacy"
+                            "vim"
+                          ];
+                        }
+
                         {
                           title = "Simon Willison";
                           type = "rss";
@@ -363,25 +368,6 @@ in
 
                   }
                 ];
-              }
-            ];
-          }
-          {
-            name = "Videos";
-            columns = [
-              {
-                size = "full";
-                # This forces me to remote build (or copy the file from Nextcloud data on the server)
-                # And also forces the build to be impure, but I don't have any nicer solution atm
-                widgets = lib.map (
-                  { name, value }:
-                  {
-                    type = "videos";
-                    title = name;
-                    # video-url-template = "https://invidious.nerdvpn.de/watch?v={VIDEO-ID}"; # yt is not happy with invidious instances
-                    channels = lib.catAttrs "url" value.channels;
-                  }
-                ) (lib.attrsToList (builtins.fromTOML (builtins.readFile /home/louis/Nextcloud/yt_channels.toml)));
               }
             ];
           }
