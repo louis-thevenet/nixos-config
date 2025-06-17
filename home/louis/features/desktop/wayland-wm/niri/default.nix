@@ -113,7 +113,6 @@ in
               sh = spawn "sh" "-c";
             in
             lib.attrsets.mergeAttrsList [
-
               {
                 # Apps
                 "Mod+T".action = spawn terminal;
@@ -139,6 +138,7 @@ in
                 "XF86MonBrightnessDown".action = sh "${brightnessctl} set 10%-";
 
                 "Print".action = screenshot;
+                "Mod+Print".action = screenshot-window;
                 "Alt+Print".action = screenshot-window;
               }
               {
@@ -218,13 +218,13 @@ in
                 # Move columns
                 "Mod+Comma".action = consume-window-into-column;
                 "Mod+semicolon".action = expel-window-from-column;
-                "Mod+V".action = toggle-column-tabbed-display;
+                "Mod+Space".action = toggle-column-tabbed-display;
                 "Mod+C".action = center-column;
 
                 # Resize columns
                 "Mod+R".action = switch-preset-column-width;
-                "Mod+Shift+R" = switch-preset-window-height;
-                "Mod+Ctrl+R" = reset-window-height;
+                "Mod+Shift+R".action = switch-preset-window-height;
+                "Mod+Ctrl+R".action = reset-window-height;
                 "Mod+Ctrl+F".action = expand-column-to-available-width;
                 "Mod+F".action = maximize-column;
                 "Mod+Shift+F".action = fullscreen-window;
@@ -240,8 +240,6 @@ in
                 "Mod+Shift+P".action = power-off-monitors;
 
                 "Mod+Shift+Ctrl+T".action = toggle-debug-tint;
-              }
-              {
               }
             ];
           layout = {
