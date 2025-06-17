@@ -11,61 +11,62 @@ in
 {
   programs.vscode = mkIf cfg.vscode.enable {
     enable = true;
-    enableExtensionUpdateCheck = true;
-    enableUpdateCheck = false;
-    extensions =
-      with pkgs.vscode-extensions;
-      [
-        mkhl.direnv
-        jnoortheen.nix-ide
-        rust-lang.rust-analyzer
-        # nvarner.typst-lsp
-        tomoki1207.pdf
-        vadimcn.vscode-lldb
-        #redhat.java
-        #vscjava.vscode-gradle
-        #vscjava.vscode-java-debug
-        #ms-toolsai.jupyter
-        #alefragnani.bookmarks
-        oderwat.indent-rainbow
-        pkief.material-icon-theme
-        christian-kohler.path-intellisense
-        llvm-vs-code-extensions.vscode-clangd
-        eamodio.gitlens
-        wakatime.vscode-wakatime
-        # ocamllabs.ocaml-platform
-      ]
-      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+    profiles.default = {
+      enableExtensionUpdateCheck = true;
+      enableUpdateCheck = false;
+      extensions =
+        with pkgs.vscode-extensions;
+        [
+          mkhl.direnv
+          jnoortheen.nix-ide
+          rust-lang.rust-analyzer
+          # nvarner.typst-lsp
+          tomoki1207.pdf
+          vadimcn.vscode-lldb
+          #redhat.java
+          #vscjava.vscode-gradle
+          #vscjava.vscode-java-debug
+          #ms-toolsai.jupyter
+          #alefragnani.bookmarks
+          oderwat.indent-rainbow
+          pkief.material-icon-theme
+          christian-kohler.path-intellisense
+          llvm-vs-code-extensions.vscode-clangd
+          eamodio.gitlens
+          wakatime.vscode-wakatime
+          # ocamllabs.ocaml-platform
+        ]
+        ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+          {
+            name = "continue";
+            publisher = "Continue";
+            version = "0.9.79";
+            sha256 = "sZLtY30eWO7Tflxd9BazSBNl/d5w/k+Esodu3Qthzos=";
+          }
+        ];
+
+      keybindings = [
         {
-          name = "continue";
-          publisher = "Continue";
-          version = "0.9.79";
-          sha256 = "sZLtY30eWO7Tflxd9BazSBNl/d5w/k+Esodu3Qthzos=";
+          key = "";
+          command = "workbench.view.extensions";
+        }
+
+        {
+          key = "ctrl+shift+x";
+          command = "workbench.action.terminal.toggleTerminal";
+        }
+
+        {
+          key = "ctrl+u";
+          command = "typst-lsp.showPdf";
+        }
+        {
+          "key" = "ctrl+shift+[KeyM]";
+          "command" = "toggleVim";
         }
       ];
 
-    keybindings = [
-      {
-        key = "";
-        command = "workbench.view.extensions";
-      }
-
-      {
-        key = "ctrl+shift+x";
-        command = "workbench.action.terminal.toggleTerminal";
-      }
-
-      {
-        key = "ctrl+u";
-        command = "typst-lsp.showPdf";
-      }
-      {
-        "key" = "ctrl+shift+[KeyM]";
-        "command" = "toggleVim";
-      }
-    ];
-
-    # userSettings.cmake.configureOnOpen = true;
+    }; # userSettings.cmake.configureOnOpen = true;
     # userSettings.editor.formatOnSave = true;
 
     # # Indent
