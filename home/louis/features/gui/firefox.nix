@@ -80,17 +80,17 @@ in
             urls = [ { template = "https://github.com/search?q={searchTerms}&type=code"; } ];
             definedAliases = [ "@gc" ];
           };
-          Bing.metaData.hidden = true;
-          "Amazon.com".metaData.hidden = true;
-          "Wikipedia (en)".metaData.hidden = true;
-          "Google".metaData.hidden = true;
-          "DuckDuckGo".metaData.hidden = true;
+          bing.metaData.hidden = true;
+          "amazondotcom-us".metaData.hidden = true;
+          wikipedia.metaData.hidden = true;
+          "google".metaData.hidden = true;
+          "ddg".metaData.hidden = true;
         };
       };
       userChrome = ''
         #TabsToolbar{ visibility: collapse !important }
       '';
-      extensions =
+      extensions.packages =
         with plugins;
         [
           adaptive-tab-bar-colour
