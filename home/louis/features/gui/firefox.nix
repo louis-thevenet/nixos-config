@@ -38,6 +38,7 @@ let
   );
 in
 {
+  stylix.targets.firefox.profileNames = [ "louis" ];
   programs.firefox = mkIf cfg.firefox.enable {
     enable = true;
     profiles.louis = {
