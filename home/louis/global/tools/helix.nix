@@ -215,10 +215,10 @@
             "typos"
             "wakatime"
           ];
-          formatter = {
-            command = lib.getExe pkgs.python312Packages.yapf;
-          };
-          auto-format = true;
+          # formatter = {
+          # command = lib.getExe pkgs.python312Packages.yapf;
+          # };
+          # auto-format = true;
         }
         {
           name = "rust";
