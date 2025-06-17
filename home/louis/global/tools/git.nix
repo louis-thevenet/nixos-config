@@ -16,7 +16,7 @@
   programs.git = {
     enable = true;
     userName = "Louis Thevenet";
-    userEmail = "louis.tvnt@gmail.com";
+    userEmail = "louis.thevenet@nexedi.com";
 
     extraConfig = {
       submodule.recurse = true;
