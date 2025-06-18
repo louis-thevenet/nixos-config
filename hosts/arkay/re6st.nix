@@ -8,10 +8,7 @@
 let
   inherit (inputs.re6st.packages.${pkgs.system}) re6st;
   copy-nix-store =
-    name:
-    pkgs.writeText name (
-      builtins.readFile "${config.users.users.louis.home}/src/nixos-config/hosts/arkay/${name}"
-    );
+    name: pkgs.writeText name (builtins.readFile "${config.users.users.louis.home}/${name}");
   re6stnet-options = pkgs.writeText "re6stnet.conf" ''
     registry http://re6stnet.gnet.erp5.cn
     ca ${copy-nix-store "ca.crt"}
