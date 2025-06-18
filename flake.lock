@@ -846,11 +846,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1749733334,
-        "narHash": "sha256-20IF4lDSaHOf12u0QzVABXq/W0Q2OI+mFe0lvRD1WB0=",
+        "lastModified": 1750171409,
+        "narHash": "sha256-fvY8BY83hRTp6Lcb/cm3iWzRByxmb3P4FfiYoGhZ/z0=",
         "ref": "build-nix",
-        "rev": "497db1e7bf7f1b7ea1d41b41e9ef3f2bd9f88502",
-        "revCount": 660,
+        "rev": "30156096ce6b7ca29e2ac52354d26c49030ed3ee",
+        "revCount": 661,
         "type": "git",
         "url": "https://lab.nexedi.com/louis.thevenet/re6stnet"
       },
