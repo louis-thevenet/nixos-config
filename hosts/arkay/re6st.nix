@@ -31,8 +31,44 @@ let
       hash = "sha256-wkuSvywMdzAJVcX1yrL1vNqXwC4ETj9QQTFKMb6tuC8=";
     };
   });
+  openvpn-2-4 =
+    let
+      pkcs11Support = false;
+    in
+    pkgs.stdenv.mkDerivation rec {
+      pname = "openvpn";
+      version = "2.4.7";
+      src = pkgs.fetchurl {
+        url = "https://swupdate.openvpn.net/community/releases/openvpn-${version}.tar.gz";
+        hash = "sha256-c9zlQu09bwVTZ09JAl373/GDSOuKJeYhUTXWhrFlQjw=";
+      };
+      nativeBuildInputs = with pkgs; [ pkg-config ];
+
+      buildInputs =
+        with pkgs;
+        [
+          lzo
+          lz4
+          openssl_1_1
+          unixtools.route
+          unixtools.ifconfig
+        ]
+        ++ lib.optional pkgs.stdenv.isLinux pkgs.pam
+        ++ lib.optional pkcs11Support pkgs.pkcs11helper;
+
+      postInstall = ''
+        mkdir -p $out/share/doc/openvpn/examples
+        cp -r sample/sample-{config-files,keys,scripts}/ $out/share/doc/openvpn/examples
+      '';
+
+      enableParallelBuilding = true;
+    };
+
 in
 {
+  nixpkgs.config.permittedInsecurePackages = [
+    "openssl-1.1.1w"
+  ];
   environment.defaultPackages = [
     re6st
     babeld-patched
@@ -49,9 +85,10 @@ in
       [
         openssl
         iproute2
-        openvpn
-
       ]
-      ++ [ babeld-patched ];
+      ++ [
+        babeld-patched
+        openvpn-2-4
+      ];
   };
 }
