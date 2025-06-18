@@ -1,18 +1,4 @@
-{
-  inputs,
-  pkgs,
-  lib,
-  ...
-}:
-let
-  inherit (inputs.re6st.packages.${pkgs.system}) re6st;
-  re6stnet-config = pkgs.writeText "re6stnet.conf" '''';
-  re6st-registry-config = pkgs.writeText "re6st-registry.conf" '''';
-  geolite2-country-mmdb = pkgs.fetchurl {
-    url = "https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-Country.mmdb";
-    hash = "sha256-PPaezALpVEGaLMkt2JJjc2M+qmRk+swCXVU8uKQ4cFY=";
-  };
-in
+{ lib, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -24,9 +10,11 @@ in
     ../common/optional/stylix.nix
     ../common/optional/kanata.nix
     ../common/optional/xdg.nix
+
+    ./re6st.nix
   ];
   networking.hostName = "pc-louis-thevenet";
-
+  networking.firewall.enable = lib.mkForce false;
   hardware = {
     bluetooth.enable = true; # enables support for Bluetooth
     bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot

@@ -1,31 +1,60 @@
 {
   inputs,
+  config,
   pkgs,
   lib,
   ...
 }:
 let
   inherit (inputs.re6st.packages.${pkgs.system}) re6st;
-  re6stnet-config = pkgs.writeText "re6stnet.conf" '''';
-  re6st-registry-config = pkgs.writeText "re6st-registry.conf" '''';
+  copy-nix-store =
+    name:
+    pkgs.writeText name (
+      builtins.readFile "${config.users.users.louis.home}/src/nixos-config/hosts/arkay/${name}"
+    );
+  re6stnet-options = pkgs.writeText "re6stnet.conf" ''
+    registry http://re6stnet.gnet.erp5.cn
+    ca ${copy-nix-store "ca.crt"}
+    cert ${copy-nix-store "cert.crt"}
+    key ${copy-nix-store "cert.key"}
+    interface wlp0s20f3
+  '';
+
   geolite2-country-mmdb = pkgs.fetchurl {
     url = "https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-Country.mmdb";
     hash = "sha256-PPaezALpVEGaLMkt2JJjc2M+qmRk+swCXVU8uKQ4cFY=";
   };
+  babeld-patched = pkgs.babeld.overrideAttrs (_: {
+    src = pkgs.fetchFromGitLab {
+      fetchSubmodules = true;
+      owner = "nexedi";
+      repo = "babeld";
+      domain = "lab.nexedi.com";
+      rev = "v1.12.1-nxd3";
+      hash = "sha256-wkuSvywMdzAJVcX1yrL1vNqXwC4ETj9QQTFKMb6tuC8=";
+    };
+  });
 in
 {
   environment.defaultPackages = [
     re6st
+    babeld-patched
   ];
 
-  systemd.user.services.re6stnet = {
+  systemd.services.re6stnet = {
+    enable = true;
     description = "Resilient, Scalable, IPv6 Network application";
-    script = "GEOIP2_MMDB=${geolite2-country-mmdb} ${lib.getExe re6st "re6stnet"} @${re6stnet-config}";
-    # wantedBy = "multi-user.target";
-  };
-  systemd.user.services.re6stnet-registry = {
-    description = "Server application for re6snet";
-    script = "${lib.getExe' re6st "re6st-registry"} @${re6st-registry-config}";
-    # wantedBy = "multi-user.target";
+    script = "GEOIP2_MMDB=${geolite2-country-mmdb} ${lib.getExe' re6st "re6stnet"} @${re6stnet-options}";
+    wantedBy = [ "multi-user.target" ];
+    wants = [ "network-online.target" ];
+    path =
+      with pkgs;
+      [
+        openssl
+        iproute2
+        openvpn
+
+      ]
+      ++ [ babeld-patched ];
   };
 }
