@@ -15,7 +15,7 @@ in
   };
   services.meilisearch = {
     enable = true;
-    package = pkgs.meilisearch.override { version = "1.14.0"; };
+    package = pkgs.meilisearch;
     masterKeyEnvironmentFile = config.sops.secrets.meili-search-master-key.path;
     listenPort = meili-port;
     dumplessUpgrade = true;
