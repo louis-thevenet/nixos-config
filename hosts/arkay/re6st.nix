@@ -15,6 +15,13 @@ let
     cert ${copy-nix-store "cert.crt"}
     key ${copy-nix-store "cert.key"}
     interface wlp0s20f3
+    # increase re6stnet verbosity:
+    # verbose 3
+    # enable OpenVPN logging:
+    # ovpnlog
+    # uncomment the following 2 lines to increase OpenVPN verbosity:
+    # O--verb
+    # O3
   '';
 
   geolite2-country-mmdb = pkgs.fetchurl {
@@ -69,10 +76,11 @@ in
   nixpkgs.config.permittedInsecurePackages = [
     "openssl-1.1.1w"
   ];
-  environment.defaultPackages = [
-    re6st
-    babeld-patched
-  ];
+  # environment.defaultPackages = [
+  #   re6st
+  #   babeld-patched
+  #   openvpn-2-4
+  # ];
 
   systemd.services.re6stnet = {
     enable = true;
@@ -80,15 +88,11 @@ in
     script = "GEOIP2_MMDB=${geolite2-country-mmdb} ${lib.getExe' re6st "re6stnet"} @${re6stnet-options}";
     wantedBy = [ "multi-user.target" ];
     wants = [ "network-online.target" ];
-    path =
-      with pkgs;
-      [
-        openssl
-        iproute2
-      ]
-      ++ [
-        babeld-patched
-        openvpn-2-4
-      ];
+    path = [
+      pkgs.openssl
+      pkgs.iproute2
+      babeld-patched
+      openvpn-2-4
+    ];
   };
 }
