@@ -14,7 +14,7 @@ let
     ca ${copy-nix-store "ca.crt"}
     cert ${copy-nix-store "cert.crt"}
     key ${copy-nix-store "cert.key"}
-    interface wlp0s20f3
+    # interface wlp0s20f3
     # increase re6stnet verbosity:
     # verbose 3
     # enable OpenVPN logging:
