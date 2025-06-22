@@ -65,7 +65,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     vault-tasks = {
-      url = "github:louis-thevenet/nixpkgs/vault-tasks-0.12.0";
+      url = "github:louis-thevenet/vault-tasks";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     blog.url = "git+file:/home/louis/src/blog?ref=main";
