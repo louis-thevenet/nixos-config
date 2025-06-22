@@ -81,6 +81,10 @@ in
             urls = [ { template = "https://github.com/search?q={searchTerms}&type=code"; } ];
             definedAliases = [ "@gc" ];
           };
+          "Karakeep" = {
+            urls = [ { template = "https://karakeep.louis-thevenet.fr/dashboard/search?q={searchTerms}"; } ];
+            definedAliases = [ "@kr" ];
+          };
           bing.metaData.hidden = true;
           "amazondotcom-us".metaData.hidden = true;
           wikipedia.metaData.hidden = true;
