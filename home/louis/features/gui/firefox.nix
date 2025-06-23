@@ -41,6 +41,12 @@ in
   stylix.targets.firefox.profileNames = [ "louis" ];
   programs.firefox = mkIf cfg.firefox.enable {
     enable = true;
+    package = pkgs.firefox.override {
+      nativeMessagingHosts = [
+        # Tridactyl native connector
+        pkgs.tridactyl-native
+      ];
+    };
     profiles.louis = {
       isDefault = true;
       search = {
@@ -109,9 +115,9 @@ in
           tree-style-tab
           ublock-origin
           unpaywall
-          vimium
           batchcamp
           (limit-limit-distracting-sites.overrideAttrs { meta.license.free = true; })
+          tridactyl
         ]
         ++ [
           (buildFirefoxXpiAddon rec {
