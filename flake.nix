@@ -1,7 +1,7 @@
 {
   description = "NixOS config";
   inputs = {
-    re6st.url = "git+https://lab.nexedi.com/louis.thevenet/re6stnet?ref=build-nix";
+    re6stnet.url = "git+file:/home/louis/src/re6stnet-nix";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
@@ -83,6 +83,7 @@
       nix-index-database,
       nixos-hardware,
       sops-nix,
+      re6stnet,
       ...
     }:
     let
@@ -207,6 +208,7 @@
 
           })
           niri.nixosModules.niri
+          re6stnet.nixosModules.re6stnet
         ];
         dagon = mkNixos "louis" "dagon" "aarch64-linux" [
           nixos-hardware.nixosModules.raspberry-pi-4
