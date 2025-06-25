@@ -70,7 +70,7 @@
       url = "github:louis-thevenet/vault-tasks";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    blog.url = "git+file:/home/louis/src/blog?ref=main";
+    # blog.url = "git+file:/home/louis/src/blog?ref=main";
   };
 
   outputs =
