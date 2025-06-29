@@ -19,25 +19,44 @@
 ## NixOS Config
 
 ```rust
-hosts
-├── akatosh
-│  ├── default.nix
-│  ├── hardware-configuration.nix
-│  └── sops.nix
-├── common
-│  ├── global
-│  ├── optional
-│  ├── secrets.yaml
-│  └── users
-└── magnus
-   ├── default.nix
-   ├── hardware-configuration.nix
-   └── sops.nix
+ hosts
+├──  akatosh
+│   ├──  default.nix
+│   ├──  hardware-configuration.nix
+│   └──  sops.nix
+├──  arkay
+│   ├──  default.nix
+│   ├──  hardware-configuration.nix
+│   └──  sops.nix
+├──  common
+│   ├──  global
+│   ├──  optional
+│   ├──  secrets.yaml
+│   └──  users
+├──  dagon
+│   ├──  adguardhome.nix
+│   ├──  anubis.nix
+│   ├──  default.nix
+│   ├──  glance.nix
+│   ├──  hardware-configuration.nix
+│   ├──  hugo.nix
+│   ├──  jellyfin.nix
+│   ├──  karakeep.nix
+│   ├──  nextcloud.nix
+│   ├──  nginx.nix
+│   ├──  restic.nix
+│   ├──  secrets.yaml
+│   └──  sops.nix
+└──  magnus
+	├──  default.nix
+	├──  hardware-configuration.nix
+	└──  sops.nix
 ```
 
 - `magnus`: Main System
 - `akatosh`: Laptop (disk managed with [disko](https://github.com/nix-community/disko) with [impermanence](https://nixos.wiki/wiki/Impermanence) for NixOS)
-- `dagon`: Home Server hosted on a Raspberry Pi running NextCloud, Jellyfin, Karakeep. Also has restic backup setup.
+- `dagon`: Home Server hosted on a Raspberry Pi running NextCloud, Jellyfin, Karakeep, etc
+- `arkay`: Work laptop
 
 Most of the system configuration is shared between hosts.
 
@@ -109,6 +128,8 @@ home-config = {
 };
 ```
 
+A big refactor is needed here to move these options to the NixOS config as when using `home-manager` as a NixOS module, it's better to write all options in the NixOS config.
+
 ## Theming
 
 Style is handled by [Stylix](https://github.com/danth/stylix):
@@ -141,7 +162,7 @@ Here are some (random) examples:
 ### Home Manager
 
 - You should already have changed `magnus`'s config to be yours
-- You should probably follow this algorithm:
-- Comment out all features in `./home/USERNAME/HOSTNAME.nix`
-- For each feature, see what it enables, remove what you don't want, then enable it or not
-- You should be good to rebuild : `sudo nixos-rebuild --flake .#HOSTNAME boot` then `reboot now`.
+- You should probably follow this steps:
+  - Comment out all features in `./home/USERNAME/HOSTNAME.nix`
+  - For each feature, see what it enables, remove what you don't want, then enable it or not
+  - You should be good to rebuild : `sudo nixos-rebuild --flake .#HOSTNAME boot` then `reboot now`.
