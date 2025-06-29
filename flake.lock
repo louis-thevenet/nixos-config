@@ -91,11 +91,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1750361641,
-        "narHash": "sha256-K8OTCXrhysgbtMYbw34ZHLfznMwk1sM1CmGz2iSQtqg=",
+        "lastModified": 1750919366,
+        "narHash": "sha256-7gN8/5KyEqEWwWz/vhIQOnyKkV05UnhO0avoAiD9OOw=",
         "ref": "main",
-        "rev": "25e507bdd32e8b88daa1e7d10c2a5e2566967ee0",
-        "revCount": 26,
+        "rev": "87927a78ddd5e5dd5c811479e358f3cebf3c3d76",
+        "revCount": 27,
         "type": "git",
         "url": "file:/home/louis/src/blog"
       },
