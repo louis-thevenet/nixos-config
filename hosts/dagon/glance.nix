@@ -88,7 +88,7 @@ in
                     hour-format = "24h";
                     hide-location = false;
                     show-area-name = true;
-                    location = "Toulouse, France";
+                    location = "Lille, France";
                   }
                   {
                     type = "bookmarks"; # https://github.com/glanceapp/glance/blob/main/docs/configuration.md#bookmarks
