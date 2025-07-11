@@ -311,6 +311,11 @@ in
                               url = "https://akselmo.dev/feed.xml";
                               title = "Akselmo";
                             }
+                            {
+                              url = "https://initcoder.com/feed.xml";
+                              title = "InitCoder";
+                            }
+
                           ];
                         }
                         {
