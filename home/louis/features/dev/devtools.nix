@@ -12,6 +12,7 @@ in
   home.packages = mkIf cfg.devTools.enable (
     with pkgs;
     [
+      nix-tree
       tokei
     ]
   );

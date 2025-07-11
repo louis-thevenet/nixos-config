@@ -25,6 +25,7 @@ in
       wget
       tdf
       see-cat
+      rsync
       smartcat
       inputs.vault-tasks.packages.${pkgs.system}.default
       spotify-player
