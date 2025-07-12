@@ -47,4 +47,15 @@ in
     SDL_VIDEODRIVER = "wayland";
     XCOMPOSEFILE = "${config.xdg.configHome}/xcompose";
   };
+  xdg.portal = {
+    enable = true;
+    config.common.default = [
+      "gtk"
+      "gnome"
+    ];
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gnome
+      pkgs.xdg-desktop-portal-gtk
+    ];
+  };
 }
