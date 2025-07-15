@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -18,4 +18,13 @@
     bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
     graphics.enable = true;
   };
+  services.nix-serve = {
+    enable = true;
+    package = pkgs.nix-serve-ng;
+    secretKeyFile = "/home/louis/cache-priv-key.pem";
+  };
+
+  networking.firewall.allowedTCPPorts = [
+    5000
+  ];
 }
