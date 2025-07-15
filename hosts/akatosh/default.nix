@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -16,7 +16,15 @@
     ../common/optional/virt.nix
   ];
   networking.hostName = "akatosh";
+  services.nix-serve = {
+    enable = true;
+    package = pkgs.nix-serve-ng;
+    secretKeyFile = "/home/louis/cache-priv-key.pem";
+  };
 
+  networking.firewall.allowedTCPPorts = [
+    5000
+  ];
   services = {
     udisks2.enable = true;
     asusd = {
