@@ -315,6 +315,14 @@ in
                               url = "https://initcoder.com/feed.xml";
                               title = "InitCoder";
                             }
+                            {
+                              url = "https://parv.bearblog.dev/rss/";
+                              title = "Parv";
+                            }
+                            {
+                              url = "https://www.benkuhn.net/index.xml";
+                              title = "Benkuhn";
+                            }
 
                           ];
                         }
