@@ -91,11 +91,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1750919366,
-        "narHash": "sha256-7gN8/5KyEqEWwWz/vhIQOnyKkV05UnhO0avoAiD9OOw=",
+        "lastModified": 1754072639,
+        "narHash": "sha256-jTHgxUwuAfN+jx2N4zbdP1+OKlazo5gJcwtb0hDpX5M=",
         "ref": "main",
-        "rev": "87927a78ddd5e5dd5c811479e358f3cebf3c3d76",
-        "revCount": 27,
+        "rev": "2796cc0254a69fd4810e9e94c502c7c36d08db36",
+        "revCount": 29,
         "type": "git",
         "url": "file:/home/louis/src/blog"
       },
@@ -953,6 +953,7 @@
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-howdy": "nixpkgs-howdy",
         "nixpkgs-master": "nixpkgs-master",
         "schizofox": "schizofox",
         "sops-nix": "sops-nix",
