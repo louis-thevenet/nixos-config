@@ -3,6 +3,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    nixpkgs-howdy.url = "github:fufexan/nixpkgs/howdy";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -80,6 +81,7 @@
       self,
       nixpkgs,
       # nixpkgs-master,
+      nixpkgs-howdy,
       home-manager,
       stylix,
       niri,
@@ -197,6 +199,15 @@
         akatosh = mkNixos "louis" "akatosh" "x86_64-linux" [
           (_: {
             nixpkgs.overlays = [
+              (
+                let
+                  pkgs-howdy = nixpkgs-howdy.legacyPackages."x86_64-linux";
+                in
+                _: _: {
+                  inherit (pkgs-howdy) howdy;
+                }
+
+              )
               niri.overlays.niri
             ];
 

@@ -746,6 +746,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-howdy": {
+      "locked": {
+        "lastModified": 1753734290,
+        "narHash": "sha256-E4MDOM0ZXs5qeGta6QMHvAWFcT7rBQbceJjoHabduoI=",
+        "owner": "fufexan",
+        "repo": "nixpkgs",
+        "rev": "943b3b975f86ddc22cec788e0fc20acc1303022f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fufexan",
+        "ref": "howdy",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1735774519,
