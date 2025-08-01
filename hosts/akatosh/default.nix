@@ -20,12 +20,6 @@
     "${inputs.nixpkgs-howdy}/nixos/modules/services/misc/linux-enable-ir-emitter.nix"
   ];
   networking.hostName = "akatosh";
-  services.nix-serve = {
-    enable = true;
-    package = pkgs.nix-serve-ng;
-    secretKeyFile = "/home/louis/cache-priv-key.pem";
-  };
-
   networking.firewall.allowedTCPPorts = [
     5000
   ];
