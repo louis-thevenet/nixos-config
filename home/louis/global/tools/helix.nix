@@ -91,12 +91,17 @@
           backspace = {
             # Vault-tasks stuff t = "@i- [ ] today ";
             n = "@i- [ ] ";
-            # Get current time
+            # Write current time
             d = ":insert-output ${lib.getExe' pkgs.coreutils "date"} +'## %%H:%%M:%%S'";
+            # Write current date and time
             D = [
               '':insert-output echo "# $(${lib.getExe' pkgs.coreutils "date"} +'%%A, %%d %%B %%Y' | ${lib.getExe pkgs.gnused} -e 's/./\u&/')"''
               "open_below"
               ":insert-output ${lib.getExe' pkgs.coreutils "date"} +'## %%H:%%M:%%S'"
+            ];
+            r = [
+              ":insert-output vault-tasks --vault-path ./ fix"
+              ":reload"
             ];
             y = ":yank-diagnostic";
           };
