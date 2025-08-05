@@ -395,11 +395,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1753376980,
-        "narHash": "sha256-h7Say1U7r1ke3mfg3yvbzYnk3izmJ2g1zXzX5APNA8Q=",
+        "lastModified": 1754257102,
+        "narHash": "sha256-bR48LaaWIvrWRRoZ0qnYa7DK1DIssUklrQFm36OD5PA=",
         "owner": "helix-editor",
         "repo": "helix",
-        "rev": "4281228da35b02b0dcca3b4772b93d48d79ce046",
+        "rev": "43990ed0c88a7e7d956364a5d11e25ad6cb0a29f",
         "type": "github"
       },
       "original": {
@@ -829,6 +829,7 @@
         "disko": "disko",
         "firefox-addons": "firefox-addons",
         "git-hooks-nix": "git-hooks-nix",
+        "helix": "helix",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "niri": "niri",
@@ -869,7 +870,7 @@
     },
     "rust-overlay_2": {
       "inputs": {
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
         "lastModified": 1749263796,
@@ -1179,15 +1180,15 @@
           "nixpkgs"
         ],
         "rust-overlay": "rust-overlay_2",
-        "systems": "systems_4",
+        "systems": "systems_3",
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1753091108,
-        "narHash": "sha256-fJnVqOj9M2gud0Dqf5CmWyLAkhXupvBGVK5JV8F0U2o=",
+        "lastModified": 1754375575,
+        "narHash": "sha256-rbMadqV5+z8G3wP4lthNnFbxPAR7+gPoDonaoUrrOLM=",
         "owner": "louis-thevenet",
         "repo": "vault-tasks",
-        "rev": "897d4c57e01bea46d8346157b6a14ebb784eb4d8",
+        "rev": "8e709e187d7016af9b09fb68b5157ae53f20b045",
         "type": "github"
       },
       "original": {
