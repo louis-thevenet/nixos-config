@@ -49,6 +49,6 @@
     firewall.enable = true;
   };
   documentation.man.generateCaches = false;
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.05";
 
 }

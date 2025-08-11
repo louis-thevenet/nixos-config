@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  inputs,
   ...
 }:
 let
@@ -27,7 +26,7 @@ in
       see-cat
       rsync
       smartcat
-      inputs.vault-tasks.packages.${pkgs.system}.default
+      master.vault-tasks
       spotify-player
       television
       rbw
@@ -35,7 +34,7 @@ in
       vhs
       transmission_4
       restic
-      (mcat.override {
+      (master.mcat.override {
         useFfmpeg = true;
         useChromium = true;
       })

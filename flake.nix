@@ -3,10 +3,10 @@
   inputs = {
     re6stnet.url = "git+file:/home/louis/src/re6stnet-nix";
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri = {
@@ -33,7 +33,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     stylix = {
-      url = "github:danth/stylix";
+      url = "github:danth/stylix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -66,11 +66,7 @@
       url = "github:BatteredBunny/nix-ai-stuff";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    vault-tasks = {
-      url = "github:louis-thevenet/vault-tasks";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # blog.url = "git+file:/home/louis/src/blog?ref=main";
+    blog.url = "git+file:/home/louis/src/blog?ref=main";
     helix = {
       url = "github:helix-editor/helix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -81,7 +77,7 @@
     {
       self,
       nixpkgs,
-      # nixpkgs-master,
+      nixpkgs-master,
       home-manager,
       stylix,
       niri,
@@ -89,7 +85,6 @@
       nix-index-database,
       nixos-hardware,
       sops-nix,
-      re6stnet,
       ...
     }:
     let
@@ -145,14 +140,14 @@
             inherit (self) inputs outputs;
           };
           modules =
-            # let
-            #   overlay-master = prev: final: {
-            #     master = import nixpkgs-master {
-            #       inherit prev final system;
-            #       config.allowUnfree = true;
-            #     };
-            #   };
-            # in
+            let
+              overlay-master = prev: final: {
+                master = import nixpkgs-master {
+                  inherit prev final system;
+                  config.allowUnfree = true;
+                };
+              };
+            in
             [
               ./hosts/${host}
               home-manager.nixosModules.home-manager
@@ -165,6 +160,12 @@
                   };
                   sharedModules = [
                     sops-nix.homeManagerModules.sops
+                    (_: {
+                      nixpkgs.overlays = [
+                        overlay-master
+                      ];
+
+                    })
                   ];
                 };
               }
@@ -174,7 +175,8 @@
                 programs.nix-index-database.comma.enable = true;
                 programs.nix-index.enable = true;
               }
-            ] ++ specific-modules;
+            ]
+            ++ specific-modules;
         };
     in
     {
@@ -214,7 +216,6 @@
 
           })
           niri.nixosModules.niri
-          re6stnet.nixosModules.re6stnet
         ];
         dagon = mkNixos "louis" "dagon" "aarch64-linux" [
           nixos-hardware.nixosModules.raspberry-pi-4
