@@ -1,4 +1,4 @@
-{ inputs, config, ... }:
+{ inputs, config, pkgs, ... }:
 let
   internal_port = 6451;
 in
@@ -9,7 +9,7 @@ in
   services = {
     static-web-server = {
       enable = true;
-      root = "${inputs.blog.packages."x86_64-linux".default}";
+      root = "${inputs.blog.packages.${pkgs.system}.default}";
       listen = "[::]:${toString internal_port}";
     };
     nginx.virtualHosts."blog.louis-thevenet.fr" = {
