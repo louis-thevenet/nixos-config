@@ -30,7 +30,7 @@
     };
     nextcloud = {
       enable = true;
-      package = pkgs.nextcloud31;
+      package = pkgs.master.nextcloud31;
 
       hostName = "nc.louis-thevenet.fr";
       maxUploadSize = "16G";

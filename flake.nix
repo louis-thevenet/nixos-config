@@ -151,6 +151,12 @@
               };
             in
             [
+              (_: {
+                nixpkgs.overlays = [
+                  overlay-master
+                ];
+
+              })
               ./hosts/${host}
               home-manager.nixosModules.home-manager
               {
