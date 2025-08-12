@@ -116,7 +116,7 @@ in
               {
                 # Apps
                 "Mod+T".action = spawn terminal;
-                "Mod+D".action = sh ''echo -n '["toggle"]' | ${socat} - ~/.cache/albert/ipc_socket'';
+                "Mod+D".action = sh "echo -n toggle | ${socat} - ~/.cache/albert/ipc_socket";
                 "Mod+x".action = sh "${killall} -SIGUSR1 .waybar-wrapped";
                 "Mod+O".action = sh "${copyq} show";
                 "Mod+W".action = sh "${swaync-client} -t";
