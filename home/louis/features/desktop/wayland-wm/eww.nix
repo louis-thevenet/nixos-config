@@ -80,9 +80,9 @@ let
     #!/bin/bash
     STATUS="$(${pkgs.mpc-cli}/bin/mpc status)"
     if [[ $STATUS == *"[playing]"* ]]; then
-      echo ""
+      echo ""
     else
-      echo "喇"
+      echo ""
     fi
   '';
 
@@ -196,9 +196,14 @@ let
 in
 {
   programs.eww.enable = true;
+  fonts.fontconfig.enable = true;
   home = {
     packages = with pkgs; [
       eww
+      noto-fonts
+      noto-fonts-emoji
+      pkgs.nerd-fonts.jetbrains-mono
+      pkgs.nerd-fonts.symbols-only
     ];
     file.".config/eww/eww.yuck".text = ''
 
@@ -275,7 +280,7 @@ in
       (defwidget uptime [] 
       	(box :class "genwin" 
       		(box :orientation "h" :halign "center" :spacing 40 :space-evenly "false" :vexpand "false" :hexpand "false" 
-      			(label :class "icontimer" :valign "center" :text "祥")
+      			(label :class "icontimer" :valign "center" :text "")
       			(box :orientation "v" :valign "center" :spacing 0 :space-evenly "false" :vexpand "false" :hexpand "false" 
       				(label :class "uphour" :halign "start" :wrap "true" :limit-width 25 :text UPHOUR)
       				(label :class "upmin" :halign "start" :wrap "true" :limit-width 25 :text UPMIN)))))
@@ -292,7 +297,7 @@ in
               (button :class "btn_play" :onclick "${music-toggle}" STATUS)
               (button :class "btn_next" :onclick "${music-next}" ""))
               (box :class "music_bar" :halign "center" :vexpand "false" :hexpand "false" 
-        				(scale :onscroll "mpc -q seek +1" :min 0 :active "true" :max 100 :value CURRENT)))))
+        			(scale :onscroll "mpc -q seek +1" :min 0 :active "true" :max 100 :value CURRENT)))))
       ;; power buttons
       (defwidget logout [] 
         (box :class "genwin" :vexpand "false" :hexpand "false" 
@@ -362,11 +367,11 @@ in
       	    :geometry (geometry :x 1615 :y 320 :width 155 :height 155)
       					(poweroff))
     '';
-    home.file.".config/eww/eww.scss".text = ''
+    file.".config/eww/eww.scss".text = ''
       /** Global *******************************************/
       *{
       	all: unset;
-        font-family: "JetBrainsMono Nerd Font";
+        font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font", "Symbols Nerd Font Mono", "Noto Color Emoji";
       }
 
       /** Background ***************************************/
@@ -518,7 +523,7 @@ in
       }
 
       .btn_prev, .btn_play, .btn_next {
-        font-family: "JetBrainsMono Nerd Font";
+        font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font", "Symbols Nerd Font Mono", "Noto Color Emoji";
       }
       .btn_prev {
       	color: #EBCB8B;
@@ -552,7 +557,7 @@ in
 
       /** Weather ***************************************/
       .iconweather {
-        font-family: "JetBrainsMono Nerd Font";
+        font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font", "Symbols Nerd Font Mono", "Noto Color Emoji";
       	font-size : 120px;
       	font-weight : normal;
       	margin : 15px 0px 0px 30px;
@@ -604,7 +609,7 @@ in
       /** Links ***************************************/
       .iconweb, .iconmail {
       	color: #FFFFFF;
-        font-family: "JetBrainsMono Nerd Font";
+        font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font", "Symbols Nerd Font Mono", "Noto Color Emoji";
       	font-size : 70px;
       	font-weight : normal;
       }
@@ -672,7 +677,7 @@ in
       }
       .hddicon {
       	color: #81A1C1;
-        font-family: "JetBrainsMono Nerd Font";
+        font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font", "Symbols Nerd Font Mono", "Noto Color Emoji";
       	font-size : 70px;
       	font-weight : normal;
       	margin : 25px 20px 25px 40px;
@@ -690,7 +695,7 @@ in
       }
 
       .iconfolder1, .iconfolder2, .iconfolder3, .iconfolder4, .iconfolder5, .iconfolder6  {
-        font-family: "JetBrainsMono Nerd Font";
+        font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font", "Symbols Nerd Font Mono", "Noto Color Emoji";
       	font-size : 32px;
       	font-weight : normal;
       	margin : 0px 0px 0px 75px;
