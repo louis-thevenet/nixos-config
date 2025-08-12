@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "ananke-mod": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1747213057,
-        "narHash": "sha256-TCxQw9vys/Yt+x9iXK54vXBnBm39jy0zOLWYDVFpiAw=",
-        "owner": "theNewDynamic",
-        "repo": "gohugo-theme-ananke",
-        "rev": "b6fae8a40311ee22d23f1eed8fe5b12f1c93185f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "theNewDynamic",
-        "repo": "gohugo-theme-ananke",
-        "type": "github"
-      }
-    },
     "base16": {
       "inputs": {
         "fromYaml": "fromYaml"
@@ -85,22 +69,20 @@
     },
     "blog": {
       "inputs": {
-        "ananke-mod": "ananke-mod",
         "nixpkgs": "nixpkgs",
         "plausible-mod": "plausible-mod",
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1754892225,
-        "narHash": "sha256-cEO7LnNUpgQU5Ym/9H305ZSJ7GBnZf7L7Z/1JGYiqN4=",
-        "ref": "main",
-        "rev": "82139292707a1756913cf074599edb468b17b89f",
-        "revCount": 34,
+        "lastModified": 1754902048,
+        "narHash": "sha256-GFFrRMv84RmuFov/UyP3go1fza7Ez5ZpaqL4S8cLSVY=",
+        "ref": "refs/heads/new-template",
+        "rev": "28cb2c83860268ef44617fb90dcc49f592354bd8",
+        "revCount": 42,
         "type": "git",
         "url": "file:/home/louis/src/blog"
       },
       "original": {
-        "ref": "main",
         "type": "git",
         "url": "file:/home/louis/src/blog"
       }
