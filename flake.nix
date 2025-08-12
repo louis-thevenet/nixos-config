@@ -66,7 +66,7 @@
       url = "github:BatteredBunny/nix-ai-stuff";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    blog.url = "path:./blog";
+    blog.url = "path:/home/louis/src/nixos-config/blog";
     helix = {
       url = "github:helix-editor/helix";
       inputs.nixpkgs.follows = "nixpkgs";
