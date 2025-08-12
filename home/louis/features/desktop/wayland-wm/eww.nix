@@ -298,7 +298,8 @@ in
               (button :class "btn_next" :onclick "${music-next}" ""))
               (box :class "music_bar" :halign "center" :vexpand "false" :hexpand "false" 
         			(scale :onscroll "mpc -q seek +1" :min 0 :active "true" :max 100 :value CURRENT)))))
-      ;; power buttons
+
+      ;; power buttons (re-added)
       (defwidget logout [] 
         (box :class "genwin" :vexpand "false" :hexpand "false" 
           (button :class "btn_logout" :onclick "openbox --exit" "")))
@@ -315,63 +316,37 @@ in
         (box :class "genwin" :vexpand "false" :hexpand "false" 
           (button :class "btn_poweroff" :onclick "systemctl poweroff" "")))
 
+      ;; Dashboard - single window layout
+      (defwidget dashboard []
+        (box :class "dashboard" :orientation "v" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false"
+          (box :orientation "h" :spacing 20 :halign "center"
+            (user)
+            (clock))
+          (box :orientation "h" :spacing 20 :halign "center"
+            (system)
+            (music))
+          (box :orientation "h" :spacing 20 :halign "center"
+            (uptime)
+            (box :orientation "h" :spacing 20
+              (logout)
+              (sleep)
+              (reboot)
+              (poweroff)))))
+
       ;; ** Windows *************************************************************************
-
-      ;; background
-      (defwindow background   :monitor 0 :stacking "fg" :focusable "false" :screen 1 
-      	    :geometry (geometry :x 0 :y 0 :width "1920px" :height "1080px")
-      					(bg))
-
-      ;; profile
-      (defwindow profile   :monitor 0 :stacking "fg" :focusable "false" :screen 1 
-      	    :geometry (geometry :x 150 :y 150 :width 350 :height 440)
-      					(user))
-
-      ;; system
-      (defwindow system   :monitor 0 :stacking "fg" :focusable "false" :screen 1 
-      	    :geometry (geometry :x 150 :y 605 :width 350 :height 325)
-      					(system))
-
-      ;; clock
-      (defwindow clock   :monitor 0 :stacking "fg" :focusable "false" :screen 1 
-      	    :geometry (geometry :x 515 :y 150 :width 350 :height 155)
-      					(clock))
-
-      ;; uptime
-      (defwindow uptime   :monitor 0 :stacking "fg" :focusable "false" :screen 1 
-      	    :geometry (geometry :x 515 :y 320 :width 350 :height 155)
-      					(uptime))
-
-      ;; music
-      (defwindow music   :monitor 0 :stacking "fg" :focusable "false" :screen 1 
-      	    :geometry (geometry :x 515 :y 490 :width 610 :height 280)
-      					(music))
-
-      ;; logout
-      (defwindow logout   :monitor 0 :stacking "fg" :focusable "false" :screen 1 
-      	    :geometry (geometry :x 1445 :y 150 :width 155 :height 155)
-      					(logout))
-
-      ;; sleep
-      (defwindow sleep   :monitor 0 :stacking "fg" :focusable "false" :screen 1 
-      	    :geometry (geometry :x 1615 :y 150 :width 155 :height 155)
-      					(sleep))
-
-      ;; reboot
-      (defwindow reboot   :monitor 0 :stacking "fg" :focusable "false" :screen 1 
-      	    :geometry (geometry :x 1445 :y 320 :width 155 :height 155)
-      					(reboot))
-
-      ;; poweroff
-      (defwindow poweroff   :monitor 0 :stacking "fg" :focusable "false" :screen 1 
-      	    :geometry (geometry :x 1615 :y 320 :width 155 :height 155)
-      					(poweroff))
+      (defwindow dashboard   :monitor 0 :stacking "fg" :focusable "false" :screen 1 
+        :geometry (geometry :x 410 :y 180 :width 1100 :height 720)
+        (dashboard))
     '';
     file.".config/eww/eww.scss".text = ''
       /** Global *******************************************/
       *{
       	all: unset;
         font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font", "Symbols Nerd Font Mono", "Noto Color Emoji";
+      }
+
+      .dashboard {
+        padding: 8px;
       }
 
       /** Background ***************************************/
