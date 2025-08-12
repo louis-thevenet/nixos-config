@@ -1,0 +1,171 @@
+;; Variables for polling system information
+(defpoll cpu_usage :interval "2s" "top -bn1 | grep 'Cpu(s)' | sed 's/.*, *\\([0-9.]*\\)%* id.*/\\1/' | awk '{print 100 - $1}'")
+(defpoll cpu_temp :interval "3s" "sensors | grep 'Package id 0:' | awk '{print $4}' | sed 's/+//;s/°C//' || echo '0'")
+(defpoll memory_usage :interval "3s" "free | grep Mem | awk '{printf \"%.0f\", $3/$2 * 100.0}'")
+(defpoll disk_usage :interval "10s" "df -h / | awk 'NR==2{print $5}' | sed 's/%//'")
+(defpoll uptime :interval "60s" "uptime -p | sed 's/up //'")
+
+;; Audio variables
+(defpoll volume :interval "1s" "pamixer --get-volume")
+(defpoll volume_muted :interval "1s" "pamixer --get-mute")
+(defpoll mic_volume :interval "1s" "pamixer --default-source --get-volume || echo '0'")
+(defpoll mic_muted :interval "1s" "pamixer --default-source --get-mute || echo 'false'")
+
+;; Music player variables
+(defpoll music_status :interval "1s" "playerctl status 2>/dev/null || echo 'Stopped'")
+(defpoll music_title :interval "1s" "playerctl metadata title 2>/dev/null || echo 'No Title'")
+(defpoll music_artist :interval "1s" "playerctl metadata artist 2>/dev/null || echo 'No Artist'")
+(defpoll music_position :interval "1s" "playerctl position 2>/dev/null | cut -d. -f1 || echo '0'")
+(defpoll music_length :interval "1s" "playerctl metadata mpris:length 2>/dev/null | awk '{print int($1/1000000)}' || echo '0'")
+
+;; Weather variables (you'll need to replace YOUR_API_KEY with actual OpenWeatherMap API key)
+(defpoll weather_temp :interval "600s" "curl -s 'http://api.openweathermap.org/data/2.5/weather?q=YourCity&appid=YOUR_API_KEY&units=metric' | jq -r '.main.temp' 2>/dev/null | cut -d. -f1 || echo 'N/A'")
+(defpoll weather_desc :interval "600s" "curl -s 'http://api.openweathermap.org/data/2.5/weather?q=YourCity&appid=YOUR_API_KEY&units=metric' | jq -r '.weather[0].description' 2>/dev/null || echo 'No data'")
+(defpoll weather_humidity :interval "600s" "curl -s 'http://api.openweathermap.org/data/2.5/weather?q=YourCity&appid=YOUR_API_KEY&units=metric' | jq -r '.main.humidity' 2>/dev/null || echo 'N/A'")
+
+;; Helper function to format time
+(defpoll current_time :interval "1s" "date '+%H:%M:%S'")
+(defpoll current_date :interval "60s" "date '+%A, %B %d'")
+
+;; Main dashboard window
+(defwindow dashboard
+  :monitor 0
+  :geometry (geometry :x "20px"
+                      :y "20px"
+                      :width "350px"
+                      :height "600px"
+                      :anchor "top left")
+  :stacking "overlay"
+  :reserve (struts :distance "0px" :side "left")
+  :windowtype "dock"
+  :wm-ignore false
+  (main_container))
+
+;; Main container widget
+(defwidget main_container []
+  (box :class "main-container"
+       :orientation "v"
+       :space-evenly false
+       :spacing 15
+    (header_widget)
+    (system_info_widget)
+    (audio_widget)
+    (music_widget)
+    (weather_widget)))
+
+;; Header with time and date
+(defwidget header_widget []
+  (box :class "header"
+       :orientation "v"
+       :halign "center"
+    (label :class "time" :text current_time)
+    (label :class "date" :text current_date)))
+
+;; System information widget
+(defwidget system_info_widget []
+  (box :class "system-info"
+       :orientation "v"
+       :spacing 8
+    (label :class "section-title" :text "System")
+    (box :class "info-row" :spacing 10
+      (label :class "info-label" :text "CPU:")
+      (progress :class "progress-bar" 
+                :value cpu_usage 
+                :orientation "h")
+      (label :class "info-value" :text "${cpu_usage}%"))
+    (box :class "info-row" :spacing 10
+      (label :class "info-label" :text "RAM:")
+      (progress :class "progress-bar" 
+                :value memory_usage 
+                :orientation "h")
+      (label :class "info-value" :text "${memory_usage}%"))
+    (box :class "info-row" :spacing 10
+      (label :class "info-label" :text "Disk:")
+      (progress :class "progress-bar" 
+                :value disk_usage 
+                :orientation "h")
+      (label :class "info-value" :text "${disk_usage}%"))
+    (box :class "info-row" :spacing 10
+      (label :class "info-label" :text "Temp:")
+      (label :class "info-value" :text "${cpu_temp}°C"))
+    (box :class "info-row" :spacing 10
+      (label :class "info-label" :text "Uptime:")
+      (label :class "info-value" :text uptime))))
+
+;; Audio control widget
+(defwidget audio_widget []
+  (box :class "audio-controls"
+       :orientation "v"
+       :spacing 8
+    (label :class "section-title" :text "Audio")
+    ;; Master volume
+    (box :class "volume-row" :spacing 10
+      (button :class "volume-button ${volume_muted == 'true' ? 'muted' : ''}"
+              :onclick "pamixer --toggle-mute"
+              (label :text "${volume_muted == 'true' ? '🔇' : '🔊'}"))
+      (scale :class "volume-slider"
+             :value volume
+             :min 0
+             :max 100
+             :orientation "h"
+             :onchange "pamixer --set-volume {}")
+      (label :class "volume-value" :text "${volume}%"))
+    ;; Microphone
+    (box :class "volume-row" :spacing 10
+      (button :class "volume-button ${mic_muted == 'true' ? 'muted' : ''}"
+              :onclick "pamixer --default-source --toggle-mute"
+              (label :text "${mic_muted == 'true' ? '🎤' : '🎙️'}"))
+      (scale :class "volume-slider"
+             :value mic_volume
+             :min 0
+             :max 100
+             :orientation "h"
+             :onchange "pamixer --default-source --set-volume {}")
+      (label :class "volume-value" :text "${mic_volume}%"))))
+
+;; Music player widget
+(defwidget music_widget []
+  (box :class "music-player"
+       :orientation "v"
+       :spacing 8
+    (label :class "section-title" :text "Music")
+    (box :class "music-info" :orientation "v" :spacing 4
+      (label :class "music-title" 
+             :text "${music_title}"
+             :limit-width 30)
+      (label :class "music-artist" 
+             :text "${music_artist}"
+             :limit-width 30))
+    (box :class "music-controls" :spacing 10 :halign "center"
+      (button :class "music-button"
+              :onclick "playerctl previous"
+              "⏮")
+      (button :class "music-button play-pause"
+              :onclick "playerctl play-pause"
+              "${music_status == 'Playing' ? '⏸' : '▶'}")
+      (button :class "music-button"
+              :onclick "playerctl next"
+              "⏭"))
+    (box :class "music-progress" :spacing 8
+      (label :class "time-label" :text "${music_position / 60}:${music_position % 60 < 10 ? '0' : ''}${music_position % 60}")
+      (progress :class "progress-bar music-progress-bar"
+                :value "${music_length > 0 ? (music_position / music_length * 100) : 0}"
+                :orientation "h")
+      (label :class "time-label" :text "${music_length / 60}:${music_length % 60 < 10 ? '0' : ''}${music_length % 60}"))))
+
+;; Weather widget
+(defwidget weather_widget []
+  (box :class "weather"
+       :orientation "v"
+       :spacing 8
+    (label :class "section-title" :text "Weather")
+    (box :class "weather-info" :orientation "v" :spacing 4
+      (box :class "weather-row" :spacing 10
+        (label :class "weather-label" :text "Temperature:")
+        (label :class "weather-value" :text "${weather_temp}°C"))
+      (box :class "weather-row" :spacing 10
+        (label :class "weather-label" :text "Condition:")
+        (label :class "weather-value" :text weather_desc))
+      (box :class "weather-row" :spacing 10
+        (label :class "weather-label" :text "Humidity:")
+        (label :class "weather-value" :text "${weather_humidity}%")))))

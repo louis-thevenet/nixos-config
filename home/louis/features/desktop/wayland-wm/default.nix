@@ -21,6 +21,7 @@ in
     ./termfilepickers.nix
     ./albert
     ./niri
+    ./eww.nix
   ];
   home.packages = mkIf cfg.wayland.enable (
     with pkgs;
