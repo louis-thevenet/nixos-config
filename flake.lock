@@ -74,14 +74,17 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1755022411,
-        "narHash": "sha256-AUok1r9b3xDg0+JLRlC189dTALDsyFtZm2xPvg4vRKo=",
-        "path": "/home/louis/src/nixos-config/blog",
-        "type": "path"
+        "lastModified": 1755022368,
+        "narHash": "sha256-0oIbKc9JWfgk96fUXwa9v7NN2vhSN83+V+0nrcri5Uw=",
+        "ref": "refs/heads/main",
+        "rev": "1dbf6e636b6ca6f56fe39c932df20f9902d79f6b",
+        "revCount": 38,
+        "type": "git",
+        "url": "file:/home/louis/src/blog"
       },
       "original": {
-        "path": "/home/louis/src/nixos-config/blog",
-        "type": "path"
+        "type": "git",
+        "url": "file:/home/louis/src/blog"
       }
     },
     "crane": {
