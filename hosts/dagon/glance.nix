@@ -323,6 +323,26 @@ in
                               url = "https://www.benkuhn.net/index.xml";
                               title = "Benkuhn";
                             }
+                            {
+                              url = "https://herman.bearblog.dev/feed/";
+                              title = "Hermann BearBlog";
+                            }
+                            {
+                              url = "https://tratt.net/laurie/blog/blog.rss";
+                              title = "Laurie Tratt";
+                            }
+                            {
+                              url = "https://dustri.org/b/rss.xml";
+                              title = "Julien Voisin";
+                            }
+                            {
+                              url = "https://www.benkuhn.net/rss";
+                              title = "Ben Kuhn";
+                            }
+                            {
+                              url = "https://emgoto.substack.com/feed";
+                              title = "Emma Goto";
+                            }
 
                           ];
                         }
@@ -349,6 +369,18 @@ in
                           ];
                         }
 
+                        {
+                          title = "BearBlog Trending";
+                          type = "rss";
+                          style = "vertical-list";
+                          inherit collapse-after;
+                          feeds = [
+                            {
+                              url = "https://bearblog.dev/discover/feed/";
+                              title = "BearBlog";
+                            }
+                          ];
+                        }
                         {
                           title = "Simon Willison";
                           type = "rss";
