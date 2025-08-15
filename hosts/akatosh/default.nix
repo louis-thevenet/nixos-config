@@ -24,6 +24,7 @@
     5000
   ];
   programs.steam.enable = true;
+  programs.gamescope.enable = true;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   hardware = {
     bluetooth.enable = true; # enables support for Bluetooth
