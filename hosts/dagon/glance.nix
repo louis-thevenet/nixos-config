@@ -138,6 +138,10 @@ in
                     title = "Services";
                     sites = [
                       {
+                        title = "Blog";
+                        url = "https://blog.ltvnt.com";
+                      }
+                      {
                         title = "Nextcloud";
                         url = "https://nc.ltvnt.com";
                       }
