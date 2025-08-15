@@ -74,11 +74,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1755249865,
-        "narHash": "sha256-yPXIofp+V4uoLk3+WlXoZ9TJYlB/56SuUZsDYgB6s0M=",
+        "lastModified": 1755257063,
+        "narHash": "sha256-1PttYHItB49gzCMUJneBfAc01S8aCQD/q2hdNVkDMAg=",
         "ref": "refs/heads/main",
-        "rev": "b3afbe95be35df99c6e7f6baa9a891f01575a52f",
-        "revCount": 45,
+        "rev": "63628875eb629838372a92262eb383b97d08793c",
+        "revCount": 46,
         "type": "git",
         "url": "file:/home/louis/src/blog"
       },
@@ -701,11 +701,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1754937576,
-        "narHash": "sha256-3sWA5WJybUE16kIMZ3+uxcxKZY/JRR4DFBqLdSLBo7w=",
+        "lastModified": 1755078291,
+        "narHash": "sha256-Hu/gTDoi4uy6TAKISPHQusSMy8U6xUbLSDjKBYdhDIY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "ddae11e58c0c345bf66efbddbf2192ed0e58f896",
+        "rev": "3385ca0cd7e14c1a1eb80401fe011705ff012323",
         "type": "github"
       },
       "original": {
