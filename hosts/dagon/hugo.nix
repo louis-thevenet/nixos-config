@@ -12,7 +12,7 @@ in
       root = "${inputs.blog.packages.${pkgs.system}.default}";
       listen = "[::]:${toString internal_port}";
     };
-    nginx.virtualHosts."blog.louis-thevenet.fr" = {
+    nginx.virtualHosts."blog.ltvnt.com" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {

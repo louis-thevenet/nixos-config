@@ -43,7 +43,7 @@ in
     engines:
       - name: karakeep
         engine: karakeep
-        base_url: 'https://karakeep.louis-thevenet.fr/'
+        base_url: 'https://karakeep.ltvnt.com/'
         number_of_results: 3
         timeout: 3.0
         api_key: ${config.sops.placeholder.karakeep-api-key}

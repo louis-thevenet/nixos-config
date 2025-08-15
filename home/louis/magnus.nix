@@ -20,7 +20,7 @@
           url = "http://127.0.0.1";
           port = 30070;
         };
-        homepageUrl = "db.louis-thevenet.fr";
+        homepageUrl = "db.ltvnt.com";
       };
       social.enable = true;
       utils.enable = true;

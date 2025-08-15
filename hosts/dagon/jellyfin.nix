@@ -14,7 +14,7 @@ _: {
   users.groups.jellyfin = { };
   services = {
     nginx = {
-      virtualHosts."jellyfin.louis-thevenet.fr" = {
+      virtualHosts."jellyfin.ltvnt.com" = {
         forceSSL = true;
         enableACME = true; # automatic Let's Encrypt
         kTLS = true;

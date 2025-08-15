@@ -257,19 +257,19 @@ in
           # NextCloud
           {
             Title = "Dashboard";
-            URL = "https://nextcloud.louis-thevenet.fr/index.php/apps/dashboard/#/";
+            URL = "https://nextcloud.ltvnt.com/index.php/apps/dashboard/#/";
             Folder = "NC";
             Placement = "toolbar";
           }
           {
             Title = "News";
-            URL = "https://nextcloud.louis-thevenet.fr/index.php/apps/news/";
+            URL = "https://nextcloud.ltvnt.com/index.php/apps/news/";
             Folder = "NC";
             Placement = "toolbar";
           }
           {
             Title = "Files";
-            URL = "https://nextcloud.louis-thevenet.fr/index.php/apps/files/files";
+            URL = "https://nextcloud.ltvnt.com/index.php/apps/files/files";
             Folder = "NC";
             Placement = "toolbar";
           }

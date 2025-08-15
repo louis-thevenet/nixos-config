@@ -23,7 +23,7 @@
 
   services = {
     nginx = {
-      virtualHosts."nc.louis-thevenet.fr" = {
+      virtualHosts."nc.ltvnt.com" = {
         forceSSL = true;
         enableACME = true; # automatic Let's Encrypt
       };
@@ -32,7 +32,7 @@
       enable = true;
       package = pkgs.master.nextcloud31;
 
-      hostName = "nc.louis-thevenet.fr";
+      hostName = "nc.ltvnt.com";
       maxUploadSize = "16G";
       https = true;
       home = "/var/lib/nextcloud";

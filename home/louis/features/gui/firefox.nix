@@ -88,7 +88,7 @@ in
             definedAliases = [ "@gc" ];
           };
           "Karakeep" = {
-            urls = [ { template = "https://karakeep.louis-thevenet.fr/dashboard/search?q={searchTerms}"; } ];
+            urls = [ { template = "https://karakeep.ltvnt.com/dashboard/search?q={searchTerms}"; } ];
             definedAliases = [ "@kr" ];
           };
           bing.metaData.hidden = true;

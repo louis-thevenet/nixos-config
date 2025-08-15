@@ -38,7 +38,7 @@ in
   ];
   services = {
     anubis.instances.glance.settings.TARGET = "http://${host}:${toString port}";
-    nginx.virtualHosts."db.louis-thevenet.fr" = {
+    nginx.virtualHosts."db.ltvnt.com" = {
       forceSSL = true;
       enableACME = true; # automatic Let's Encrypt
       locations = {
@@ -104,7 +104,7 @@ in
                           }
                           {
                             title = "Jellyfin";
-                            url = "https://jellyfin.louis-thevenet.fr";
+                            url = "https://jellyfin.ltvnt.com";
                             icon = "si:spotify";
                           }
                           {
@@ -139,15 +139,15 @@ in
                     sites = [
                       {
                         title = "Nextcloud";
-                        url = "https://nc.louis-thevenet.fr";
+                        url = "https://nc.ltvnt.com";
                       }
                       {
                         title = "Karakeep";
-                        url = "https://karakeep.louis-thevenet.fr";
+                        url = "https://karakeep.ltvnt.com";
                       }
                       {
                         title = "Jellyfin";
-                        url = "https://jellyfin.louis-thevenet.fr";
+                        url = "https://jellyfin.ltvnt.com";
                       }
                     ];
                   }

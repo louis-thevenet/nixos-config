@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 let
-  domain = "karakeep.louis-thevenet.fr";
+  domain = "karakeep.ltvnt.com";
   meili-port = 2431;
   browser-port = 4213;
   ui-port = 4231;
