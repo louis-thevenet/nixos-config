@@ -1,4 +1,5 @@
 {
+
   lib,
   config,
   ...
@@ -343,6 +344,10 @@ in
                               url = "https://emgoto.substack.com/feed";
                               title = "Emma Goto";
                             }
+                            {
+                              url = "https://localghost.dev/feed.xml";
+                              title = "Local Ghost";
+                            }
 
                           ];
                         }
@@ -410,9 +415,24 @@ in
                         symbol-link = "https://finance.yahoo.com/quote/CW8.PA";
                       }
                     ];
-
                   }
                 ];
+              }
+            ];
+          }
+          {
+            name = "Videos";
+            columns = [
+              {
+                size = "full";
+                widgets = lib.map (
+                  { name, value }:
+                  {
+                    type = "videos";
+                    title = name;
+                    channels = lib.catAttrs "url" value.channels;
+                  }
+                ) (lib.attrsToList (builtins.fromTOML (builtins.readFile /home/louis/Nextcloud/yt_channels.toml)));
               }
             ];
           }
