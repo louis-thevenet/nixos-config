@@ -39,6 +39,7 @@
 
     virtualization.enable = true;
     misc.nextcloud.enable = true;
+    gaming.enable = true;
   };
   monitors = [
     {
