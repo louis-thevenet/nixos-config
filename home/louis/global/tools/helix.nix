@@ -255,6 +255,16 @@
           formatter.command = lib.getExe pkgs.typstyle;
           auto-format = true;
         }
+        {
+          name = "cuda";
+          scope = "source.cuda";
+          language-servers = [
+            "clangd"
+          ];
+          file-types = [
+            "cu"
+          ];
+        }
       ];
 
       language-server = {
@@ -307,6 +317,8 @@
             options.nixos.expr = ''(builtins.getFlake "/home/louis/src/nixos-config").nixosConfigurations.magnus.options'';
           };
         };
+        clangd.command = lib.getExe' pkgs.clang "clangd";
+
         ocaml-lsp.command = lib.getExe pkgs.ocamlPackages.ocaml-lsp;
         python-lsp.command = lib.getExe pkgs.python312Packages.python-lsp-server;
         rust-analyzer = {
