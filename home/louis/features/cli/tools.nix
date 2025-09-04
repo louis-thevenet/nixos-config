@@ -34,10 +34,6 @@ in
       vhs
       transmission_4
       restic
-      (master.mcat.override {
-        useFfmpeg = true;
-        useChromium = true;
-      })
     ]
   );
   programs.eza = {
