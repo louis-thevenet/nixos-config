@@ -418,6 +418,11 @@ in
                         name = "Amundi MSCI World UCITS ETF C";
                         symbol-link = "https://finance.yahoo.com/quote/CW8.PA";
                       }
+                      {
+                        symbol = "PCEU.PA";
+                        name = "Amundi MSCI Europe UCITS ETF C";
+                        symbol-link = "https://finance.yahoo.com/quote/PCEU.PA";
+                      }
                     ];
                   }
                 ];
