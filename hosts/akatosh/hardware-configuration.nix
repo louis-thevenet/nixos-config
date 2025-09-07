@@ -14,6 +14,7 @@
 
   boot = {
     initrd.availableKernelModules = [
+      "btrfs"
       "nvme"
       "xhci_pci"
       "thunderbolt"
@@ -32,13 +33,9 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp98s0.useDHCP = lib.mkDefault true;
-
-  swapDevices = [
-    {
-      device = "/persist/swapfile";
-      size = 16 * 1024;
-    }
-  ];
+  swapDevices = [ { device = "/dev/nvme0n1p6"; } ];
+  boot.resumeDevice = "/dev/nvme0n1p6";
+  # Remove resume_offset from kernelParams since partitions don't need it  powerManagement.enable = true;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = true;
 }
