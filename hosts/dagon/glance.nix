@@ -352,6 +352,42 @@ in
                               url = "https://localghost.dev/feed.xml";
                               title = "Local Ghost";
                             }
+                            {
+                              url = "https://www.vintagestory.at/forums/forum/7-news.xml/";
+                              title = "Vintage Story Dev Blog";
+                            }
+                            {
+                              url = "https://fromemily.com/feed/?type=rss";
+                              title = "Emily Moran Barwick";
+                            }
+                            {
+                              url = "https://www.davepagurek.com/rss.xml";
+                              title = "Dave Pagurek";
+                            }
+                            {
+                              url = "https://lunamouse.bearblog.dev/feed/?type=rss";
+                              title = "Dear Luci";
+                            }
+                            {
+                              url = "https://netigen.com/rss";
+                              title = "Netigen";
+                            }
+                            {
+                              url = "https://megancarnes.blog/feed/?type=rss/";
+                              title = "Megan Carnes";
+                            }
+                            {
+                              url = "https://localghost.dev/";
+                              title = "Local Ghost";
+                            }
+                            {
+                              url = "https://notes.jeddacp.com/feed/";
+                              title = "JCProbably";
+                            }
+                            {
+                              url = "https://graic.net/rss.xml";
+                              title = "Graic";
+                            }
 
                           ];
                         }
