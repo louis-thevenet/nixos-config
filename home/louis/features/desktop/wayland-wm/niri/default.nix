@@ -134,8 +134,8 @@ in
                   action = sh "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
                 };
 
-                "XF86MonBrightnessUp".action = sh "${brightnessctl} set 10%+";
-                "XF86MonBrightnessDown".action = sh "${brightnessctl} set 10%-";
+                "XF86MonBrightnessUp".action = sh "${brightnessctl} set 5%+";
+                "XF86MonBrightnessDown".action = sh "${brightnessctl} set 5%-";
 
                 "Print".action = screenshot;
                 "Mod+Print".action = screenshot-window;
