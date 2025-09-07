@@ -40,6 +40,8 @@ in
       obs-studio
       spotifywm
       finamp
+      gimp
+      kdePackages.dolphin
     ]
   );
 }
