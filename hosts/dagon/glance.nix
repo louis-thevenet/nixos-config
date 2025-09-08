@@ -130,6 +130,21 @@ in
                           }
                         ];
                       }
+                      {
+                        title = "ETS";
+                        links = [
+                          {
+                            title = "Moodle";
+                            url = "https://ena.etsmtl.ca/my/";
+                            icon = "si:moodle";
+                          }
+                          {
+                            title = "Mon ETS";
+                            url = "https://portail.etsmtl.ca/home";
+                            icon = "si:planet";
+                          }
+                        ];
+                      }
                     ];
                   }
                   {
