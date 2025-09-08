@@ -11,8 +11,11 @@
         tmux = lib.getExe pkgs.tmux;
         tv = lib.getExe pkgs.television;
         cut = lib.getExe' pkgs.coreutils "cut";
+        basename = lib.getExe' pkgs.coreutils "basename";
+        pwd = lib.getExe' pkgs.coreutils "pwd";
       in
       {
+        tmn.body = "${tmux} new-session -A -s $(${basename} $(${pwd}))";
         tma.body = "${tmux} attach -t $(${tmux} list-sessions | ${tv} --preview 'tmux list-windows -t {0}' | ${cut} -d':' -f1)";
         tmw.body = ''
           set session (${tmux} list-sessions | ${tv} --preview 'tmux list-windows -t {0}' | ${cut} -d':' -f1)
