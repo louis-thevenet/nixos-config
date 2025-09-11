@@ -147,43 +147,6 @@ in
                       }
                     ];
                   }
-                  {
-                    type = "monitor";
-                    cache = "1m";
-                    title = "Services";
-                    sites = [
-                      {
-                        title = "Blog";
-                        url = "https://blog.ltvnt.com";
-                      }
-                      {
-                        title = "Nextcloud";
-                        url = "https://nc.ltvnt.com";
-                      }
-                      {
-                        title = "Karakeep";
-                        url = "https://karakeep.ltvnt.com";
-                      }
-                      {
-                        title = "Jellyfin";
-                        url = "https://jellyfin.ltvnt.com";
-                      }
-                    ];
-                  }
-                  {
-                    type = "server-stats";
-                    servers = [
-                      {
-                        type = "local";
-                        name = "Server";
-                        mountpoints = {
-                          "/" = {
-                            name = "Server";
-                          };
-                        };
-                      }
-                    ];
-                  }
                 ];
               }
               {
@@ -403,6 +366,10 @@ in
                               url = "https://graic.net/rss.xml";
                               title = "Graic";
                             }
+                            {
+                              url = "https://tadaima.bearblog.dev/rss/";
+                              title = "Tadaima";
+                            }
 
                           ];
                         }
@@ -473,6 +440,43 @@ in
                         symbol = "PCEU.PA";
                         name = "Amundi MSCI Europe UCITS ETF C";
                         symbol-link = "https://finance.yahoo.com/quote/PCEU.PA";
+                      }
+                    ];
+                  }
+                  {
+                    type = "monitor";
+                    cache = "1m";
+                    title = "Services";
+                    sites = [
+                      {
+                        title = "Blog";
+                        url = "https://blog.ltvnt.com";
+                      }
+                      {
+                        title = "Nextcloud";
+                        url = "https://nc.ltvnt.com";
+                      }
+                      {
+                        title = "Karakeep";
+                        url = "https://karakeep.ltvnt.com";
+                      }
+                      {
+                        title = "Jellyfin";
+                        url = "https://jellyfin.ltvnt.com";
+                      }
+                    ];
+                  }
+                  {
+                    type = "server-stats";
+                    servers = [
+                      {
+                        type = "local";
+                        name = "Server";
+                        mountpoints = {
+                          "/" = {
+                            name = "Server";
+                          };
+                        };
                       }
                     ];
                   }
