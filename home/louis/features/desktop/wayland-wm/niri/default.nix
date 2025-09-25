@@ -342,7 +342,7 @@ in
           spawn-at-startup = [
             {
               command = [
-                (lib.getExe pkgs.albert)
+                (lib.getExe pkgs.master.albert)
               ];
             }
             {

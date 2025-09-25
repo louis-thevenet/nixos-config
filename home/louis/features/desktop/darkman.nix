@@ -15,7 +15,7 @@ in
       swaync-client = lib.getExe' pkgs.swaynotificationcenter "swaync-client";
       systemctl = lib.getExe' pkgs.systemd "systemctl";
       killall = lib.getExe' pkgs.toybox "killall";
-      albert = lib.getExe pkgs.albert;
+      albert = lib.getExe pkgs.master.albert;
 
       find-hm-generation =
         let
