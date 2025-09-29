@@ -236,6 +236,14 @@
           ];
         }
         {
+          name = "cuda";
+          language-servers = [
+            "gpt"
+            "typos"
+            "wakatime"
+          ];
+        }
+        {
           name = "toml";
           language-servers = [
             "taplo"
