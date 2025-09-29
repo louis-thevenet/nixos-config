@@ -370,6 +370,10 @@ in
                               url = "https://tadaima.bearblog.dev/rss/";
                               title = "Tadaima";
                             }
+                            {
+                              url = "https://writtenbywinter.bearblog.dev/rss/";
+                              title = "Written By Winter";
+                            }
 
                           ];
                         }
