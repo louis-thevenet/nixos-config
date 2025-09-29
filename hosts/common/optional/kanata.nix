@@ -197,7 +197,7 @@ _: {
           @tab a z e r t   y u i o p
           esc q s d f g     h j k l m
              < w x c v b     n COM PER COL EXCL rsft
-               @alt          @nav          @sym
+               @alt @nav          @sym
              )
 
              ;; ergol layout
@@ -246,7 +246,7 @@ _: {
              (deflayer navigation
                M-1  M-2  M-3  M-4  M-5  lrld M-6  M-7  M-8  M-9  M-0
           tab  @pad @cls bck  fwd  _       home pgdn pgup end  _
-          esc   @all @sav _     _    _        lft down  up  rght @fun
+          esc   @all @sav @qwt     _    _        lft down  up  rght @fun
                  @ndo @cut @cpy @pst _    _   @mwl @mwd @mwu @mwr _
                        del             _             esc
              )
@@ -267,6 +267,19 @@ _: {
                  f9   f10  f11  f12  _    _    _    _    _    _    _ 
                          _               _             _
              )  
+            ;; define alias for toggling qwerty
+            (defalias
+              qwt (layer-switch qwerty)
+              )
+
+            ;; QWERTY layer (gaming)
+            (deflayer qwerty
+              1 2 3 4 5 6 7 8 9 0
+              tab q w e r t   y u i o p
+              esc a s d f g   h j k l m
+                 < z x c v b   n , . ; / rsft
+                    @std      spc        ralt
+            )
 
         '';
       };
