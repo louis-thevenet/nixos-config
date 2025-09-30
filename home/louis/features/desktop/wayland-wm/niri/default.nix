@@ -81,7 +81,7 @@ let
   };
 
   toAzerty = n: set: if (builtins.elem n (lib.attrNames set)) then set.${n} else n;
-  socat = lib.getExe pkgs.socat;
+  albert = lib.getExe pkgs.master.albert;
   killall = "${pkgs.killall}/bin/killall";
   brightnessctl = lib.getExe pkgs.brightnessctl;
   wpctl = lib.getExe' pkgs.wireplumber "wpctl";
@@ -116,7 +116,7 @@ in
               {
                 # Apps
                 "Mod+T".action = spawn terminal;
-                "Mod+D".action = sh "echo -n toggle | ${socat} - ~/.cache/albert/ipc_socket";
+                "Mod+D".action = sh "${albert} toggle";
                 "Mod+x".action = sh "${killall} -SIGUSR1 .waybar-wrapped";
                 "Mod+O".action = sh "${copyq} show";
                 "Mod+W".action = sh "${swaync-client} -t";
