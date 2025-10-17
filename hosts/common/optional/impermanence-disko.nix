@@ -90,6 +90,7 @@
       "/var/lib/private/ollama"
       "/var/lib/howdy/models"
       "/var/lib/libvirt"
+      "/var/lib/docker"
       "/tmp"
     ];
   };
