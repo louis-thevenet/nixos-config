@@ -34,6 +34,7 @@ in
       vhs
       transmission_4
       restic
+      todoist
     ]
   );
   programs.eza = {
