@@ -35,13 +35,11 @@ in
     [
       calibre
       kdePackages.okular
-      qimgv
       tor-browser-bundle-bin
       obs-studio
-      spotifywm
-      finamp
       gimp
       kdePackages.dolphin
+      todoist-electron
     ]
   );
 }
