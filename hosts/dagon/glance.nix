@@ -463,8 +463,8 @@ in
                     cache = "1s";
                     template = ''
                       {{ $localTime := now }}
-                      {{ $secondsPerDay := 86400 }}
-                      {{ $elapsedSeconds := add (mul $localTime.Hour 3600) (mul $localTime.Minute 60) | add $localTime.Second }}
+                      {{ $secondsPerDay := mul (sub 24 7) (mul 60 60) }} <!-- 7 hours of non-usable day -->
+                      {{ $elapsedSeconds := sub (add (mul $localTime.Hour 3600) (mul $localTime.Minute 60) | add $localTime.Second) 25200 }}
                       {{ $dayProgress := div (mul $elapsedSeconds 100.0) $secondsPerDay }}
 
                       {{ $gradient := "" }}
@@ -486,7 +486,7 @@ in
                             background: linear-gradient(90deg, {{ $gradient }});
                           "></div>
                         </div>
-                        <div class="size-h1" style="margin-top: 6px;">{{ printf "%.2f" $dayProgress }}% of the day has passed</div>
+                        <div class="size-h1" style="margin-top: 6px;">{{ printf "%.2f" $dayProgress }}% of usable day has passed</div>
                       </div>
                     '';
                   }
