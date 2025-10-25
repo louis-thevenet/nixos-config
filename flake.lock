@@ -74,11 +74,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1757429601,
-        "narHash": "sha256-tvpjmMr9HI++WjoKNOGLrJJqdu8giqv2s0cpqUeDRBU=",
+        "lastModified": 1761223307,
+        "narHash": "sha256-I/UplJRVu0KwapnIqR0wKRmv5t4Jo59f0GgNSeHZeyA=",
         "ref": "refs/heads/main",
-        "rev": "a3cff5ee556970baa096b9811234c76194be00ec",
-        "revCount": 50,
+        "rev": "ab341975a2096830701f942562836e588cb9d41a",
+        "revCount": 53,
         "type": "git",
         "url": "file:/home/louis/src/blog"
       },
