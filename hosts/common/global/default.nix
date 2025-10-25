@@ -20,7 +20,7 @@
   console.keyMap = "fr";
 
   services.libinput.enable = true;
-
+  security.pam.services.login.howdyAuth = false;
   security.rtkit.enable = true;
   environment.systemPackages = with pkgs; [ vim ];
 
