@@ -34,9 +34,10 @@ in
       };
     };
   };
-
-  security.pam.services.swaylock = { };
-
+  security.pam.services = {
+    #disable first login per fingerprint
+    login.fprintAuth = false;
+  };
   sops.secrets.wakatime_cfg = {
     sopsFile = ../../secrets.yaml;
     path = "/home/louis/.wakatime.cfg";
