@@ -85,7 +85,9 @@ let
   killall = "${pkgs.killall}/bin/killall";
   brightnessctl = lib.getExe pkgs.brightnessctl;
   wpctl = lib.getExe' pkgs.wireplumber "wpctl";
-
+  grim = lib.getExe pkgs.grim;
+  slurp = lib.getExe pkgs.slurp;
+  wl-copy = lib.getExe pkgs.wl-clipboard;
   playerctl = lib.getExe pkgs.playerctl;
   swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
   terminal = config.home.sessionVariables.TERMINAL;
@@ -137,9 +139,7 @@ in
                 "XF86MonBrightnessUp".action = sh "${brightnessctl} set 5%+";
                 "XF86MonBrightnessDown".action = sh "${brightnessctl} set 5%-";
 
-                "Print".action = screenshot;
-                "Mod+Print".action = screenshot-window;
-                "Alt+Print".action = screenshot-window;
+                "Print".action = sh ''${grim} -g "$(${slurp})" - |${wl-copy}'';
               }
               {
                 # Other

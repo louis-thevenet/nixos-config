@@ -12,8 +12,8 @@ in
   home.packages = mkIf cfg.utils.enable (
     with pkgs;
     [
-      bitwarden
-      onlyoffice-bin
+      bitwarden-desktop
+      onlyoffice-desktopeditors
     ]
   );
 }

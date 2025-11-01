@@ -9,10 +9,6 @@ _: {
       alsa.support32Bit = true;
       pulse.enable = true;
     };
-    logind.extraConfig = ''
-      # don’t shutdown when power button is short-pressed
-      HandlePowerKey=ignore
-    '';
   };
 
 }

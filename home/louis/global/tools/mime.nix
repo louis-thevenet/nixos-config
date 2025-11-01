@@ -9,7 +9,7 @@ _: {
           editor = "helix.desktop";
           image = "qimgv.desktop";
           pdf = "okular.desktop";
-          files = "yazi.desktop";
+          files = "org.kde.dolphin.desktop";
         in
         {
           "text/html" = browser;
