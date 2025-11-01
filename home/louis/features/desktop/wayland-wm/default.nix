@@ -40,11 +40,15 @@ in
     CLUTTER_BACKEND = "wayland";
     WLR_RENDERER = "vulkan";
     XDG_SESSION_DESKTOP = "Niri";
+    XDG_SESSION_TYPE = "wayland";
     MOZ_ENABLE_WAYLAND = 1;
     XDG_CURRENT_DESKTOP = "niri";
     _JAVA_AWT_WM_NONREPARENTING = "1";
     NIXOS_OZONE_WL = "1";
     SDL_VIDEODRIVER = "wayland";
+    QT_QPA_PLATFORM = "wayland";
+    GDK_BACKEND = "wayland";
+    EGL_PLATFORM = "wayland";
     XCOMPOSEFILE = "${config.xdg.configHome}/xcompose";
   };
   xdg.portal = {
