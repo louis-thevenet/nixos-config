@@ -67,10 +67,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     blog.url = "git+file:/home/louis/src/blog";
-    helix = {
-      url = "github:helix-editor/helix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
