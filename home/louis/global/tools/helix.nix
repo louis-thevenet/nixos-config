@@ -134,6 +134,19 @@
           };
         }
         {
+          name = "c";
+          language-servers = [
+            "clangd"
+            "gpt"
+            "typos"
+            "wakatime"
+          ];
+          formatter = {
+            command = lib.getExe' pkgs.clang-tools "clang-format";
+            args = [ "-" ];
+          };
+        }
+        {
           name = "fish";
           language-servers = [
             "fish"
@@ -325,8 +338,16 @@
             options.nixos.expr = ''(builtins.getFlake "/home/louis/src/nixos-config").nixosConfigurations.magnus.options'';
           };
         };
-        clangd.command = lib.getExe' pkgs.clang "clangd";
-
+        clangd = {
+          command = lib.getExe' pkgs.clang-tools "clangd";
+          config = {
+            clangd = {
+              fallbackFlags = [
+                "-std=c++20"
+              ];
+            };
+          };
+        };
         ocaml-lsp.command = lib.getExe pkgs.ocamlPackages.ocaml-lsp;
         python-lsp.command = lib.getExe pkgs.python312Packages.python-lsp-server;
         rust-analyzer = {
