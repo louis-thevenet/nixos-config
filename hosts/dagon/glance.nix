@@ -620,6 +620,8 @@ in
                     type = "videos";
                     title = name;
                     channels = lib.catAttrs "url" value.channels;
+                    include-shorts = false;
+                    video-url-template = "https://inv.nadeko.net/{VIDEO-ID}";
                   }
                 ) (lib.attrsToList (builtins.fromTOML (builtins.readFile /home/louis/Nextcloud/yt_channels.toml)));
               }
