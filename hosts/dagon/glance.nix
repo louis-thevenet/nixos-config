@@ -112,6 +112,11 @@ in
                             url = "https://mail.proton.me/u/0/inbox";
                             icon = "si:proton";
                           }
+                          {
+                            title = "Hard Cover";
+                            url = "https://hardcover.app/dashboard";
+                            icon = "si:bookstack";
+                          }
 
                         ];
                       }
@@ -396,6 +401,10 @@ in
                             {
                               url = "https://writtenbywinter.bearblog.dev/rss/";
                               title = "Written By Winter";
+                            }
+                            {
+                              url = "https://monocyte.bearblog.dev/feed/?q=blog";
+                              title = "Monocyte";
                             }
 
                           ];
