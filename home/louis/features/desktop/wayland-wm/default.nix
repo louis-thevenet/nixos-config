@@ -18,7 +18,6 @@ in
     ./hypridle.nix
     ./hyprpaper.nix
     ./battery.nix
-    ./termfilepickers.nix
     ./albert
     ./niri
   ];

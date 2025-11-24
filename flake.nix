@@ -57,11 +57,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    xdp-termfilepickers = {
-      url = "github:Guekka/xdg-desktop-portal-termfilepickers";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-ai-stuff = {
       url = "github:BatteredBunny/nix-ai-stuff";
       inputs.nixpkgs.follows = "nixpkgs";

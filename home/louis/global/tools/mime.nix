@@ -1,4 +1,5 @@
-_: {
+{ pkgs, ... }:
+{
   xdg = {
     mime.enable = true;
     mimeApps = {
@@ -9,7 +10,7 @@ _: {
           editor = "helix.desktop";
           image = "qimgv.desktop";
           pdf = "okular.desktop";
-          files = "yazi.desktop";
+          files = "org.kde.dolphin.desktop";
         in
         {
           "text/html" = browser;
@@ -21,7 +22,15 @@ _: {
           "text/plain" = editor;
           "text/*" = editor;
           "inode/directory" = files;
+          "x-scheme-handler/file" = files;
         };
     };
   };
+
+  home.sessionVariables = {
+    FILEMANAGER = "dolphin";
+  };
+
+  home.packages = [ pkgs.kdePackages.dolphin ];
+
 }
