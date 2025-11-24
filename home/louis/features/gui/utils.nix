@@ -40,6 +40,7 @@ in
       gimp
       kdePackages.dolphin
       todoist-electron
+      obsidian
     ]
   );
 }
