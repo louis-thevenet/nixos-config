@@ -406,6 +406,10 @@ in
                               url = "https://monocyte.bearblog.dev/feed/?q=blog";
                               title = "Monocyte";
                             }
+                            {
+                              url = "https://buttondown.com/dealgorithmed/rss";
+                              title = "dealgorithmed";
+                            }
 
                           ];
                         }
