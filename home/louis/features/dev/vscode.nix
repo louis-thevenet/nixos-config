@@ -9,41 +9,35 @@ let
   cfg = config.home-config.dev;
 in
 {
+  home.packages = with pkgs; [
+    vscode-fhs
+  ];
   programs.vscode = mkIf cfg.vscode.enable {
     enable = true;
+    package = pkgs.vscodium-fhs;
     profiles.default = {
       enableExtensionUpdateCheck = true;
       enableUpdateCheck = false;
-      extensions =
-        with pkgs.vscode-extensions;
-        [
-          mkhl.direnv
-          jnoortheen.nix-ide
-          rust-lang.rust-analyzer
-          # nvarner.typst-lsp
-          tomoki1207.pdf
-          vadimcn.vscode-lldb
-          #redhat.java
-          #vscjava.vscode-gradle
-          #vscjava.vscode-java-debug
-          #ms-toolsai.jupyter
-          #alefragnani.bookmarks
-          oderwat.indent-rainbow
-          pkief.material-icon-theme
-          christian-kohler.path-intellisense
-          llvm-vs-code-extensions.vscode-clangd
-          eamodio.gitlens
-          wakatime.vscode-wakatime
-          # ocamllabs.ocaml-platform
-        ]
-        ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-          {
-            name = "continue";
-            publisher = "Continue";
-            version = "0.9.79";
-            sha256 = "sZLtY30eWO7Tflxd9BazSBNl/d5w/k+Esodu3Qthzos=";
-          }
-        ];
+      extensions = with pkgs.vscode-extensions; [
+        mkhl.direnv
+        jnoortheen.nix-ide
+        rust-lang.rust-analyzer
+        # nvarner.typst-lsp
+        tomoki1207.pdf
+        vadimcn.vscode-lldb
+        #redhat.java
+        #vscjava.vscode-gradle
+        #vscjava.vscode-java-debug
+        #ms-toolsai.jupyter
+        #alefragnani.bookmarks
+        oderwat.indent-rainbow
+        pkief.material-icon-theme
+        christian-kohler.path-intellisense
+        # llvm-vs-code-extensions.vscode-clangd
+        eamodio.gitlens
+        wakatime.vscode-wakatime
+        # ocamllabs.ocaml-platform
+      ];
 
       keybindings = [
         {
