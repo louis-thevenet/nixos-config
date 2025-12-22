@@ -89,7 +89,7 @@ in
                     hour-format = "24h";
                     hide-location = false;
                     show-area-name = true;
-                    location = "Montreal, Canada";
+                    location = "Paris, France";
                   }
                   {
                     type = "bookmarks"; # https://github.com/glanceapp/glance/blob/main/docs/configuration.md#bookmarks

@@ -55,8 +55,8 @@ in
         activate = switch-theme-script "light";
       };
       settings = {
-        lat = 45.5;
-        lng = -73.6;
+        lat = 49;
+        lng = 2;
         dbusserver = true;
       };
     };
