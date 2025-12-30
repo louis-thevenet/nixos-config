@@ -108,6 +108,11 @@ in
                             icon = "si:spotify";
                           }
                           {
+                            title = "Firefly";
+                            url = "https://firefly.ltvnt.com";
+                            icon = "si:fireflyiii";
+                          }
+                          {
                             title = "Proton Mail";
                             url = "https://mail.proton.me/u/0/inbox";
                             icon = "si:proton";
@@ -164,6 +169,10 @@ in
                       {
                         title = "Nextcloud";
                         url = "https://nc.ltvnt.com";
+                      }
+                      {
+                        title = "Firefly";
+                        url = "https://firefly.ltvnt.com";
                       }
                       {
                         title = "Karakeep";

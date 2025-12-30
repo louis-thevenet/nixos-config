@@ -12,6 +12,7 @@
     ./restic.nix
     ./adguardhome.nix
     ./hugo.nix
+    ./firefly-iii.nix
     ../common/global/nix.nix
     ../common/global/openssh.nix
     ../common/global/locale.nix
