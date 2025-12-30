@@ -35,6 +35,7 @@ in
 
   services.playerctld.enable = cfg.wayland.enable;
   home.sessionVariables = {
+    DISPLAY = ":0";
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
     CLUTTER_BACKEND = "wayland";
     WLR_RENDERER = "vulkan";
