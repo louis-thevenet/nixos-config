@@ -37,7 +37,7 @@
       };
     };
 
-    virtualization.enable = true;
+    virtualization.enable = false;
     misc.nextcloud.enable = true;
     gaming.enable = true;
   };
