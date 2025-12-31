@@ -17,7 +17,7 @@ in
     packages = [
       pkgs.goldendict-ng
       pkgs.libnotify
-      pkgs.master.albert
+      pkgs.albert
     ];
   };
 

@@ -39,7 +39,7 @@ in
   };
   programs.rofi = mkIf cfg.wayland.enable {
     enable = true;
-    package = pkgs.rofi-wayland;
+    package = pkgs.rofi;
 
     plugins = [
     ];

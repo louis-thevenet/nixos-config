@@ -35,7 +35,7 @@ in
     [
       calibre
       kdePackages.okular
-      tor-browser-bundle-bin
+      tor-browser
       obs-studio
       gimp
       kdePackages.dolphin

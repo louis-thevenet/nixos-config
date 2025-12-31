@@ -15,11 +15,10 @@ in
       neofetch
       bat
       trash-cli
-      du-dust
+      dust
       git-open
       nix-output-monitor
       noti
-      nm-tray
       killall
       wget
       tdf
@@ -30,7 +29,6 @@ in
       spotify-player
       television
       rbw
-      pinentry
       vhs
       transmission_4
       restic

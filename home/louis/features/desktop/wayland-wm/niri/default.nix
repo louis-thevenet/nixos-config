@@ -81,14 +81,14 @@ let
   };
 
   toAzerty = n: set: if (builtins.elem n (lib.attrNames set)) then set.${n} else n;
-  albert = lib.getExe pkgs.master.albert;
+  albert = lib.getExe pkgs.albert;
   killall = "${pkgs.killall}/bin/killall";
   brightnessctl = lib.getExe pkgs.brightnessctl;
   wpctl = lib.getExe' pkgs.wireplumber "wpctl";
 
   playerctl = lib.getExe pkgs.playerctl;
   swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
-  terminal = config.home.sessionVariables.TERMINAL;
+  terminal = lib.getExe pkgs.alacritty;
   browser = lib.getExe pkgs.firefox;
   hyprlock = lib.getExe pkgs.hyprlock;
   darkman = "${pkgs.darkman}/bin/darkman";
@@ -342,7 +342,7 @@ in
           spawn-at-startup = [
             {
               command = [
-                (lib.getExe pkgs.master.albert)
+                (lib.getExe pkgs.albert)
               ];
             }
             {
@@ -363,6 +363,11 @@ in
             {
               command = [
                 (lib.getExe pkgs.copyq)
+              ];
+            }
+            {
+              command = [
+                (lib.getExe pkgs.waybar)
               ];
             }
           ];

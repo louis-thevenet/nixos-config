@@ -9,11 +9,5 @@ let
   cfg = config.home-config.gui;
 in
 {
-  home.packages = mkIf cfg.utils.enable (
-    with pkgs;
-    [
-      bitwarden
-      onlyoffice-bin
-    ]
-  );
+  home.packages = mkIf cfg.utils.enable (with pkgs; [ onlyoffice-desktopeditors ]);
 }
