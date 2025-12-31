@@ -11,7 +11,6 @@
     ../common/global
     ../common/users/louis
     ../common/optional/services.nix
-    ../common/optional/stylix.nix
     ../common/optional/impermanence-disko.nix
     ../common/optional/niri.nix
     ../common/optional/tlp.nix
@@ -48,6 +47,17 @@
     bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
     graphics.enable = true;
   };
+  nixpkgs.overlays = [
+    (
+      let
+        pkgs-howdy = inputs.nixpkgs-howdy.legacyPackages."x86_64-linux";
+      in
+      _: _: {
+        inherit (pkgs-howdy) howdy;
+      }
+
+    )
+  ];
   services = {
     udisks2.enable = true;
     asusd = {

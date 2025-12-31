@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  inputs,
   ...
 }:
 with lib;
@@ -96,6 +97,9 @@ let
   bluetui = "${pkgs.bluetui}/bin/bluetui";
 in
 {
+  imports = [
+    inputs.niri.homeModules.config
+  ];
 
   programs =
     if cfg.niri.enable then
