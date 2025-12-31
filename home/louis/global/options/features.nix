@@ -8,15 +8,7 @@ in
       commonTools.enable = mkEnableOption ''
         Enable common CLI Tools
       '';
-      nvTop.enable = mkEnableOption ''
-        Enable nvTop
-      '';
-
-      VPNC.enable = mkEnableOption ''
-        Enable VPNC
-      '';
     };
-
     gui = {
       kitty.enable = mkEnableOption ''
         Enable Kitty
@@ -61,24 +53,10 @@ in
         Enable common GUI Tools
       '';
 
-      ai = {
-        lmstudio.enable = mkEnableOption ''
-          Enable LMStudio
-        '';
-
-        comfyUI.enable = mkEnableOption ''
-          Enable ComfyUI (from nix-ai-stuff flake)
-        '';
-      };
     };
-
     dev = {
       vscode.enable = mkEnableOption ''
         Enabe VsCode
-      '';
-
-      jetbrains.enable = mkEnableOption ''
-        Enable Jetbrains
       '';
 
       devTools.enable = mkEnableOption ''
@@ -95,18 +73,6 @@ in
           brokenAudioMuteKey = mkEnableOption ''How did I even break this'';
         };
 
-        hyprland = {
-          enable = mkEnableOption ''
-            Enable Hyprland
-          '';
-          nvidia = mkOption {
-            type = lib.types.bool;
-            default = false;
-            description = ''
-              Enable Nvidia options for Hyprland
-            '';
-          };
-        };
         hypridleConfig = {
           screenDimTime = mkOption {
             type = lib.types.ints.u32;
@@ -134,10 +100,6 @@ in
           };
         };
       };
-
-      gnome.enable = mkEnableOption ''
-        Enable Gnome
-      '';
 
       stylix.enable = mkEnableOption ''
         Enable stylix (if enabled in NixOS config)

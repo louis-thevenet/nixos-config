@@ -17,7 +17,6 @@
     ../common/optional/tlp.nix
     ../common/optional/kanata.nix
     ../common/optional/xdg.nix
-    ../common/optional/virt.nix
     ../common/optional/howdy-pam.nix
     "${inputs.nixpkgs-howdy}/nixos/modules/services/security/howdy"
     "${inputs.nixpkgs-howdy}/nixos/modules/services/misc/linux-enable-ir-emitter.nix"

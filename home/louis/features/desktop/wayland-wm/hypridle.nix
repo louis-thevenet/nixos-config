@@ -20,7 +20,7 @@ in
     let
       hyprlock = "${pkgs.hyprlock}/bin/hyprlock";
       loginctl = "${pkgs.systemd}/bin/loginctl";
-      hyprctl = "${pkgs.hyprland}/bin/hyprctl";
+      hyprctl = "${pkgs.hyprland}/bin/hyprctl"; # FIX THIS
       systemctl = "${pkgs.systemd}/bin/systemctl";
     in
     ''

@@ -25,7 +25,7 @@ in
       see-cat
       rsync
       smartcat
-      master.vault-tasks
+      vault-tasks
       spotify-player
       television
       rbw

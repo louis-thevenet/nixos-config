@@ -12,7 +12,7 @@ in
   home.packages = mkIf cfg-social.social.enable (
     with pkgs;
     [
-      master.beeper
+      beeper
       discord
     ]
   );

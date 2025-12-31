@@ -13,7 +13,7 @@ in
   home.packages = mkIf cfg.gaming.enable (
     with pkgs;
     [
-      master.vintagestory
+      vintagestory
     ]
   );
 }

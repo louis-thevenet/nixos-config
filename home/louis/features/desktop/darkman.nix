@@ -13,7 +13,6 @@ in
   services.darkman =
     let
       swaync-client = lib.getExe' pkgs.swaynotificationcenter "swaync-client";
-      systemctl = lib.getExe' pkgs.systemd "systemctl";
       killall = lib.getExe' pkgs.toybox "killall";
       albert = lib.getExe pkgs.albert;
 
@@ -41,7 +40,6 @@ in
         concatStringsSep "\n" [
           "$(${find-hm-generation})/${theme}/activate"
           "${killall} -SIGUSR1 hx" # enabled by default
-          (optionalString wayland-cfg.hyprland.enable "${systemctl} --user restart hyprpaper.service")
           (optionalString wayland-cfg.enable "${swaync-client} -rs") # reload CSS for swaync (notification center)
           (optionalString wayland-cfg.enable "${albert} restart")
         ];

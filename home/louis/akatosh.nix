@@ -22,7 +22,6 @@
       };
       social.enable = true;
       utils.enable = true;
-      ai.lmstudio.enable = true;
     };
     dev = {
       vscode.enable = true;
@@ -39,7 +38,6 @@
 
     virtualization.enable = false;
     misc.nextcloud.enable = true;
-    gaming.enable = true;
   };
   monitors = [
     {

@@ -2,11 +2,11 @@
   description = "NixOS config";
   inputs = {
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-howdy.url = "github:fufexan/nixpkgs/howdy";
+
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri = {
@@ -33,10 +33,9 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     stylix = {
-      url = "github:danth/stylix/master";
+      url = "github:nix-community/stylix/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -68,9 +67,7 @@
     {
       self,
       nixpkgs,
-      # nixpkgs-master,
       nixpkgs-howdy,
-      nixpkgs-master,
       home-manager,
       stylix,
       niri,
@@ -132,53 +129,29 @@
           specialArgs = {
             inherit (self) inputs outputs;
           };
-          modules =
-            let
-              overlay-master = prev: final: {
-                master = import nixpkgs-master {
-                  inherit prev final system;
-                  config.allowUnfree = true;
-                  config.permittedInsecurePackages = [
-                    "dotnet-runtime-7.0.20"
-                  ];
+          modules = [
+            ./hosts/${host}
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                users.${user} = import ./home/${user}/${host}.nix;
+                backupFileExtension = "backup_hm";
+                extraSpecialArgs = {
+                  inherit (self) inputs outputs;
                 };
-              };
-            in
-            [
-              (_: {
-                nixpkgs.overlays = [
-                  overlay-master
+                sharedModules = [
+                  sops-nix.homeManagerModules.sops
                 ];
-
-              })
-              ./hosts/${host}
-              home-manager.nixosModules.home-manager
-              {
-                home-manager = {
-                  users.${user} = import ./home/${user}/${host}.nix;
-                  backupFileExtension = "backup_hm";
-                  extraSpecialArgs = {
-                    inherit (self) inputs outputs;
-                  };
-                  sharedModules = [
-                    sops-nix.homeManagerModules.sops
-                    (_: {
-                      nixpkgs.overlays = [
-                        overlay-master
-                      ];
-
-                    })
-                  ];
-                };
-              }
-              stylix.nixosModules.stylix
-              nix-index-database.nixosModules.nix-index
-              {
-                programs.nix-index-database.comma.enable = true;
-                programs.nix-index.enable = true;
-              }
-            ]
-            ++ specific-modules;
+              };
+            }
+            stylix.nixosModules.stylix
+            nix-index-database.nixosModules.nix-index
+            {
+              programs.nix-index-database.comma.enable = true;
+              programs.nix-index.enable = true;
+            }
+          ]
+          ++ specific-modules;
         };
     in
     {

@@ -54,11 +54,7 @@ in
         fixed-center = false;
         start_hidden = true;
         modules-left =
-          (lib.optionals config.wayland.windowManager.hyprland.enable [
-            "hyprland/workspaces"
-            #"hyprland/submap"
-          ])
-          ++ (lib.optionals cfg.wayland.niri.enable [
+          (lib.optionals cfg.wayland.niri.enable [
             "niri/workspaces"
             "niri/window"
           ])
@@ -200,28 +196,6 @@ in
           "format-icons" = {
             "activated" = " ";
             "deactivated" = " ";
-          };
-        };
-        "hyprland/workspaces" = {
-          format-window-separator = "";
-          active-only = false;
-          all-outputs = false;
-          show-special = true;
-          window-rewrite-default = "";
-          format = "{name}{windows}";
-          "window-rewrite" = {
-            "title<.*youtube.*>" = " ";
-            "class<firefox>" = " ";
-            "class<firefox> title<.*github.*>" = " ";
-            "warp" = " ";
-            "kitty" = " ";
-            "codium-url-handler" = " 󰨞";
-            "Discord" = " 󰙯";
-            "spotube" = " 󰓇";
-            "matlab" = "󰆧";
-            "Super Productivity" = " 󰨟";
-            "Beeper" = " 💬";
-            "LM Studio" = " ";
           };
         };
         "niri/workspaces" = {
