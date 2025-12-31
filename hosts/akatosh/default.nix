@@ -1,10 +1,6 @@
+{ pkgs, inputs, ... }:
 {
-  pkgs,
-  lib,
-  inputs,
-  ...
-}:
-{
+  disabledModules = [ "security/pam.nix" ];
   imports = [
     ./hardware-configuration.nix
     ./sops.nix
@@ -16,32 +12,17 @@
     ../common/optional/tlp.nix
     ../common/optional/kanata.nix
     ../common/optional/xdg.nix
-    ../common/optional/howdy-pam.nix
     ../common/optional/stylix.nix
+    "${inputs.nixpkgs-howdy}/nixos/modules/security/pam.nix"
     "${inputs.nixpkgs-howdy}/nixos/modules/services/security/howdy"
     "${inputs.nixpkgs-howdy}/nixos/modules/services/misc/linux-enable-ir-emitter.nix"
   ];
-  networking = {
-    hostName = "akatosh";
-    firewall.allowedTCPPorts = [
-      5000
-    ];
-  };
-  # Keep TTY login password-only for security
-  security.pam.services = {
-    login = {
-      howdyAuth = lib.mkForce false;
-      fprintAuth = false;
-    };
-    # Enable Howdy for sudo and other graphical/convenience authentications
-    sudo.howdyAuth = true;
-    polkit-1.howdyAuth = true;
-  };
-
-  programs = {
-    steam.enable = true;
-    gamescope.enable = true;
-  };
+  networking.hostName = "akatosh";
+  networking.firewall.allowedTCPPorts = [
+    5000
+  ];
+  programs.steam.enable = true;
+  programs.gamescope.enable = true;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   hardware = {
     bluetooth.enable = true; # enables support for Bluetooth
