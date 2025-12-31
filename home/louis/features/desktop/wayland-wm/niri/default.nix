@@ -137,9 +137,9 @@ in
                 "XF86MonBrightnessUp".action = sh "${brightnessctl} set 5%+";
                 "XF86MonBrightnessDown".action = sh "${brightnessctl} set 5%-";
 
-                "Print".action = screenshot;
-                "Mod+Print".action = screenshot-window;
-                "Alt+Print".action = screenshot-window;
+                "Print".action.screenshot = [ ];
+                "Ctrl+Print".action.screenshot-screen = [ ];
+                "Alt+Print".action.screenshot-window = [ ];
               }
               {
                 # Other

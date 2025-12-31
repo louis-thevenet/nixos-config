@@ -15,8 +15,8 @@ in
   };
   services.meilisearch = {
     enable = true;
-    package = pkgs.master.meilisearch;
-    masterKeyEnvironmentFile = config.sops.secrets.meili-search-master-key.path;
+    package = pkgs.meilisearch;
+    masterKeyFile = config.sops.secrets.meili-search-master-key.path;
     listenPort = meili-port;
     dumplessUpgrade = true;
   };
