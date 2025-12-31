@@ -227,16 +227,21 @@
         }
         {
           name = "python";
-          language-servers = [
-            "python-lsp"
-            "gpt"
-            "typos"
-            "wakatime"
-          ];
-          formatter = {
-            command = lib.getExe pkgs.python312Packages.yapf;
-          };
           auto-format = true;
+          formatter = {
+            command = "ruff";
+            args = [
+              "format"
+              "--line-length=80"
+              "-"
+            ];
+          };
+          language-servers = [
+            "ty"
+            "basedpyright"
+            "ruff"
+            "gpt"
+          ];
         }
         {
           name = "rust";
@@ -288,6 +293,12 @@
       ];
 
       language-server = {
+        basedpyright = {
+          command = lib.getExe' pkgs.basedpyright "basedpyright-langserver";
+          config.python.analysis.typeCheckingMode = "basic";
+        };
+        ruff.command = lib.getExe pkgs.ruff;
+        ty.command = lib.getExe pkgs.ty;
         bash-language-server = {
           command = "${pkgs.nodePackages.bash-language-server}/bin/bash-language-server";
           args = [ "start" ];
