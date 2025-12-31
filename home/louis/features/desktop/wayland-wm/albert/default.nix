@@ -20,7 +20,6 @@ in
       pkgs.albert
     ];
   };
-
   xdg.configFile =
     let
       dir = "/home/louis/src/nixos-config/home/louis/features/desktop/wayland-wm/albert";

@@ -29,7 +29,10 @@
   };
   # Keep TTY login password-only for security
   security.pam.services = {
-    login.howdyAuth = lib.mkForce false;
+    login = {
+      howdyAuth = lib.mkForce false;
+      fprintAuth = false;
+    };
     # Enable Howdy for sudo and other graphical/convenience authentications
     sudo.howdyAuth = true;
     polkit-1.howdyAuth = true;
@@ -51,6 +54,7 @@
       enable = true;
       enableUserService = true;
     };
+
     howdy = {
       enable = true;
       package = pkgs.howdy;

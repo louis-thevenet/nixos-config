@@ -338,39 +338,25 @@ in
           ];
           environment = {
             DISPLAY = ":0";
+            NIXOS_OZONE_WL = "1";
           };
-          spawn-at-startup = [
-            {
-              command = [
-                (lib.getExe pkgs.albert)
-              ];
-            }
-            {
-              command = [
-                (lib.getExe pkgs.hypridle)
-              ];
-            }
-            {
-              command = [
-                (lib.getExe' pkgs.swaynotificationcenter "swaync")
-              ];
-            }
-            {
-              command = [
-                (lib.getExe pkgs.xwayland-satellite)
-              ];
-            }
-            {
-              command = [
-                (lib.getExe pkgs.copyq)
-              ];
-            }
-            {
-              command = [
-                (lib.getExe pkgs.waybar)
-              ];
-            }
-          ];
+          spawn-at-startup =
+            let
+              withCommand = command-to-run: {
+                command = [
+                  command-to-run
+                ];
+              };
+            in
+            [
+              (withCommand (lib.getExe pkgs.albert))
+              (withCommand (lib.getExe pkgs.hypridle))
+              (withCommand (lib.getExe' pkgs.swaynotificationcenter "swaync"))
+              (withCommand (lib.getExe pkgs.xwayland-satellite))
+              (withCommand (lib.getExe pkgs.waybar))
+              (withCommand (lib.getExe pkgs.copyq))
+            ];
+
         };
       }
     else
