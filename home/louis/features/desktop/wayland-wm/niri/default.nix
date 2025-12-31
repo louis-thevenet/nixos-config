@@ -89,7 +89,7 @@ let
 
   playerctl = lib.getExe pkgs.playerctl;
   swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
-  terminal = lib.getExe pkgs.alacritty;
+  terminal = config.home.sessionVariables.TERMINAL;
   browser = lib.getExe pkgs.firefox;
   hyprlock = lib.getExe pkgs.hyprlock;
   darkman = "${pkgs.darkman}/bin/darkman";
@@ -357,7 +357,6 @@ in
               (withCommand (lib.getExe pkgs.hypridle))
               (withCommand (lib.getExe' pkgs.swaynotificationcenter "swaync"))
               (withCommand (lib.getExe pkgs.xwayland-satellite))
-              (withCommand (lib.getExe pkgs.waybar))
               (withCommand (lib.getExe pkgs.copyq))
             ];
 

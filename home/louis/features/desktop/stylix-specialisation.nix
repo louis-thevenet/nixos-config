@@ -15,9 +15,9 @@ in
   ];
   stylix = {
     enable = true;
-    polarity = "light";
-    image = lib.mkDefault ./background.png;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/google-light.yaml";
+    polarity = lib.mkDefault "light";
+    image = ../../../../hosts/common/optional/background.png;
+    base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/google-light.yaml";
     cursor = {
       package = pkgs.numix-cursor-theme;
       name = "Numix-Cursor-Light";
@@ -36,13 +36,11 @@ in
   specialisation = mkIf cfg.stylix.enable {
     light.configuration.stylix = {
       polarity = "light";
-      image = ../../../../hosts/common/optional/background.png;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/google-light.yaml";
     };
 
     dark.configuration.stylix = {
       polarity = "dark";
-      image = ../../../../hosts/common/optional/background.png;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/evenok-dark.yaml";
     };
   };
