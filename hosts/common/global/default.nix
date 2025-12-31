@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   imports = [
     ./locale.nix
@@ -20,7 +20,8 @@
   console.keyMap = "fr";
 
   services.libinput.enable = true;
-  security.pam.services.login.howdyAuth = false;
+  # Disable Howdy for TTY login by default (can be overridden per-host)
+  security.pam.services.login.howdyAuth = lib.mkDefault false;
   security.rtkit.enable = true;
   environment.systemPackages = with pkgs; [ vim ];
 
