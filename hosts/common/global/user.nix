@@ -35,8 +35,9 @@ in
       };
     };
   };
+  # TODO: MOVE THIS
   sops.secrets.wakatime_cfg = {
-    sopsFile = ../../secrets.yaml;
+    sopsFile = ../secrets.yaml;
     path = "/home/louis/.wakatime.cfg";
     owner = "louis";
   };

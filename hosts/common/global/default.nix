@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
+    ./user.nix
     ./locale.nix
     ./nix.nix
     ./openssh.nix
