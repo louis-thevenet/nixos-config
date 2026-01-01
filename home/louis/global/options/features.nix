@@ -56,11 +56,14 @@ in
     };
     dev = {
       vscode.enable = mkEnableOption ''
-        Enabe VsCode
+        Enable VsCode
       '';
 
       devTools.enable = mkEnableOption ''
         Enable common Dev Tools
+      '';
+      helixAdvancedConfig.enable = mkEnableOption ''
+        Enable Helix LSP Config
       '';
     };
 

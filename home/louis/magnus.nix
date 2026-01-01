@@ -29,6 +29,7 @@
     dev = {
       vscode.enable = true;
       devTools.enable = true;
+      helixAdvancedConfig.enable = true;
     };
     desktop.wayland = {
       # hyprland = {
