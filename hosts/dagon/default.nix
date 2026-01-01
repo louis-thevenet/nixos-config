@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -18,6 +18,7 @@
     ../common/global/locale.nix
     ../common/users/louis
     ../common/optional/stylix.nix
+    inputs.nixos-hardware.nixosModules.raspberry-pi-4
   ];
   networking.hostName = "dagon";
   programs.fish.enable = true;

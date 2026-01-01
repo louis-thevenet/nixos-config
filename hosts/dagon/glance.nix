@@ -37,7 +37,11 @@ in
     port
   ];
   services = {
-    anubis.instances.glance.settings.TARGET = "http://${host}:${toString port}";
+    anubis.instances.glance.settings = {
+      TARGET = "http://${host}:${toString port}";
+      BIND = "/run/anubis/anubis-glance/anubis-glance.sock";
+      METRICS_BIND = "/run/anubis/anubis-glance/anubis-glance-metrics.sock";
+    };
     nginx.virtualHosts."db.ltvnt.com" = {
       forceSSL = true;
       enableACME = true; # automatic Let's Encrypt

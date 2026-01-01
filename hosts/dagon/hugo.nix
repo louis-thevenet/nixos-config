@@ -1,4 +1,9 @@
-{ inputs, config, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 let
   internal_port = 6451;
 in
@@ -27,7 +32,11 @@ in
     };
     anubis.instances.blog = {
       enable = true;
-      settings.TARGET = "http://[::1]:${toString internal_port}";
+      settings = {
+        TARGET = "http://[::1]:${toString internal_port}";
+        BIND = "/run/anubis/anubis-blog/anubis-blo.sock";
+        METRICS_BIND = "/run/anubis/anubis-blog/anubis-blog-metrics.sock";
+      };
     };
   };
 }
