@@ -9,7 +9,7 @@ let
   cfg = config.home-config.gui;
 in
 {
-  programs.beets = {
+  programs.beets = mkIf cfg.utils.enable {
     enable = true;
     settings = {
       directory = "~/Nextcloud/music";

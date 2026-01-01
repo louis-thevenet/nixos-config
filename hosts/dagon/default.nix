@@ -14,9 +14,9 @@
     ./hugo.nix
     ./firefly-iii.nix
     ../common/global/nix.nix
+    ../common/global/user.nix
     ../common/global/openssh.nix
     ../common/global/locale.nix
-    ../common/users/louis
     ../common/optional/stylix.nix
     inputs.nixos-hardware.nixosModules.raspberry-pi-4
   ];

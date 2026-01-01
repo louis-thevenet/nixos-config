@@ -9,11 +9,16 @@ let
   cfg = config.home-config.dev;
 in
 {
-  home.packages = with pkgs; [
-    vscode-fhs
-  ];
+  home.packages = mkIf cfg.vscode.enable (
+    with pkgs;
+    [
+      # When I need copilot
+      vscode-fhs
+    ]
+  );
   programs.vscode = mkIf cfg.vscode.enable {
     enable = true;
+    # For rust debugger to work
     package = pkgs.vscodium-fhs;
     profiles.default = {
       enableExtensionUpdateCheck = true;
@@ -22,21 +27,13 @@ in
         mkhl.direnv
         jnoortheen.nix-ide
         rust-lang.rust-analyzer
-        # nvarner.typst-lsp
         tomoki1207.pdf
         vadimcn.vscode-lldb
-        #redhat.java
-        #vscjava.vscode-gradle
-        #vscjava.vscode-java-debug
-        #ms-toolsai.jupyter
-        #alefragnani.bookmarks
         oderwat.indent-rainbow
         pkief.material-icon-theme
         christian-kohler.path-intellisense
-        # llvm-vs-code-extensions.vscode-clangd
         eamodio.gitlens
         wakatime.vscode-wakatime
-        # ocamllabs.ocaml-platform
       ];
 
       keybindings = [
