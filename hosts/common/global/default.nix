@@ -4,6 +4,7 @@
     ./user.nix
     ./locale.nix
     ./nix.nix
+    ./nh.nix
     ./openssh.nix
   ];
   nixpkgs = {

@@ -12,14 +12,12 @@
       PasswordAuthentication = false;
       X11Forwarding = false;
     };
-
     hostKeys = [
       {
         inherit (config.sops.secrets.ssh-host-key) path;
         type = "ed25519";
       }
     ];
-
     extraConfig = ''
       AllowTcpForwarding yes
       AllowAgentForwarding yes
