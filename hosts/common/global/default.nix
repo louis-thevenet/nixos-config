@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, outputs, ... }:
 {
   imports = [
     ./user.nix
@@ -8,12 +8,11 @@
     ./openssh.nix
   ];
   nixpkgs = {
-    overlays = [ ];
+    overlays = builtins.attrValues outputs.overlays;
     config = {
       allowUnfree = true;
     };
   };
-
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 

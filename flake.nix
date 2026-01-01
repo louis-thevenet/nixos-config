@@ -4,7 +4,7 @@
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-howdy.url = "github:fufexan/nixpkgs/howdy";
-
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,11 +42,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    schizofox = {
-      url = "github:schizofox/schizofox/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     wakatime-lsp = {
       url = "github:mrnossiom/wakatime-lsp";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -57,6 +52,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     blog.url = "git+file:/home/louis/src/blog";
+
+    helix = {
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      url = "github:helix-editor/helix";
+    };
   };
 
   outputs =
@@ -65,7 +65,7 @@
       nixpkgs,
       home-manager,
       ...
-    }:
+    }@inputs:
     let
       forEachSystem = nixpkgs.lib.genAttrs [
         "aarch64-linux"
@@ -194,6 +194,7 @@
       #       nixos-hardware.nixosModules.raspberry-pi-4
       #     ];
       #   };
+      overlays = import ./overlays { inherit inputs; };
       nixosConfigurations = {
         akatosh = mkNixosNew "akatosh" "x86_64-linux";
         magnus = mkNixosNew "magnus" "x86_64-linux";
