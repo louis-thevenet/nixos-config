@@ -10,10 +10,8 @@
     ../common/global
     ../common/users/louis
     ../common/optional/services.nix
-    ../common/optional/airpods-battery-fetcher.nix
     ../common/optional/stylix.nix
     ../common/optional/niri.nix
-    ../common/optional/ollama.nix
     ../common/optional/kanata.nix
     ../common/optional/xdg.nix
     ../common/optional/virt.nix

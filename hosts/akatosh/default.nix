@@ -40,6 +40,7 @@
 
     )
   ];
+  security.pam.services.login.howdyAuth = false;
   services = {
     udisks2.enable = true;
     asusd = {
