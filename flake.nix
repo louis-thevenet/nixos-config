@@ -80,20 +80,12 @@
             with nixpkgs.legacyPackages.${system};
             with pkgs;
             [
-              nil
-              statix
               python311Packages.nix-prefetch-github
-              nixos-generators
-              # nix-du
-              graphviz
               sops
               age
-              deadnix
               just
             ]
-            ++ [
-              pkgs.home-manager
-            ];
+            ++ [ pkgs.home-manager ];
         };
       mkNixosNew =
         host: system:
