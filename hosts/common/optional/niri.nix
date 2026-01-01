@@ -4,7 +4,6 @@
   ...
 }:
 {
-
   imports = [
     inputs.niri.nixosModules.niri
   ];
@@ -21,7 +20,7 @@
     package = pkgs.niri-unstable;
   };
   programs.xwayland.enable = true;
-  environment.systemPackages = [ pkgs.xwayland-satellite ];
+  environment.systemPackages = [ pkgs.xwayland-satellite ]; # Needed in $PATH
   services.xserver.exportConfiguration = true;
   environment.sessionVariables = {
 
