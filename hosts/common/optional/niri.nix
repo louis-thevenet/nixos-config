@@ -21,8 +21,11 @@
     package = pkgs.niri-unstable;
   };
   programs.xwayland.enable = true;
+  environment.systemPackages = [ pkgs.xwayland-satellite ];
   services.xserver.exportConfiguration = true;
   environment.sessionVariables = {
+
+    DISPLAY = ":0";
     NIXOS_OZONE_WL = "1";
     SDL_VIDEODRIVER = "wayland";
     _JAVA_AWT_WM_NONREPARENTING = "1";
