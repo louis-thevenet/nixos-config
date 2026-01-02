@@ -30,7 +30,7 @@
     };
     nextcloud = {
       enable = true;
-      package = pkgs.nextcloud31;
+      package = pkgs.nextcloud32;
 
       hostName = "nc.ltvnt.com";
       maxUploadSize = "16G";
