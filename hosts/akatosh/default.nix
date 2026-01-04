@@ -11,6 +11,8 @@ _: {
     ../common/optional/kanata.nix
     ../common/optional/xdg.nix
     ../common/optional/stylix.nix
+    ../common/optional/nix-index.nix
+
   ];
   networking.hostName = "akatosh";
   networking.firewall.allowedTCPPorts = [
