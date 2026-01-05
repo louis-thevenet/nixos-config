@@ -16,9 +16,9 @@
       in
       {
         tmn.body = "${tmux} new-session -A -s $(${basename} $(${pwd}))";
-        tma.body = "${tmux} attach -t $(${tmux} list-sessions | ${tv} --preview 'tmux list-windows -t {0}' | ${cut} -d':' -f1)";
+        tma.body = "${tmux} attach -t $(${tmux} list-sessions | ${tv} --preview-command 'tmux list-windows -t {0}' | ${cut} -d':' -f1)";
         tmw.body = ''
-          set session (${tmux} list-sessions | ${tv} --preview 'tmux list-windows -t {0}' | ${cut} -d':' -f1)
+          set session (${tmux} list-sessions | ${tv} --preview-command 'tmux list-windows -t {0}' | ${cut} -d':' -f1)
           ${tmux} attach -t $session:(${tmux} list-windows -t $session | ${tv} | ${cut} -d':' -f1)
         '';
         rerun = ''
