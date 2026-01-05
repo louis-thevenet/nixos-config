@@ -106,7 +106,10 @@ in
       {
         niri.settings = {
           input = {
-            keyboard.xkb.layout = "fr,fr";
+            keyboard = {
+              xkb.layout = "fr,fr";
+              numlock = true;
+            };
             focus-follows-mouse.enable = true;
           };
 
