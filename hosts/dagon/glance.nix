@@ -134,7 +134,7 @@ in
                         links = [
                           {
                             title = "Moodle";
-                            url = "https://moodle-n7.inp-toulouse.fr/course/index.php?categoryid=705";
+                            url = "https://moodle.inp-toulouse.fr/login/index.php";
                             icon = "si:moodle";
                           }
                           {
