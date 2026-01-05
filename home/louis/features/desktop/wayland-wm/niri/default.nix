@@ -249,8 +249,8 @@ in
           layout = {
             gaps = 8;
             struts = {
-              top = -8; # removes gap
-              bottom = -8;
+              top = 0;
+              bottom = 0;
               left = 64;
               right = 64;
             };
@@ -266,6 +266,10 @@ in
             default-column-width = {
               proportion = 1.0 / 2.0;
             };
+            preset-window-heights = [
+              { proportion = 1.0 / 2.0; }
+              { proportion = 1.0; }
+            ];
             border = {
               enable = true;
               width = 6;
