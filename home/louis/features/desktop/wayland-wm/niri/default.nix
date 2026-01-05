@@ -342,6 +342,7 @@ in
                 }
               ];
               border.enable = false;
+              focus-ring.enable = false;
             }
           ];
           environment = {
