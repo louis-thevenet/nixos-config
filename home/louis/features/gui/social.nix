@@ -13,6 +13,7 @@ in
     with pkgs;
     [
       beeper
+      element-desktop
       discord
     ]
   );
