@@ -13,6 +13,7 @@
     ./adguardhome.nix
     ./hugo.nix
     ./firefly-iii.nix
+    ./matrix-conduit.nix
     ../common/global/nix.nix
     ../common/global/user.nix
     ../common/global/openssh.nix
