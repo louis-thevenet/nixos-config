@@ -12,7 +12,7 @@ in
       settings.global = {
         inherit address port server_name;
         allow_encryption = true;
-        allow_federation = false;
+        allow_federation = true;
         allow_registration = true;
         database_backend = "rocksdb";
         trusted_servers = [ "matrix.org" ];
