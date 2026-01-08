@@ -9,8 +9,4 @@ remote-switch-dagon ADDR PORT:
     home-manager build --flake .#louis@dagon
     # Copy HM closure
     NIX_SSHOPTS="-p {{PORT}}" nix copy --to ssh://{{ADDR}} ./result
-    # Copy NixOS config files (exclude git ignored files like ./result)
-    rsync --filter=':- .gitignore' --info=ALL -e 'ssh -p {{PORT}}' --recursive $NH_FLAKE {{ADDR}}:tmp_nixos_config
-    # Deploy HM config
-    ssh {{ADDR}} -p {{PORT}} "cd ~/tmp_nixos_config/nixos-config && nix run nixpkgs#home-manager -- build --flake .#louis@dagon"
-    ssh {{ADDR}} -p {{PORT}} "rm -rf tmp_nixos_config"
+    ssh {{ADDR}} -p {{PORT}} "$(readlink -f ./result)/activate"
