@@ -1,4 +1,9 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  outputs,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
@@ -15,6 +20,7 @@
     ./firefly-iii.nix
     ./matrix-conduit.nix
     ../common/global/nix.nix
+    ../common/global/nixpkgs.nix
     ../common/global/user.nix
     ../common/global/openssh.nix
     ../common/global/locale.nix
