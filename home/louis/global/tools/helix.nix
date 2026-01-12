@@ -379,6 +379,9 @@ in
                   "clippy::pedantic"
                   "-A"
                   "clippy::pedantic::missing_errors_doc"
+                  # Bevy uses lots of these
+                  "-A"
+                  "clippy::needless_pass_by_value"
                 ];
               };
             };
