@@ -361,6 +361,8 @@ in
               };
             in
             [
+              (withCommand (lib.getExe pkgs.discord))
+              (withCommand (lib.getExe pkgs.element-desktop))
               (withCommand (lib.getExe pkgs.albert))
               (withCommand (lib.getExe pkgs.hypridle))
               (withCommand (lib.getExe' pkgs.swaynotificationcenter "swaync"))
