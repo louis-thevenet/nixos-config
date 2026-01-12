@@ -10,4 +10,6 @@
     };
     helix-latest = inputs.helix.packages.${prev.system}.helix;
   };
+
+  additions = final: _prev: import ../pkgs { pkgs = final; };
 }

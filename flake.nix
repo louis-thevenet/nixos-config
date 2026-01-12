@@ -186,6 +186,8 @@
       #       nixos-hardware.nixosModules.raspberry-pi-4
       #     ];
       #   };
+      packages = forEachPkgs (pkgs: import ./pkgs { inherit pkgs; });
+      nixosModules = import ./modules/nixos;
       overlays = import ./overlays { inherit inputs; };
       nixosConfigurations = {
         akatosh = mkNixosNew "akatosh" "x86_64-linux";
