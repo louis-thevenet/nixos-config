@@ -91,20 +91,30 @@ in
           "!" = "no_op";
           "ret" = "goto_word";
           backspace = {
-            # Vault-tasks stuff t = "@i- [ ] today ";
-            n = "@i- [ ] ";
-            # Write current time
-            d = ":insert-output ${lib.getExe' pkgs.coreutils "date"} +'## %%H:%%M:%%S'";
-            # Write current date and time
-            D = [
-              '':insert-output echo "# $(${lib.getExe' pkgs.coreutils "date"} +'%%A, %%d %%B %%Y' | ${lib.getExe pkgs.gnused} -e 's/./\u&/')"''
-              "open_below"
-              ":insert-output ${lib.getExe' pkgs.coreutils "date"} +'## %%H:%%M:%%S'"
-            ];
-            r = [
-              ":insert-output vault-tasks --vault-path ./ fix"
-              ":reload"
-            ];
+            # Rust stuff
+            r = {
+              # Run package open file belongs to
+              r = [
+                ":sh bash -c 'file=\"%{buffer_name}\"; while [ \"$file\" != \"/\" ] && [ ! -f \"$file/Cargo.toml\" ]; do file=$(dirname \"$file\"); done; if [ -f \"$file/Cargo.toml\" ]; then cd \"$file\" && cargo run; else echo \"No Cargo.toml found\"; fi'"
+              ];
+            };
+
+            v = {
+              # Vault-tasks stuff t = "@i- [ ] today ";
+              n = "@i- [ ] ";
+              # Write current time
+              d = ":insert-output ${lib.getExe' pkgs.coreutils "date"} +'## %%H:%%M:%%S'";
+              # Write current date and time
+              D = [
+                '':insert-output echo "# $(${lib.getExe' pkgs.coreutils "date"} +'%%A, %%d %%B %%Y' | ${lib.getExe pkgs.gnused} -e 's/./\u&/')"''
+                "open_below"
+                ":insert-output ${lib.getExe' pkgs.coreutils "date"} +'## %%H:%%M:%%S'"
+              ];
+              r = [
+                ":insert-output vault-tasks --vault-path ./ fix"
+                ":reload"
+              ];
+            };
             y = ":yank-diagnostic";
           };
           x = [ "extend_line_below" ];
