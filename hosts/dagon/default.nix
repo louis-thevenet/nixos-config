@@ -28,6 +28,18 @@
     inputs.nixos-hardware.nixosModules.raspberry-pi-4
   ];
   networking.hostName = "dagon";
+  networking.hosts = {
+    "192.168.1.37" = [
+      "db.ltvnt.com"
+      "nc.ltvnt.com"
+      "blog.ltvnt.com"
+      "jellyfin.ltvnt.com"
+      "karakeep.ltvnt.com"
+      "firefly.ltvnt.com"
+      "matrix.ltvnt.com"
+      "stickers.ltvnt.com"
+    ];
+  };
   programs.fish.enable = true;
   programs.dconf.enable = true;
   console.keyMap = "fr";
