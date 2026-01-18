@@ -13,7 +13,6 @@
     ../common/optional/niri.nix
     ../common/optional/kanata.nix
     ../common/optional/xdg.nix
-    ../common/optional/virt.nix
     ../common/optional/nix-index.nix
   ];
   networking.hostName = "magnus";
