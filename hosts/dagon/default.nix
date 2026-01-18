@@ -32,26 +32,6 @@
   programs.dconf.enable = true;
   console.keyMap = "fr";
 
-  environment.etc."NetworkManager/dispatcher.d/10-disable-wifi-when-ethernet".source =
-    pkgs.writeScript "disable-wifi-when-ethernet" ''
-      #!${pkgs.bash}/bin/bash
-      interface="$1"
-      status="$2"
-
-      if [[ "$interface" == "end0" ]]; then
-        case "$status" in
-          up)
-            # Ethernet => no wifi
-            ${pkgs.networkmanager}/bin/nmcli radio wifi off
-            ;;
-          down)
-            # No ethernet => wifi
-            ${pkgs.networkmanager}/bin/nmcli radio wifi on
-            ;;
-        esac
-      fi
-    '';
-
   security.rtkit.enable = true;
   networking = {
     networkmanager.enable = true;
