@@ -299,6 +299,7 @@ in
               gaps-between-tabs = 10;
               place-within-column = true;
             };
+            background-color = "#000000";
           };
           overview = {
             backdrop-color = "#000000";
@@ -312,7 +313,6 @@ in
               inherit (m) name;
               value = with m; {
                 enable = enabled;
-                background-color = "#000000";
                 mode = {
                   inherit width;
                   inherit height;
