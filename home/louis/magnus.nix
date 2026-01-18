@@ -6,11 +6,7 @@
   ];
 
   home-config = {
-    cli = {
-      commonTools.enable = true;
-      VPNC.enable = false;
-      nvTop.enable = false;
-    };
+    cli.commonTools.enable = true;
     gui = {
       kitty.enable = true;
       firefox = {
@@ -24,31 +20,25 @@
       };
       social.enable = true;
       utils.enable = true;
-      ai.lmstudio.enable = true;
     };
     dev = {
       vscode.enable = true;
       devTools.enable = true;
       helixAdvancedConfig.enable = true;
     };
-    desktop.wayland = {
-      # hyprland = {
-      #   enable = true;
-      #   nvidia = true;
-      # };
-      enable = true;
-      niri = {
+    desktop = {
+      stylix.enable = true;
+      wayland = {
         enable = true;
-        brokenAudioMuteKey = true;
+        niri = {
+          enable = true;
+          brokenAudioMuteKey = true;
+        };
       };
     };
-    desktop.stylix.enable = true;
-    misc = {
-      nextcloud.enable = true;
-    };
-    virtualization.enable = true;
-  };
+    misc.nextcloud.enable = true;
 
+  };
   monitors = [
     {
       name = "HDMI-A-1";
