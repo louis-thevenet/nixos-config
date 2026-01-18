@@ -23,8 +23,10 @@ _: {
         devices = [
           # Replace the paths below with the appropriate device paths for your setup.
           # Use `ls /dev/input/by-path/` to find your keyboard devices.
-          "/dev/input/by-path/pci-0000:00:14.0-usb-0:11:1.0-event-kbd"
-          "/dev/input/by-path/pci-0000:00:14.0-usb-0:11:1.2-event-kbd"
+          "/dev/input/by-path/pci-0000:00:14.0-usb-0:4:1.0-event-kbd"
+          "/dev/input/by-path/pci-0000:00:14.0-usb-0:4:1.2-event-kbd"
+          "/dev/input/by-path/pci-0000:00:14.0-usbv2-0:4:1.0-event-kbd"
+          "/dev/input/by-path/pci-0000:00:14.0-usbv2-0:4:1.2-event-kbd"
           "/dev/input/by-path/pci-0000:65:00.0-usbv2-0:1:1.0-event-kbd"
           "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
         ];
