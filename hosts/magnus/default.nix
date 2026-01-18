@@ -16,6 +16,18 @@
     ../common/optional/nix-index.nix
   ];
   networking.hostName = "magnus";
+  networking.hosts = {
+    "192.168.1.37" = [
+      "db.ltvnt.com"
+      "nc.ltvnt.com"
+      "blog.ltvnt.com"
+      "jellyfin.ltvnt.com"
+      "karakeep.ltvnt.com"
+      "firefly.ltvnt.com"
+      "matrix.ltvnt.com"
+      "stickers.ltvnt.com"
+    ];
+  };
   services.usbmuxd.enable = true;
 
   environment.systemPackages = with pkgs; [
