@@ -13,7 +13,7 @@ in
         inherit address port server_name;
         allow_encryption = true;
         allow_federation = true;
-        allow_registration = true;
+        allow_registration = false;
         database_backend = "rocksdb";
         trusted_servers = [ "matrix.org" ];
       };
