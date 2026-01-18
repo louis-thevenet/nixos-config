@@ -3,6 +3,9 @@
   inputs,
   ...
 }:
+let
+  xwayland-satellite-package = pkgs.unstable.xwayland-satellite;
+in
 {
   imports = [
     inputs.niri.nixosModules.niri
@@ -19,8 +22,11 @@
     enable = true;
     package = pkgs.niri-unstable;
   };
-  programs.xwayland.enable = true;
-  environment.systemPackages = [ pkgs.xwayland-satellite ]; # Needed in $PATH
+  programs.xwayland = {
+    enable = true;
+    package = xwayland-satellite-package;
+  };
+  environment.systemPackages = [ xwayland-satellite-package ]; # Needed in $PATH
   services.xserver.exportConfiguration = true;
   environment.sessionVariables = {
 
