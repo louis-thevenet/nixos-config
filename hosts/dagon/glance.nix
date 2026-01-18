@@ -186,6 +186,10 @@ in
                         title = "Jellyfin";
                         url = "https://jellyfin.ltvnt.com";
                       }
+                      {
+                        title = "Matrix";
+                        url = "https://matrix.ltvnt.com";
+                      }
                     ];
                   }
                 ];
