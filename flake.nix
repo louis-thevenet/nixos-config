@@ -56,112 +56,112 @@
     helix = {
       inputs.nixpkgs.follows = "nixpkgs-unstable";
       url = "github:helix-editor/helix";
-      winapps = {
-        url = "github:winapps-org/winapps";
-        inputs.nixpkgs.follows = "nixpkgs";
+    };
+    winapps = {
+      url = "github:winapps-org/winapps";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
+    let
+      forEachSystem = nixpkgs.lib.genAttrs [
+        "aarch64-linux"
+        "x86_64-linux"
+      ];
+      forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
+
+      mkShell =
+        system:
+        nixpkgs.legacyPackages.${system}.mkShell {
+          packages =
+            with nixpkgs.legacyPackages.${system};
+            with pkgs;
+            [
+              python311Packages.nix-prefetch-github
+              sops
+              age
+              just
+            ]
+            ++ [ pkgs.home-manager ];
+        };
+      mkNixosNew =
+        host: system:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit (self) inputs outputs; };
+          modules = [
+            ./hosts/${host}
+          ];
+        };
+
+      mkHomeNew =
+        host: system:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          extraSpecialArgs = { inherit (self) inputs outputs; };
+          modules = [
+            ./home/louis/${host}.nix
+          ];
+        };
+      # mkNixos =
+      #   user: host: system: specific-modules:
+      #   nixpkgs.lib.nixosSystem {
+      #     inherit system;
+      #     specialArgs = {
+      #       inherit (self) inputs outputs;
+      #     };
+      #     modules = [
+      #       ./hosts/${host}
+      #       home-manager.nixosModules.home-manager
+      #       {
+      #         home-manager = {
+      #           users.${user} = import ./home/${user}/${host}.nix;
+      #           backupFileExtension = "backup_hm";
+      #           extraSpecialArgs = {
+      #             inherit (self) inputs outputs;
+      #           };
+      #           sharedModules = [
+      #             sops-nix.homeManagerModules.sops
+      #           ];
+      #         };
+      #       }
+      #       stylix.nixosModules.stylix
+      #       nix-index-database.nixosModules.nix-index
+      #       {
+      #         programs.nix-index-database.comma.enable = true;
+      #         programs.nix-index.enable = true;
+      #       }
+      #     ]
+      #     ++ specific-modules;
+      #   };
+    in
+    {
+      nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
+      formatter = forEachPkgs (pkgs: pkgs.nixfmt-rfc-style);
+
+      devShells."x86_64-linux".default = mkShell "x86_64-linux";
+      devShells."aarch64-linux".default = mkShell "aarch64-linux";
+
+      packages = forEachPkgs (pkgs: import ./pkgs { inherit pkgs; });
+      nixosModules = import ./modules/nixos;
+      overlays = import ./overlays { inherit inputs; };
+      nixosConfigurations = {
+        akatosh = mkNixosNew "akatosh" "x86_64-linux";
+        magnus = mkNixosNew "magnus" "x86_64-linux";
+        dagon = mkNixosNew "dagon" "aarch64-linux";
+      };
+
+      homeConfigurations = {
+        "louis@akatosh" = mkHomeNew "akatosh" "x86_64-linux";
+        "louis@magnus" = mkHomeNew "magnus" "x86_64-linux";
+        "louis@dagon" = mkHomeNew "dagon" "aarch64-linux";
       };
     };
-
-    outputs =
-      {
-        self,
-        nixpkgs,
-        home-manager,
-        ...
-      }@inputs:
-      let
-        forEachSystem = nixpkgs.lib.genAttrs [
-          "aarch64-linux"
-          "x86_64-linux"
-        ];
-        forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
-
-        mkShell =
-          system:
-          nixpkgs.legacyPackages.${system}.mkShell {
-            packages =
-              with nixpkgs.legacyPackages.${system};
-              with pkgs;
-              [
-                python311Packages.nix-prefetch-github
-                sops
-                age
-                just
-              ]
-              ++ [ pkgs.home-manager ];
-          };
-        mkNixosNew =
-          host: system:
-          nixpkgs.lib.nixosSystem {
-            inherit system;
-            specialArgs = { inherit (self) inputs outputs; };
-            modules = [
-              ./hosts/${host}
-            ];
-          };
-
-        mkHomeNew =
-          host: system:
-          home-manager.lib.homeManagerConfiguration {
-            pkgs = nixpkgs.legacyPackages.${system};
-            extraSpecialArgs = { inherit (self) inputs outputs; };
-            modules = [
-              ./home/louis/${host}.nix
-            ];
-          };
-        # mkNixos =
-        #   user: host: system: specific-modules:
-        #   nixpkgs.lib.nixosSystem {
-        #     inherit system;
-        #     specialArgs = {
-        #       inherit (self) inputs outputs;
-        #     };
-        #     modules = [
-        #       ./hosts/${host}
-        #       home-manager.nixosModules.home-manager
-        #       {
-        #         home-manager = {
-        #           users.${user} = import ./home/${user}/${host}.nix;
-        #           backupFileExtension = "backup_hm";
-        #           extraSpecialArgs = {
-        #             inherit (self) inputs outputs;
-        #           };
-        #           sharedModules = [
-        #             sops-nix.homeManagerModules.sops
-        #           ];
-        #         };
-        #       }
-        #       stylix.nixosModules.stylix
-        #       nix-index-database.nixosModules.nix-index
-        #       {
-        #         programs.nix-index-database.comma.enable = true;
-        #         programs.nix-index.enable = true;
-        #       }
-        #     ]
-        #     ++ specific-modules;
-        #   };
-      in
-      {
-        nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
-        formatter = forEachPkgs (pkgs: pkgs.nixfmt-rfc-style);
-
-        devShells."x86_64-linux".default = mkShell "x86_64-linux";
-        devShells."aarch64-linux".default = mkShell "aarch64-linux";
-
-        packages = forEachPkgs (pkgs: import ./pkgs { inherit pkgs; });
-        nixosModules = import ./modules/nixos;
-        overlays = import ./overlays { inherit inputs; };
-        nixosConfigurations = {
-          akatosh = mkNixosNew "akatosh" "x86_64-linux";
-          magnus = mkNixosNew "magnus" "x86_64-linux";
-          dagon = mkNixosNew "dagon" "aarch64-linux";
-        };
-
-        homeConfigurations = {
-          "louis@akatosh" = mkHomeNew "akatosh" "x86_64-linux";
-          "louis@magnus" = mkHomeNew "magnus" "x86_64-linux";
-          "louis@dagon" = mkHomeNew "dagon" "aarch64-linux";
-        };
-      };
-  };
 }

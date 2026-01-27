@@ -14,6 +14,8 @@
     ../common/optional/kanata.nix
     ../common/optional/xdg.nix
     ../common/optional/nix-index.nix
+    ../common/optional/winapps.nix
+    ../common/optional/virt.nix
   ];
   networking.hostName = "magnus";
   networking.hosts = {

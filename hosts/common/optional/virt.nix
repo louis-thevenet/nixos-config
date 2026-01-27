@@ -1,15 +1,15 @@
 _: {
   virtualisation = {
-    libvirtd.enable = true;
+    # libvirtd.enable = true;
     # podman = {
     #   enable = true;
     #   dockerCompat = true;
     # };
-    virtualbox.host = {
-      enable = true;
-      enableExtensionPack = true;
-    };
+    # virtualbox.host = {
+    #   enable = true;
+    #   enableExtensionPack = true;
+    # };
     docker.enable = true;
   };
-  users.users.louis.extraGroups = [ "libvirtd" ];
+  users.users.louis.extraGroups = [ "docker" ];
 }
