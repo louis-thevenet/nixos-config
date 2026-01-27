@@ -70,15 +70,10 @@
         bat = lib.getExe pkgs.bat;
         broot = lib.getExe pkgs.broot;
         dust = lib.getExe pkgs.dust;
-        nh = lib.getExe pkgs.nh;
         git = lib.getExe pkgs.git;
       in
       {
         which = "readlink -f (type -p $argv)";
-        rebuild-dagon = "cd /home/louis/src/nixos-config && nixos-rebuild switch --flake .#dagon --target-host louis@dagon --use-remote-sudo --impure";
-        rebuild-sys = "${nh} os switch /home/louis/src/nixos-config";
-        update-sys = "${nh} os switch /home/louis/src/nixos-config --update";
-
         vim = helix;
 
         ls = "${eza} --long --header --binary --no-permissions --no-user --icons=auto";
