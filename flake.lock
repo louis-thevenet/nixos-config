@@ -619,6 +619,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "sops-nix": "sops-nix",
         "stylix": "stylix",
+        "vault-tasks": "vault-tasks",
         "wakatime-lsp": "wakatime-lsp",
         "winapps": "winapps"
       }
@@ -861,6 +862,22 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "vault-tasks": {
+      "locked": {
+        "lastModified": 1767626150,
+        "narHash": "sha256-OwI2BASButs+6VIe7zMan87NbM7Cp2mjtBMW0M4USMI=",
+        "owner": "louis-thevenet",
+        "repo": "nixpkgs",
+        "rev": "95f74db283f19dc28bc995de8dc6d402844de386",
+        "type": "github"
+      },
+      "original": {
+        "owner": "louis-thevenet",
+        "ref": "vault-tasks-update",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },

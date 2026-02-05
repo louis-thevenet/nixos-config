@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -25,7 +26,6 @@ in
       see-cat
       rsync
       smartcat
-      vault-tasks
       spotify-player
       rbw
       vhs
@@ -34,6 +34,12 @@ in
       todoist
       fd
     ]
+    ++ (
+      let
+        pkgs-vault-tasks = import inputs.vault-tasks { inherit (pkgs) system; };
+      in
+      [ pkgs-vault-tasks.vault-tasks ]
+    )
   );
   programs = mkIf cfg.commonTools.enable {
     nix-search-tv = {

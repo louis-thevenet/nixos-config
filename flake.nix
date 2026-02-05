@@ -61,6 +61,7 @@
       url = "github:winapps-org/winapps";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    vault-tasks.url = "github:louis-thevenet/nixpkgs/vault-tasks-update";
   };
 
   outputs =
@@ -110,37 +111,6 @@
             ./home/louis/${host}.nix
           ];
         };
-      # mkNixos =
-      #   user: host: system: specific-modules:
-      #   nixpkgs.lib.nixosSystem {
-      #     inherit system;
-      #     specialArgs = {
-      #       inherit (self) inputs outputs;
-      #     };
-      #     modules = [
-      #       ./hosts/${host}
-      #       home-manager.nixosModules.home-manager
-      #       {
-      #         home-manager = {
-      #           users.${user} = import ./home/${user}/${host}.nix;
-      #           backupFileExtension = "backup_hm";
-      #           extraSpecialArgs = {
-      #             inherit (self) inputs outputs;
-      #           };
-      #           sharedModules = [
-      #             sops-nix.homeManagerModules.sops
-      #           ];
-      #         };
-      #       }
-      #       stylix.nixosModules.stylix
-      #       nix-index-database.nixosModules.nix-index
-      #       {
-      #         programs.nix-index-database.comma.enable = true;
-      #         programs.nix-index.enable = true;
-      #       }
-      #     ]
-      #     ++ specific-modules;
-      #   };
     in
     {
       nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
