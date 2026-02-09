@@ -18,7 +18,10 @@
         };
         homepageUrl = "db.ltvnt.com";
       };
-      social.enable = true;
+      social = {
+        enable = true;
+        noise_reduction.enable = true;
+      };
       utils.enable = true;
     };
     dev = {

@@ -45,10 +45,15 @@ in
         };
       };
 
-      social.enable = mkEnableOption ''
-        Enable Social (Discord, Beeper)
-      '';
+      social = {
+        enable = mkEnableOption ''
+          Enable Social (Discord, Beeper)
+        '';
 
+        noise_reduction.enable = mkEnableOption ''
+          Enable Noise Reduction for microphone (tweaked to my BT headset and keyboard)
+        '';
+      };
       utils.enable = mkEnableOption ''
         Enable common GUI Tools
       '';

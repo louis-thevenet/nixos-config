@@ -1,4 +1,5 @@
 _: {
+  programs.dconf.enable = true;
   services = {
     printing.enable = true;
     pulseaudio.enable = false;
