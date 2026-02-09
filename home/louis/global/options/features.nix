@@ -19,7 +19,7 @@ in
           Enable Firefox
         '';
         searxngInstance = {
-          local = mkEnableOption ''Self-host Searxng or not'';
+          local = mkEnableOption "Self-host Searxng or not";
           url = mkOption {
             type = lib.types.str;
             default = "https://searxng.brihx.fr";
@@ -75,10 +75,10 @@ in
     desktop = {
       wayland = {
 
-        enable = mkEnableOption ''Enable Wayland Window Manager'';
+        enable = mkEnableOption "Enable Wayland Window Manager";
         niri = {
-          enable = mkEnableOption ''Enable Niri'';
-          brokenAudioMuteKey = mkEnableOption ''How did I even break this'';
+          enable = mkEnableOption "Enable Niri";
+          brokenAudioMuteKey = mkEnableOption "How did I even break this";
         };
 
         hypridleConfig = {
