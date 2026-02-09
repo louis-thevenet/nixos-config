@@ -17,6 +17,8 @@ in
       discord
     ]
   );
+
+  systemd.user.services.easyeffects.Install.WantedBy = lib.mkForce [ ];
   services.easyeffects = mkIf cfg-social.social.noise_reduction.enable {
     enable = true;
     preset = "noise_reduction";
