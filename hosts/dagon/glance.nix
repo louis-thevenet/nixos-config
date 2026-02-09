@@ -615,9 +615,14 @@ in
                         symbol-link = "https://finance.yahoo.com/quote/CW8.PA";
                       }
                       {
-                        symbol = "PCEU.PA";
-                        name = "Amundi MSCI Europe UCITS ETF C";
-                        symbol-link = "https://finance.yahoo.com/quote/PCEU.PA";
+                        symbol = "PAEEM.PA";
+                        name = "MSCI Emerging";
+                        symbol-link = "https://finance.yahoo.com/quote/PAEEM.PA";
+                      }
+                      {
+                        symbol = "gold";
+                        name = "Gold";
+                        symbol-link = "https://finance.yahoo.com/sectors/basic-materials/gold/";
                       }
                     ];
                   }
