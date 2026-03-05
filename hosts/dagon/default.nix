@@ -29,7 +29,7 @@
   ];
   networking.hostName = "dagon";
   networking.hosts = {
-    "192.168.1.37" = [
+    "192.168.1.77" = [
       "db.ltvnt.com"
       "nc.ltvnt.com"
       "blog.ltvnt.com"

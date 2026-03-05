@@ -14,12 +14,10 @@
     ../common/optional/kanata.nix
     ../common/optional/xdg.nix
     ../common/optional/nix-index.nix
-    ../common/optional/winapps.nix
-    ../common/optional/virt.nix
   ];
   networking.hostName = "magnus";
   networking.hosts = {
-    "192.168.1.37" = [
+    "192.168.1.77" = [
       "db.ltvnt.com"
       "nc.ltvnt.com"
       "blog.ltvnt.com"
