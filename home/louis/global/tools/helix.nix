@@ -135,7 +135,6 @@ in
               name = "bash";
               language-servers = [
                 "bash-language-server"
-                "gpt"
                 "typos"
                 "wakatime"
               ];
@@ -152,7 +151,6 @@ in
               name = "c";
               language-servers = [
                 "clangd"
-                "gpt"
                 "typos"
                 "wakatime"
               ];
@@ -165,7 +163,6 @@ in
               name = "fish";
               language-servers = [
                 "fish"
-                "gpt"
                 "typos"
                 "wakatime"
               ];
@@ -174,7 +171,6 @@ in
               name = "java";
               language-servers = [
                 "jdtls"
-                "gpt"
                 "typos"
                 "wakatime"
               ];
@@ -184,7 +180,6 @@ in
               name = "javascript";
               language-servers = [
                 "typescript-language-server"
-                "gpt"
                 "typos"
                 "wakatime"
               ];
@@ -195,7 +190,6 @@ in
               language-servers = [
                 "ltex-ls"
                 "markdown-oxide"
-                "gpt"
                 "typos"
                 "wakatime"
               ];
@@ -212,7 +206,6 @@ in
               name = "nix";
               language-servers = [
                 "nixd"
-                "gpt"
                 "typos"
                 "wakatime"
               ];
@@ -227,7 +220,6 @@ in
               ];
               language-servers = [
                 "ocaml-lsp"
-                "gpt"
                 "typos"
                 "wakatime"
               ];
@@ -256,14 +248,12 @@ in
                 "ty"
                 "basedpyright"
                 "ruff"
-                "gpt"
               ];
             }
             {
               name = "rust";
               language-servers = [
                 "rust-analyzer"
-                "gpt"
                 "typos"
                 "wakatime"
               ];
@@ -271,7 +261,6 @@ in
             {
               name = "cuda";
               language-servers = [
-                "gpt"
                 "typos"
                 "wakatime"
               ];
@@ -280,7 +269,6 @@ in
               name = "toml";
               language-servers = [
                 "taplo"
-                "gpt"
                 "typos"
                 "wakatime"
               ];
@@ -289,7 +277,6 @@ in
               name = "typst";
               language-servers = [
                 "tinymist"
-                "gpt"
                 "typos"
                 "wakatime"
               ];
@@ -319,25 +306,6 @@ in
               command = "${pkgs.nodePackages.bash-language-server}/bin/bash-language-server";
               args = [ "start" ];
             };
-            fish = {
-              command = lib.getExe pkgs.fish-lsp;
-              args = [ "start" ];
-              environment.fish_lsp_show_client_popups = "false";
-            };
-            gpt =
-              let
-                gpt-wrapped = pkgs.writeShellScriptBin "helix-gpt" ''
-                  export COPILOT_API_KEY=$(cat ${config.sops.secrets.copilot-api-key.path})
-                  ${lib.getExe pkgs.helix-gpt} "$@"
-                '';
-              in
-              {
-                command = lib.getExe gpt-wrapped;
-                args = [
-                  "--handler"
-                  "copilot"
-                ];
-              };
             jdtls = {
               command = "${pkgs.jdt-language-server}/bin/${
                 if lib.versionOlder pkgs.jdt-language-server.version "1.31.0" then

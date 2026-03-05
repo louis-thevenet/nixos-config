@@ -1,5 +1,6 @@
 [General]
 memoryDecay=0.5
+showTray=true
 telemetry=true
 
 [applications]
@@ -87,14 +88,36 @@ enabled=true
 enabled=true
 
 [widgetsboxmodel]
+action_item_padding=6
+action_item_selection_border_radius=11
+action_item_selection_border_width=0
 alwaysOnTop=true
 clearOnHide=false
 clientShadow=true
+disable_input_method=true
 displayScrollbar=false
 followCursor=true
 hideOnFocusLoss=false
 historySearch=true
+input_border_radius=11
+input_font_size=21
+input_padding=5
 itemCount=5
 quitOnClose=false
+result_item_horizontal_spacing=6
+result_item_icon_size=39
+result_item_padding=6
+result_item_selection_border_radius=11
+result_item_selection_border_width=0
+result_item_subtext_font_size=11
+result_item_text_font_size=16
+result_item_vertical_spacing=2
 showCentered=true
 systemShadow=true
+window_border_radius=18
+window_border_width=1
+window_padding=7
+window_shadow_offset=8
+window_shadow_size=80
+window_spacing=7
+window_width=640
