@@ -46,7 +46,7 @@
       modesetting.enable = true;
       nvidiaSettings = true;
       open = true;
-      package = config.boot.kernelPackages.nvidiaPackages.latest;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
       #   package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
       #     version = "535.154.05";
       #     sha256_64bit = "sha256-fpUGXKprgt6SYRDxSCemGXLrEsIA6GOinp+0eGbqqJg=";
