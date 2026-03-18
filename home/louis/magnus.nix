@@ -29,6 +29,7 @@
       devTools.enable = true;
       helixAdvancedConfig.enable = true;
     };
+    gaming.enable = true;
     desktop = {
       stylix.enable = true;
       wayland = {

@@ -16,6 +16,7 @@
     ../common/optional/nix-index.nix
   ];
   networking.hostName = "magnus";
+  networking.firewall.allowedTCPPorts = [ 25565 ]; # Minecraft
   networking.hosts = {
     "192.168.1.77" = [
       "db.ltvnt.com"

@@ -14,6 +14,7 @@ in
     with pkgs;
     [
       vintagestory
+      prismlauncher
     ]
   );
 }
