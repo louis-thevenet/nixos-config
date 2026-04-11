@@ -209,7 +209,7 @@ in
                 "typos"
                 "wakatime"
               ];
-              formatter.command = lib.getExe pkgs.pkgs.nixfmt-rfc-style;
+              formatter.command = lib.getExe pkgs.pkgs.nixfmt;
               auto-format = true;
             }
             {
