@@ -277,7 +277,8 @@ in
               name = "typst";
               language-servers = [
                 "tinymist"
-                "typos"
+                # "harper"
+                "codebook"
                 "wakatime"
               ];
               formatter.command = lib.getExe pkgs.typstyle;
@@ -375,6 +376,14 @@ in
                 [default.extend-identifiers]
                 ratatui = "ratatui"
               '';
+            };
+            harper = {
+              command = lib.getExe pkgs.harper;
+              args = [ "--stdio" ];
+            };
+            codebook = {
+              command = lib.getExe pkgs.codebook;
+              args = [ "serve" ];
             };
             wakatime.command = lib.getExe inputs.wakatime-lsp.packages.${pkgs.system}.default;
           };
