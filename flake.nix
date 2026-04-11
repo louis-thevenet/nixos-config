@@ -60,7 +60,7 @@
       url = "github:winapps-org/winapps";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    vault-tasks.url = "github:louis-thevenet/nixpkgs/vault-tasks-update";
+    vault-tasks.url = "github:louis-thevenet/vault-tasks";
   };
 
   outputs =
@@ -84,7 +84,6 @@
             with nixpkgs.legacyPackages.${system};
             with pkgs;
             [
-              python311Packages.nix-prefetch-github
               sops
               age
               just
@@ -94,7 +93,6 @@
       mkNixosNew =
         host: system:
         nixpkgs.lib.nixosSystem {
-          inherit system;
           specialArgs = { inherit (self) inputs outputs; };
           modules = [
             ./hosts/${host}
@@ -113,7 +111,7 @@
     in
     {
       nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
-      formatter = forEachPkgs (pkgs: pkgs.nixfmt-rfc-style);
+      formatter = forEachPkgs (pkgs: pkgs.nixfmt);
 
       devShells."x86_64-linux".default = mkShell "x86_64-linux";
       devShells."aarch64-linux".default = mkShell "aarch64-linux";
