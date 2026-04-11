@@ -12,7 +12,6 @@ in
   home.packages = mkIf cfg-social.social.enable (
     with pkgs;
     [
-      beeper
       element-desktop
       discord
     ]
