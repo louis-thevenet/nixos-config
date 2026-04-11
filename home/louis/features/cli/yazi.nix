@@ -9,5 +9,6 @@ in
   programs.yazi = {
     inherit enable;
     enableFishIntegration = true;
+    shellWrapperName = "y";
   };
 }

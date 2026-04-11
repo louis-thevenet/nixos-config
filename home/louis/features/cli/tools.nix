@@ -13,7 +13,7 @@ in
   home.packages = mkIf cfg.commonTools.enable (
     with pkgs;
     [
-      neofetch
+      fastfetch
       bat
       trash-cli
       dust
@@ -23,22 +23,18 @@ in
       killall
       wget
       tdf
-      see-cat
       rsync
-      smartcat
-      spotify-player
-      rbw
-      vhs
       transmission_4
       restic
-      todoist
       fd
+      zip
+      unzip
     ]
     ++ (
       let
-        pkgs-vault-tasks = import inputs.vault-tasks { inherit (pkgs) system; };
+        pkgs-vault-tasks = inputs.vault-tasks.packages.${pkgs.system}.default;
       in
-      [ pkgs-vault-tasks.vault-tasks ]
+      [ pkgs-vault-tasks ]
     )
   );
   programs = mkIf cfg.commonTools.enable {
