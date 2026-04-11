@@ -15,10 +15,13 @@
   };
   programs.git = {
     enable = true;
-    userName = "Louis Thevenet";
-    userEmail = "louis.tvnt@gmail.com";
 
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Louis Thevenet";
+        email = "louis.tvnt@gmail.com";
+        signingkey = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
+      };
       submodule.recurse = true;
       merge.mergiraf = {
         name = "mergiraf";
@@ -62,11 +65,11 @@
         format = "ssh";
       };
       gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/.config/git/allowed_signers";
-      user.signingkey = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
     };
-    difftastic = {
-      enable = true;
-    };
+  };
+  programs.difftastic = {
+    enable = true;
+    git.enable = true;
   };
   home.packages = [ pkgs.mergiraf ];
 }
