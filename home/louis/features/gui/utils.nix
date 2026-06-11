@@ -41,6 +41,7 @@ in
       kdePackages.dolphin
       todoist-electron
       obsidian
+      lmstudio
     ]
   );
 }
