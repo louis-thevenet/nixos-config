@@ -39,9 +39,6 @@ _: {
   };
   services = {
     udisks2.enable = true;
-    asusd = {
-      enable = true;
-      enableUserService = true;
-    };
+    asusd.enable = true;
   };
 }
