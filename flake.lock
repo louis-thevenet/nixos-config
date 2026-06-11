@@ -75,11 +75,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1767859071,
-        "narHash": "sha256-cc3wSxQ0S3hkKfl03qGAKvfKcO2WxE/7TYnaQ00nApc=",
+        "lastModified": 1778223129,
+        "narHash": "sha256-PpbNX4S2+NgzODn4Qb11Hb1AmSInet2SITr0mQJQHGY=",
         "ref": "refs/heads/main",
-        "rev": "08a89ca84e7e3f11edc98e790e3d21f2ea3e69b1",
-        "revCount": 55,
+        "rev": "6f5bbe1488c97df550bf8723117db4d9d4fa0b2d",
+        "revCount": 57,
         "type": "git",
         "url": "file:/home/louis/src/blog"
       },
@@ -367,11 +367,11 @@
         "xwayland-satellite-unstable": "xwayland-satellite-unstable"
       },
       "locked": {
-        "lastModified": 1773889880,
-        "narHash": "sha256-cu23CGP+mD2wKPKaoGM7evZ1dXfjd+cjryqqqx2HloE=",
+        "lastModified": 1780348240,
+        "narHash": "sha256-V4QJAR5+AHUV31KOwrUVE8efOC9bkhLHbvkXT05I0mY=",
         "owner": "sodiboo",
         "repo": "niri-flake",
-        "rev": "63767d4572eb2e3da5e68f68de77d8f2cdeca8dd",
+        "rev": "134a4f01eff9291806eab0e8d9fe31bbda7587f3",
         "type": "github"
       },
       "original": {
@@ -400,36 +400,16 @@
     "niri-unstable": {
       "flake": false,
       "locked": {
-        "lastModified": 1773130184,
-        "narHash": "sha256-3bwx4WqCB06yfQIGB+OgIckOkEDyKxiTD5pOo4Xz2rI=",
+        "lastModified": 1780056110,
+        "narHash": "sha256-t7lKVshV/srD0G06j4r5P5qj9zaDeZ9JYFCxHDGROZU=",
         "owner": "YaLTeR",
         "repo": "niri",
-        "rev": "b07bde3ee82dd73115e6b949e4f3f63695da35ea",
+        "rev": "f9f43d826ab4014a7c302be28d7da33e12f5be37",
         "type": "github"
       },
       "original": {
         "owner": "YaLTeR",
         "repo": "niri",
-        "type": "github"
-      }
-    },
-    "nix-ai-stuff": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1773451038,
-        "narHash": "sha256-Ovx3IMn1tzO86J81GvPwWIUDhpvWPmeUqJSdSMPMUWg=",
-        "owner": "BatteredBunny",
-        "repo": "nix-ai-stuff",
-        "rev": "215eea0e1d25db234283ce6b0d71855310b2f83d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "BatteredBunny",
-        "repo": "nix-ai-stuff",
         "type": "github"
       }
     },
@@ -516,11 +496,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1773814637,
-        "narHash": "sha256-GNU+ooRmrHLfjlMsKdn0prEKVa0faVanm0jrgu1J/gY=",
+        "lastModified": 1779796641,
+        "narHash": "sha256-ZsIrKmhp4vbBXoXXmR/tBXA/UCsAQiJL9vsgZEduhVY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "fea3b367d61c1a6592bc47c72f40a9f3e6a53e96",
+        "rev": "25f538306313eae3927264466c70d7001dcea1df",
         "type": "github"
       },
       "original": {
@@ -644,7 +624,6 @@
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "niri": "niri",
-        "nix-ai-stuff": "nix-ai-stuff",
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
@@ -919,11 +898,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1775756619,
-        "narHash": "sha256-wUTjavU2E0g1TuqKiRxsVPiE+1RR0G7XNIO2J4kd2IA=",
+        "lastModified": 1779909489,
+        "narHash": "sha256-oqJcE8yaoCCghqv9P0nXTTZTDb4W3of3XDxdONC2T1Q=",
         "owner": "louis-thevenet",
         "repo": "vault-tasks",
-        "rev": "7ece1eeae70303ac5556f6e2d4d56168b57cf12c",
+        "rev": "6603cc4143cf148b6e23980f73b0d38f802b758f",
         "type": "github"
       },
       "original": {
@@ -997,11 +976,11 @@
     "xwayland-satellite-unstable": {
       "flake": false,
       "locked": {
-        "lastModified": 1773622265,
-        "narHash": "sha256-wToKwH7IgWdGLMSIWksEDs4eumR6UbbsuPQ42r0oTXQ=",
+        "lastModified": 1779745227,
+        "narHash": "sha256-yqY7RtEJGJiENzR0GwL6q69tSAy6xAAmAcLuIhLjPf8=",
         "owner": "Supreeeme",
         "repo": "xwayland-satellite",
-        "rev": "a879e5e0896a326adc79c474bf457b8b99011027",
+        "rev": "5d1efbc9dc3ab1c10160b656e0247f3325daf0f2",
         "type": "github"
       },
       "original": {

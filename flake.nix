@@ -46,10 +46,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-ai-stuff = {
-      url = "github:BatteredBunny/nix-ai-stuff";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     blog.url = "git+file:/home/louis/src/blog";
 
     helix = {
