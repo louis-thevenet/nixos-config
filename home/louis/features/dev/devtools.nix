@@ -23,7 +23,21 @@ in
       overrideGpg = true;
     };
   };
+  programs.opencode = {
+    enable = true;
+    settings = {
+      provider = {
+        lmstudio = {
+          npm = "@ai-sdk/openai-compatible";
+          name = "LM Studio (local)";
+          options = {
+            baseURL = "http://127.0.0.1:1234/v1";
+          };
+        };
+      };
+    };
 
+  };
   programs.tmux = mkIf cfg.devTools.enable {
     enable = true;
     clock24 = true;
