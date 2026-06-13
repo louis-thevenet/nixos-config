@@ -58,25 +58,25 @@ in
       ];
 
     }; # userSettings.cmake.configureOnOpen = true;
-    # userSettings.editor.formatOnSave = true;
+    userSettings.editor.formatOnSave = true;
 
     # # Indent
-    # userSettings.editor.detectIndentation = false;
-    # userSettings.editor.indent_style = "space";
-    # userSettings.editor.indentSize = 4;
-    # userSettings.editor.insertSpaces = true;
-    # userSettings.editor.tabSize = 2;
+    userSettings.editor.detectIndentation = false;
+    userSettings.editor.indent_style = "space";
+    userSettings.editor.indentSize = 4;
+    userSettings.editor.insertSpaces = true;
+    userSettings.editor.tabSize = 2;
 
     # userSettings.editor.inlineSuggest.enabled = true;
 
     # # Font
-    # userSettings.editor.fontLigatures = true;
-    # userSettings.editor.fontFamily = config.fontProfiles.monospace.family;
+    userSettings.editor.fontLigatures = true;
+    userSettings.editor.fontFamily = config.fontProfiles.monospace.family;
 
     # userSettings.explorer.confirmDragAndDrop = false;
 
-    # userSettings.files.insertFinalNewLine = true;
-    # userSettings.files.trimTrailingWhitespace = true;
+    userSettings.files.insertFinalNewLine = true;
+    userSettings.files.trimTrailingWhitespace = true;
 
     # userSettings.git.autofetch = true;
     # userSettings.git.confirmSync = false;
