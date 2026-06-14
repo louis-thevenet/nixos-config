@@ -1,4 +1,9 @@
 hostname := shell('hostname')
+
+full-update:
+    nix flake update
+    just switch-nixos switch-hm
+
 switch-nixos:
     sudo nixos-rebuild switch --flake .#{{hostname}} --impure -v
 switch-hm:
