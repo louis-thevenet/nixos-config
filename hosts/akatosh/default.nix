@@ -14,20 +14,9 @@ _: {
 
   ];
   networking.hostName = "akatosh";
-  networking.hosts = {
-    "192.168.1.77" = [
-      "db.ltvnt.com"
-      "nc.ltvnt.com"
-      "blog.ltvnt.com"
-      "jellyfin.ltvnt.com"
-      "karakeep.ltvnt.com"
-      "firefly.ltvnt.com"
-      "matrix.ltvnt.com"
-      "stickers.ltvnt.com"
-    ];
-  };
+
   networking.firewall.allowedTCPPorts = [
-    5000
+    1234 # Lmstudio
   ];
   programs.steam.enable = true;
   programs.gamescope.enable = true;
