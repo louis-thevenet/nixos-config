@@ -42,6 +42,7 @@ in
       todoist-electron
       obsidian
       lmstudio
+      nextcloud-client
     ]
   );
 }
