@@ -26,6 +26,7 @@ in
   programs.opencode = {
     enable = true;
     settings = {
+      lsp=true;
       provider = {
         lmstudio = {
           npm = "@ai-sdk/openai-compatible";
