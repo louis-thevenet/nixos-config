@@ -29,6 +29,7 @@ in
       fd
       zip
       unzip
+      gocryptfs
     ]
     ++ (
       let
