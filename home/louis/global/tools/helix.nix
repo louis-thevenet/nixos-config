@@ -13,7 +13,15 @@ in
     sopsFile = ../../../../hosts/common/secrets.yaml;
   };
 
+  home.packages = [
+    pkgs.steel
+  ];
+
+  home.sessionVariables = {
+    STEEL_HOME = "${config.home.homeDirectory}/.steel";
+  };
   programs.helix = {
+    package = pkgs.steelix;
     enable = true;
     defaultEditor = true;
     settings = {

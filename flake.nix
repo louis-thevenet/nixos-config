@@ -48,9 +48,9 @@
 
     blog.url = "git+file:/home/louis/src/blog";
 
-    helix = {
+    helix-steel = {
       inputs.nixpkgs.follows = "nixpkgs-unstable";
-      url = "github:helix-editor/helix";
+      url = "github:mattwparas/helix/steel-event-system";
     };
     winapps = {
       url = "github:winapps-org/winapps";
