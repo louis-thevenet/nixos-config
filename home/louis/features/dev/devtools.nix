@@ -13,6 +13,7 @@ in
     with pkgs;
     [
       nix-tree
+      claude-code
       tokei
     ]
   );
@@ -23,10 +24,14 @@ in
       overrideGpg = true;
     };
   };
+
   programs.opencode = {
     enable = true;
     settings = {
-      lsp=true;
+      plugin = [
+        "opencode-lmstudio@1.0.0-rc.2"
+      ];
+      lsp = true;
       provider = {
         lmstudio = {
           npm = "@ai-sdk/openai-compatible";
