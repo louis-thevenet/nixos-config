@@ -24,7 +24,7 @@ in
         ];
         home = "/home/louis";
         # hashedPasswordFile = passwordFile;
-        password =  "wip";
+        password = "wip";
       };
       root = {
         # so, this may look like a security issue. I'm publicly showing the hash of my password. However:
@@ -37,9 +37,9 @@ in
     };
   };
   # TODO: MOVE THIS
-  # sops.secrets.wakatime_cfg = {
-  #   sopsFile = ../secrets.yaml;
-  #   path = "/home/louis/.wakatime.cfg";
-  #   owner = "louis";
-  # };
+  sops.secrets.wakatime_cfg = {
+    sopsFile = ../secrets.yaml;
+    path = "/home/louis/.wakatime.cfg";
+    owner = "louis";
+  };
 }

@@ -6,7 +6,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    # ./sops.nix
+    ./sops.nix
     ../common/global
     # ../common/optional/services.nix
     # ../common/optional/stylix.nix
