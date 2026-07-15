@@ -126,6 +126,7 @@
         "louis@akatosh" = mkHomeNew "akatosh" "x86_64-linux";
         "louis@magnus" = mkHomeNew "magnus" "x86_64-linux";
         "louis@dagon" = mkHomeNew "dagon" "aarch64-linux";
+        "louis@hermaeus" = mkHomeNew "hermaeus" "x86_64-linux";
       };
     };
 }

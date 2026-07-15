@@ -7,15 +7,31 @@
   imports = [
     ./hardware-configuration.nix
     ./sops.nix
+    # ./nextcloud.nix
+    # ./glance.nix
+    # ./anubis.nix
+    # ./jellyfin.nix
+    # ./nginx.nix
+    # ./karakeep.nix
+    # ./restic.nix
+    # ./adguardhome.nix
+    # ./hugo.nix
+    # ./firefly-iii.nix
+    # ./matrix-conduit.nix
     ../common/global
-    # ../common/optional/services.nix
-    # ../common/optional/stylix.nix
-    # ../common/optional/niri.nix
-    # ../common/optional/kanata.nix
-    # ../common/optional/xdg.nix
-    # ../common/optional/nix-index.nix
   ];
   networking.hostName = "hermaeus";
-  services.usbmuxd.enable = true;
+
+  programs.fish.enable = true;
+  programs.dconf.enable = true;
+  console.keyMap = "fr";
+
+  security.rtkit.enable = true;
+  networking = {
+    networkmanager.enable = true;
+    # firewall.enable = true;
+  };
+  documentation.man.generateCaches = false;
+  system.stateVersion = "26.05";
 
 }
