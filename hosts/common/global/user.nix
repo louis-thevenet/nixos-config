@@ -23,7 +23,8 @@ in
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF0w5CDimW+k9ic7fOJ3aNjFA9Bhe1LT4Bb0bczrheKr louis.tvnt@gmail.com"
         ];
         home = "/home/louis";
-        hashedPasswordFile = passwordFile;
+        # hashedPasswordFile = passwordFile;
+        password =  "wip";
       };
       root = {
         # so, this may look like a security issue. I'm publicly showing the hash of my password. However:
