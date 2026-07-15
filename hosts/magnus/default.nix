@@ -18,7 +18,7 @@
   networking.hostName = "magnus";
   networking.firewall.allowedTCPPorts = [ 25565 ]; # Minecraft
   networking.hosts = {
-    "192.168.1.77" = [
+    "192.168.1.183" = [
       "db.ltvnt.com"
       "nc.ltvnt.com"
       "blog.ltvnt.com"

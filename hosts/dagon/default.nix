@@ -9,7 +9,6 @@
     ./hardware-configuration.nix
     ./sops.nix
     ./nextcloud.nix
-    ./glance.nix
     ./anubis.nix
     ./jellyfin.nix
     ./nginx.nix
@@ -18,7 +17,6 @@
     ./adguardhome.nix
     ./hugo.nix
     ./firefly-iii.nix
-    ./matrix-conduit.nix
     ../common/global/nix.nix
     ../common/global/nixpkgs.nix
     ../common/global/user.nix

@@ -15,13 +15,16 @@ creation_rules:
     key_groups:
       - age:
           - *dagon
+  - path_regex: hosts/hermaeus/secrets.yaml$
+    key_groups:
+      - age:
+          - *magnus
+          - *hermaeus
 
   - path_regex: hosts/common/secrets.yaml$
     key_groups:
       - age:
-          - *magnus
           - *hircine
           - *akatosh
           - *dagon
           - *arkay
-          - *hermaeus
