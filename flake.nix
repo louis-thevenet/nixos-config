@@ -119,6 +119,7 @@
         akatosh = mkNixosNew "akatosh" "x86_64-linux";
         magnus = mkNixosNew "magnus" "x86_64-linux";
         dagon = mkNixosNew "dagon" "aarch64-linux";
+        hermaeus = mkNixosNew "hermaeus" "x86_64-linux";
       };
 
       homeConfigurations = {

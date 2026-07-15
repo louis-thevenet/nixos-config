@@ -271,7 +271,7 @@
         "type": "github"
       }
     },
-    "helix": {
+    "helix-steel": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs-unstable"
@@ -279,15 +279,16 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1781291213,
-        "narHash": "sha256-PR1w7b2AJaOFRSNr1nin3fgEtR0bKZgFFhehKzI0dUM=",
-        "owner": "helix-editor",
+        "lastModified": 1782088553,
+        "narHash": "sha256-bGfByNnjuzENdvTW97s4UhwglYY7ydBk54gOZmnaM4Q=",
+        "owner": "mattwparas",
         "repo": "helix",
-        "rev": "14eda106f0a3e6a5fc6fb5cbd96bda9774f64ae1",
+        "rev": "0522d519fd5227f77ecef387a87e51b732907562",
         "type": "github"
       },
       "original": {
-        "owner": "helix-editor",
+        "owner": "mattwparas",
+        "ref": "steel-event-system",
         "repo": "helix",
         "type": "github"
       }
@@ -634,7 +635,7 @@
         "blog": "blog",
         "disko": "disko",
         "firefox-addons": "firefox-addons",
-        "helix": "helix",
+        "helix-steel": "helix-steel",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "niri": "niri",
@@ -652,7 +653,7 @@
     "rust-overlay": {
       "inputs": {
         "nixpkgs": [
-          "helix",
+          "helix-steel",
           "nixpkgs"
         ]
       },
