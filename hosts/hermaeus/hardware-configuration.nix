@@ -12,6 +12,10 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/421652b2-f769-43c5-a589-eed812e1ff29";
+    fsType = "ext4";
+  };
   boot = {
     initrd.availableKernelModules = [
       "btrfs"
@@ -21,10 +25,6 @@
       "usb_storage"
       "sd_mod"
     ];
-    fileSystems."/" = {
-      device = "/dev/disk/by-uuid/421652b2-f769-43c5-a589-eed812e1ff29";
-      fsType = "ext4";
-    };
 
     initrd.kernelModules = [ "uinput" ];
     kernelModules = [ "kvm-amd" ];
