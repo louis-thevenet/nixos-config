@@ -9,7 +9,7 @@
     allowSFTP = true;
     settings = {
       KbdInteractiveAuthentication = false;
-      PasswordAuthentication = false;
+    PasswordAuthentication = false;
       X11Forwarding = false;
     };
     hostKeys = [

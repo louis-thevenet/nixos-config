@@ -119,12 +119,14 @@
         akatosh = mkNixosNew "akatosh" "x86_64-linux";
         magnus = mkNixosNew "magnus" "x86_64-linux";
         dagon = mkNixosNew "dagon" "aarch64-linux";
+        hermaeus = mkNixosNew "hermaeus" "x86_64-linux";
       };
 
       homeConfigurations = {
         "louis@akatosh" = mkHomeNew "akatosh" "x86_64-linux";
         "louis@magnus" = mkHomeNew "magnus" "x86_64-linux";
         "louis@dagon" = mkHomeNew "dagon" "aarch64-linux";
+        "louis@hermaeus" = mkHomeNew "hermaeus" "x86_64-linux";
       };
     };
 }
