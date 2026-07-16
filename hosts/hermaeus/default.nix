@@ -8,10 +8,9 @@
   imports = [
     ./hardware-configuration.nix
     ./sops.nix
-
-    # ./nextcloud.nix
+    ./nextcloud.nix
     ./glance.nix
-    # ./anubis.nix
+    ./anubis.nix
     # ./jellyfin.nix
     ./nginx.nix
     # ./karakeep.nix

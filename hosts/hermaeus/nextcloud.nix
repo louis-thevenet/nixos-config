@@ -30,12 +30,13 @@
     };
     nextcloud = {
       enable = true;
-      package = pkgs.nextcloud33;
+      package = pkgs.nextcloud34;
 
       hostName = "nc.ltvnt.com";
       maxUploadSize = "16G";
       https = true;
       home = "/var/lib/nextcloud";
+      datadir = "/mnt/nextcloud_data";
       extraAppsEnable = true;
       # extraApps = with pkgs.nextcloud30Packages.apps; {
       # inherit

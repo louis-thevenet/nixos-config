@@ -12,9 +12,25 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/421652b2-f769-43c5-a589-eed812e1ff29";
-    fsType = "ext4";
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/421652b2-f769-43c5-a589-eed812e1ff29";
+      fsType = "ext4";
+    };
+
+    "/ssd" = {
+      device = "/dev/disk/by-uuid/12f6e6d2-6b5c-4a26-99ca-566eaad9da01";
+      fsType = "ext4";
+      options = [
+        "defaults"
+        "nofail"
+      ];
+    };
+    "/mnt/nextcloud_data" = {
+      device = "/ssd/nextcloud_data";
+      fsType = "none"; # bc it's not a real filesystem
+      options = [ "bind" ];
+    };
   };
   boot = {
     initrd.availableKernelModules = [
