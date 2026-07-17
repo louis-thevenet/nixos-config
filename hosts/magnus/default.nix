@@ -21,12 +21,9 @@
     "192.168.1.183" = [
       "db.ltvnt.com"
       "nc.ltvnt.com"
-      "blog.ltvnt.com"
       "jellyfin.ltvnt.com"
-      "karakeep.ltvnt.com"
-      "firefly.ltvnt.com"
+      "ai.ltvnt.com"
       "matrix.ltvnt.com"
-      "stickers.ltvnt.com"
     ];
   };
   services.usbmuxd.enable = true;
