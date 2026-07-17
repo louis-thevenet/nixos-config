@@ -33,6 +33,14 @@ in
       ];
       lsp = true;
       provider = {
+        ollama = {
+          npm = "@ai-sdk/openai-compatible";
+          name = "Ollama";
+          options = {
+            baseURL = "http://192.168.1.183:11434/v1";
+          };
+        };
+
         lmstudio = {
           npm = "@ai-sdk/openai-compatible";
           name = "LM Studio (local)";
@@ -42,7 +50,6 @@ in
         };
       };
     };
-
   };
   programs.tmux = mkIf cfg.devTools.enable {
     enable = true;

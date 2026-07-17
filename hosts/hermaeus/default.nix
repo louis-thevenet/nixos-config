@@ -11,6 +11,8 @@
     ./nextcloud.nix
     ./glance.nix
     ./anubis.nix
+    ./webui.nix
+    ./ollama.nix
     # ./jellyfin.nix
     ./nginx.nix
     # ./karakeep.nix
