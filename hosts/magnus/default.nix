@@ -32,6 +32,7 @@
     # mount iphone storage with `ifuse ./mnt/iphone`
     libimobiledevice
     ifuse # optional, to mount using 'ifuse'
+    fuse
   ];
 
   hardware = {
