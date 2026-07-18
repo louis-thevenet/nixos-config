@@ -5,14 +5,14 @@ full-update:
     just switch-nixos switch-hm
 
 switch-nixos:
-    sudo nixos-rebuild switch --flake .#{{hostname}} --impure -v
+    sudo bash -c 'nixos-rebuild switch --flake .#{{hostname}} --impure -v |& nom'
 switch-hm:
-    home-manager switch --flake .#louis@{{hostname}}
+    home-manager switch --flake .#louis@{{hostname}} |& nom
 
 remote-switch-nixos HOST ADDR PORT:
     # Remote build and deploy NixOS config
     NIX_SSHOPTS="-p {{PORT}}" nixos-rebuild switch --flake .#{{HOST}} --target-host louis@{{ADDR}} --ask-sudo-password -v --impure
 remote-switch-hm HOST ADDR PORT:
-    home-manager build --flake .#louis@{{HOST}}
+    home-manager build --flake .#louis@{{HOST}} |& nom
     NIX_SSHOPTS="-p {{PORT}}" nix copy --to ssh://{{ADDR}} ./result
     ssh {{ADDR}} -p {{PORT}} "$(readlink -f ./result)/activate"
