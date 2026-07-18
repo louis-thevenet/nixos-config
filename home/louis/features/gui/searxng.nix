@@ -10,23 +10,8 @@ let
   cfg = config.home-config.gui.firefox;
   inherit (cfg.searxngInstance) url;
   inherit (cfg.searxngInstance) port;
-  karakeep-engine = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/louis-thevenet/searxng-karakeep-engine/refs/heads/main/karakeep.py";
-    hash = "sha256-s0p4AAan7cgncIyZPvOrNQLektTRYV0V1R9UKAtfpJQ=";
-  };
-  searxngWithEngine = pkgs.searxng.overrideAttrs (_: {
-    # Inject karakeep.py into engines
-    postPatch = ''
-      mkdir -p $out/lib/python3.12/site-packages/searx/engines
-      cat ${karakeep-engine} > $out/lib/python3.12/site-packages/searx/engines/karakeep.py
-    '';
-  });
-
 in
 {
-  sops.secrets.karakeep-api-key = {
-    sopsFile = ../../../../hosts/common/secrets.yaml;
-  };
   sops.templates."settings.yaml".content = ''
     # https://docs.searxng.org/admin/settings/settings.html#settings-yml-location
     # The initial settings.yml we be load from these locations:
@@ -39,15 +24,6 @@ in
     search:
       autocomplete: "google"
       default_lang: "en"
-
-    engines:
-      - name: karakeep
-        engine: karakeep
-        base_url: 'https://karakeep.ltvnt.com/'
-        number_of_results: 3
-        timeout: 3.0
-        api_key: ${config.sops.placeholder.karakeep-api-key}
-
 
     server:
       port: ${toString port}
@@ -74,7 +50,7 @@ in
       Environment = [
         "SEARXNG_SETTINGS_PATH=${config.sops.templates."settings.yaml".path}"
       ];
-      ExecStart = lib.getExe searxngWithEngine;
+      ExecStart = lib.getExe pkgs.searxng;
     };
   };
 }
