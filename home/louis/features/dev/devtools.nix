@@ -28,9 +28,6 @@ in
   programs.opencode = {
     enable = true;
     settings = {
-      plugin = [
-        "opencode-lmstudio@1.0.0-rc.2"
-      ];
       lsp = true;
       provider = {
         ollama = {
@@ -38,6 +35,14 @@ in
           name = "Ollama";
           options = {
             baseURL = "http://192.168.1.183:11434/v1";
+          };
+          models = {
+            "laguna-xs-2.1:q4_K_M".name = "laguna-xs-2.1:q4_K_M";
+            "laguna-xs-2.1:q8_0".name = "laguna-xs-2.1:q8_0";
+            "ornith:35b".name = "ornith:35b";
+            "gemma4:e4b".name = "gemma4:e4b";
+            "ornith:9b".name = "ornith:9b";
+            "gemma4:31b".name = "gemma4:31b";
           };
         };
 
