@@ -46,11 +46,12 @@
     kernelModules = [ "kvm-amd" ];
     kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = [ ];
+    kernel.sysctl."vm.swappiness" = 10; # https://wiki.nixos.org/wiki/Swap
   };
   swapDevices = [
     {
       device = "/swapfile";
-      size = 32 * 1024;
+      size = 64 * 1024;
     }
   ];
 
