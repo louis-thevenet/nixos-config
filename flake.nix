@@ -53,6 +53,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     vault-tasks.url = "github:louis-thevenet/vault-tasks";
+      portfolio = {
+      url = "github:louis-thevenet/portfolio";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

@@ -2,8 +2,14 @@
   lib,
   config,
   pkgs,
+  inputs,
   ...
 }:
+let
+  system = pkgs.stdenv.hostPlatform.system;
+  portfolioSite = inputs.portfolio.packages.${system}.default;
+  url = "portfolio.ltvnt.com";
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -24,7 +30,16 @@
     ../common/global
   ];
   networking.hostName = "hermaeus";
+  services.nginx = {
+    enable = true;
+    virtualHosts.${url} = {
+      root = "${portfolioSite}";
+      enableACME = true;
+      forceSSL = true;
+    };
+  };
 
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
   programs.fish.enable = true;
   programs.dconf.enable = true;
   console.keyMap = "fr";
