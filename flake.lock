@@ -636,11 +636,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1784978623,
-        "narHash": "sha256-rrLZL6lIpQOaGSAE265sa15fP8rr+egAY5/ciWxU/7c=",
+        "lastModified": 1784980312,
+        "narHash": "sha256-tYSK/bA/dOUhPO7/6O97U2B5v4RgA2Odw+PY60qWMJo=",
         "owner": "louis-thevenet",
         "repo": "portfolio",
-        "rev": "56d0ea4f42283ff795f29318679c5536f568be85",
+        "rev": "707181e6e3d1693839046ebf59afc8bdff55afc5",
         "type": "github"
       },
       "original": {
