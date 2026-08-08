@@ -20,7 +20,7 @@
     requires = [ "postgresql.service" ];
     after = [ "postgresql.service" ];
   };
-
+  environment.systemPackages = [ pkgs.ffmpeg ];
   services = {
     nginx = {
       virtualHosts."nc.ltvnt.com" = {
@@ -65,6 +65,19 @@
       settings = {
         # Further forces Nextcloud to use HTTPS
         overwriteProtocol = "https";
+        enabledPreviewProviders = [
+          "OC\\Preview\\PNG"
+          "OC\\Preview\\JPEG"
+          "OC\\Preview\\GIF"
+          "OC\\Preview\\BMP"
+          "OC\\Preview\\XBitmap"
+          "OC\\Preview\\Krita"
+          "OC\\Preview\\WebP"
+          "OC\\Preview\\MarkDown"
+          "OC\\Preview\\TXT"
+          "OC\\Preview\\OpenDocument"
+          "OC\\Preview\\Movie"
+        ];
       };
     };
 
