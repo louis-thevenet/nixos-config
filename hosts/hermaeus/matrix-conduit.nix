@@ -16,6 +16,7 @@ in
         allow_registration = false;
         database_backend = "rocksdb";
         trusted_servers = [ "matrix.org" ];
+        max_request_size = 3000000000;
       };
     };
 
@@ -26,9 +27,11 @@ in
         locations."/" = {
           proxyPass = "http://${address}:${toString port}";
           proxyWebsockets = true;
+          extraConfig = ''
+            client_max_body_size 3000M;
+          '';
         };
       };
     };
   };
 }
-
