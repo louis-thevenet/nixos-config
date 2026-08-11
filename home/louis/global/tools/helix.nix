@@ -345,7 +345,6 @@ in
               };
             };
             ocaml-lsp.command = lib.getExe pkgs.ocamlPackages.ocaml-lsp;
-            python-lsp.command = lib.getExe pkgs.python312Packages.python-lsp-server;
             rust-analyzer = {
               command = lib.getExe pkgs.rust-analyzer;
               config.check = {
