@@ -57,6 +57,7 @@
       url = "github:louis-thevenet/portfolio";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-claude-desktop.url="github:minegameYTB/nixpkgs/add/claude-desktop";
   };
 
   outputs =
@@ -98,7 +99,11 @@
       mkHomeNew =
         host: system:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
+          pkgs = import nixpkgs {
+            inherit system;
+            overlays = builtins.attrValues self.overlays;
+            config.allowUnfree = true;
+          };
           extraSpecialArgs = { inherit (self) inputs outputs; };
           modules = [
             ./home/louis/${host}.nix

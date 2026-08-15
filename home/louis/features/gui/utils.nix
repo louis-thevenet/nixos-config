@@ -45,5 +45,8 @@ in
       nodejs # for mcp servers
       nextcloud-client
     ]
+  ++ [
+      pkgs.claude-desktop
+    ]
   );
 }
