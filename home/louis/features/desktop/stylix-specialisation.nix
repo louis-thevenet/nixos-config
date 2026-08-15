@@ -19,9 +19,9 @@ in
     image = ../../../../hosts/common/optional/background.png;
     base16Scheme = lib.mkDefault "${pkgs.base16-schemes}/share/themes/google-light.yaml";
     cursor = {
-      package = pkgs.numix-cursor-theme;
-      name = "Numix-Cursor-Light";
-      size = 22;
+      name = "Bibata-Modern-Classic";
+      package = pkgs.bibata-cursors;
+      size = 24;
     };
     fonts = {
       monospace = {
