@@ -19,7 +19,7 @@ in
     ./anubis.nix
     ./webui.nix
     ./ollama.nix
-    # ./jellyfin.nix
+    ./jellyfin.nix
     ./nginx.nix
     # ./karakeep.nix
     # ./restic.nix
@@ -39,7 +39,10 @@ in
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
   programs.fish.enable = true;
   programs.dconf.enable = true;
   console.keyMap = "fr";

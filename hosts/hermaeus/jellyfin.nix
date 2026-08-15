@@ -1,4 +1,4 @@
-_: {
+{lib, ...}: {
   networking.firewall.allowedTCPPorts = [
     8096
   ];
@@ -12,6 +12,10 @@ _: {
     };
   };
   users.groups.jellyfin = { };
+  systemd.services.jellyfin.serviceConfig.PrivateUsers = lib.mkForce false;
+  systemd.tmpfiles.rules = [
+    "a+ /ssd - - - - u:jellyfin:rx"
+  ];
   services = {
     nginx = {
       virtualHosts."jellyfin.ltvnt.com" = {
