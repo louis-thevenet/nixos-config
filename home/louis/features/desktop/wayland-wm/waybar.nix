@@ -14,7 +14,7 @@ let
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
   playerctld = "${pkgs.playerctl}/bin/playerctld";
-  pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
+  btm-wiremix = "${pkgs.kitty}/bin/kitty ${pkgs.wiremix}/bin/wiremix";
   btm-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.bottom}/bin/btm";
   nmtui-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.networkmanager}/bin/nmtui";
   # nvtop-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.nvtopPackages.nvidia}/bin/nvtop";
@@ -169,7 +169,7 @@ in
               ""
             ];
           };
-          on-click = pavucontrol;
+          on-click = btm-wiremix;
         };
         "custom/notifications" = {
           tooltip = false;
