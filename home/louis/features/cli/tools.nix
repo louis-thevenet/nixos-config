@@ -30,6 +30,7 @@ in
       zip
       unzip
       gocryptfs
+      ripgrep
     ]
     ++ (
       let
