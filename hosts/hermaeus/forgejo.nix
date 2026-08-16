@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   domain = "git.ltvnt.com";
   httpPort = 3000;
@@ -10,6 +10,38 @@ in
   };
 
   virtualisation.docker.enable = true;
+
+  environment.etc."git-pages/config.toml".text = ''
+    [storage]
+    type = "fs"
+
+    [storage.fs]
+    root = "/var/lib/git-pages"
+
+    [server]
+    pages = "tcp/127.0.0.1:3001"
+    caddy = "tcp/127.0.0.1:3002"
+    metrics = "tcp/127.0.0.1:3003"
+
+    [limits]
+    allowed-repository-url-prefixes = ["https://git.ltvnt.com/"]
+  '';
+
+  systemd.services.git-pages = {
+    description = "git-pages static site server";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+
+    serviceConfig = {
+      ExecStart = "${pkgs.git-pages}/bin/git-pages -config /etc/git-pages/config.toml";
+      StateDirectory = "git-pages";
+      DynamicUser = true;
+      PrivateTmp = true;
+      Restart = "on-failure";
+      RestartSec = "5s";
+    };
+  };
 
   networking.firewall.allowedTCPPorts = [ sshPort ];
 
@@ -61,6 +93,23 @@ in
         proxyWebsockets = true;
         extraConfig = ''
           client_max_body_size 512M;
+        '';
+      };
+    };
+
+    nginx.virtualHosts."absent-light.ltvnt.com" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:3001";
+        proxyWebsockets = true;
+        extraConfig = ''
+          proxy_set_header Host $host;
+          proxy_set_header X-Forwarded-Host $host;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          add_header Cross-Origin-Opener-Policy "same-origin" always;
+          add_header Cross-Origin-Embedder-Policy "require-corp" always;
         '';
       };
     };
