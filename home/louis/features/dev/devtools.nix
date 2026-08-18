@@ -14,7 +14,9 @@ in
     [
       nix-tree
       claude-code
+      codex
       tokei
+      forgejo-cli
     ]
   );
   programs.gh.enable = true;
