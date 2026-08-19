@@ -8,11 +8,6 @@
       inherit (final) system;
       config.allowUnfree = true;
     };
-    claude-desktop =
-      (import inputs.nixpkgs-claude-desktop {
-        inherit (final) system;
-        config.allowUnfree = true;
-      }).claude-desktop;
     helix-latest = inputs.helix.packages.${prev.system}.helix;
   };
 

@@ -57,7 +57,6 @@
       url = "github:louis-thevenet/portfolio";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs-claude-desktop.url="github:minegameYTB/nixpkgs/add/claude-desktop";
   };
 
   outputs =

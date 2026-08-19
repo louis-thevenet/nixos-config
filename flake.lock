@@ -479,22 +479,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-claude-desktop": {
-      "locked": {
-        "lastModified": 1784991482,
-        "narHash": "sha256-vJiWIJNU1Ra13o/eV6hHIn4Z7DQOX7m5QgW16hO0yZA=",
-        "owner": "minegameYTB",
-        "repo": "nixpkgs",
-        "rev": "e0fb7be3a57ec33cd7c126d201408a136bbe8f8b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "minegameYTB",
-        "ref": "add/claude-desktop",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1765674936,
@@ -676,7 +660,6 @@
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
-        "nixpkgs-claude-desktop": "nixpkgs-claude-desktop",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "portfolio": "portfolio",
         "sops-nix": "sops-nix",
