@@ -28,6 +28,7 @@ in
     # ./firefly-iii.nix
     ./matrix-conduit.nix
     ./forgejo.nix
+    ./umami.nix
     ../common/global
   ];
   networking.hostName = "hermaeus";
