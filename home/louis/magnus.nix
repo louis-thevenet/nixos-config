@@ -50,6 +50,7 @@
       height = 1080;
       x = 0;
       workspace = "2";
+      rotation = 270;
     }
     {
       name = "DP-3";

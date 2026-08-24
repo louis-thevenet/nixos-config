@@ -323,6 +323,7 @@ in
                   inherit y;
                 };
                 inherit scale;
+                transform = {inherit rotation;};
               };
 
             }) config.monitors

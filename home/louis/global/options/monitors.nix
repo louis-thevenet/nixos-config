@@ -49,6 +49,10 @@ with lib;
             type = types.float;
             default = 1.0;
           };
+          rotation = mkOption {
+            type = types.int;
+            default = 0;
+          };
         };
       }
     );
