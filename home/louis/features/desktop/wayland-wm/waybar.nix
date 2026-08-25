@@ -14,7 +14,7 @@ let
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   swaync-client = "${pkgs.swaynotificationcenter}/bin/swaync-client";
   playerctld = "${pkgs.playerctl}/bin/playerctld";
-  btm-wiremix = "${pkgs.kitty}/bin/kitty ${pkgs.wiremix}/bin/wiremix";
+  btm-wiremix = "${pkgs.kitty}/bin/kitty ${pkgs.wiremix}/bin/wiremix -v output";
   btm-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.bottom}/bin/btm";
   nmtui-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.networkmanager}/bin/nmtui";
   # nvtop-kitty = "${pkgs.kitty}/bin/kitty ${pkgs.nvtopPackages.nvidia}/bin/nvtop";

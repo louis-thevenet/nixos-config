@@ -95,6 +95,7 @@ let
   darkman = "${pkgs.darkman}/bin/darkman";
   copyq = "${pkgs.copyq}/bin/copyq";
   bluetui = "${pkgs.bluetui}/bin/bluetui";
+  wiremix = "${pkgs.wiremix}/bin/wiremix -v output";
 in
 {
   imports = [
@@ -129,6 +130,7 @@ in
                 "Mod+W".action = sh "${swaync-client} -t";
                 "Mod+B".action = sh browser;
                 "Mod+P".action = sh "${terminal} ${bluetui}";
+                "Mod+S".action = sh "${terminal} ${wiremix}";
                 "Mod+Shift+T".action = sh "${darkman} toggle";
                 "Mod+Backspace".action = spawn hyprlock;
               }
@@ -323,7 +325,7 @@ in
                   inherit y;
                 };
                 inherit scale;
-                transform = {inherit rotation;};
+                transform = { inherit rotation; };
               };
 
             }) config.monitors
