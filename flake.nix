@@ -9,7 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri = {
-      url = "github:sodiboo/niri-flake";
+      url = "github:bugeats/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -53,7 +53,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     vault-tasks.url = "github:louis-thevenet/vault-tasks";
-      portfolio = {
+    portfolio = {
       url = "github:louis-thevenet/portfolio";
       inputs.nixpkgs.follows = "nixpkgs";
     };
