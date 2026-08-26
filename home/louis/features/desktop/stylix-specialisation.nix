@@ -13,7 +13,7 @@ in
   imports = [
     inputs.stylix.homeModules.stylix
   ];
-  stylix = {
+  stylix = mkIf cfg.stylix.enable {
     enable = true;
     polarity = lib.mkDefault "light";
     image = ../../../../hosts/common/optional/background.png;

@@ -13,7 +13,6 @@ in
   home.packages = mkIf cfg.commonTools.enable (
     with pkgs;
     [
-      fastfetch
       bat
       trash-cli
       dust

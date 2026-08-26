@@ -1,6 +1,9 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
+let
+  cfg = config.home-config.desktop.wayland;
+in
 {
-  xdg = {
+  xdg = lib.mkIf cfg.enable {
     mime.enable = true;
     mimeApps = {
       enable = true;
@@ -27,10 +30,10 @@
     };
   };
 
-  home.sessionVariables = {
+  home.sessionVariables = lib.mkIf cfg.enable {
     FILEMANAGER = "dolphin";
   };
 
-  home.packages = [ pkgs.kdePackages.dolphin ];
+  home.packages = lib.mkIf cfg.enable [ pkgs.kdePackages.dolphin ];
 
 }

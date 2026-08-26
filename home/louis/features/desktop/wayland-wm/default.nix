@@ -44,7 +44,7 @@ in
     SDL_VIDEODRIVER = "wayland";
     XCOMPOSEFILE = "${config.xdg.configHome}/xcompose";
   };
-  xdg.portal = {
+  xdg.portal = mkIf cfg.wayland.enable {
     enable = true;
     config.common.default = [
       "gtk"

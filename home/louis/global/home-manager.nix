@@ -1,15 +1,19 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }:
+let
+  cfg = config.home-config.desktop.wayland;
+in
 {
   home = {
     username = "louis";
     homeDirectory = "/home/louis";
   };
 
-  gtk = {
+  gtk = lib.mkIf cfg.enable {
     enable = true;
     iconTheme = {
       name = "Papirus-Dark";
@@ -17,7 +21,7 @@
     };
   };
 
-  home.sessionVariables.GTK_THEME = "marwaita-pop_os";
+  home.sessionVariables.GTK_THEME = lib.mkIf cfg.enable "marwaita-pop_os";
   home.sessionVariables.TERMINAL = "kitty";
   nixpkgs = {
     config = {
