@@ -8,15 +8,6 @@
   imports = [
     ./hardware-configuration.nix
     ./sops.nix
-    ./nextcloud.nix
-    ./anubis.nix
-    ./jellyfin.nix
-    ./nginx.nix
-    ./karakeep.nix
-    ./restic.nix
-    ./adguardhome.nix
-    ./hugo.nix
-    ./firefly-iii.nix
     ../common/global/nix.nix
     ../common/global/nixpkgs.nix
     ../common/global/user.nix
@@ -26,18 +17,7 @@
     inputs.nixos-hardware.nixosModules.raspberry-pi-4
   ];
   networking.hostName = "dagon";
-  networking.hosts = {
-    "192.168.1.77" = [
-      "db.ltvnt.com"
-      "nc.ltvnt.com"
-      "blog.ltvnt.com"
-      "jellyfin.ltvnt.com"
-      "karakeep.ltvnt.com"
-      "firefly.ltvnt.com"
-      "matrix.ltvnt.com"
-      "stickers.ltvnt.com"
-    ];
-  };
+
   programs.fish.enable = true;
   programs.dconf.enable = true;
   console.keyMap = "fr";
