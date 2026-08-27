@@ -41,6 +41,8 @@ in
     };
   };
 
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
   networking.firewall.allowedTCPPorts = [
     80
     443
