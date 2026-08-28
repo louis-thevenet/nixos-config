@@ -9,7 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri = {
-      url = "github:bugeats/niri-flake";
+      url = "github:epireyn/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
