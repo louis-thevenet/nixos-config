@@ -8,34 +8,6 @@
 let
   inherit (lib) mkIf;
   cfg = config.home-config.gui;
-  plugins = inputs.firefox-addons.packages.${pkgs.system};
-  buildFirefoxXpiAddon = lib.makeOverridable (
-    {
-      src,
-      pname,
-      version,
-      addonId,
-      ...
-    }:
-    pkgs.stdenv.mkDerivation {
-      name = "${pname}-${version}";
-
-      inherit src;
-
-      preferLocalBuild = true;
-      allowSubstitutes = true;
-
-      passthru = {
-        inherit addonId;
-      };
-
-      buildCommand = ''
-        dst="$out/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
-        mkdir -p "$dst"
-        install -v -m644 "$src" "$dst/${addonId}.xpi"
-      '';
-    }
-  );
 in
 {
   stylix.targets.firefox.profileNames = [ "louis" ];
@@ -101,72 +73,6 @@ in
       userChrome = ''
         #TabsToolbar{ visibility: collapse !important }
       '';
-      extensions.packages =
-        with plugins;
-        [
-          adaptive-tab-bar-colour
-          bitwarden
-          clearurls
-          darkreader
-          enhanced-github
-          privacy-badger
-          refined-github
-          terms-of-service-didnt-read
-          tree-style-tab
-          ublock-origin
-          unpaywall
-          batchcamp
-          (limit-limit-distracting-sites.overrideAttrs { meta.license.free = true; })
-          tridactyl
-        ]
-        ++ [
-          (buildFirefoxXpiAddon rec {
-            pname = "price_perspective";
-            version = "1.1";
-            file-number = "4466074";
-            addonId = "priceperspective@drewdevault.com";
-            src = pkgs.fetchurl {
-              url = "https://addons.mozilla.org/firefox/downloads/file/${file-number}/${pname}-${version}.xpi";
-              hash = "sha256-8CsBTdOqxFYh1/sjG7YpCVSoLTmvVLqJ+D8cWLscflk=";
-            };
-          })
-        ]
-        ++ [
-          (buildFirefoxXpiAddon rec {
-            pname = "karakeep";
-            version = "1.2.5";
-            file-number = "4477863";
-            addonId = "karakeep@karakeep.app";
-            src = pkgs.fetchurl {
-              url = "https://addons.mozilla.org/firefox/downloads/file/${file-number}/${pname}-${version}.xpi";
-              hash = "sha256-oPr/M1v975jiNyUnDG6AV5n6RBu+dUS+BJb2+T9kiBU=";
-            };
-          })
-        ]
-        ++ [
-          (buildFirefoxXpiAddon rec {
-            pname = "clickbait_remover_for_youtube";
-            version = "0.7.1";
-            file-number = "4043434";
-            addonId = "cb-remover@search.mozilla.org";
-            src = pkgs.fetchurl {
-              url = "https://addons.mozilla.org/firefox/downloads/file/${file-number}/${pname}-${version}.xpi";
-              hash = "sha256-o5gJZ1gydXItxHgBNUkco5jUJ1CydCDA3j5mnfl4xkk=";
-            };
-          })
-        ]
-        ++ [
-          # Appears to be corrupted ?
-          (buildFirefoxXpiAddon rec {
-            pname = "hoarders-pipette";
-            version = "1.3.0";
-            addonId = "hoarder-pipette@dansnow.github.io";
-            src = pkgs.fetchurl {
-              url = "https://github.com/DanSnow/hoarder-pipette/releases/download/hoarder-pipette-v${version}/${pname}-${version}.xpi";
-              hash = "sha256-gVFBt6NxRWVKfexvlyvA/uOlW0WgxUYUjTGzfrjLbjQ=";
-            };
-          })
-        ];
       settings = {
         widget.use-xdg-desktop-portal.file-picker = 1; # use xdg-desktop-portal for file picker
         # Allow svgs to take on theme colors
