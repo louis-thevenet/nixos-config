@@ -96,6 +96,9 @@ let
   copyq = "${pkgs.copyq}/bin/copyq";
   bluetui = "${pkgs.bluetui}/bin/bluetui";
   wiremix = "${pkgs.wiremix}/bin/wiremix -v output";
+
+  btm = "${pkgs.bottom}/bin/btm";
+  nmtui = "${pkgs.networkmanager}/bin/nmtui";
 in
 {
   imports = [
@@ -131,6 +134,8 @@ in
                 "Mod+B".action = sh browser;
                 "Mod+P".action = sh "${terminal} ${bluetui}";
                 "Mod+S".action = sh "${terminal} ${wiremix}";
+                "Mod+N".action = sh "${terminal} ${nmtui}";
+                "Mod+Z".action = sh "${terminal} ${btm}";
                 "Mod+Shift+T".action = sh "${darkman} toggle";
                 "Mod+Backspace".action = spawn hyprlock;
               }
