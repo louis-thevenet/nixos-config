@@ -57,6 +57,9 @@
       url = "github:louis-thevenet/portfolio";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    yazelix = {
+      url = "github:Yazelix/nova/stable";
+    };
   };
 
   outputs =
