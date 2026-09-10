@@ -38,18 +38,9 @@
       home = "/var/lib/nextcloud";
       datadir = "/mnt/nextcloud_data";
       extraAppsEnable = true;
-      # extraApps = with pkgs.nextcloud30Packages.apps; {
-      # inherit
-      #   bookmarks
-      #   calendar
-      #   contacts
-      #   cospend
-      #   deck
-      #   forms
-      #   polls
-      #   tasks
-      #   ;
-      # };
+      extraApps = {
+        inherit (config.services.nextcloud.package.packages.apps) richdocuments;
+      };
 
       config = {
         # Nextcloud PostegreSQL database configuration, recommended over using SQLite

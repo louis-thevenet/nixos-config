@@ -15,6 +15,7 @@ in
     ./hardware-configuration.nix
     ./sops.nix
     ./nextcloud.nix
+    ./collabora.nix
     ./jellyfin.nix
     ./nginx.nix
     ./matrix-conduit.nix
