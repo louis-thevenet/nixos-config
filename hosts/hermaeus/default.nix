@@ -15,20 +15,10 @@ in
     ./hardware-configuration.nix
     ./sops.nix
     ./nextcloud.nix
-    ./glance.nix
-    ./anubis.nix
-    ./webui.nix
-    ./ollama.nix
     ./jellyfin.nix
     ./nginx.nix
-    # ./karakeep.nix
-    # ./restic.nix
-    # ./adguardhome.nix
-    # ./hugo.nix
-    # ./firefly-iii.nix
     ./matrix-conduit.nix
     ./forgejo.nix
-    ./umami.nix
     ../common/global
   ];
   networking.hostName = "hermaeus";
