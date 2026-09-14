@@ -7,7 +7,7 @@ full-update:
 switch-nixos:
     sudo bash -c 'nixos-rebuild switch --flake .#{{hostname}} --impure -v |& nom'
 switch-hm:
-    home-manager switch --flake .#louis@{{hostname}} |& nom
+    home-manager switch --flake .#louis@{{hostname}} -b backup |& nom
 
 remote-switch-nixos HOST ADDR PORT:
     # Remote build and deploy NixOS config
