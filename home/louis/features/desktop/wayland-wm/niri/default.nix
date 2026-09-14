@@ -99,6 +99,25 @@ let
 
   btm = "${pkgs.bottom}/bin/btm";
   nmtui = "${pkgs.networkmanager}/bin/nmtui";
+  kanata-toggle = pkgs.writeShellScript "kanata-toggle" ''
+    service=kanata-internalKeyboard.service
+    systemctl=${lib.getExe' pkgs.systemd "systemctl"}
+    notify_send=${lib.getExe pkgs.libnotify}
+
+    if "$systemctl" is-active --quiet "$service"; then
+      if sudo -n "$systemctl" stop "$service"; then
+        "$notify_send" "Kanata disabled" "Keyboard remapping is off."
+      else
+        "$notify_send" "Kanata toggle failed" "Could not disable Kanata."
+      fi
+    else
+      if sudo -n "$systemctl" start "$service"; then
+        "$notify_send" "Kanata enabled" "Keyboard remapping is active."
+      else
+        "$notify_send" "Kanata toggle failed" "Could not enable Kanata."
+      fi
+    fi
+  '';
 in
 {
   imports = [
@@ -137,6 +156,7 @@ in
                 "Mod+N".action = sh "${terminal} ${nmtui}";
                 "Mod+Z".action = sh "${terminal} ${btm}";
                 "Mod+Shift+T".action = sh "${darkman} toggle";
+                "Mod+Alt+K".action = sh "${kanata-toggle}";
                 "Mod+Backspace".action = spawn hyprlock;
               }
               {

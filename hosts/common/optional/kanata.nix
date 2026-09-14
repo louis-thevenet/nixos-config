@@ -1,4 +1,5 @@
-_: {
+{ pkgs, ... }:
+{
   hardware.uinput.enable = true;
   # Set up udev rules for uinput
   services.udev.extraRules = ''
@@ -15,6 +16,11 @@ _: {
       "uinput"
     ];
   };
+
+  # Allow toggling kanata without sudo
+  security.sudo.extraConfig = ''
+    louis ALL=(root) NOPASSWD: ${pkgs.systemd}/bin/systemctl start kanata-internalKeyboard.service, ${pkgs.systemd}/bin/systemctl stop kanata-internalKeyboard.service
+  '';
 
   services.kanata = {
     enable = true;
