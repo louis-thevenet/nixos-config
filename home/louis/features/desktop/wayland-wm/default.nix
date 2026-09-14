@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
@@ -10,6 +11,7 @@ let
 in
 {
   imports = [
+    inputs.xdp-termfilepickers.homeManagerModules.default
     ./swaync.nix
     ./waybar.nix
     ./hyprlock.nix
@@ -54,5 +56,12 @@ in
       pkgs.xdg-desktop-portal-gnome
       pkgs.xdg-desktop-portal-gtk
     ];
+  };
+
+  services.xdg-desktop-portal-termfilepickers = mkIf cfg.wayland.enable {
+    enable = true;
+    package = inputs.xdp-termfilepickers.packages.${pkgs.system}.default;
+    desktopEnvironments = [ "niri" ];
+    config.terminal_command = [ (lib.getExe pkgs.kitty) ];
   };
 }

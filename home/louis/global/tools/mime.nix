@@ -13,7 +13,7 @@ in
           editor = "helix.desktop";
           image = "qimgv.desktop";
           pdf = "okular.desktop";
-          files = "org.kde.dolphin.desktop";
+          files = "yazi.desktop";
         in
         {
           "text/html" = browser;
@@ -28,12 +28,21 @@ in
           "x-scheme-handler/file" = files;
         };
     };
+    dataFile."applications/yazi.desktop" = {
+      text = ''
+        [Desktop Entry]
+        Type=Application
+        Name=Yazi
+        Comment=Terminal file manager
+        Exec=${lib.getExe pkgs.kitty} ${lib.getExe pkgs.yazi} %U
+        Terminal=true
+        MimeType=inode/directory;
+        Categories=FileManager;System;FileTools;
+      '';
+    };
   };
 
   home.sessionVariables = lib.mkIf cfg.enable {
-    FILEMANAGER = "dolphin";
+    FILEMANAGER = "yazi";
   };
-
-  home.packages = lib.mkIf cfg.enable [ pkgs.kdePackages.dolphin ];
-
 }
