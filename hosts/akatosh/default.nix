@@ -2,6 +2,7 @@ _: {
   imports = [
     ./hardware-configuration.nix
     ./sops.nix
+    # ./howdy.nix
     ../common/global
     ../common/optional/services.nix
     ../common/optional/impermanence-disko.nix
