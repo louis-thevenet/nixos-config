@@ -47,7 +47,7 @@ in
     networkmanager.enable = true;
     firewall.enable = lib.mkForce false;
   };
-  documentation.man.generateCaches = false;
+  documentation.man.cache.enable = false;
   system.stateVersion = "26.05";
 
 }

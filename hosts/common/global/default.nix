@@ -28,7 +28,7 @@
     "/share/xdg-desktop-portal"
     "/share/applications"
   ];
-  documentation.man.generateCaches = false;
+  documentation.man.cache.enable = false;
 
   system.stateVersion = "26.05";
 }

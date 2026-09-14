@@ -32,7 +32,7 @@ in
   xdg.configFile = helixThemeFiles;
   programs.yazelix = {
     inherit enable;
-    package = inputs.yazelix.packages.${pkgs.system}.yazelix;
+    package = inputs.yazelix.packages.${pkgs.stdenv.hostPlatform.system}.yazelix;
     config = {
       settings = {
         shell = {

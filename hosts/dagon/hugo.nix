@@ -14,7 +14,7 @@ in
   services = {
     static-web-server = {
       enable = true;
-      root = "${inputs.blog.packages.${pkgs.system}.default}";
+      root = "${inputs.blog.packages.${pkgs.stdenv.hostPlatform.system}.default}";
       listen = "[::]:${toString internal_port}";
     };
     nginx.virtualHosts."blog.ltvnt.com" = {

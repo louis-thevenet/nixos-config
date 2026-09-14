@@ -33,7 +33,7 @@ in
     ]
     ++ (
       let
-        pkgs-vault-tasks = inputs.vault-tasks.packages.${pkgs.system}.default;
+        pkgs-vault-tasks = inputs.vault-tasks.packages.${pkgs.stdenv.hostPlatform.system}.default;
       in
       [ pkgs-vault-tasks ]
     )

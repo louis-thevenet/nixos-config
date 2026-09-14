@@ -60,7 +60,7 @@ in
 
   services.xdg-desktop-portal-termfilepickers = mkIf cfg.wayland.enable {
     enable = true;
-    package = inputs.xdp-termfilepickers.packages.${pkgs.system}.default;
+    package = inputs.xdp-termfilepickers.packages.${pkgs.stdenv.hostPlatform.system}.default;
     desktopEnvironments = [ "niri" ];
     config.terminal_command = [ (lib.getExe pkgs.kitty) ];
   };

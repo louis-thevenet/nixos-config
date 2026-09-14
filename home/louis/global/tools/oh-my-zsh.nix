@@ -10,7 +10,7 @@
     shellAliases =
       let
         eza = lib.getExe pkgs.eza;
-        helix = lib.getExe inputs.helix.packages.${pkgs.system}.default;
+        helix = lib.getExe inputs.helix.packages.${pkgs.stdenv.hostPlatform.system}.default;
         tmux = lib.getExe pkgs.tmux;
         dysk = lib.getExe pkgs.dysk;
         bat = lib.getExe pkgs.bat;
@@ -18,7 +18,7 @@
         dust = lib.getExe pkgs.dust;
         tv = lib.getExe pkgs.television;
         cut = lib.getExe' pkgs.coreutils "cut";
-        nh = lib.getExe inputs.nh.packages.${pkgs.system}.default;
+        nh = lib.getExe inputs.nh.packages.${pkgs.stdenv.hostPlatform.system}.default;
       in
       {
         rebuild-sys = "${nh} os switch /home/louis/src/nixos-config";

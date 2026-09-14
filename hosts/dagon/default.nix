@@ -27,7 +27,7 @@
     networkmanager.enable = true;
     firewall.enable = true;
   };
-  documentation.man.generateCaches = false;
+  documentation.man.cache.enable = false;
   system.stateVersion = "26.05";
 
 }

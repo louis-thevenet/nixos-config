@@ -385,7 +385,7 @@ in
               command = lib.getExe pkgs.codebook;
               args = [ "serve" ];
             };
-            wakatime.command = lib.getExe inputs.wakatime-lsp.packages.${pkgs.system}.default;
+            wakatime.command = lib.getExe inputs.wakatime-lsp.packages.${pkgs.stdenv.hostPlatform.system}.default;
           };
         }
       else

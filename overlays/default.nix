@@ -5,10 +5,10 @@
   modifications = final: prev: {
 
     unstable = import inputs.nixpkgs-unstable {
-      inherit (final) system;
+      system = final.stdenv.hostPlatform.system;
       config.allowUnfree = true;
     };
-    helix-latest = inputs.helix.packages.${prev.system}.helix;
+    helix-latest = inputs.helix.packages.${prev.stdenv.hostPlatform.system}.helix;
   };
 
   additions = final: _prev: import ../pkgs { pkgs = final; };

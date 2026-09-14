@@ -16,7 +16,7 @@ in
       vscode-fhs
     ]
   );
-  programs.vscode = mkIf cfg.vscode.enable {
+  programs.vscodium = mkIf cfg.vscode.enable {
     enable = true;
     # For rust debugger to work
     package = pkgs.vscodium-fhs;
@@ -57,7 +57,7 @@ in
         }
       ];
 
-    }; # userSettings.cmake.configureOnOpen = true;
+      # userSettings.cmake.configureOnOpen = true;
     userSettings.editor.formatOnSave = true;
 
     # # Indent
@@ -96,5 +96,6 @@ in
     # userSettings.rust-analyzer.check.command = "clippy";
 
     # userSettings."[c]".editor.defaultFormatter = "llvm-vs-code-extensions.vscode-clangd";
+    };
   };
 }
