@@ -38,6 +38,7 @@
           enable = true;
           brokenAudioMuteKey = true;
         };
+        hypridleConfig.displayOffTime = 300;
       };
     };
     misc.nextcloud.enable = true;

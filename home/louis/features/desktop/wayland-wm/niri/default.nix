@@ -396,6 +396,15 @@ in
               (withCommand (lib.getExe' pkgs.swaynotificationcenter "swaync"))
               (withCommand (lib.getExe pkgs.xwayland-satellite))
               (withCommand (lib.getExe pkgs.copyq))
+            ]
+            ++ lib.optionals (cfg.hypridleConfig.displayOffTime > 0) [
+              {
+                command = [
+                  (lib.getExe pkgs.hypridle)
+                  "--config"
+                  "${config.xdg.configHome}/hypr/display-off-hypridle.conf"
+                ];
+              }
             ];
 
         };

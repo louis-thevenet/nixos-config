@@ -82,10 +82,10 @@ in
         };
 
         hypridleConfig = {
-          screenDimTime = mkOption {
+          displayOffTime = mkOption {
             type = lib.types.ints.u32;
-            default = 90;
-            description = "Screen dim time in seconds";
+            default = 0;
+            description = "Power off displays after this many idle seconds (0 disables it)";
           };
           lockTime = mkOption {
             type = lib.types.ints.u32;

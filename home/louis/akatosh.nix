@@ -33,6 +33,7 @@
       wayland = {
         enable = true;
         niri.enable = true;
+        hypridleConfig.displayOffTime = 60;
         waybarConfig.batteryName = "BAT1";
       };
     };
