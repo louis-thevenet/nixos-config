@@ -38,7 +38,11 @@
           enable = true;
           brokenAudioMuteKey = true;
         };
-        hypridleConfig.displayOffTime = 300;
+        hypridleConfig = {
+          displayOffTime = 3 * 60;
+          lockTime = 5 * 60;
+          suspendTime = 9999 * 60;
+        };
       };
     };
     misc.nextcloud.enable = true;
@@ -50,15 +54,23 @@
       width = 1920;
       height = 1080;
       x = 0;
-      workspace = "2";
-      rotation = 270;
+      y = 540;
     }
     {
       name = "DP-3";
       width = 2560;
       height = 1440;
+      x = 1920 + 3840;
+      y = -200;
+      rotation = 90;
+    }
+    {
+      name = "DP-1";
+      width = 3840;
+      height = 2160;
       x = 1920;
-      workspace = "1";
+      y = 0;
+      refreshRate = 164.991;
       primary = true;
     }
     # # get rid of the ghost monitor
