@@ -39,8 +39,8 @@
           brokenAudioMuteKey = true;
         };
         hypridleConfig = {
-          displayOffTime = 3 * 60;
-          lockTime = 5 * 60;
+          displayOffTime = 5 * 60;
+          lockTime = 6 * 60;
           suspendTime = 9999 * 60;
         };
       };
@@ -70,7 +70,8 @@
       height = 2160;
       x = 1920;
       y = 0;
-      refreshRate = 164.991;
+      variableRefreshRate = true;
+      refreshRate = 119.999; # waiting for https://github.com/niri-wm/niri/issues/2989
       primary = true;
     }
     # # get rid of the ghost monitor

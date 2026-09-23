@@ -29,6 +29,10 @@ with lib;
             type = types.float;
             default = 60.0;
           };
+          variableRefreshRate = mkOption {
+            type = types.bool;
+            default = false;
+          };
           x = mkOption {
             type = types.int;
             default = 0;

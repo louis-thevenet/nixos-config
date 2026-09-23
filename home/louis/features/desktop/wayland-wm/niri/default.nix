@@ -340,6 +340,7 @@ in
               inherit (m) name;
               value = with m; {
                 enable = enabled;
+                  variable-refresh-rate = variableRefreshRate;
                 mode = {
                   inherit width;
                   inherit height;
