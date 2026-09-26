@@ -20,6 +20,7 @@ in
     ./nginx.nix
     ./matrix-conduit.nix
     ./forgejo.nix
+    ./vikunja.nix
     ../common/global
   ];
   networking.hostName = "hermaeus";
