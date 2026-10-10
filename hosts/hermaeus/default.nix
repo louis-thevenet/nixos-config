@@ -6,9 +6,9 @@
   ...
 }:
 let
-  system = pkgs.stdenv.hostPlatform.system;
-  portfolioSite = inputs.portfolio.packages.${system}.default;
-  url = "portfolio.ltvnt.com";
+  # system = pkgs.stdenv.hostPlatform.system;
+  # portfolioSite = inputs.portfolio.packages.${system}.default;
+  # url = "portfolio.ltvnt.com";
 in
 {
   imports = [
@@ -24,14 +24,14 @@ in
     ../common/global
   ];
   networking.hostName = "hermaeus";
-  services.nginx = {
-    enable = true;
-    virtualHosts.${url} = {
-      root = "${portfolioSite}";
-      enableACME = true;
-      forceSSL = true;
-    };
-  };
+  # services.nginx = {
+  #   enable = true;
+  #   virtualHosts.${url} = {
+  #     root = "${portfolioSite}";
+  #     enableACME = true;
+  #     forceSSL = true;
+  #   };
+  # };
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
