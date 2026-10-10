@@ -46,8 +46,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    blog.url = "git+file:/home/louis/src/blog";
-
     winapps = {
       url = "github:winapps-org/winapps";
       inputs.nixpkgs.follows = "nixpkgs";
