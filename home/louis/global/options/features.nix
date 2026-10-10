@@ -89,13 +89,13 @@ in
           };
           lockTime = mkOption {
             type = lib.types.ints.u32;
-            default = 120;
+            default = 60 * 5;
             description = "Lock time in seconds";
           };
 
           suspendTime = mkOption {
             type = lib.types.ints.u32;
-            default = 300;
+            default = 60 * 10;
             description = "Suspend time in seconds";
           };
         };
