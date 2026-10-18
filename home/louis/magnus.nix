@@ -71,7 +71,7 @@
       x = 1920;
       y = 0;
       variableRefreshRate = true;
-      refreshRate = 119.999; # waiting for https://github.com/niri-wm/niri/issues/2989
+      refreshRate = 164.991;
       primary = true;
     }
     # # get rid of the ghost monitor
