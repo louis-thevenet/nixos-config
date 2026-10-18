@@ -6,6 +6,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./gamma.nix
     ./sops.nix
     ../common/global
     ../common/optional/services.nix
