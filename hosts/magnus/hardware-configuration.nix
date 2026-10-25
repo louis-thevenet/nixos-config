@@ -28,10 +28,6 @@
     };
     kernelModules = [
       "kvm-intel"
-      "nvidia_modeset"
-      "nvidia_drm"
-      "nvidia"
-      "nvidia-uvm"
     ];
     extraModulePackages = [ ];
   };

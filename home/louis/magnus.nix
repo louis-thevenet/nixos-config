@@ -57,7 +57,7 @@
       y = 540;
     }
     {
-      name = "DP-3";
+      name = "DP-2";
       width = 2560;
       height = 1440;
       x = 1920 + 3840;
@@ -71,7 +71,7 @@
       x = 1920;
       y = 0;
       variableRefreshRate = true;
-      refreshRate = 119.999; # waiting for https://github.com/niri-wm/niri/issues/2989
+      refreshRate = 164.991;
       primary = true;
     }
     # # get rid of the ghost monitor
