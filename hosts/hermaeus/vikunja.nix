@@ -5,6 +5,8 @@ let
   port = 3456;
 in
 {
+  imports = [ ./vikunja-matrix ];
+
   services = {
     vikunja = {
       enable = true;
