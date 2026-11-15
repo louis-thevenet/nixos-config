@@ -8,6 +8,7 @@
     ./hardware-configuration.nix
     ./gamma.nix
     ./sops.nix
+    ./vr.nix
     ../common/global
     ../common/optional/services.nix
     ../common/optional/stylix.nix
