@@ -10,11 +10,6 @@
     443
   ];
 
-  sops.secrets.nextcloud-admin-pass = {
-    sopsFile = ./secrets.yaml;
-    owner = "nextcloud";
-  };
-
   # Ensure that postgres is running before running the setup
   systemd.services."nextcloud-setup" = {
     requires = [ "postgresql.service" ];
@@ -49,8 +44,6 @@
         dbhost = "/run/postgresql";
         dbname = "nextcloud";
 
-        adminuser = "admin";
-        adminpassFile = config.sops.secrets.nextcloud-admin-pass.path;
       };
 
       settings = {
