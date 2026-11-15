@@ -85,10 +85,6 @@ in
           "C-down" = "goto_next_diag";
           "C-up" = "goto_prev_diag";
 
-          "h" = "no_op";
-          "j" = "no_op";
-          "k" = "no_op";
-          "l" = "no_op";
           "!" = "no_op";
           "ret" = "goto_word";
           backspace = {
@@ -189,7 +185,7 @@ in
             {
               name = "markdown";
               language-servers = [
-                "ltex-ls"
+                "ltex-ls-plus"
                 "markdown-oxide"
                 "typos"
                 "wakatime"
@@ -317,8 +313,8 @@ in
               }";
               args = [ "--jvm-arg=-javaagent:${pkgs.lombok}/share/java/lombok.jar" ];
             };
-            ltex-ls = {
-              command = lib.getExe' pkgs.ltex-ls "ltex-ls";
+            ltex-ls-plus = {
+              command = lib.getExe' pkgs.ltex-ls-plus "ltex-ls-plus";
               config.ltex = {
                 disabledRules.en = [ "ARROWS" ];
                 disabledRules.fr = [ "FLECHES" ];
@@ -385,7 +381,9 @@ in
               command = lib.getExe pkgs.codebook;
               args = [ "serve" ];
             };
-            wakatime.command = lib.getExe inputs.wakatime-lsp.packages.${pkgs.stdenv.hostPlatform.system}.default;
+            wakatime.command =
+              lib.getExe
+                inputs.wakatime-lsp.packages.${pkgs.stdenv.hostPlatform.system}.default;
           };
         }
       else
