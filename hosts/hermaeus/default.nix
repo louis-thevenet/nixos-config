@@ -21,6 +21,7 @@ in
     ./matrix-conduit.nix
     ./forgejo.nix
     ./vikunja.nix
+    ./uptime-kuma.nix
     ../common/global
   ];
   networking.hostName = "hermaeus";
